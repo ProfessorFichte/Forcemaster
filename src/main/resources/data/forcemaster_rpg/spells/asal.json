@@ -1,0 +1,90 @@
+{
+  "school": "ARCANE",
+  "group": "primary",
+  "range": 5.0,
+  "learn": {
+    "tier": 4
+  },
+  "cast": {
+    "duration": 1.3,
+    "animation": "more_rpg_classes:asal_cast",
+    "sound": {
+      "id": "spell_engine:generic_arcane_casting"
+    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:arcane_spell",
+        "shape": "CONE",
+        "origin": "CENTER",
+        "count": 1.0,
+        "min_speed": 0.01,
+        "max_speed": 0.1
+      }
+    ]
+  },
+  "release": {
+    "custom_impact": false,
+    "animation": "more_rpg_classes:asal_release",
+    "particles": [
+      {
+        "particle_id": "instant_effect",
+        "angle": 360,
+        "shape": "SPHERE",
+        "rotation": "TRUE",
+        "origin": "CENTER",
+        "count": 5.0,
+        "min_speed": 1.0,
+        "max_speed": 15.0
+      }
+    ],
+    "target": {
+      "type": "CURSOR"
+    },
+
+    "sound": {
+      "id": "more_rpg_classes:asal_release",
+      "volume": 0.35
+    }
+  },
+  "impact": [
+    {
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 3.0,
+          "knockback": 2.0
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "forcemaster_rpg:asal_explode",
+          "shape": "SPHERE",
+          "origin": "CENTER",
+          "count": 1.0,
+          "min_speed": 0.2,
+          "max_speed": 1.0
+        }
+      ],
+      "sound": {
+        "id": "entity.dragon_fireball.explode",
+        "volume": 0.5
+      }
+    },
+    {
+      "action": {
+        "school": "PHYSICAL_MELEE",
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 1.5
+        }
+      }
+    }
+  ],
+  "cost": {
+    "effect_id": "forcemaster_rpg:arcane_overflow",
+    "exhaust": 100.0,
+    "durability": 30,
+    "cooldown_haste_affected": "true",
+    "cooldown_duration": 60
+  }
+}

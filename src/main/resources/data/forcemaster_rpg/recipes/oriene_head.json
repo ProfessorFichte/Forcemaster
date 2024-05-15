@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "RWR",
+    "Z Z",
+    "   "
+  ],
+  "key": {
+    "W": {
+      "item": "minecraft:cobblestone"
+    },
+    "R": {
+      "item": "minecraft:leather"
+    },
+    "Z": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "item": "forcemaster_rpg:oriene_head",
+    "count": 1
+  }
+}
