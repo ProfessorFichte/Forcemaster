@@ -24,6 +24,14 @@
         "count": 10.0,
         "min_speed": 0.02,
         "max_speed": 0.5
+      },
+      {
+        "particle_id": "more_rpg_classes:stone_particle",
+        "shape": "PIPE",
+        "origin": "FEET",
+        "count": 3.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05
       }
     ]
   },
@@ -42,9 +50,9 @@
     }
   ],
   "cost": {
-    "exhaust": 10.0,
+    "exhaust": 0.4,
     "durability": 1,
-    "cooldown_duration": 35,
+    "cooldown_duration": 25,
     "cooldown_haste_affected": "false"
   }
 }

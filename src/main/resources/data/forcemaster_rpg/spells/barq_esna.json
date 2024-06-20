@@ -6,6 +6,7 @@
     "tier": 2
   },
   "cast": {
+    "movement_speed": 1.0,
     "duration": 1,
     "animation": "more_rpg_classes:barq_esna_cast",
     "sound": {
@@ -84,7 +85,7 @@
     }
   ],
   "cost": {
-    "exhaust": 10.0,
+    "exhaust": 0.4,
     "cooldown_duration": 15.0,
     "cooldown_proportional": true,
     "cooldown_haste_affected": "true"

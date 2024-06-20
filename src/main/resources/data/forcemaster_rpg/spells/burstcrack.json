@@ -5,6 +5,7 @@
     "tier": 3
   },
   "cast": {
+    "movement_speed": 0.5,
     "animation": "more_rpg_classes:burstcrack_cast",
     "duration": 1.0
   },
@@ -38,7 +39,7 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.8
+          "spell_power_coefficient": 1.1
         }
       },
       "particles": [
@@ -70,7 +71,7 @@
     }
   ],
   "cost": {
-    "exhaust": 12.0,
+    "exhaust": 0.4,
     "durability": 1,
     "cooldown_duration": 15
   }

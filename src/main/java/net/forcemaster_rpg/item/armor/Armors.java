@@ -55,6 +55,7 @@ public class Armors {
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, orieneHaste)
                                     )),
                             new ItemConfig.ArmorSet.Piece(3)
@@ -64,10 +65,12 @@ public class Armors {
                                     )),
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, orieneHaste)
                                     )),
                             new ItemConfig.ArmorSet.Piece(1)
                                     .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, orieneHaste)
                                     ))
                     ))   .bundle(material -> new Armor.Set<>(ForcemasterClassMod.MOD_ID,

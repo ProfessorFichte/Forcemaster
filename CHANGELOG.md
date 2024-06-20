@@ -1,3 +1,14 @@
+1.0.6
+- Updated for Spell Engine version 0.15
+- nerfed hunger costs and cooldowns of the spells
+- removed decreased attack speed while stone hand effect is active
+- changed Knuckle inventory textures to 2D, so they look more like Minecraft Items
+- Stone Hand no longer lowers attack speed
+- created a smaller explosion particle for the Sonichand spell (the vanilla explosion is a bit annoying) will create a custom one later
+- gave all the Oriene Set Parts Arcane Spell Power
+- The guardian Knuckle now gives armor
+- Nerfed the attack speed of the knuckles
+
 1.0.5
 - turned down the volume of many spells, because they were too loud on multiplayer servers
 - added russian translation thanks to C'King

@@ -32,17 +32,10 @@ public class CustomSpells {
         /////FORCEMASTER_SPELLS
         /// STRAIGHT PUNCH
         CustomSpellHandler.register(new Identifier(MOD_ID, "straight_punch"), (data) -> {
-            //MagicSchool actualSchool = MagicSchool.PHYSICAL_MELEE;
             CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
-            float modifier = getSpell(new Identifier(MOD_ID, "straight_punch")).impact[0].action.damage.spell_power_coefficient;
             var actualSchool = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
             for (Entity entity : data1.targets()) {
-                //SpellPower.Result power = SpellPower.getSpellPower(actualSchool, data1.caster());
-                //SpellPower.Vulnerability vulnerability;
                 if (entity instanceof LivingEntity living) {
-                    //vulnerability = SpellPower.getVulnerability(living, actualSchool);
-                    //double amount = modifier * power.randomValue(vulnerability);
-                    //entity.damage(SpellDamageSource.player(actualSchool, data1.caster()), (float) amount);
                     entity.damage(living.getDamageSources().playerAttack(data1.caster()),(float) actualSchool);
                     SoundHelper.playSound(data1.caster().getWorld(), living, getSpell(new Identifier(MOD_ID, "straight_punch")).impact[0].sound);
                     if (data1.caster().hasStatusEffect(Effects.STONE_HAND)) {
@@ -63,14 +56,12 @@ public class CustomSpells {
             if (!data1.caster().getWorld().isClient) {
                 List<Entity> list = data1.caster().getWorld().getOtherEntities(data1.caster(), data1.caster().getBoundingBox().expand(getSpell(new Identifier(MOD_ID, "burstcrack")).range), selectionPredicate);
                 for (Entity entity : list) {
-                    //SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, getSpell(new Identifier(MOD_ID, "burstcrack")), data1.impactContext());
                     SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "burstcrack")),new Identifier(MOD_ID)), data1.impactContext());
                     SoundHelper.playSound(data1.caster().getWorld(), entity, getSpell(new Identifier(MOD_ID, "burstcrack")).impact[0].sound);
                     Vec3d currentMovement = entity.getVelocity();
                     entity.setVelocity(currentMovement.x, currentMovement.y + knockup_burstcrack, currentMovement.z);
                     entity.velocityModified = true;
                     if (data1.caster().hasStatusEffect(Effects.STONE_HAND)) {
-                        //SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, getSpell(new Identifier(MOD_ID, "burstcrack")), data1.impactContext());
                         SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "burstcrack")),new Identifier(MOD_ID)), data1.impactContext());
                         SoundHelper.playSound(data1.caster().getWorld(), entity, getSpell(new Identifier(MOD_ID, "burstcrack")).impact[0].sound);
                         Vec3d currentMovement2 = entity.getVelocity();
@@ -92,7 +83,6 @@ public class CustomSpells {
                 Vec3d velocity = data1.caster().getVelocity();
                 data1.caster().addVelocity(rotationVector.x * 0.1 + (rotationVector.x * 2.5 - velocity.x) * speed_belial_smashing, 0, rotationVector.z * 0.1 + (rotationVector.z * 2.5 - velocity.z) * speed_belial_smashing);
                 for (Entity entity : list) {
-                    //SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, getSpell(new Identifier(MOD_ID, "belial_smashing")), data1.impactContext());
                     SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "belial_smashing")),new Identifier(MOD_ID)), data1.impactContext());
                     Vec3d currentMovement2 = entity.getVelocity();
                     entity.setVelocity(currentMovement2.x, currentMovement2.y + 0.6f, currentMovement2.z);

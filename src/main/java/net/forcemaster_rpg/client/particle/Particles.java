@@ -5,16 +5,18 @@ import net.minecraft.particle.DefaultParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
-import net.more_rpg_classes.MRPGCMod;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 public class Particles {
     public static final DefaultParticleType ASAL_EXPLODE = FabricParticleTypes.simple();
     public static final DefaultParticleType BARQ_ESNA_FLAME = FabricParticleTypes.simple();
+    public static final DefaultParticleType SONICHAND_VACUUM = FabricParticleTypes.simple();
+
 
 
     public static void register(){
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "asal_explode"), ASAL_EXPLODE);
         Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "barq_esna_flame"), BARQ_ESNA_FLAME);
+        Registry.register(Registries.PARTICLE_TYPE, new Identifier(MOD_ID, "sonichand_vacuum"), SONICHAND_VACUUM);
     }
 }

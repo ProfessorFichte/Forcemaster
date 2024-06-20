@@ -68,7 +68,7 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.9
+          "spell_power_coefficient": 1.1
         }
       },
       "particles": [
@@ -100,8 +100,8 @@
     }
   ],
   "cost": {
-    "exhaust": 15.0,
-    "cooldown_duration": 30.0,
+    "exhaust": 0.8,
+    "cooldown_duration": 18.0,
     "cooldown_proportional": true,
     "cooldown_haste_affected": "true"
   }

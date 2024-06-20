@@ -32,15 +32,13 @@ public class Effects {
     public static void register(){
         STONE_HAND
                 .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "d1843e0f-8a63-4c96-a854-9c9444981042",
-                effectsConfig.value.stone_hand_attack_damage_increase, EntityAttributeModifier.Operation.ADDITION)
-                .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_SPEED, "9bf58fe9-4b58-4174-9f41-a492a3510271",
-                        effectsConfig.value.stone_hand_attack_speed_decrease, EntityAttributeModifier.Operation.ADDITION);
+                effectsConfig.value.stone_hand_attack_damage_increase, EntityAttributeModifier.Operation.MULTIPLY_BASE);
 
         ARCANE_OVERFLOW
                 .addAttributeModifier(MRPGCEntityAttributes.ARCANE_FUSE_MODIFIER, "1077f55d-9d26-49ef-8804-f52eee72dca7",
                         effectsConfig.value.arcane_overflow_arcane_fuse_multiply, EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(SpellSchools.ARCANE.attribute, "0f88e4e8-becb-437b-9beb-6ef08fda3b49",
-                        effectsConfig.value.arcane_overflow_arcane_spellpower_multiply, EntityAttributeModifier.Operation.MULTIPLY_TOTAL);
+                        effectsConfig.value.arcane_overflow_arcane_spellpower_multiply, EntityAttributeModifier.Operation.MULTIPLY_BASE);
 
         Synchronized.configure(BARQ_ESNA,true);
         Synchronized.configure(STONE_HAND,true);

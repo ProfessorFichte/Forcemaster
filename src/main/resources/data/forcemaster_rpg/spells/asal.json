@@ -6,6 +6,7 @@
     "tier": 4
   },
   "cast": {
+    "movement_speed": 0.1,
     "duration": 1.3,
     "animation": "more_rpg_classes:asal_cast",
     "sound": {
@@ -82,9 +83,9 @@
   ],
   "cost": {
     "effect_id": "forcemaster_rpg:arcane_overflow",
-    "exhaust": 100.0,
+    "exhaust": 40.0,
     "durability": 30,
     "cooldown_haste_affected": "true",
-    "cooldown_duration": 60
+    "cooldown_duration": 40
   }
 }

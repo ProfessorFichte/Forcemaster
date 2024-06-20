@@ -11,6 +11,7 @@ import net.forcemaster_rpg.effect.Effects;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.util.Identifier;
+import net.more_rpg_classes.client.particle.CustomSpellExplosionParticle;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
 import net.spell_engine.api.effect.CustomParticleStatusEffect;
 import net.spell_engine.api.render.CustomModels;
@@ -28,6 +29,7 @@ public class ForcemasterClient implements ClientModInitializer {
         ));
         ParticleFactoryRegistry.getInstance().register(Particles.ASAL_EXPLODE, ExplosionLargeParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(Particles.BARQ_ESNA_FLAME, FlameParticle.Factory::new);
+        ParticleFactoryRegistry.getInstance().register(Particles.SONICHAND_VACUUM, CustomSpellExplosionParticle.Factory::new);
 
         CustomParticleStatusEffect.register(Effects.BARQ_ESNA, new BarqEsnaParticles(1));
         CustomModelStatusEffect.register(Effects.ARCANE_OVERFLOW, new ArcaneOverDriveRenderer());

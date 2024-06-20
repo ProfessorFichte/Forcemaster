@@ -5,6 +5,7 @@
     "tier": 4
   },
   "cast": {
+    "movement_speed": 1.1,
     "duration": 5.0,
     "animation": "more_rpg_classes:sonic_hand_cast",
     "sound": {
@@ -32,8 +33,8 @@
       },
       "particles": [
         {
-          "particle_id": "explosion",
-          "shape": "CONE",
+          "particle_id": "forcemaster_rpg:sonichand_vacuum",
+          "shape": "SPHERE",
           "rotation": "LOOK",
           "origin": "LAUNCH_POINT",
           "count": 1.0,
@@ -51,7 +52,7 @@
         "school": "PHYSICAL_MELEE",
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 1.0
+          "spell_power_coefficient": 1.1
         }
       }
     },
@@ -60,7 +61,7 @@
         "type": "STATUS_EFFECT",
         "status_effect": {
           "effect_id": "forcemaster_rpg:arcane_overflow",
-          "amplifier_power_multiplier": 0.35,
+          "amplifier_power_multiplier": 0.2,
           "duration": 7.0,
           "amplifier": 4,
           "apply_mode": "ADD",
