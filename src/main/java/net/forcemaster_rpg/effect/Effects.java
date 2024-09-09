@@ -39,13 +39,16 @@ public class Effects {
                         effectsConfig.value.arcane_overflow_arcane_fuse_multiply, EntityAttributeModifier.Operation.MULTIPLY_BASE)
                 .addAttributeModifier(SpellSchools.ARCANE.attribute, "0f88e4e8-becb-437b-9beb-6ef08fda3b49",
                         effectsConfig.value.arcane_overflow_arcane_spellpower_multiply, EntityAttributeModifier.Operation.MULTIPLY_BASE);
+        BARQ_ESNA
+                .addAttributeModifier(EntityAttributes.GENERIC_ATTACK_DAMAGE, "d1843e0f-8a63-4c96-a854-9c9444981042",
+                        effectsConfig.value.barq_esna_attack_damage_reduction,EntityAttributeModifier.Operation.MULTIPLY_BASE);
 
         Synchronized.configure(BARQ_ESNA,true);
         Synchronized.configure(STONE_HAND,true);
         Synchronized.configure(ARCANE_OVERFLOW,true);
 
 
-        int forcemaster_effectid = 200;
+        int forcemaster_effectid = 4200;
         Registry.register(Registries.STATUS_EFFECT, forcemaster_effectid++, new Identifier(MOD_ID, "barq_esna").toString(), BARQ_ESNA);
         Registry.register(Registries.STATUS_EFFECT, forcemaster_effectid++, new Identifier(MOD_ID, "stone_hand").toString(), STONE_HAND);
         Registry.register(Registries.STATUS_EFFECT, forcemaster_effectid++, new Identifier(MOD_ID, "arcane_overflow").toString(), ARCANE_OVERFLOW);

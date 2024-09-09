@@ -1,0 +1,6 @@
+{
+  "parent": "forcemaster_rpg:item/knuckle_model",
+  "textures": {
+    "0": "forcemaster_rpg:item/ruby_knuckle_texture"
+  }
+}

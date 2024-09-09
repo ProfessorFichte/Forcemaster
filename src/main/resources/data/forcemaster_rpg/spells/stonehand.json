@@ -11,9 +11,9 @@
     "target": {
       "type": "SELF"
     },
-    "animation": "more_rpg_classes:stonehand_cast",
+    "animation": "forcemaster_rpg:stonehand_cast",
     "sound": {
-      "id": "more_rpg_classes:stonehand_cast",
+      "id": "forcemaster_rpg:stonehand_cast",
       "volume": 0.35
     },
     "particles": [
@@ -30,6 +30,14 @@
         "shape": "PIPE",
         "origin": "FEET",
         "count": 3.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05
+      },
+      {
+        "particle_id": "forcemaster_rpg:ground_punch",
+        "shape": "CIRCLE",
+        "origin": "FEET",
+        "count": 1.0,
         "min_speed": 0.01,
         "max_speed": 0.05
       }
@@ -52,7 +60,7 @@
   "cost": {
     "exhaust": 0.4,
     "durability": 1,
-    "cooldown_duration": 25,
-    "cooldown_haste_affected": "false"
+    "cooldown_duration": 20,
+    "cooldown_haste_affected": false
   }
 }

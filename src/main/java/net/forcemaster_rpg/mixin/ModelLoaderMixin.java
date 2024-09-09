@@ -32,5 +32,8 @@ public abstract class ModelLoaderMixin {
         this.addModel(new ModelIdentifier(ForcemasterClassMod.MOD_ID, "bloody_knuckle_model", "inventory"));
         this.addModel(new ModelIdentifier(ForcemasterClassMod.MOD_ID, "guardian_knuckle_model", "inventory"));
         this.addModel(new ModelIdentifier(ForcemasterClassMod.MOD_ID, "legendary_golden_knuckle_model", "inventory"));
+        this.addModel(new ModelIdentifier(ForcemasterClassMod.MOD_ID, "ruby_knuckle_model", "inventory"));
+        this.addModel(new ModelIdentifier(ForcemasterClassMod.MOD_ID, "aeternium_knuckle_model", "inventory"));
+
     }
 }

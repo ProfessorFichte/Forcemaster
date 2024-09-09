@@ -1,0 +1,32 @@
+{
+  "knuckle_attack": {
+    "sounds": [
+      "forcemaster_rpg:knuckle_attack"
+    ]
+  },
+  "asal_release": {
+    "sounds": [
+      "forcemaster_rpg:asal_release"
+    ]
+  },
+  "stonehand_cast": {
+    "sounds": [
+      "forcemaster_rpg:stonehand_cast"
+    ]
+  },
+  "knuckle_spell_cast": {
+    "sounds": [
+      "forcemaster_rpg:knuckle_spell_cast"
+    ]
+  },
+  "knuckle_spell_impact": {
+    "sounds": [
+      "forcemaster_rpg:knuckle_spell_impact"
+    ]
+  },
+  "sonic_hand": {
+    "sounds": [
+      "forcemaster_rpg:sonic_hand"
+    ]
+  }
+}

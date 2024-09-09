@@ -1,6 +1,6 @@
 {
 	"schemaVersion": 1,
-	"id": "forcemaster-rpg",
+	"id": "forcemaster_rpg",
 	"version": "${version}",
 	"name": "Forcemaster Class Mod",
 	"description": "Grab a Knuckle, master the force and martial art. Spell Engine Add-On",
@@ -36,9 +36,9 @@
 		"java": ">=17",
 		"fabric-api": "*",
 		"azurelibarmor": "*",
-		"spell_engine": ">=0.14.0",
+		"spell_engine": ">=0.15.0",
 		"spell_power": ">=0.10.0",
-		"more_rpg_classes": ">=1.1.4"
+		"more_rpg_classes": ">=1.1.8"
 	},
 	"suggests": {
 		"better_combat": "*"

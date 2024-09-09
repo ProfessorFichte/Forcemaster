@@ -1,14 +1,13 @@
 
 {
   "school": "ARCANE",
-  "group": "primary",
   "range": 30,
   "learn": {
     "tier": 4
   },
   "cast": {
     "duration": 1.5,
-    "animation": "more_rpg_classes:arcane_blast_cast",
+    "animation": "forcemaster_rpg:arcane_blast_cast",
     "sound": {
       "id": "spell_engine:generic_arcane_casting"
     },
@@ -58,7 +57,7 @@
         }
       }
     },
-    "animation": "more_rpg_classes:arcane_blast_release",
+    "animation": "forcemaster_rpg:arcane_blast_release",
     "sound": {
       "id": "spell_engine:generic_arcane_release"
     }
@@ -100,9 +99,9 @@
     }
   ],
   "cost": {
-    "exhaust": 0.8,
-    "cooldown_duration": 18.0,
+    "exhaust": 1.0,
+    "cooldown_duration": 22.0,
     "cooldown_proportional": true,
-    "cooldown_haste_affected": "true"
+    "cooldown_haste_affected": true
   }
 }

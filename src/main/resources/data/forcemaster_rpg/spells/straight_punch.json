@@ -3,7 +3,7 @@
   "group": "primary",
   "school": "PHYSICAL_MELEE",
   "learn": {
-    "tier": 1
+    "tier": 0
   },
   "cast": {
     "duration": 0
@@ -13,7 +13,7 @@
     "target": {
       "type": "CURSOR"
     },
-    "animation": "more_rpg_classes:straight_punch",
+    "animation": "forcemaster_rpg:straight_punch",
     "particles": [
       {
         "particle_id": "crit",
@@ -22,6 +22,14 @@
         "count": 15.0,
         "min_speed": 0.2,
         "max_speed": 0.6
+      },
+      {
+        "particle_id": "forcemaster_rpg:punch",
+        "shape": "SPHERE",
+        "origin": "LAUNCH_POINT",
+        "count": 1.0,
+        "min_speed": 0.8,
+        "max_speed": 1.0
       }
     ]
   },
@@ -34,16 +42,8 @@
           "knockback": 1.5
         }
       },
-      "particles": [
-        {
-          "particle_id": "explosion",
-          "shape": "PIPE",
-          "origin": "CENTER",
-          "count": 1.0
-        }
-      ],
       "sound": {
-        "id": "more_rpg_classes:knuckle_attack"
+        "id": "forcemaster_rpg:knuckle_attack"
       }
     },
     {
@@ -62,7 +62,7 @@
   "cost": {
     "exhaust": 0.3,
     "durability": 1,
-    "cooldown_duration": 10,
-    "cooldown_haste_affected": "false"
+    "cooldown_duration": 7,
+    "cooldown_haste_affected": false
   }
 }

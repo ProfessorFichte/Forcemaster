@@ -12,6 +12,8 @@
   "item.forcemaster_rpg.guardian_knuckle": "Faust des Beschützers",
   "item.forcemaster_rpg.legendary_golden_knuckle": "Legendäre Goldfaust",
   "item.forcemaster_rpg.bloody_knuckle": "Blutige Faust",
+  "item.forcemaster_rpg.ruby_knuckle": "Rubinfaust",
+  "item.forcemaster_rpg.aeternium_knuckle": "Aeterniumfaust",
 
   "item.forcemaster_rpg.oriene_head": "Oriene Band",
   "item.forcemaster_rpg.oriene_chest": "Oriene Hemd",
@@ -33,7 +35,7 @@
   "spell.forcemaster_rpg.asal.name": "Asalraalaikum",
   "spell.forcemaster_rpg.asal.description": "Konzentrierter Schlag, verursacht {damage}_0 Arkan- und {damage}_1 physischen Schaden und erschöpft den Zauberer maßiv.",
   "spell.forcemaster_rpg.barq_esna.name": "Baraqijal Esna",
-  "spell.forcemaster_rpg.barq_esna.description": "Macht das Ziel anfällig für arkanen Magie und erhöht die Chance, beim Ziel einen kritischen Treffer zu erzielen.",
+  "spell.forcemaster_rpg.barq_esna.description": "Macht das Ziel anfällig für arkanen Magie, schwächt den Gegner & erhöht die Chance, beim Ziel einen kritischen Treffer zu erzielen.",
   "spell.forcemaster_rpg.burstcrack.name": "Zerbersten",
   "spell.forcemaster_rpg.burstcrack.description": "Schlägt hart auf den Boden, verursacht {damage} physischen Schaden und schleudert Ziele hoch.",
   "spell.forcemaster_rpg.belial_smashing.name": "Beliale Zertrümmerung",

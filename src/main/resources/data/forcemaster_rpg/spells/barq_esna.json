@@ -1,14 +1,14 @@
 {
   "school": "ARCANE",
   "group": "primary",
-  "range": 16,
+  "range": 20,
   "learn": {
-    "tier": 2
+    "tier": 1
   },
   "cast": {
     "movement_speed": 1.0,
     "duration": 1,
-    "animation": "more_rpg_classes:barq_esna_cast",
+    "animation": "forcemaster_rpg:barq_esna_cast",
     "sound": {
       "id": "spell_engine:generic_arcane_casting",
       "randomness": 0
@@ -86,8 +86,8 @@
   ],
   "cost": {
     "exhaust": 0.4,
-    "cooldown_duration": 15.0,
+    "cooldown_duration": 12.0,
     "cooldown_proportional": true,
-    "cooldown_haste_affected": "true"
+    "cooldown_haste_affected": true
   }
 }

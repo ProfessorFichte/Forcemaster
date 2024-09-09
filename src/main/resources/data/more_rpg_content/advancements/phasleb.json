@@ -4,10 +4,10 @@
       "item": "forcemaster_rpg:phasleb_chest"
     },
     "title": {
-      "translate": "advancements.rpg_classes.phasleb.title"
+      "translate": "advancements.more_rpg_content.phasleb.title"
     },
     "description": {
-      "translate": "advancements.rpg_classes.phasleb.description"
+      "translate": "advancements.more_rpg_content.phasleb.description"
     },
     "frame": "task",
     "show_toast": true,
