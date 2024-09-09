@@ -6,11 +6,11 @@
   },
   "cast": {
     "movement_speed": 0.5,
-    "animation": "more_rpg_classes:burstcrack_cast",
+    "animation": "forcemaster_rpg:burstcrack_cast",
     "duration": 1.0
   },
   "release": {
-    "animation": "more_rpg_classes:burstcrack_release",
+    "animation": "forcemaster_rpg:burstcrack_release",
     "custom_impact": true,
     "target": {
       "type": "AREA",
@@ -27,6 +27,14 @@
         "count": 15.0,
         "min_speed": 0.2,
         "max_speed": 0.6
+      },
+      {
+        "particle_id": "forcemaster_rpg:ground_punch",
+        "shape": "CIRCLE",
+        "origin": "FEET",
+        "count": 1.0,
+        "min_speed": 0.01,
+        "max_speed": 0.05
       }
     ],
     "sound": {
@@ -53,7 +61,7 @@
         }
       ],
       "sound": {
-        "id": "more_rpg_classes:knuckle_attack"
+        "id": "forcemaster_rpg:knuckle_attack"
       }
     },
     {
@@ -73,6 +81,6 @@
   "cost": {
     "exhaust": 0.4,
     "durability": 1,
-    "cooldown_duration": 15
+    "cooldown_duration": 12
   }
 }

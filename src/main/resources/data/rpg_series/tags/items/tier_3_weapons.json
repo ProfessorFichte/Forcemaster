@@ -1,6 +1,8 @@
 {
   "replace": false,
   "values": [
+    "forcemaster_rpg:guardian_knuckle",
+    "forcemaster_rpg:legendary_golden_knuckle",
     "forcemaster_rpg:netherite_knuckle"
   ]
 }

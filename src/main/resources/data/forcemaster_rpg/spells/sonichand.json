@@ -7,9 +7,9 @@
   "cast": {
     "movement_speed": 1.1,
     "duration": 5.0,
-    "animation": "more_rpg_classes:sonic_hand_cast",
+    "animation": "forcemaster_rpg:sonic_hand_cast",
     "sound": {
-      "id": "more_rpg_classes:sonic_hand",
+      "id": "forcemaster_rpg:sonic_hand",
       "randomness": 1.2
     },
     "channel_ticks": 4.0
@@ -33,17 +33,26 @@
       },
       "particles": [
         {
-          "particle_id": "forcemaster_rpg:sonichand_vacuum",
+          "particle_id": "forcemaster_rpg:sonic_punch",
           "shape": "SPHERE",
           "rotation": "LOOK",
           "origin": "LAUNCH_POINT",
           "count": 1.0,
-          "min_speed": 0.8,
+          "min_speed": 5.01,
+          "max_speed": 10.1
+        },
+        {
+          "particle_id": "more_rpg_classes:wind_vacuum",
+          "shape": "SPHERE",
+          "rotation": "LOOK",
+          "origin": "LAUNCH_POINT",
+          "count": 1.0,
+          "min_speed": 0.1,
           "max_speed": 1.0
         }
       ],
       "sound": {
-        "id": "more_rpg_classes:knuckle_spell_impact",
+        "id": "forcemaster_rpg:knuckle_spell_impact",
         "volume": 0.35
       }
     },
@@ -72,10 +81,10 @@
     }
   ],
   "cost": {
-    "exhaust" : 15.0,
+    "exhaust" : 1.0,
     "durability": 4,
-    "cooldown_duration": 25.0,
-    "cooldown_proportional": "true",
-    "cooldown_haste_affected": "false"
+    "cooldown_duration": 27.0,
+    "cooldown_proportional": true,
+    "cooldown_haste_affected": false
   }
 }

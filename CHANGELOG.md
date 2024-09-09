@@ -1,3 +1,41 @@
+1.1.1
+- make netherite & rare knuckles fireproof
+- changed the registering for bloody knuckle, forgot it, every attribute should be configurable now
+
+1.1.0
+Official Release of the Mod!
+###GENERAL CHANGES
+- added an animated visual effect for the status effect Arcane Overflow
+- code clean up
+- fixed a typo error with an advancement not linked to the text
+- shifted all forcemaster related sounds, animations & textures to this mod
+- Improved Textures of Belial Smashing & Straight Punch
+- added a Punch Particle for a more martial feeling when casting forcemaster spells
+- added a ground punch particle
+- made the visuals of the sonic hand spell more appealing
+- added a crafting recipe for the forcemaster spell book
+###BALANCING
+- Straight Punch was moved to all craft-able Knuckles as a tier 0 pre bound Spell
+- Baraqijal Esna is now the tier 1 Spell of the Forcemaster Spell Book
+- Asalraalaikum is the tier 4 Spell of the Forcemaster Spell Book now
+- Sonichand was moved to the Bloody Knuckle
+- The special pre bound spells of the un-craft-able Knuckles are not "primary anymore" so they don't overwrite
+- changed cooldowns and exhaustion of all spells
+- Baraqijal Esna now reduces the attack damage of the target
+- Forcemaster Armor now gives attack speed instead of Spell Haste, because Knuckles already give Haste
+
+1.0.9
+- changed the model of generic knuckles a bit
+- Added Compat to BetterEnd & BetterNether, you can craft an Aeternium Knuckle or a Ruby Knuckle
+
+1.0.8
+- updated for Spell Engine 0.15.6 loot injection changes
+- changed the loot injection for the 3 special weapons to the rpg series tag system
+
+1.0.7
+- improved the Knuckle Inventory Textures
+- added tags for Spell Power enchantments for the new Spell Power Mod version 0.11
+
 1.0.6
 - Updated for Spell Engine version 0.15
 - nerfed hunger costs and cooldowns of the spells

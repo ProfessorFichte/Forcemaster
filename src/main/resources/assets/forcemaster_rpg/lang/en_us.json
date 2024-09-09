@@ -12,6 +12,8 @@
   "item.forcemaster_rpg.guardian_knuckle": "Guardian Knuckle",
   "item.forcemaster_rpg.legendary_golden_knuckle": "Legendary Golden Gloves",
   "item.forcemaster_rpg.bloody_knuckle": "Bloody Knuckle",
+  "item.forcemaster_rpg.ruby_knuckle": "Ruby Knuckle",
+  "item.forcemaster_rpg.aeternium_knuckle": "Aeternium Knuckle",
 
   "item.forcemaster_rpg.oriene_head": "Oriene Band",
   "item.forcemaster_rpg.oriene_chest": "Oriene Suit",
@@ -33,7 +35,7 @@
   "spell.forcemaster_rpg.asal.name": "Asalraalaikum",
   "spell.forcemaster_rpg.asal.description": "Concentrated strike, deals {damage}_0 arcane- and {damage}_1 physical-damage, exhausts the caster.",
   "spell.forcemaster_rpg.barq_esna.name": "Baraqijal Esna",
-  "spell.forcemaster_rpg.barq_esna.description": "Makes target vulnerable to arcane-damage, higher chance to crit on target.",
+  "spell.forcemaster_rpg.barq_esna.description": "Makes target vulnerable to arcane-damage, weakens its damage & higher chance to crit on target.",
   "spell.forcemaster_rpg.burstcrack.name": "Burst Crack",
   "spell.forcemaster_rpg.burstcrack.description": "Smashes the ground hard, dealing {damage} physical-damage and knock up targets.",
   "spell.forcemaster_rpg.belial_smashing.name": "Belial Smashing",

@@ -5,5 +5,6 @@ public class EffectsConfig {
     public float arcane_overflow_arcane_fuse_multiply = 0.15F;
     public float arcane_overflow_arcane_spellpower_multiply = 0.05F;
     public float barq_esna_arcane_damage_vulnerability = 0.2F;
+    public float barq_esna_attack_damage_reduction = 0.15F;
 
 }

@@ -8,9 +8,9 @@
         "damage_multiplier": 1.0,
         "angle": 0,
         "upswing": 0.5,
-        "animation": "more_rpg_classes:one_handed_knuckle_attack_1",
+        "animation": "forcemaster_rpg:one_handed_knuckle_attack_1",
         "swing_sound": {
-          "id": "more_rpg_classes:knuckle_attack",
+          "id": "forcemaster_rpg:knuckle_attack",
           "randomness": 2
         }
       },
@@ -20,9 +20,9 @@
         "damage_multiplier": 1.0,
         "angle": 0,
         "upswing": 0.3,
-        "animation": "more_rpg_classes:one_handed_knuckle_attack_2",
+        "animation": "forcemaster_rpg:one_handed_knuckle_attack_2",
         "swing_sound": {
-          "id": "more_rpg_classes:knuckle_attack",
+          "id": "forcemaster_rpg:knuckle_attack",
           "randomness": 2
         }
       },
@@ -32,9 +32,9 @@
         "damage_multiplier": 1.1,
         "angle": 90,
         "upswing": 0.3,
-        "animation": "more_rpg_classes:one_handed_knuckle_attack_4",
+        "animation": "forcemaster_rpg:one_handed_knuckle_attack_4",
         "swing_sound": {
-          "id": "more_rpg_classes:knuckle_attack",
+          "id": "forcemaster_rpg:knuckle_attack",
           "randomness": 2
         }
       },
@@ -44,9 +44,9 @@
         "damage_multiplier": 1.2,
         "angle": 150,
         "upswing": 0.1,
-        "animation": "more_rpg_classes:one_handed_knuckle_attack_3",
+        "animation": "forcemaster_rpg:one_handed_knuckle_attack_3",
         "swing_sound": {
-          "id": "more_rpg_classes:knuckle_attack",
+          "id": "forcemaster_rpg:knuckle_attack",
           "randomness": 2
         }
       }
