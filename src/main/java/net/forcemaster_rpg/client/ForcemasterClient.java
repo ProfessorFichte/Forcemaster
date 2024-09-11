@@ -25,9 +25,10 @@ import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 public class ForcemasterClient implements ClientModInitializer {
 
     public void onInitializeClient() {
+
         CustomModels.registerModelIds(List.of(
-                new Identifier(MOD_ID, "projectile/barqesna_projectile"),
-                new Identifier(MOD_ID, "projectile/fist_projectile"),
+                Identifier.of(MOD_ID, "projectile/barqesna_projectile"),
+                Identifier.of(MOD_ID, "projectile/fist_projectile"),
                 ArcaneOverDriveRenderer.modelId
         ));
         ParticleFactoryRegistry.getInstance().register(Particles.ASAL_EXPLODE, ExplosionLargeParticle.Factory::new);
@@ -37,7 +38,7 @@ public class ForcemasterClient implements ClientModInitializer {
         ParticleFactoryRegistry.getInstance().register(Particles.SONIC_PUNCH, PunchParticle.Factory::new);
         ParticleFactoryRegistry.getInstance().register(Particles.GROUND_PUNCH, GroundParticle.DefaultFactory::new);
 
-        CustomParticleStatusEffect.register(Effects.BARQ_ESNA, new BarqEsnaParticles(1));
-        CustomModelStatusEffect.register(Effects.ARCANE_OVERFLOW, new ArcaneOverDriveRenderer());
+        CustomParticleStatusEffect.register(Effects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
+        CustomModelStatusEffect.register(Effects.ARCANE_OVERFLOW.effect, new ArcaneOverDriveRenderer());
     }
 }

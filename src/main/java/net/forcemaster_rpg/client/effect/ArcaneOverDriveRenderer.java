@@ -15,7 +15,7 @@ import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 public class ArcaneOverDriveRenderer implements CustomModelStatusEffect.Renderer {
 
     private static final RenderLayer RENDER_LAYER = CustomLayers.spellEffect(LightEmission.GLOW, true);
-    public static final Identifier modelId = new Identifier(MOD_ID, "effect/arcane_fuse");
+    public static final Identifier modelId = Identifier.of(MOD_ID, "effect/arcane_fuse");
 
     @Override
     public void renderEffect(int amplifier, LivingEntity livingEntity, float delta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {

@@ -50,5 +50,8 @@
   "advancements.more_rpg_content.forcemaster_spells.title": "Weg des Forcemaster",
   "advancements.more_rpg_content.forcemaster_spells.description": "Erhalte alle Forcemaster Zaubersprüche",
   "advancements.more_rpg_content.phasleb.title": "Gebündelte Energie",
-  "advancements.more_rpg_content.phasleb.description": "Erhalte alle Phasleb Rüstungsteile."
+  "advancements.more_rpg_content.phasleb.description": "Erhalte alle Phasleb Rüstungsteile.",
+
+  "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Rüstung",
+  "tag.item.forcemaster_rpg.knuckles": "Fäuste"
 }

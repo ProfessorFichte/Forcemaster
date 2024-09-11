@@ -1,6 +1,5 @@
 package net.forcemaster_rpg.item;
 
-import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
@@ -18,6 +17,7 @@ public class ForcemasterItems {
         entries = new HashMap<>();
         for(var weaponEntry: WeaponsRegister.entries) {
             entries.put(weaponEntry.id().toString(), weaponEntry.item());
+
         }
         for(var entry: Armors.entries) {
             var set = entry.armorSet();
@@ -29,14 +29,15 @@ public class ForcemasterItems {
     }
 
 
+
     public static void registerModItems(){
-        SpellBooks.createAndRegister(new Identifier(ForcemasterClassMod.MOD_ID,"forcemaster"), ForcemasterGroup.FORCEMASTER_KEY);
 
-
+        SpellBooks.createAndRegister(Identifier.of(ForcemasterClassMod.MOD_ID,"forcemaster"), ForcemasterGroup.FORCEMASTER_KEY);
         ItemGroupEvents.modifyEntriesEvent(ForcemasterGroup.FORCEMASTER_KEY).register((content) -> {
         });
 
         ForcemasterClassMod.LOGGER.info("Registering Mod Items for " + ForcemasterClassMod.MOD_ID);
+
     }
 }
 

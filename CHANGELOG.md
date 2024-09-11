@@ -1,3 +1,8 @@
+2.0.0
+- 1.21.1 update
+- forgot to update the license in the past
+- added a dual wielding animation and mechanic for knuckles with better combat
+
 1.1.1
 - make netherite & rare knuckles fireproof
 - changed the registering for bloody knuckle, forgot it, every attribute should be configurable now

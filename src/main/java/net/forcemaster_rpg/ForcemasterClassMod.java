@@ -4,7 +4,6 @@ import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.forcemaster_rpg.client.particle.Particles;
-import net.forcemaster_rpg.compat.CompatDatapackLoader;
 import net.forcemaster_rpg.config.Default;
 import net.forcemaster_rpg.config.EffectsConfig;
 import net.forcemaster_rpg.custom.custom_spells.CustomSpells;
@@ -19,6 +18,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 
+import net.minecraft.util.Identifier;
 import net.spell_engine.api.item.ItemConfig;
 import net.tinyconfig.ConfigManager;
 import org.slf4j.Logger;
@@ -65,6 +65,8 @@ public class ForcemasterClassMod implements ModInitializer {
 		itemConfig.save();
 		registerItemGroup();
 		ModSounds.register();
-		CompatDatapackLoader.register();
+	}
+	public static Identifier id(String path) {
+		return Identifier.of(MOD_ID, path);
 	}
 }

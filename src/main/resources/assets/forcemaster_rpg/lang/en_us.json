@@ -50,5 +50,8 @@
   "advancements.more_rpg_content.forcemaster_spells.title": "Path of the Forcemaster",
   "advancements.more_rpg_content.forcemaster_spells.description": "Obtain all Forcemaster Spells",
   "advancements.more_rpg_content.phasleb.title": "Fused Power",
-  "advancements.more_rpg_content.phasleb.description": "Obtain all Phasleb Set Parts."
+  "advancements.more_rpg_content.phasleb.description": "Obtain all Phasleb Set Parts.",
+
+  "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Armor",
+  "tag.item.forcemaster_rpg.knuckles": "Knuckles"
 }

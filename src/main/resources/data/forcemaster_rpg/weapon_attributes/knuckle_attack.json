@@ -5,6 +5,14 @@
     "attacks": [
       {
         "hitbox": "FORWARD_BOX",
+        "upswing": 0.5,
+        "animation": "bettercombat:one_handed_punch",
+        "swing_sound": {
+          "id": "bettercombat:fist_punch"
+        }
+      },
+      {
+        "hitbox": "FORWARD_BOX",
         "damage_multiplier": 1.0,
         "angle": 0,
         "upswing": 0.5,
@@ -16,11 +24,22 @@
       },
       {
         "hitbox": "FORWARD_BOX",
-        "conditions": ["NOT_DUAL_WIELDING", "MAIN_HAND_ONLY"],
         "damage_multiplier": 1.0,
         "angle": 0,
         "upswing": 0.3,
         "animation": "forcemaster_rpg:one_handed_knuckle_attack_2",
+        "swing_sound": {
+          "id": "bettercombat:fist_punch",
+          "randomness": 2
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "MAIN_HAND_ONLY"],
+        "damage_multiplier": 1.3,
+        "angle": 45,
+        "upswing": 0.1,
+        "animation": "forcemaster_rpg:two_handed_knuckle_attack_1",
         "swing_sound": {
           "id": "forcemaster_rpg:knuckle_attack",
           "randomness": 2
@@ -28,7 +47,6 @@
       },
       {
         "hitbox": "VERTICAL_PLANE",
-        "conditions": ["NOT_DUAL_WIELDING", "MAIN_HAND_ONLY"],
         "damage_multiplier": 1.1,
         "angle": 90,
         "upswing": 0.3,
@@ -40,13 +58,24 @@
       },
       {
         "hitbox": "HORIZONTAL_PLANE",
-        "conditions": ["NOT_DUAL_WIELDING", "MAIN_HAND_ONLY"],
-        "damage_multiplier": 1.2,
+        "damage_multiplier": 1.1,
         "angle": 150,
         "upswing": 0.1,
         "animation": "forcemaster_rpg:one_handed_knuckle_attack_3",
         "swing_sound": {
           "id": "forcemaster_rpg:knuckle_attack",
+          "randomness": 2
+        }
+      },
+      {
+        "hitbox": "HORIZONTAL_PLANE",
+        "conditions": ["DUAL_WIELDING_SAME_CATEGORY", "OFF_HAND_ONLY"],
+        "damage_multiplier": 1.3,
+        "angle": 45,
+        "upswing": 0.1,
+        "animation": "forcemaster_rpg:two_handed_knuckle_attack_1",
+        "swing_sound": {
+          "id": "bettercombat:fist_punch",
           "randomness": 2
         }
       }
