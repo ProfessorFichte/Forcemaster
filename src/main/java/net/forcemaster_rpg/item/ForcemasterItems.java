@@ -17,7 +17,6 @@ public class ForcemasterItems {
         entries = new HashMap<>();
         for(var weaponEntry: WeaponsRegister.entries) {
             entries.put(weaponEntry.id().toString(), weaponEntry.item());
-
         }
         for(var entry: Armors.entries) {
             var set = entry.armorSet();

@@ -53,5 +53,7 @@
   "advancements.more_rpg_content.phasleb.description": "Erhalte alle Phasleb Rüstungsteile.",
 
   "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Rüstung",
-  "tag.item.forcemaster_rpg.knuckles": "Fäuste"
+  "tag.item.forcemaster_rpg.knuckles": "Fäuste",
+
+  "item.forcemaster_rpg.knuckle.description_1": "Fäuste haben eine kleine Chance den Gegner hochzuschleudern."
 }

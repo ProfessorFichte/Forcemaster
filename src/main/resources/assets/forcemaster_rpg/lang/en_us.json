@@ -53,5 +53,7 @@
   "advancements.more_rpg_content.phasleb.description": "Obtain all Phasleb Set Parts.",
 
   "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Armor",
-  "tag.item.forcemaster_rpg.knuckles": "Knuckles"
+  "tag.item.forcemaster_rpg.knuckles": "Knuckles",
+
+  "item.forcemaster_rpg.knuckle.description_1": "Knuckles have a small chance to knock up the target."
 }

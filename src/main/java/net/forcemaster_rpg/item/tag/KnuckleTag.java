@@ -8,6 +8,7 @@ import net.minecraft.registry.tag.TagKey;
 public class KnuckleTag {
 
     public static final TagKey<Item> KNUCKLES = register("knuckles");
+    public static final TagKey<Item> FIST_WEAPON = register("fist_weapons");
 
     private static TagKey<Item> register(String id) {
         return TagKey.of(RegistryKeys.ITEM, ForcemasterClassMod.id(id));

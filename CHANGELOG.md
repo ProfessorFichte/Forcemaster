@@ -1,5 +1,11 @@
+2.0.1
+- forgot to change item to id in the advancement section
+- for phasleb armor the arcane bonus was addition instead of multiply
+- added compat for stonehand for other fist or martial art weapons with the "fist_weapons"-tag
+- added a tooltip for the knuckle knock up ability
+
 2.0.0
-- 1.21.1 update
+- 1.21 update
 - forgot to update the license in the past
 - added a dual wielding animation and mechanic for knuckles with better combat
 

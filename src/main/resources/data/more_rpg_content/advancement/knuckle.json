@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "item": "forcemaster_rpg:iron_knuckle"
+      "id": "forcemaster_rpg:iron_knuckle"
     },
     "title": {
       "translate": "advancements.more_rpg_content.knuckle.title"
