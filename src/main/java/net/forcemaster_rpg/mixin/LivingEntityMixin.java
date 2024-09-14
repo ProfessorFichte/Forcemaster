@@ -23,7 +23,6 @@ public class LivingEntityMixin {
     @Inject(method = "onAttacking", at = @At("HEAD"))
     private void onAttacking_knuckle(Entity target, CallbackInfo ci) {
         var entity = (LivingEntity) (Object) this;
-        LivingEntity attackedEntity = (LivingEntity) target;
         ItemStack stack = entity .getEquippedStack(EquipmentSlot.MAINHAND);
 
         int knuckle_chance_knockup = 15;
@@ -32,23 +31,27 @@ public class LivingEntityMixin {
         int randomrange_stun = (int) ((Math.random() * (1 + stonhand_stun_chance)) + 1);
         int stun_duration = 30;
 
-        if(stack.isIn(KnuckleTag.FIST_WEAPON) && target.isAlive()
-        &&  !target.isSpectator() && lastAttack != entity.age
-        ){
+        if(stack.isIn(KnuckleTag.FIST_WEAPON)
+                && target.isLiving()
+                && !target.isSpectator()
+                && lastAttack != entity.age
+                && target instanceof LivingEntity){
             if(entity .hasStatusEffect(Effects.STONE_HAND.registryEntry)){
                 if (randomrange_stun >= stonhand_stun_chance ){
-                    attackedEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry, stun_duration));
+                    LivingEntity attackedEntity = (LivingEntity) target;
+                    attackedEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry,stun_duration,0,false,false,true));
                 }
             }
         }
-        if(stack.isIn(KnuckleTag.KNUCKLES) && target.isAlive()
-                &&  !target.isSpectator() && lastAttack != entity.age
-        ){
+        if(stack.isIn(KnuckleTag.KNUCKLES)
+                && target instanceof LivingEntity
+                && !target.isSpectator()
+                && lastAttack != entity.age
+                && target.isLiving()){
             if (randomrange_knockup >= knuckle_chance_knockup ){
-                Vec3d currentMovement = attackedEntity.getVelocity();
-                attackedEntity.setVelocity(currentMovement.x, currentMovement.y + 0.5, currentMovement.z);
-                attackedEntity.velocityModified = true;
-
+                Vec3d currentMovement = target.getVelocity();
+                target.setVelocity(currentMovement.x, currentMovement.y + 0.5, currentMovement.z);
+                target.velocityModified = true;
             }
         }
     }

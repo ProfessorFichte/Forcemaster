@@ -1,3 +1,7 @@
+2.0.2
+- made stun vanilla particles disappear when hit by stonehand
+- fixed an error that made the game crash while attacking the ender dragon with knuckles
+
 2.0.1
 - forgot to change item to id in the advancement section
 - for phasleb armor the arcane bonus was addition instead of multiply
