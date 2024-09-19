@@ -120,7 +120,7 @@ public class Armors {
     public static final Armor.Set phaslebArmorSet =
             create(material_phasleb,
                     Identifier.of(MOD_ID, "phasleb"),
-                    15,
+                    25,
                     PhaslebArmor::new,
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)

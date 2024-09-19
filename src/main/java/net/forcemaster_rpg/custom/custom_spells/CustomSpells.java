@@ -67,6 +67,11 @@ public class CustomSpells {
                         Vec3d currentMovement2 = entity.getVelocity();
                         entity.setVelocity(currentMovement2.x, currentMovement2.y + knockup_burstcrack_stonehand, currentMovement2.z);
                         entity.velocityModified = true;
+                        if(entity instanceof LivingEntity){
+                            LivingEntity livingEntity = (LivingEntity) entity;
+                            livingEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry, stun_duration_straight_punch));
+                        }
+
                     }
                 }
             }
@@ -86,6 +91,10 @@ public class CustomSpells {
                     SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(Identifier.of(MOD_ID, "belial_smashing")),Identifier.of(MOD_ID)), data1.impactContext());
                     Vec3d currentMovement2 = entity.getVelocity();
                     entity.setVelocity(currentMovement2.x, currentMovement2.y + 0.6f, currentMovement2.z);
+                    if(entity instanceof LivingEntity){
+                        LivingEntity livingEntity = (LivingEntity) entity;
+                        livingEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry, stun_duration_straight_punch));
+                    }
                 }
             }
             return true;

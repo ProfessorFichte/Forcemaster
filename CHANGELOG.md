@@ -1,3 +1,10 @@
+2.0.3
+- Spell Engine API Update (1.1.0 + 1.21.1)
+- Burst Crack & Belial Smashing now stuns targets if the caster has the StoneHand Effect
+- fixed Tooltips for Knuckles
+- fixed translation file damage calculating-translation for spells
+- fixed low durability of phasleb armor
+
 2.0.2
 - made stun vanilla particles disappear when hit by stonehand
 - fixed an error that made the game crash while attacking the ender dragon with knuckles
