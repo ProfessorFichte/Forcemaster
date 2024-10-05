@@ -23,6 +23,10 @@
   "item.forcemaster_rpg.phasleb_chest": "Phasleb Suit",
   "item.forcemaster_rpg.phasleb_legs": "Phasleb Pants",
   "item.forcemaster_rpg.phasleb_feet": "Phasleb Boots",
+  "item.forcemaster_rpg.netherite_aken_head": "Aken Headdress",
+  "item.forcemaster_rpg.netherite_aken_chest": "Aken Suit",
+  "item.forcemaster_rpg.netherite_aken_legs": "Aken Pants",
+  "item.forcemaster_rpg.netherite_aken_feet": "Aken Boots",
 
   "effect.forcemaster_rpg.arcane_overflow": "Arcane Overflow",
   "effect.forcemaster_rpg.barq_esna": "Light of Baraqijal",
@@ -46,7 +50,7 @@
   "spell.forcemaster_rpg.arcane_blast.description": "Charging up blasts, piercing thru {pierce} targets, dealing {damage} arcane-damage.",
 
   "advancements.more_rpg_content.knuckle.title": "Punch em!",
-  "advancements.more_rpg_content.knuckle.description": "Obtain a Iron Knuckle!",
+  "advancements.more_rpg_content.knuckle.description": "Obtain a Knuckle!",
   "advancements.more_rpg_content.forcemaster_spells.title": "Path of the Forcemaster",
   "advancements.more_rpg_content.forcemaster_spells.description": "Obtain all Forcemaster Spells",
   "advancements.more_rpg_content.phasleb.title": "Fused Power",

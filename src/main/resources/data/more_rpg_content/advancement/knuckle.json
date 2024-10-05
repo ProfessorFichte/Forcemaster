@@ -22,7 +22,12 @@
         "items": [
           {
             "items": [
-              "forcemaster_rpg:iron_knuckle"
+              "forcemaster_rpg:wooden_knuckle",
+              "forcemaster_rpg:stone_knuckle",
+              "forcemaster_rpg:golden_knuckle",
+              "forcemaster_rpg:iron_knuckle",
+              "forcemaster_rpg:diamond_knuckle",
+              "forcemaster_rpg:netherite_knuckle"
             ]
           }
         ]

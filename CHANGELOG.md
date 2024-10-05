@@ -1,3 +1,8 @@
+2.1.0
+- Added 3rd tier Armor, Aken Armor (Netherite Tier) for the Forcemaster Class
+- Changed balancing of Armor & Weapons, to match the new RPG Series balancing
+- Added all the other Knuckles to the Knuckle Advancement
+
 2.0.3
 - Spell Engine API Update (1.1.0 + 1.21.1)
 - Burst Crack & Belial Smashing now stuns targets if the caster has the StoneHand Effect

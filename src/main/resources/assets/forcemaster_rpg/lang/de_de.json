@@ -23,6 +23,10 @@
   "item.forcemaster_rpg.phasleb_chest": "Phasleb Hemd",
   "item.forcemaster_rpg.phasleb_legs": "Phasleb Hose",
   "item.forcemaster_rpg.phasleb_feet": "Phasleb Stiefel",
+  "item.forcemaster_rpg.netherite_aken_head": "Aken Kopfschmuck",
+  "item.forcemaster_rpg.netherite_aken_chest": "Aken Hemd",
+  "item.forcemaster_rpg.netherite_aken_legs": "Aken Hose",
+  "item.forcemaster_rpg.netherite_aken_feet": "Aken Stiefel",
 
   "effect.forcemaster_rpg.arcane_overflow": "Arkane Faust",
   "effect.forcemaster_rpg.barq_esna": "Licht aus Baraqijal",
@@ -46,7 +50,7 @@
   "spell.forcemaster_rpg.arcane_blast.description": "Lädt arkane Stöße auf, durchdringt {pierce} Ziele und verursacht {damage} arkanen Schaden.",
 
   "advancements.more_rpg_content.knuckle.title": "Hau drauf!",
-  "advancements.more_rpg_content.knuckle.description": "Erhalte eine Eisenfaust!",
+  "advancements.more_rpg_content.knuckle.description": "Erhalte eine Faust!",
   "advancements.more_rpg_content.forcemaster_spells.title": "Weg des Forcemaster",
   "advancements.more_rpg_content.forcemaster_spells.description": "Erhalte alle Forcemaster Zaubersprüche",
   "advancements.more_rpg_content.phasleb.title": "Gebündelte Energie",
