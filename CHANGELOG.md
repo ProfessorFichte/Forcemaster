@@ -1,3 +1,6 @@
+2.1.1
+- fixed damage translation error of some spells
+
 2.1.0
 - Added 3rd tier Armor, Aken Armor (Netherite Tier) for the Forcemaster Class
 - Changed balancing of Armor & Weapons, to match the new RPG Series balancing
