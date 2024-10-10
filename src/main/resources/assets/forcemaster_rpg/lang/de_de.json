@@ -33,7 +33,7 @@
   "spell.forcemaster_rpg.stonehand.name": "Steinfaust",
   "spell.forcemaster_rpg.stonehand.description": "Verleiht dem Spieler für {effect_duration} Sekunden den Steinfaust-Effekt.",
   "spell.forcemaster_rpg.asal.name": "Asalraalaikum",
-  "spell.forcemaster_rpg.asal.description": "Konzentrierter Schlag, verursacht {damage}_0 Arkan- und {damage}_1 physischen Schaden und erschöpft den Zauberer maßiv.",
+  "spell.forcemaster_rpg.asal.description": "Konzentrierter Schlag, verursacht {damage}_1 Arkan- und {damage}_2 physischen Schaden und erschöpft den Zauberer maßiv.",
   "spell.forcemaster_rpg.barq_esna.name": "Baraqijal Esna",
   "spell.forcemaster_rpg.barq_esna.description": "Macht das Ziel anfällig für arkanen Magie, schwächt den Gegner & erhöht die Chance, beim Ziel einen kritischen Treffer zu erzielen.",
   "spell.forcemaster_rpg.burstcrack.name": "Zerbersten",
@@ -41,7 +41,7 @@
   "spell.forcemaster_rpg.belial_smashing.name": "Beliale Zertrümmerung",
   "spell.forcemaster_rpg.belial_smashing.description": "Stürmt in die Sicht-Richtung, schleudert Ziele hoch und verursacht {damage} physischen Schaden.",
   "spell.forcemaster_rpg.sonichand.name": "Schallfaust",
-  "spell.forcemaster_rpg.sonichand.description": "Schlägt kontinuierlich in die Luft und erzeugt Vakuum, verursacht {damage}_0 Arkanschaden und {damage}_1 physischen Schaden.",
+  "spell.forcemaster_rpg.sonichand.description": "Schlägt kontinuierlich in die Luft und erzeugt Vakuum, verursacht {damage}_1 Arkanschaden und {damage}_2 physischen Schaden.",
   "spell.forcemaster_rpg.arcane_blast.name": "Arkaner Stoß",
   "spell.forcemaster_rpg.arcane_blast.description": "Lädt arkane Stöße auf, durchdringt {pierce} Ziele und verursacht {damage} arkanen Schaden.",
 

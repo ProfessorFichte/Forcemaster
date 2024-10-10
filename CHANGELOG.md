@@ -1,3 +1,6 @@
+1.1.2
+- fixed damage translation error of some spells
+
 1.1.1
 - make netherite & rare knuckles fireproof
 - changed the registering for bloody knuckle, forgot it, every attribute should be configurable now
