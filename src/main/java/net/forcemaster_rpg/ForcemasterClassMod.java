@@ -29,7 +29,7 @@ public class ForcemasterClassMod implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("forcemaster_rpg");
 
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v6", Default.itemConfig)
+			("items_v7", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

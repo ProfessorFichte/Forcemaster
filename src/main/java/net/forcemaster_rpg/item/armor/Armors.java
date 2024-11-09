@@ -71,8 +71,8 @@ public class Armors {
             2, 4, 4, 2,
             11,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, PHASLEB_INGREDIENTS);
-    public static RegistryEntry<ArmorMaterial> material_netherite_aken = material(
-            "netherite_aken",
+    public static RegistryEntry<ArmorMaterial> material_aken = material(
+            "aken",
             2, 4, 4, 2,
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> { return Ingredient.ofItems(Items.NETHERITE_INGOT); });
@@ -159,8 +159,8 @@ public class Armors {
                     .armorSet();
 
     public static final Armor.Set akenArmorSet =
-            create(material_netherite_aken,
-                    Identifier.of(MOD_ID, "netherite_aken"),
+            create(material_aken,
+                    Identifier.of(MOD_ID, "aken"),
                     30,
                     AkenArmor::new,
                     ItemConfig.ArmorSet.with(

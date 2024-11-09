@@ -1,5 +1,6 @@
 package net.forcemaster_rpg.sounds;
 
+import net.minecraft.client.render.entity.model.BreezeEntityModel;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.SoundEvent;

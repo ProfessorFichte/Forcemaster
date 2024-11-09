@@ -1,3 +1,7 @@
+2.1.2
+- make Special Knuckles also fireproof (SpellEngineTiersMixin)
+- changed the netherite_aken armor set to just aken
+
 2.1.1
 - fixed damage translation error of some spells
 
