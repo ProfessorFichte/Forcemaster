@@ -18,6 +18,4 @@ public class SpellEngineTiersMixin {
                 cir.setReturnValue(4);
             }
     }
-
-
 }
