@@ -4,10 +4,10 @@
     "item": "minecraft:netherite_ingot"
   },
   "base": {
-    "item": "forcemaster_rpg:phasleb_chest"
+    "item": "forcemaster_rpg:phasleb_head"
   },
   "result": {
-    "id": "forcemaster_rpg:netherite_aken_chest"
+    "id": "forcemaster_rpg:aken_head"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

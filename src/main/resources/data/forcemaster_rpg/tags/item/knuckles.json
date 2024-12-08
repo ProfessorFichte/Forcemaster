@@ -8,6 +8,14 @@
     "forcemaster_rpg:netherite_knuckle",
     "forcemaster_rpg:guardian_knuckle",
     "forcemaster_rpg:legendary_golden_knuckle",
-    "forcemaster_rpg:bloody_knuckle"
+    "forcemaster_rpg:bloody_knuckle",
+    {
+      "id": "forcemaster_rpg:aeternium_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:ruby_knuckle",
+      "required": false
+    }
   ]
 }
