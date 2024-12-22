@@ -1,3 +1,7 @@
+2.2.0
+- Spell Engine 1.2 Update
+- added the Holy Knuckle (Aether Variant)
+
 2.1.3
 - Mipmap Issue on 1.21.1 #3 Fix
 - fixed some tag errors with the aken armor (3rd tier)

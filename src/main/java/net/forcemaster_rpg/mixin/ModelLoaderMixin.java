@@ -34,5 +34,6 @@ public abstract class ModelLoaderMixin {
             this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of(MOD_ID, "bloody_knuckle_model")));
             this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of(MOD_ID, "ruby_knuckle_model")));
             this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of(MOD_ID, "aeternium_knuckle_model")));
+            this.loadItemModel(ModelIdentifier.ofInventoryVariant(Identifier.of(MOD_ID, "aether_knuckle_model")));
         }
 }
