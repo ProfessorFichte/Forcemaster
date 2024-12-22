@@ -16,6 +16,10 @@
     {
       "id": "forcemaster_rpg:ruby_knuckle",
       "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aether_knuckle",
+      "required": false
     }
   ]
 }
