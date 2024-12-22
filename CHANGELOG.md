@@ -1,3 +1,6 @@
+1.1.3 - 1.20.1
+- Mipmap Issue on 1.21.1 #3 Fix
+
 1.1.2
 - fixed damage translation error of some spells
 
