@@ -9,6 +9,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.more_rpg_classes.util.tags.MRPGCEntityTags;
+import net.spell_engine.internals.casting.SpellCasterEntity;
 import org.spongepowered.asm.mixin.Unique;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.Vec3d;
@@ -34,27 +35,28 @@ public class LivingEntityMixin {
         EntityType<?> type = target.getType();
 
         if(stack.isIn(ModItemTags.FIST_WEAPON)
+                && entity .hasStatusEffect(Effects.STONE_HAND.registryEntry)
                 && target.isLiving()
                 && !target.isSpectator()
                 && lastAttack != entity.age
                 && target instanceof LivingEntity
                 && !type.isIn(MRPGCEntityTags.STUN_IMMUNE)){
-            if(entity .hasStatusEffect(Effects.STONE_HAND.registryEntry)){
-                float stonhand_stun_chance = tweaksConfig.value.stonehand_stun_effect_on_attack;
-                float randomrange_stun = new Random().nextFloat(1.0F);
-                if (randomrange_stun < stonhand_stun_chance ){
-                    LivingEntity attackedEntity = (LivingEntity) target;
-                    attackedEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry,
-                            tweaksConfig.value.stonehand_stun_duration_seconds * 20,
-                            0,false,false,true));
+            float stonhand_stun_chance = tweaksConfig.value.stonehand_stun_effect_on_attack;
+            float randomrange_stun = new Random().nextFloat(1.0F);
+            if (randomrange_stun < stonhand_stun_chance ){
+                LivingEntity attackedEntity = (LivingEntity) target;
+                attackedEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry,
+                        tweaksConfig.value.stonehand_stun_duration_seconds * 20,
+                        0,false,false,true));
                 }
-            }
+
         }
         if(stack.isIn(ModItemTags.KNUCKLES)
                 && target instanceof LivingEntity
                 && !target.isSpectator()
                 && lastAttack != entity.age
                 && target.isLiving()
+                && !(entity instanceof SpellCasterEntity)
                 && !type.isIn(FMEntityTypeTags.KNOCK_UP_IMMUNE)){
             float knuckle_chance_knockup = tweaksConfig.value.knuckle_knock_up_chance_on_attack;
             float randomrange_knockup = new Random().nextFloat(1.0F);
