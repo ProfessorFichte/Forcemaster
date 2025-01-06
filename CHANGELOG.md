@@ -1,3 +1,11 @@
+2.2.1
+- Update for Spell Scrolls
+- Removed the Straight Punch Spell, because its obsolete
+- Sonic Hand, Belial Smashing & Arcane Blast are disabled as passive spells for the special axes
+- The spells will return in the future
+- made casting spells with gallant gauntlets possible
+- stunning targets with spells while stone hand is active is now possible
+
 2.2.0
 - Spell Engine 1.2 Update
 - added the Holy Knuckle (Aether Variant)

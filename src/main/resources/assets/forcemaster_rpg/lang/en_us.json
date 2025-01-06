@@ -2,6 +2,7 @@
   "itemGroup.forcemaster_rpg.general": "Forcemaster",
 
   "item.forcemaster_rpg.forcemaster_spell_book": "Force Mastery",
+  "item.forcemaster_rpg.forcemaster.spell_scroll": "Forcemaster Skill Scroll",
 
   "item.forcemaster_rpg.wooden_knuckle": "Wooden Knuckle",
   "item.forcemaster_rpg.stone_knuckle": "Stone Knuckle",
@@ -33,8 +34,6 @@
   "effect.forcemaster_rpg.barq_esna": "Light of Baraqijal",
   "effect.forcemaster_rpg.stone_hand": "Stonehand",
 
-  "spell.forcemaster_rpg.straight_punch.name": "Straight Punch",
-  "spell.forcemaster_rpg.straight_punch.description": "Powerful punch, that deals {damage} physical damage, weakens the target.",
   "spell.forcemaster_rpg.stonehand.name": "Stonehand",
   "spell.forcemaster_rpg.stonehand.description": "Gives caster the Stonehand-Effect for{effect_duration} seconds. Chance to stun targets on knuckle-attacks.",
   "spell.forcemaster_rpg.asal.name": "Asalraalaikum",

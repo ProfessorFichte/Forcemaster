@@ -31,7 +31,7 @@ public class LivingEntityMixin {
     @Inject(method = "onAttacking", at = @At("HEAD"))
     private void onAttacking_knuckle(Entity target, CallbackInfo ci) {
         var entity = (LivingEntity) (Object) this;
-        ItemStack stack = entity .getEquippedStack(EquipmentSlot.MAINHAND);
+        ItemStack stack = entity.getEquippedStack(EquipmentSlot.MAINHAND);
         EntityType<?> type = target.getType();
 
         if(stack.isIn(ModItemTags.FIST_WEAPON)
@@ -56,8 +56,11 @@ public class LivingEntityMixin {
                 && !target.isSpectator()
                 && lastAttack != entity.age
                 && target.isLiving()
-                && !(entity instanceof SpellCasterEntity)
-                && !type.isIn(FMEntityTypeTags.KNOCK_UP_IMMUNE)){
+                && !type.isIn(FMEntityTypeTags.KNOCK_UP_IMMUNE)
+                && entity instanceof SpellCasterEntity caster
+                && !caster.isCastingSpell()
+
+        ){
             float knuckle_chance_knockup = tweaksConfig.value.knuckle_knock_up_chance_on_attack;
             float randomrange_knockup = new Random().nextFloat(1.0F);
             if (randomrange_knockup < knuckle_chance_knockup ){

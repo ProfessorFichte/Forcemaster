@@ -2,12 +2,8 @@ package net.forcemaster_rpg.custom.custom_spells;
 
 import net.forcemaster_rpg.effect.Effects;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.attribute.EntityAttributes;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
-import net.more_rpg_classes.effect.MRPGCEffects;
 import net.spell_engine.api.spell.CustomSpellHandler;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.internals.SpellHelper;
@@ -31,22 +27,6 @@ public class CustomSpells {
         int stun_duration_straight_punch = 60;
 
         /////FORCEMASTER_SPELLS
-        /// STRAIGHT PUNCH
-        CustomSpellHandler.register(Identifier.of(MOD_ID, "straight_punch"), (data) -> {
-            CustomSpellHandler.Data data1 = (CustomSpellHandler.Data) data;
-            var actualSchool = data1.caster().getAttributeValue(EntityAttributes.GENERIC_ATTACK_DAMAGE);
-            for (Entity entity : data1.targets()) {
-                if (entity instanceof LivingEntity living) {
-                    entity.damage(living.getDamageSources().playerAttack(data1.caster()),(float) actualSchool);
-                    SoundHelper.playSound(data1.caster().getWorld(), living, getSpell(Identifier.of(MOD_ID, "straight_punch")).impact[0].sound);
-                    if (data1.caster().hasStatusEffect(Effects.STONE_HAND.registryEntry)) {
-                        living.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry, stun_duration_straight_punch));
-                    }
-                    return true;
-                }
-            }
-            return true;
-        });
         /// BURSTCRACK
         CustomSpellHandler.register(Identifier.of(MOD_ID, "burstcrack"), (data) -> {
             SpellInfo spellinfo = new SpellInfo(getSpell(Identifier.of(MOD_ID, "burstcrack")),Identifier.of(MOD_ID));
@@ -72,10 +52,6 @@ public class CustomSpells {
                         Vec3d currentMovement2 = entity.getVelocity();
                         entity.setVelocity(currentMovement2.x, currentMovement2.y + knockup_burstcrack_stonehand, currentMovement2.z);
                         entity.velocityModified = true;
-                        if(entity instanceof LivingEntity){
-                            LivingEntity livingEntity = (LivingEntity) entity;
-                            livingEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry, stun_duration_straight_punch));
-                        }
 
                     }
                 }
@@ -98,10 +74,6 @@ public class CustomSpells {
                     SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, spellinfo,impacts ,data1.impactContext());
                     Vec3d currentMovement2 = entity.getVelocity();
                     entity.setVelocity(currentMovement2.x, currentMovement2.y + 0.6f, currentMovement2.z);
-                    if(entity instanceof LivingEntity){
-                        LivingEntity livingEntity = (LivingEntity) entity;
-                        livingEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry, stun_duration_straight_punch));
-                    }
                 }
             }
             return true;
