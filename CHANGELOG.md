@@ -1,3 +1,7 @@
+# 2.3.0 - 1.21.1
+**- Spell Engine 1.4 Update!**
+- AzureLib Armor 3.0 Update!
+
 2.2.1
 - Update for Spell Scrolls
 - Removed the Straight Punch Spell, because its obsolete
