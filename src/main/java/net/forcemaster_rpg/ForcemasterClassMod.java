@@ -30,7 +30,7 @@ public class ForcemasterClassMod implements ModInitializer {
 
 
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v5", Default.itemConfig)
+			("items_v6", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

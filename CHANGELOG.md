@@ -1,3 +1,10 @@
+1.2.1 - 1.20.1
+- fix spell damage on language file not shown #4
+
+1.2.0 - 1.20.1
+- backport Netherite Armor (Aken Armor) to 1.20.1
+- new Weapon & Armor Attribute Balancing (same as 1.21.1 version now)
+
 1.1.3 - 1.20.1
 - Mipmap Issue on 1.21.1 #3 Fix
 

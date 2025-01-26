@@ -11,7 +11,6 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.item.ItemConfig;
 import net.spell_engine.api.item.armor.Armor;
-import net.spell_power.api.SpellPowerMechanics;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -29,14 +28,20 @@ public class Armors {
     private static final Supplier<Ingredient> PHASLEB_INGREDIENTS = () -> Ingredient.ofItems(
             Items.LEATHER, Items.GOLD_INGOT, Items.AMETHYST_SHARD
     );
+    private static final Supplier<Ingredient> AKEN_INGREDIENTS = () -> Ingredient.ofItems(
+            Items.GOLD_INGOT, Items.NETHERITE_INGOT
+    );
 
 
-    private static final float orieneRobeSpellPower = 1.5F;
-    private static final float orieneAttackSpeed = 0.015F;
+    private static final float orieneRobeSpellPower = 0.1F;
+    private static final float orieneAttackSpeed = 0.02F;
     private static final float orieneArcaneFuse = 0.025F;
     private static final float phaslebRobeSpellPower = 0.15F;
     private static final float phaslebAttackSpeed = 0.03F;
     private static final float phaslebArcaneFuse = 0.05F;
+    private static final float akenRobeSpellPower = 0.2F;
+    private static final float akenAttackSpeed = 0.05F;
+    private static final float akenArcaneFuse = 0.075F;
 
 
 
@@ -59,25 +64,25 @@ public class Armors {
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(3)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(1)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, orieneRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     ))
@@ -131,7 +136,47 @@ public class Armors {
                     ))
                     .put(entries).armorSet().allowSpellPowerEnchanting(true);
 
-
+    public static final Armor.Set akenArmorSet =
+            create(
+                    new Armor.CustomMaterial(
+                            "aken",
+                            25,
+                            16,
+                            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE,
+                            AKEN_INGREDIENTS
+                    ),
+                    ItemConfig.ArmorSet.with(
+                            new ItemConfig.ArmorSet.Piece(2)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(4)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(3)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                    )),
+                            new ItemConfig.ArmorSet.Piece(2)
+                                    .addAll(List.of(
+                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
+                                            ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                    ))
+                    ))   .bundle(material -> new Armor.Set<>(ForcemasterClassMod.MOD_ID,
+                            new AkenArmor(material, ArmorItem.Type.HELMET, new Item.Settings()),
+                            new AkenArmor(material, ArmorItem.Type.CHESTPLATE, new Item.Settings()),
+                            new AkenArmor(material, ArmorItem.Type.LEGGINGS, new Item.Settings()),
+                            new AkenArmor(material, ArmorItem.Type.BOOTS, new Item.Settings())
+                    ))
+                    .put(entries).armorSet().allowSpellPowerEnchanting(true);
 
     public static void register(Map<String, ItemConfig.ArmorSet> configs) {
         Armor.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
