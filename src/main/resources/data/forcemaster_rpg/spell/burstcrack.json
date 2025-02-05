@@ -2,23 +2,26 @@
   "range": 5.5,
   "school": "PHYSICAL_MELEE",
   "learn": {
-    "tier": 3
+    "tier": 2
   },
-  "cast": {
-    "movement_speed": 0.5,
-    "animation": "forcemaster_rpg:burstcrack_cast",
-    "duration": 1.0
+
+  "active": {
+    "cast": {
+      "movement_speed": 0.5,
+      "animation": "forcemaster_rpg:burstcrack_cast",
+      "duration": 1.0
+    }
   },
+
+  "target": {
+    "type": "AREA",
+    "area": {
+      "angle_degrees": 360.0
+    }
+  },
+
   "release": {
     "animation": "forcemaster_rpg:burstcrack_release",
-    "custom_impact": true,
-    "target": {
-      "type": "AREA",
-      "area": {
-        "distance_dropoff": "SQUARED",
-        "angle_degrees": 360.0
-      }
-    },
     "particles": [
       {
         "particle_id": "large_smoke",
@@ -42,12 +45,13 @@
       "volume": 0.4
     }
   },
+
   "impact": [
     {
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 1.1
+          "spell_power_coefficient": 0.5
         }
       },
       "particles": [
@@ -68,6 +72,17 @@
       "action": {
         "type": "STATUS_EFFECT",
         "status_effect": {
+          "effect_id": "forcemaster_rpg:knock_up",
+          "duration": 1,
+          "apply_mode": "SET",
+          "show_particles": false
+        }
+      }
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
           "effect_id": "forcemaster_rpg:arcane_overflow",
           "duration": 7.0,
           "amplifier": 3,
@@ -76,11 +91,24 @@
         },
         "apply_to_caster": true
       }
+    },
+    {
+      "action": {
+        "school": "ARCANE",
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.5
+        }
+      }
     }
   ],
+
   "cost": {
-    "exhaust": 0.4,
+    "exhaust" : 0.3,
     "durability": 1,
-    "cooldown_duration": 12
+    "cooldown":{
+      "duration": 15,
+      "haste_affected": false
+    }
   }
 }

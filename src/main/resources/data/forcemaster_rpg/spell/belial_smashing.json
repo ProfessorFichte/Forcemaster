@@ -4,20 +4,26 @@
   "learn": {
     "tier": 4
   },
-  "scroll":{
-    "generate": false
+  "active": {
+    "scroll":{
+      "generate": false
+    },
+    "cast": {
+      "movement_speed": 1.0,
+      "animation": "forcemaster_rpg:asal_cast",
+      "duration": 1.5
+    }
   },
-  "cast": {
-    "movement_speed": 1.0,
-    "animation": "forcemaster_rpg:asal_cast",
-    "duration": 0.5
+
+  "target": {
+    "type": "AIM",
+    "aim": {
+      "sticky": true
+    }
   },
+
   "release": {
     "animation": "forcemaster_rpg:fist_rush",
-    "custom_impact": true,
-    "target": {
-      "type": "CURSOR"
-    },
     "particles": [
       {
         "particle_id": "large_smoke",
@@ -41,6 +47,7 @@
       "volume": 0.4
     }
   },
+
   "impact": [
     {
       "action": {
@@ -86,10 +93,13 @@
       }
     }
   ],
+
   "cost": {
-    "exhaust": 1.0,
+    "exhaust" : 1.0,
     "durability": 1,
-    "cooldown_duration": 24,
-    "cooldown_haste_affected": false
+    "cooldown":{
+      "duration": 24,
+      "haste_affected": false
+    }
   }
 }

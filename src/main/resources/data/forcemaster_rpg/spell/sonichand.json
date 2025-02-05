@@ -4,28 +4,34 @@
   "learn": {
     "tier": 4
   },
-  "scroll":{
-    "generate": false
-  },
-  "cast": {
-    "movement_speed": 1.1,
-    "duration": 5.0,
-    "animation": "forcemaster_rpg:sonic_hand_cast",
-    "sound": {
-      "id": "forcemaster_rpg:sonic_hand",
-      "randomness": 1.2
+
+  "active": {
+    "scroll":{
+      "generate": false
     },
-    "channel_ticks": 4.0
-  },
-  "release": {
-    "target": {
-      "type": "AREA",
-      "area": {
-        "distance_dropoff": "SQUARED",
-        "angle_degrees": 50.0
-      }
+    "cast": {
+      "movement_speed": 1.1,
+      "duration": 5.0,
+      "animation": "forcemaster_rpg:sonic_hand_cast",
+      "sound": {
+        "id": "forcemaster_rpg:sonic_hand",
+        "randomness": 1.2
+      },
+      "channel_ticks": 4.0
     }
   },
+
+  "target": {
+    "type": "AREA",
+    "area": {
+      "distance_dropoff": "SQUARED",
+      "angle_degrees": 50.0
+    }
+  },
+
+  "release": {
+  },
+
   "impact": [
     {
       "action": {
@@ -83,11 +89,13 @@
       }
     }
   ],
+
   "cost": {
     "exhaust" : 1.0,
-    "durability": 4,
-    "cooldown_duration": 27.0,
-    "cooldown_proportional": true,
-    "cooldown_haste_affected": false
+    "durability": 1,
+    "cooldown":{
+      "duration": 27,
+      "haste_affected": false
+    }
   }
 }

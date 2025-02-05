@@ -4,26 +4,36 @@
   "learn": {
     "tier": 4
   },
-  "cast": {
-    "movement_speed": 0.1,
-    "duration": 1.3,
-    "animation": "forcemaster_rpg:asal_cast",
-    "sound": {
-      "id": "spell_engine:generic_arcane_casting"
-    },
-    "particles": [
-      {
-        "particle_id": "spell_engine:arcane_spell",
-        "shape": "CONE",
-        "origin": "CENTER",
-        "count": 1.0,
-        "min_speed": 0.01,
-        "max_speed": 0.1
-      }
-    ]
+
+  "active": {
+    "cast": {
+      "movement_speed": 0.1,
+      "duration": 1.3,
+      "animation": "forcemaster_rpg:asal_cast",
+      "sound": {
+        "id": "spell_engine:generic_arcane_casting"
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:arcane_spell",
+          "shape": "CONE",
+          "origin": "CENTER",
+          "count": 1.0,
+          "min_speed": 0.01,
+          "max_speed": 0.1
+        }
+      ]
+    }
   },
+
+  "target": {
+    "type": "AREA",
+    "area": {
+      "angle_degrees": 35.0
+    }
+  },
+
   "release": {
-    "custom_impact": false,
     "animation": "forcemaster_rpg:asal_release",
     "particles": [
       {
@@ -46,6 +56,7 @@
       "volume": 0.35
     }
   },
+
   "impact": [
     {
       "action": {
@@ -88,11 +99,14 @@
       }
     }
   ],
+
   "cost": {
     "effect_id": "forcemaster_rpg:arcane_overflow",
-    "exhaust": 40.0,
-    "durability": 30,
-    "cooldown_haste_affected": true,
-    "cooldown_duration": 40
+    "exhaust" : 40,
+    "durability": 1,
+    "cooldown":{
+      "duration": 40,
+      "haste_affected": false
+    }
   }
 }

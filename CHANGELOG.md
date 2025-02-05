@@ -1,3 +1,14 @@
+# 2.4.0 - 1.21.1
+- Spell Engine 1.5 Update!
+- **BALANCING Update!**
+- Buffed the Barq Esna Effect
+- Nerfed Stonehand & Burst Crack a bit
+- Burst Crack now also deals additional Arcane damage
+- Removed Spell Haste from Knuckles, they now give Armor because they're heavy gauntlets
+- Reduced Arcane Spell Power on Knuckles
+- Increased Generic Attack Damage on Knuckles a bit
+- Changed Forcemaster Book Spell Tier List: Stonehand -> Burst Crack -> Baraqijal Esna -> Asalraalaikum
+
 # 2.3.0 - 1.21.1
 **- Spell Engine 1.4 Update!**
 - AzureLib Armor 3.0 Update!

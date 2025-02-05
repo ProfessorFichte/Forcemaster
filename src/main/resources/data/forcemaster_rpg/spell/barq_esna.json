@@ -1,62 +1,68 @@
 {
   "school": "ARCANE",
-  "range": 20,
+  "range": 26,
   "learn": {
-    "tier": 1
+    "tier": 3
   },
-  "cast": {
-    "movement_speed": 1.0,
-    "duration": 1,
-    "animation": "forcemaster_rpg:barq_esna_cast",
-    "sound": {
-      "id": "spell_engine:generic_arcane_casting",
-      "randomness": 0
-    },
-    "particles": [
-      {
-        "particle_id": "spell_engine:arcane_spell",
-        "shape": "PIPE",
-        "origin": "FEET",
-        "count": 1.0,
-        "min_speed": 0.05,
-        "max_speed": 0.1
-      }
-    ]
+
+  "active": {
+    "cast": {
+      "movement_speed": 1.0,
+      "duration": 1,
+      "animation": "forcemaster_rpg:barq_esna_cast",
+      "sound": {
+        "id": "spell_engine:generic_arcane_casting",
+        "randomness": 0
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:arcane_spell",
+          "shape": "PIPE",
+          "origin": "FEET",
+          "count": 1.0,
+          "min_speed": 0.05,
+          "max_speed": 0.1
+        }
+      ]
+    }
   },
-  "release": {
-    "target": {
-      "type": "PROJECTILE",
+
+  "deliver": {
+    "type": "PROJECTILE",
+    "projectile": {
       "projectile": {
-        "projectile": {
-          "homing_angle": 1.0,
-          "client_data": {
-            "travel_particles": [
-              {
-                "particle_id": "spell_engine:arcane_spell",
-                "shape": "CIRCLE",
-                "rotation": "LOOK",
-                "origin": "CENTER",
-                "count": 1.0,
-                "min_speed": 0.05,
-                "max_speed": 0.1
-              }
-            ],
-            "model": {
-              "model_id": "forcemaster_rpg:projectile/barqesna_projectile",
-              "scale": 0.65
+        "homing_angle": 1.0,
+        "client_data": {
+          "travel_particles": [
+            {
+              "particle_id": "spell_engine:arcane_spell",
+              "shape": "CIRCLE",
+              "rotation": "LOOK",
+              "origin": "CENTER",
+              "count": 1.0,
+              "min_speed": 0.05,
+              "max_speed": 0.1
             }
+          ],
+          "model": {
+            "model_id": "forcemaster_rpg:projectile/barqesna_projectile",
+            "scale": 0.65
           }
         }
       }
-    },
+    }
+  },
+
+  "release": {
     "animation": "spell_engine:one_handed_projectile_release"
   },
+
   "impact": [
     {
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.75
+          "spell_power_coefficient": 1.0
         }
       },
       "particles": [
@@ -83,10 +89,12 @@
       }
     }
   ],
+
   "cost": {
-    "exhaust": 0.4,
-    "cooldown_duration": 12.0,
-    "cooldown_proportional": true,
-    "cooldown_haste_affected": true
+    "exhaust" : 0.4,
+    "durability": 1,
+    "cooldown":{
+      "duration": 12
+    }
   }
 }

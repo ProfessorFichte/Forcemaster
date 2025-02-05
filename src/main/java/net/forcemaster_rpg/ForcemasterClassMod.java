@@ -7,7 +7,6 @@ import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.config.Default;
 import net.forcemaster_rpg.config.EffectsConfig;
 import net.forcemaster_rpg.config.TweaksConfig;
-import net.forcemaster_rpg.custom.custom_spells.CustomSpells;
 import net.forcemaster_rpg.effect.Effects;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.item.ForcemasterItems;
@@ -30,7 +29,7 @@ public class ForcemasterClassMod implements ModInitializer {
     public static final Logger LOGGER = LoggerFactory.getLogger("forcemaster_rpg");
 
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v7", Default.itemConfig)
+			("items_v8", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
@@ -66,7 +65,6 @@ public class ForcemasterClassMod implements ModInitializer {
 		Particles.register();
 		ForcemasterItems.registerModItems();
 		ForcemasterGroup.registerItemGroups();
-		CustomSpells.register();
 		WeaponsRegister.register(itemConfig.value.weapons);
 		Armors.register(itemConfig.value.armor_sets);
 		itemConfig.save();
