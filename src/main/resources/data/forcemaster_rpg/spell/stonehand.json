@@ -1,11 +1,11 @@
 {
   "school": "PHYSICAL_MELEE",
   "range": 0,
-  "learn": {
-    "tier": 1
-  },
+  "tier": 1,
+  "learn": {},
 
   "active": {
+    "scroll": {}
   },
 
   "target": {
@@ -46,7 +46,7 @@
     ]
   },
 
-  "impact": [
+  "impacts": [
     {
       "action": {
         "type": "STATUS_EFFECT",

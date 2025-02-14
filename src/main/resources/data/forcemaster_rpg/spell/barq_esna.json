@@ -1,11 +1,11 @@
 {
   "school": "ARCANE",
   "range": 26,
-  "learn": {
-    "tier": 3
-  },
+  "tier": 3,
+  "learn": {},
 
   "active": {
+    "scroll": {},
     "cast": {
       "movement_speed": 1.0,
       "duration": 1,
@@ -16,8 +16,8 @@
       },
       "particles": [
         {
-          "particle_id": "spell_engine:arcane_spell",
-          "shape": "PIPE",
+          "particle_id": "spell_engine:magic_arcane_spell_ascend",
+          "shape": "WIDE_PIPE",
           "origin": "FEET",
           "count": 1.0,
           "min_speed": 0.05,
@@ -35,7 +35,7 @@
         "client_data": {
           "travel_particles": [
             {
-              "particle_id": "spell_engine:arcane_spell",
+              "particle_id": "spell_engine:magic_arcane_spell_ascend",
               "shape": "CIRCLE",
               "rotation": "LOOK",
               "origin": "CENTER",
@@ -57,7 +57,7 @@
     "animation": "spell_engine:one_handed_projectile_release"
   },
 
-  "impact": [
+  "impacts": [
     {
       "action": {
         "type": "DAMAGE",

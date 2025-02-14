@@ -1,14 +1,9 @@
 {
   "school": "ARCANE",
   "range": 30,
-  "learn": {
-    "tier": 5
-  },
+  "tier": 4,
 
   "active": {
-    "scroll":{
-      "generate": false
-    },
     "cast": {
       "duration": 1.5,
       "animation": "forcemaster_rpg:arcane_blast_cast",
@@ -70,7 +65,7 @@
     }
   },
 
-  "impact": [
+  "impacts": [
     {
       "action": {
         "type": "DAMAGE",

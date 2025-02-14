@@ -1,11 +1,11 @@
 {
   "range": 5.5,
   "school": "PHYSICAL_MELEE",
-  "learn": {
-    "tier": 2
-  },
+  "tier": 2,
+  "learn": {},
 
   "active": {
+    "scroll": {},
     "cast": {
       "movement_speed": 0.5,
       "animation": "forcemaster_rpg:burstcrack_cast",
@@ -46,7 +46,7 @@
     }
   },
 
-  "impact": [
+  "impacts": [
     {
       "action": {
         "type": "DAMAGE",
