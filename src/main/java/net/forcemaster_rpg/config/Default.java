@@ -2,13 +2,13 @@ package net.forcemaster_rpg.config;
 
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
-import net.spell_engine.api.item.ItemConfig;
+import net.spell_engine.api.config.ConfigFile;
 
 public class Default {
-    public final static ItemConfig itemConfig;
+    public static final ConfigFile.Equipment itemConfig;
 
     static {
-        itemConfig = new ItemConfig();
+        itemConfig = new ConfigFile.Equipment();
         for (var armorSet : Armors.entries) {
             itemConfig.armor_sets.put(armorSet.name(), armorSet.defaults());
         }

@@ -7,7 +7,7 @@ import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
-import net.spell_engine.api.item.trinket.SpellBooks;
+import net.spell_engine.api.item.SpellBooks;
 
 import java.util.HashMap;
 

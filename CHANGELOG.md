@@ -8,6 +8,8 @@
 - Reduced Arcane Spell Power on Knuckles
 - Increased Generic Attack Damage on Knuckles a bit
 - Changed Forcemaster Book Spell Tier List: Stonehand -> Burst Crack -> Baraqijal Esna -> Asalraalaikum
+- Update to Fabric Loom 1.9
+- Add TweaksConfig, so special Weapons can also be used without Better End & Nether and the Aether
 
 # 2.3.0 - 1.21.1
 **- Spell Engine 1.4 Update!**
