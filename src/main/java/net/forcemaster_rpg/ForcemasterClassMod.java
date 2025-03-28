@@ -3,6 +3,7 @@ package net.forcemaster_rpg;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.config.Default;
 import net.forcemaster_rpg.config.EffectsConfig;
@@ -60,6 +61,9 @@ public class ForcemasterClassMod implements ModInitializer {
 	public void onInitialize() {
 		itemConfig.refresh();
 		tweaksConfig.refresh();
+		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+			tweaksConfig.value.ignore_items_required_mods = true;
+		}
 		effectsConfig.refresh();
 		Effects.register();
 		Particles.register();

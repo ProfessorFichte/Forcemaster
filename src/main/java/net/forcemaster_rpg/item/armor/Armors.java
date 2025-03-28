@@ -13,6 +13,7 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.config.ArmorSetConfig;
 import net.spell_engine.api.config.AttributeModifier;
+import net.spell_engine.api.item.Equipment;
 import net.spell_engine.api.item.armor.Armor;
 import net.spell_power.api.SpellSchools;
 
@@ -80,17 +81,19 @@ public class Armors {
 
 
     public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
-    private static Armor.Entry create(RegistryEntry<ArmorMaterial> material, Identifier id, int durability, Armor.Set.ItemFactory factory, ArmorSetConfig defaults) {
+    private static Armor.Entry create(RegistryEntry<ArmorMaterial> material, Identifier id, int durability,
+                                      Armor.Set.ItemFactory factory, ArmorSetConfig defaults, int tier) {
         var entry = Armor.Entry.create(
                 material,
                 id,
                 durability,
                 factory,
-                defaults);
+                defaults,
+                Equipment.LootProperties.of(tier)
+        );
         entries.add(entry);
         return entry;
     }
-
 
     public static final Armor.Set orieneArmorSet =
             create(
@@ -123,7 +126,7 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     ))
-                    ))
+                    ),1)
                     .armorSet();
 
     public static final Armor.Set phaslebArmorSet =
@@ -156,7 +159,7 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     ))
-                    ))
+                    ),2)
                     .armorSet();
 
     public static final Armor.Set akenArmorSet =
@@ -189,7 +192,7 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     ))
-                    ))
+                    ),3)
                     .armorSet();
 
 

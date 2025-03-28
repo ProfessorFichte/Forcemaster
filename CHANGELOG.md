@@ -1,3 +1,8 @@
+# 2.4.1 - 1.21.1
+- Spell Engine 1.6 Update!
+- changed some tags
+- Oriene Armor Model Update & Texture Improvement (Done by HaxTheCharizard, Thanks!)
+
 # 2.4.0 - 1.21.1
 - Spell Engine 1.5 Update!
 - **BALANCING Update!**
