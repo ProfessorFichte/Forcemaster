@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_oriene_feet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forcemaster_rpg:oriene_feet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:leather_from_smelting_oriene_feet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_oriene_feet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:leather_from_smelting_oriene_feet"
+    ]
+  }
+}

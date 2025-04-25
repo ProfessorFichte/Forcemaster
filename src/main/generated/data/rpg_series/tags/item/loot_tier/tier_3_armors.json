@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "forcemaster_rpg:aken_head",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aken_chest",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aken_legs",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aken_feet",
+      "required": false
+    }
+  ]
+}

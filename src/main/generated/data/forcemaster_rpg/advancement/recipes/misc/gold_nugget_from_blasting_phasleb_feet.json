@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_phasleb_feet": {
+      "conditions": {
+        "items": [
+          {
+            "items": "forcemaster_rpg:phasleb_feet"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:gold_nugget_from_blasting_phasleb_feet"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_phasleb_feet"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:gold_nugget_from_blasting_phasleb_feet"
+    ]
+  }
+}

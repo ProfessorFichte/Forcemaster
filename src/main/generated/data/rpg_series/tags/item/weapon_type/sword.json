@@ -1,0 +1,40 @@
+{
+  "values": [
+    {
+      "id": "forcemaster_rpg:wooden_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:stone_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:iron_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:golden_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:diamond_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:netherite_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:ruby_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aeternium_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aether_knuckle",
+      "required": false
+    }
+  ]
+}

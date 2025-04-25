@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "forcemaster_rpg:wooden_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:stone_knuckle",
+      "required": false
+    }
+  ]
+}

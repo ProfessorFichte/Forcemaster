@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "forcemaster_rpg:oriene_head",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:oriene_chest",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:oriene_legs",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:oriene_feet",
+      "required": false
+    }
+  ]
+}
