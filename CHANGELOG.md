@@ -1,3 +1,9 @@
+# 2.4.2 - 1.21.1
+- Add Spell Scroll Textures
+- Add smelting recipes for disassembling weapons and armor pieces
+- Add Datagen
+- Removed the special knuckles, they will be reintroduced with the 1.21 Loot & Explore Mod
+
 # 2.4.1 - 1.21.1
 - Spell Engine 1.6 Update!
 - changed some tags
