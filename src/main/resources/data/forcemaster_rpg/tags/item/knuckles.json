@@ -6,9 +6,6 @@
     "forcemaster_rpg:golden_knuckle",
     "forcemaster_rpg:diamond_knuckle",
     "forcemaster_rpg:netherite_knuckle",
-    "forcemaster_rpg:guardian_knuckle",
-    "forcemaster_rpg:legendary_golden_knuckle",
-    "forcemaster_rpg:bloody_knuckle",
     {
       "id": "forcemaster_rpg:aeternium_knuckle",
       "required": false
