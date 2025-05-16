@@ -1,3 +1,8 @@
+# 2.4.5 - 1.21.1
+- Update for newest Spell Engine API
+- Buff Asal Spell Range and Area
+- tweaked some cooldowns and effect durations
+
 # 2.4.4 - 1.21.1
 - add armor meta type tags
 

@@ -1,6 +1,6 @@
 {
   "school": "ARCANE",
-  "range": 5.0,
+  "range": 7.5,
   "tier": 4,
   "learn": {},
 
@@ -29,7 +29,7 @@
   "target": {
     "type": "AREA",
     "area": {
-      "angle_degrees": 35.0
+      "angle_degrees": 50.0
     }
   },
 
@@ -37,7 +37,7 @@
     "animation": "forcemaster_rpg:asal_release",
     "particles": [
       {
-        "particle_id": "instant_effect",
+        "particle_id": "campfire_signal_smoke",
         "angle": 360,
         "shape": "SPHERE",
         "rotation": "TRUE",

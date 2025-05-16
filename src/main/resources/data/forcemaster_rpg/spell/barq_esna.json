@@ -8,7 +8,7 @@
     "scroll": {},
     "cast": {
       "movement_speed": 1.0,
-      "duration": 1,
+      "duration": 0.75,
       "animation": "forcemaster_rpg:barq_esna_cast",
       "sound": {
         "id": "spell_engine:generic_arcane_casting",
@@ -81,9 +81,11 @@
         "type": "STATUS_EFFECT",
         "status_effect": {
           "effect_id": "forcemaster_rpg:barq_esna",
-          "amplifier": 2,
-          "duration": 8.0,
+          "duration": 15.0,
+          "amplifier": 1,
+          "amplifier_cap": 10,
           "apply_mode": "ADD",
+          "refresh_duration": true,
           "show_particles": false
         }
       }
@@ -94,7 +96,8 @@
     "exhaust" : 0.4,
     "durability": 1,
     "cooldown":{
-      "duration": 12
+      "duration": 10,
+      "haste_affected": true
     }
   }
 }
