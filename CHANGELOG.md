@@ -1,3 +1,6 @@
+# 2.4.6 - 1.21.1
+- Fix Ruby Knuckle Missing Armor Stat #5
+
 # 2.4.5 - 1.21.1
 - Update for newest Spell Engine API
 - Buff Asal Spell Range and Area

@@ -102,6 +102,7 @@ public class WeaponsRegister {
             knuckle("ruby_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair),7.0F)
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of(4));
         }
         if (FabricLoader.getInstance().isModLoaded(BETTER_END) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
