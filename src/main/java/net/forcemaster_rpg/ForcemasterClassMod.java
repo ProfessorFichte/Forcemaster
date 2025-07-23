@@ -36,7 +36,7 @@ public class ForcemasterClassMod implements ModInitializer {
 			.sanitize(true)
 			.build();
 	public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
-			("effects_v2", new EffectsConfig())
+			("effects_v3", new EffectsConfig())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

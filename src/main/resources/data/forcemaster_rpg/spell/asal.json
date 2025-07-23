@@ -8,7 +8,7 @@
     "scroll": {},
     "cast": {
       "movement_speed": 0.1,
-      "duration": 1.3,
+      "duration": 0.75,
       "animation": "forcemaster_rpg:asal_cast",
       "sound": {
         "id": "spell_engine:generic_arcane_casting"
@@ -47,9 +47,6 @@
         "max_speed": 15.0
       }
     ],
-    "target": {
-      "type": "CURSOR"
-    },
 
     "sound": {
       "id": "forcemaster_rpg:asal_release",
@@ -68,20 +65,12 @@
       },
       "particles": [
         {
-          "particle_id": "forcemaster_rpg:asal_explode",
+          "particle_id": "spell_engine:smoke_medium",
           "shape": "SPHERE",
           "origin": "CENTER",
-          "count": 1.0,
-          "min_speed": 0.2,
-          "max_speed": 1.0
-        },
-        {
-          "particle_id": "forcemaster_rpg:punch",
-          "shape": "SPHERE",
-          "origin": "CENTER",
-          "count": 1.0,
-          "min_speed": 0.2,
-          "max_speed": 1.0
+          "count": 50.0,
+          "min_speed": 0.1,
+          "max_speed": 5.0
         }
       ],
       "sound": {
@@ -105,8 +94,8 @@
     "exhaust" : 40,
     "durability": 1,
     "cooldown":{
-      "duration": 40,
-      "haste_affected": false
+      "duration": 30,
+      "haste_affected": true
     }
   }
 }

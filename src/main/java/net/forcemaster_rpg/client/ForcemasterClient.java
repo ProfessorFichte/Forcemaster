@@ -7,6 +7,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.forcemaster_rpg.client.armor.AkenArmorRenderer;
+import net.forcemaster_rpg.client.armor.BillporonArmorRenderer;
 import net.forcemaster_rpg.client.armor.OrieneArmorRenderer;
 import net.forcemaster_rpg.client.armor.PhaslebArmorRenderer;
 import net.forcemaster_rpg.client.effect.ArcaneOverDriveRenderer;

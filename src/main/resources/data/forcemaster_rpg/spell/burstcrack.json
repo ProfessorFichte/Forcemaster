@@ -24,20 +24,23 @@
     "animation": "forcemaster_rpg:burstcrack_release",
     "particles": [
       {
-        "particle_id": "large_smoke",
-        "shape": "PIPE",
+        "particle_id": "spell_engine:smoke_medium",
         "origin": "CENTER",
-        "count": 15.0,
-        "min_speed": 0.2,
-        "max_speed": 0.6
-      },
-      {
-        "particle_id": "forcemaster_rpg:ground_punch",
         "shape": "CIRCLE",
-        "origin": "FEET",
+        "count": 50.0,
+        "min_speed": 0.2,
+        "max_speed": 0.3
+      }
+    ],
+    "particles_scaled_with_ranged": [
+      {
+        "particle_id": "spell_engine:area_effect_658",
+        "origin": "GROUND",
+        "shape": "SPHERE",
         "count": 1.0,
-        "min_speed": 0.01,
-        "max_speed": 0.05
+        "max_speed": 0.0,
+        "scale": 0.5,
+        "color_rgba": 4291585791
       }
     ],
     "sound": {
@@ -56,7 +59,7 @@
       },
       "particles": [
         {
-          "particle_id": "smoke",
+          "particle_id": "spell_engine:smoke_medium",
           "shape": "PIPE",
           "origin": "CENTER",
           "count": 20.0,
@@ -96,7 +99,7 @@
     },
     {
       "action": {
-        "school": "ARCANE",
+        "school": "PHYSICAL_MELEE",
         "type": "DAMAGE",
         "damage": {
           "spell_power_coefficient": 0.5

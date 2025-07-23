@@ -37,8 +37,6 @@ public class Effects {
         }
     }
 
-
-
     public static final Entry STONE_HAND =  new Entry("stone_hand",new StoneHandEffect(StatusEffectCategory.BENEFICIAL, 0xbce5fe));
     public static final Entry ARCANE_OVERFLOW = new Entry("arcane_overflow",new ArcaneOverflowEffect(StatusEffectCategory.BENEFICIAL, 0xff8bef));
     public static final Entry BARQ_ESNA = new Entry("barq_esna",new BarqEsnaEffect(StatusEffectCategory.HARMFUL, 0x8db4fe)

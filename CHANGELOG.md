@@ -1,3 +1,12 @@
+# 2.4.7 - 1.21.1
+### Visual Enhancements
+- Update Inventory Textures
+- Update Armor Model Assets
+### Internal Changes
+- Spell Engine 1.7
+- Rebalance some Spells, mostly buffed them
+- fix Light of Baraqijal Status Effect not decreasing Attack Power
+
 # 2.4.6 - 1.21.1
 - Fix Ruby Knuckle Missing Armor Stat #5
 
