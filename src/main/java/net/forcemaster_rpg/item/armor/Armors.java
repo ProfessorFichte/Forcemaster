@@ -1,5 +1,6 @@
 package net.forcemaster_rpg.item.armor;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
@@ -75,6 +76,11 @@ public class Armors {
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, PHASLEB_INGREDIENTS);
     public static RegistryEntry<ArmorMaterial> material_aken = material(
             "aken",
+            2, 4, 4, 2,
+            20,
+            SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> { return Ingredient.ofItems(Items.NETHERITE_INGOT); });
+    public static RegistryEntry<ArmorMaterial> material_billporon = material(
+            "billporon",
             2, 4, 4, 2,
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> { return Ingredient.ofItems(Items.NETHERITE_INGOT); });
@@ -194,8 +200,6 @@ public class Armors {
                                     ))
                     ),3)
                     .armorSet();
-
-
 
     public static void register(Map<String, ArmorSetConfig> configs) {
         Armor.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
