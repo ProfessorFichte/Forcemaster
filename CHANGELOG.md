@@ -1,3 +1,10 @@
+1.2.2 - 1.20.1
+- Update Armor Textures and Inventory Item Assets
+- Nerf Arcane Overflow Effect
+- Reset Effects Config -> v3
+- Fixed Wrong Armor Bonus Effects
+- Reset Item Config -> v7
+
 1.2.1 - 1.20.1
 - fix spell damage on language file not shown #4
 

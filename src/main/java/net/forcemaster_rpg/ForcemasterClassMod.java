@@ -30,13 +30,13 @@ public class ForcemasterClassMod implements ModInitializer {
 
 
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v6", Default.itemConfig)
+			("items_v7", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
 	public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
-			("effects_v2", new EffectsConfig())
+			("effects_v3", new EffectsConfig())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

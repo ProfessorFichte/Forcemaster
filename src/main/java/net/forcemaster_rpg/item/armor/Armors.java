@@ -106,25 +106,25 @@ public class Armors {
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(4)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(3)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     ))
@@ -148,25 +148,25 @@ public class Armors {
                     ItemConfig.ArmorSet.with(
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(4)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(3)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     )),
                             new ItemConfig.ArmorSet.Piece(2)
                                     .addAll(List.of(
-                                            ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, akenRobeSpellPower),
+                                            ItemConfig.Attribute.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
                                             ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     ))
