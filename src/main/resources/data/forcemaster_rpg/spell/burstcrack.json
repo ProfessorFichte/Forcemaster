@@ -73,12 +73,10 @@
     },
     {
       "action": {
-        "type": "STATUS_EFFECT",
-        "status_effect": {
-          "effect_id": "forcemaster_rpg:knock_up",
-          "duration": 1,
-          "apply_mode": "SET",
-          "show_particles": false
+        "type": "CUSTOM",
+        "custom": {
+          "handler": "more_rpg_classes:knock_up",
+          "intent": "HARMFUL"
         }
       }
     },

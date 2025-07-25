@@ -1,3 +1,8 @@
+# 2.4.8 - 1.21.1
+- Update to MRPGLib 2.3.0
+- Use new Knock Custom Impact Type from MRPGLib
+- Nerf Arcane Fuse Effect
+
 # 2.4.7 - 1.21.1
 ### Visual Enhancements
 - Update Inventory Textures

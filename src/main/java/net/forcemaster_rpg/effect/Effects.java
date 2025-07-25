@@ -42,9 +42,6 @@ public class Effects {
     public static final Entry BARQ_ESNA = new Entry("barq_esna",new BarqEsnaEffect(StatusEffectCategory.HARMFUL, 0x8db4fe)
             .setVulnerability(SpellSchools.ARCANE, new SpellPower.Vulnerability(
                     effectsConfig.value.barq_esna_arcane_damage_vulnerability, 0.1F, 0.2F)));
-    public static final Entry KNOCK_UP =  new Entry("knock_up",new KnockUpEffect(StatusEffectCategory.HARMFUL, 0xbce5fe));
-
-
 
     public static void register(){
         STONE_HAND.effect
@@ -63,7 +60,6 @@ public class Effects {
         Synchronized.configure(BARQ_ESNA.effect,true);
         Synchronized.configure(STONE_HAND.effect,true);
         Synchronized.configure(ARCANE_OVERFLOW.effect,true);
-        Synchronized.configure(KNOCK_UP.effect,true);
 
         for (var entry: entries) {
             entry.register();

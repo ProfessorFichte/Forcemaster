@@ -9,6 +9,7 @@ import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.more_rpg_classes.util.tags.MRPGCEntityTags;
+import net.spell_engine.api.effect.SpellEngineEffects;
 import net.spell_engine.internals.casting.SpellCasterEntity;
 import org.spongepowered.asm.mixin.Unique;
 import net.minecraft.item.ItemStack;
@@ -45,7 +46,7 @@ public class LivingEntityMixin {
             float randomrange_stun = new Random().nextFloat(1.0F);
             if (randomrange_stun < stonhand_stun_chance ){
                 LivingEntity attackedEntity = (LivingEntity) target;
-                attackedEntity.addStatusEffect(new StatusEffectInstance(MRPGCEffects.STUNNED.registryEntry,
+                attackedEntity.addStatusEffect(new StatusEffectInstance(SpellEngineEffects.STUN.entry,
                         tweaksConfig.value.stonehand_stun_duration_seconds * 20,
                         0,false,false,true));
                 }
