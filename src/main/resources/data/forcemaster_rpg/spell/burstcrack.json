@@ -51,6 +51,25 @@
 
   "impacts": [
     {
+      "target_modifiers": [
+        {
+          "conditions": [
+            {
+              "entity_type": "#c:bosses"
+            }
+          ],
+          "execute": "DENY"
+        }
+      ],
+      "action": {
+        "type": "CUSTOM",
+        "custom": {
+          "handler": "more_rpg_classes:knock_up",
+          "intent": "HARMFUL"
+        }
+      }
+    },
+    {
       "action": {
         "type": "DAMAGE",
         "damage": {
@@ -69,15 +88,6 @@
       ],
       "sound": {
         "id": "forcemaster_rpg:knuckle_attack"
-      }
-    },
-    {
-      "action": {
-        "type": "CUSTOM",
-        "custom": {
-          "handler": "more_rpg_classes:knock_up",
-          "intent": "HARMFUL"
-        }
       }
     },
     {

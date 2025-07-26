@@ -1,3 +1,6 @@
+# 2.4.9 - 1.21.1
+- KnockUp Impact does not work on #c:bosses
+
 # 2.4.8 - 1.21.1
 - Update to MRPGLib 2.3.0
 - Use new Knock Custom Impact Type from MRPGLib
