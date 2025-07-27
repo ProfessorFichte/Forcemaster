@@ -47,6 +47,22 @@
     {
       "id": "forcemaster_rpg:aken_feet",
       "required": false
+    },
+    {
+      "id": "forcemaster_rpg:billporon_head",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:billporon_chest",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:billporon_legs",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:billporon_feet",
+      "required": false
     }
   ]
 }

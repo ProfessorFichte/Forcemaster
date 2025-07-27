@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.forcemaster_rpg.item.armor.Armors;
+import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
@@ -34,7 +35,8 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 			generateWeaponTags(WeaponsRegister.entries);
-			generateArmorTags(Armors.entries, RPGSeriesItemTags.ArmorMetaType.MELEE);
+			generateArmorTags(Armors.entries, RPGSeriesItemTags.ArmorMetaType.MAGIC);
+			generateArmorTags(ArmoryCompat.entries, RPGSeriesItemTags.ArmorMetaType.MAGIC);
 		}
 	}
 

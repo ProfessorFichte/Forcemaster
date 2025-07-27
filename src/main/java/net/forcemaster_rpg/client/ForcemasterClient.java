@@ -6,6 +6,8 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.loader.api.FabricLoader;
+import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.client.armor.AkenArmorRenderer;
 import net.forcemaster_rpg.client.armor.BillporonArmorRenderer;
 import net.forcemaster_rpg.client.armor.OrieneArmorRenderer;
@@ -16,6 +18,7 @@ import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.client.particle.PunchParticle;
 import net.forcemaster_rpg.effect.Effects;
 import net.forcemaster_rpg.item.armor.Armors;
+import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.util.Identifier;
@@ -50,6 +53,9 @@ public class ForcemasterClient implements ClientModInitializer {
         registerArmorRenderer(Armors.orieneArmorSet, OrieneArmorRenderer::oriene);
         registerArmorRenderer(Armors.phaslebArmorSet, PhaslebArmorRenderer::phasleb);
         registerArmorRenderer(Armors.akenArmorSet, AkenArmorRenderer::aken);
+        if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+            registerArmorRenderer(ArmoryCompat.billporonArmorSet.armorSet(), BillporonArmorRenderer::billporon);
+        }
 
         CustomParticleStatusEffect.register(Effects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
         CustomModelStatusEffect.register(Effects.ARCANE_OVERFLOW.effect, new ArcaneOverDriveRenderer());

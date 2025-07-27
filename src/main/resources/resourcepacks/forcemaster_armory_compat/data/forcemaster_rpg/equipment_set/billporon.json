@@ -1,0 +1,34 @@
+{
+  "bonuses": [
+    {
+      "attributes": {
+        "modifiers": [
+          {
+            "type": "spell_power:arcane",
+            "amount": 0.1,
+            "id": "forcemaster_rpg:billporon",
+            "operation": "add_multiplied_base",
+            "slot": "armor"
+          }
+        ]
+      },
+      "required_piece_count": 2
+    },
+    {
+      "required_piece_count": 4,
+      "spells": {
+        "content": "ANY",
+        "spell_ids": [
+          "forcemaster_rpg:improved_burstcrack"
+        ]
+      }
+    }
+  ],
+  "items": [
+    "forcemaster_rpg:billporon_head",
+    "forcemaster_rpg:billporon_chest",
+    "forcemaster_rpg:billporon_legs",
+    "forcemaster_rpg:billporon_feet"
+  ],
+  "name": "billporon"
+}

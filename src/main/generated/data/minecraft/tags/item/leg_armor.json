@@ -2,6 +2,10 @@
   "values": [
     "forcemaster_rpg:oriene_legs",
     "forcemaster_rpg:phasleb_legs",
-    "forcemaster_rpg:aken_legs"
+    "forcemaster_rpg:aken_legs",
+    {
+      "id": "forcemaster_rpg:billporon_legs",
+      "required": false
+    }
   ]
 }

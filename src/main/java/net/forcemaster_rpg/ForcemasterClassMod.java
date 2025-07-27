@@ -3,6 +3,8 @@ package net.forcemaster_rpg;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
+import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.config.Default;
@@ -11,6 +13,7 @@ import net.forcemaster_rpg.config.TweaksConfig;
 import net.forcemaster_rpg.effect.Effects;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.item.ForcemasterItems;
+import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.sounds.ModSounds;
@@ -71,6 +74,16 @@ public class ForcemasterClassMod implements ModInitializer {
 		ForcemasterGroup.registerItemGroups();
 		WeaponsRegister.register(itemConfig.value.weapons);
 		Armors.register(itemConfig.value.armor_sets);
+		if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+			ArmoryCompat.register(itemConfig.value.armor_sets);
+			FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
+				ResourceManagerHelper.registerBuiltinResourcePack(
+						Identifier.of(MOD_ID, "forcemaster_armory_compat"),
+						modContainer,
+						ResourcePackActivationType.ALWAYS_ENABLED
+				);
+			});
+		}
 		itemConfig.save();
 		registerItemGroup();
 		ModSounds.register();

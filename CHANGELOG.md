@@ -1,3 +1,9 @@
+# 2.4.10 - 1.21.1
+- New Armor Set (T5) Billporon is available with passive modifiers
+- The Armor gets enabled when Armory (RPG-Series) is installed
+- You can also enable Billporon without Armory with the tweaksconfig -> ignore_items_required_mods
+- Added all Forcemaster Armor to magical armor type (Spell Engine related)
+
 # 2.4.9 - 1.21.1
 - KnockUp Impact does not work on #c:bosses
 

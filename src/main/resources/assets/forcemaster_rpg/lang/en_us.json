@@ -29,6 +29,10 @@
   "item.forcemaster_rpg.aken_chest": "Aken Suit",
   "item.forcemaster_rpg.aken_legs": "Aken Pants",
   "item.forcemaster_rpg.aken_feet": "Aken Boots",
+  "item.forcemaster_rpg.billporon_head": "Billporon Headdress",
+  "item.forcemaster_rpg.billporon_chest": "Billporon Suit",
+  "item.forcemaster_rpg.billporon_legs": "Billporon Pants",
+  "item.forcemaster_rpg.billporon_feet": "Billporon Boots",
 
   "effect.forcemaster_rpg.arcane_overflow": "Arcane Overflow",
   "effect.forcemaster_rpg.barq_esna": "Light of Baraqijal",
@@ -49,6 +53,10 @@
   "spell.forcemaster_rpg.sonichand.description": "Punches continuously in the air creating vacuum, deals {damage_1} arcane- and {damage_2} physical-damage ",
   "spell.forcemaster_rpg.arcane_blast.name": "Arcane Blast",
   "spell.forcemaster_rpg.arcane_blast.description": "Charging up blasts, piercing thru {pierce} targets, dealing {damage} arcane-damage.",
+  "spell.forcemaster_rpg.improved_burstcrack.name": "Improved Burstcrack",
+  "spell.forcemaster_rpg.improved_burstcrack.description": "Increases the range of Burstcrack by {range_add}.",
+
+  "equipment_set.forcemaster_rpg.billporon": "Billporon's Focus",
 
   "advancements.more_rpg_content.knuckle.title": "Punch em!",
   "advancements.more_rpg_content.knuckle.description": "Obtain a Knuckle!",
