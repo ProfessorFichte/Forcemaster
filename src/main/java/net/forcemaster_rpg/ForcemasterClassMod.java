@@ -17,6 +17,7 @@ import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.sounds.ModSounds;
+import net.forcemaster_rpg.util.custom.CustomSpellImpact;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -70,6 +71,7 @@ public class ForcemasterClassMod implements ModInitializer {
 		effectsConfig.refresh();
 		Effects.register();
 		Particles.register();
+		CustomSpellImpact.registerCustomImpacts();
 		ForcemasterItems.registerModItems();
 		ForcemasterGroup.registerItemGroups();
 		WeaponsRegister.register(itemConfig.value.weapons);

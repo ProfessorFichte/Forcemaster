@@ -7,10 +7,15 @@
 	"authors": [
 		"Fichte"
 	],
+	"contributors": [
+		"Slepykat (Artist)",
+		"HaxTheCharizard (Artist)"
+	],
 	"contact": {
-		"sources": "https://github.com/ProfessorFichte"
+		"sources": "https://github.com/ProfessorFichte",
+		"artist1_contact":"https://slepykat.carrd.co/"
 	},
-	"license": "MIT",
+	"license": "All Rights Reserved",
 	"icon": "assets/forcemaster_rpg/icon.png",
 	"environment": "*",
 	"entrypoints": {

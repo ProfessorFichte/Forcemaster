@@ -1,3 +1,11 @@
+# 2.4.11 - 1.21.1
+- License -> ARR
+- Update fabric.mod.json
+- Add Datagen
+- Internal Technical Changes -> Stonehand
+- Now is a Stash Effect and the Stun via melee impacts is handled with a custom impact
+- Stonehand Stun is only possible if you use a Fist-Weapon (Compat via Tag: forcemaster_rpg:fist_weapons)
+
 # 2.4.10 - 1.21.1
 - New Armor Set (T5) Billporon is available with passive modifiers
 - The Armor gets enabled when Armory (RPG-Series) is installed

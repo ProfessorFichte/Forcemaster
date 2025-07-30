@@ -40,7 +40,7 @@
   "effect.forcemaster_rpg.knock_up": "Knock Up",
 
   "spell.forcemaster_rpg.stonehand.name": "Stonehand",
-  "spell.forcemaster_rpg.stonehand.description": "Gives caster the Stonehand-Effect for{effect_duration} seconds. Chance to stun targets on knuckle-attacks.",
+  "spell.forcemaster_rpg.stonehand.description": "{trigger_chance_1} chance for {effect_duration} seconds to stun targets on damage, only with fist weapons.",
   "spell.forcemaster_rpg.asal.name": "Asalraalaikum",
   "spell.forcemaster_rpg.asal.description": "Concentrated strike, deals {damage_1} arcane- and {damage_2} physical-damage, exhausts the caster.",
   "spell.forcemaster_rpg.barq_esna.name": "Baraqijal Esna",

@@ -122,8 +122,6 @@ public class WeaponsRegister {
                     .loot(Equipment.LootProperties.of("aether"));
 
         }
-
-
         Weapon.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
     }
 
