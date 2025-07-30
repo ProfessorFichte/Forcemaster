@@ -45,7 +45,10 @@ repositories {
 }
 
 fabricApi {
-	configureDataGeneration()
+	configureDataGeneration(){
+		client = true
+		modId = "forcemaster_rpg"
+	}
 }
 
 dependencies {
