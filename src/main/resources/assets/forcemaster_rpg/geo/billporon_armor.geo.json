@@ -3,7 +3,7 @@
 	"minecraft:geometry": [
 		{
 			"description": {
-				"identifier": "geometry.oriene_armor_redux",
+				"identifier": "geometry.billporon_armor",
 				"texture_width": 128,
 				"texture_height": 128,
 				"visible_bounds_width": 4,
@@ -1265,12 +1265,12 @@
 					]
 				},
 				{
-					"name": "bipedRightLeg2",
+					"name": "bipedRightLeg",
 					"pivot": [-2, 12, 0]
 				},
 				{
-					"name": "armorRightLeg2",
-					"parent": "bipedRightLeg2",
+					"name": "armorRightLeg",
+					"parent": "bipedRightLeg",
 					"pivot": [-2, 12, 0],
 					"cubes": [
 						{
@@ -1314,8 +1314,8 @@
 					]
 				},
 				{
-					"name": "armorRightBoot2",
-					"parent": "bipedRightLeg2",
+					"name": "armorRightBoot",
+					"parent": "bipedRightLeg",
 					"pivot": [-2, 12, 0],
 					"cubes": [
 						{
@@ -1345,12 +1345,12 @@
 					]
 				},
 				{
-					"name": "bipedLeftLeg2",
+					"name": "bipedLeftLeg",
 					"pivot": [2, 12, 0]
 				},
 				{
-					"name": "armorLeftLeg2",
-					"parent": "bipedLeftLeg2",
+					"name": "armorLeftLeg",
+					"parent": "bipedLeftLeg",
 					"pivot": [2, 12, 0],
 					"cubes": [
 						{
@@ -1394,8 +1394,8 @@
 					]
 				},
 				{
-					"name": "armorLeftBoot2",
-					"parent": "bipedLeftLeg2",
+					"name": "armorLeftBoot",
+					"parent": "bipedLeftLeg",
 					"pivot": [2, 12, 0],
 					"cubes": [
 						{
