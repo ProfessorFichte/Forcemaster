@@ -120,6 +120,7 @@ public class ForcemasterSpells {
         var spell = activeSpellBase();
         spell.school = SpellSchools.ARCANE;
         spell.tier = 1;
+        spell.range = 2;
 
         spell.release.animation = "forcemaster_rpg:stonehand_cast";
         spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:stonehand_cast"), 0.35F);

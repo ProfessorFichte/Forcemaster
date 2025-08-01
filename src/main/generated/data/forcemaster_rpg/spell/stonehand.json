@@ -1,6 +1,7 @@
 {
   "school": "spell_power:arcane",
   "tier": 1,
+  "range": 2,
   "learn": {},
   "active": {},
   "release": {

@@ -1,4 +1,5 @@
 # 2.4.11 - 1.21.1
+- Fix Crash with newest AzureLib Version Crash when rendering tier 5 armors #6
 - License -> ARR
 - Update fabric.mod.json
 - Add Datagen
