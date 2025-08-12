@@ -111,9 +111,9 @@ public class ForcemasterSpells {
     }
     public static final Color ORANGE = new Color(255.0F, 165.0F, 0.0F);
 
-    public static Entry stonehand_stash = add(stonehand_stash());
-    private static Entry stonehand_stash() {
-        var id = Identifier.of(MOD_ID, "stonehand_stash");
+    public static Entry stonehand = add(stonehand());
+    private static Entry stonehand() {
+        var id = Identifier.of(MOD_ID, "stonehand");
         var effect = Effects.STONE_HAND;
         var title = "Stonehand Stun Chance";
         var description = "";
@@ -153,7 +153,6 @@ public class ForcemasterSpells {
         var trigger_melee = new Spell.Trigger();
         trigger_melee.chance = stonehand_trigger_chance;
         trigger_melee.type = Spell.Trigger.Type.MELEE_IMPACT;
-        trigger_melee.target_override = Spell.Trigger.TargetSelector.CASTER;
         var trigger_spell_impact = new Spell.Trigger();
         trigger_spell_impact.chance = stonehand_trigger_chance;
         trigger_spell_impact.type = Spell.Trigger.Type.SPELL_IMPACT_SPECIFIC;

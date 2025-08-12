@@ -1,3 +1,9 @@
+# 2.4.12 - 1.21.1
+### Visual Enhancements
+- Update 3D Knuckle Models
+### Bug Fixes
+- fix minecraft armor tag problem with the Billporon Armor Set
+
 # 2.4.11 - 1.21.1
 - Fix Crash with newest AzureLib Version Crash when rendering tier 5 armors #6
 - License -> ARR

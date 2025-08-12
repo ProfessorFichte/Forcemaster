@@ -1,7 +1,7 @@
 {
   "school": "spell_power:arcane",
+  "range": 2.0,
   "tier": 1,
-  "range": 2,
   "learn": {},
   "active": {},
   "release": {
@@ -49,7 +49,6 @@
       "id": "forcemaster_rpg:stone_hand",
       "triggers": [
         {
-          "target_override": "CASTER",
           "type": "MELEE_IMPACT",
           "chance": 0.25
         },
