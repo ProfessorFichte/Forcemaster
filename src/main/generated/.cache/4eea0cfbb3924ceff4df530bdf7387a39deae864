@@ -1,4 +1,4 @@
-// 1.21.1	2025-08-12T23:07:42.4735472	Forcemaster Class Mod/Tags for minecraft:item
+// 1.21.1	2025-08-24T02:18:19.0365109	Forcemaster Class Mod/Tags for minecraft:item
 ef747470348ff4bf892f0dc210915ba0516e3f6c data\rpg_series\tags\item\loot_tier\tier_3_weapons.json
 f718483f87f973b2f2b70383f795aff77ea131d6 data\rpg_series\tags\item\loot_tier\tier_4_weapons.json
 49c7fb14a9d086d5ccdbef4bf539c66bf3be88d8 data\rpg_series\tags\item\loot_tier\tier_3_armors.json
@@ -6,8 +6,8 @@ aaa72437ef168c454798f69d995e154cf7b90b80 data\rpg_series\tags\item\loot_tier\tie
 54e2a0a3dbed7a2071a1479672260d1876132158 data\rpg_series\tags\item\loot_tier\tier_0_weapons.json
 6fca9914362f1986c7f5456b9ebccb4d97210134 data\rpg_series\tags\item\loot_tier\tier_1_armors.json
 62eec17fb3b7e3a9fea66db964d30867fca765d7 data\rpg_series\tags\item\loot_tier\tier_5_armors.json
-599443bc70252377193f8c3f63456cc18874031c data\rpg_series\tags\item\loot_tier\tier_1_weapons.json
 957b343907d38746f910a093672ebf444bf51623 data\minecraft\tags\item\foot_armor.json
+599443bc70252377193f8c3f63456cc18874031c data\rpg_series\tags\item\loot_tier\tier_1_weapons.json
 b121b1dd73d0d1c5019c142a5cdc0a7103463972 data\rpg_series\tags\item\loot_theme\aether.json
 b3dfe6d4b022606e864fa6077b4b36233ce29bd8 data\rpg_series\tags\item\loot_theme\golden_weapon.json
 5206b758afce0811ef684fc6eea65dcc9a24beac data\minecraft\tags\item\head_armor.json

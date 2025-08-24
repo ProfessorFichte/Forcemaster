@@ -1,3 +1,9 @@
+# 2.4.13 - 1.21.1
+- change sound registry due to possible crash
+- Fix some Knuckle Models
+- Removed Baraqijal Esna as T3 Spell
+- Added Belial Smashing as the new T3 Spell
+
 # 2.4.12 - 1.21.1
 ### Visual Enhancements
 - Update 3D Knuckle Models
