@@ -3,6 +3,8 @@ package net.forcemaster_rpg.spell;
 import net.forcemaster_rpg.effect.Effects;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.spell_engine.api.datagen.SpellBuilder;
+import net.spell_engine.api.spell.ExternalSpellSchools;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.api.spell.fx.ParticleBatch;
 import net.spell_engine.api.spell.fx.Sound;
@@ -115,7 +117,7 @@ public class ForcemasterSpells {
     private static Entry stonehand() {
         var id = Identifier.of(MOD_ID, "stonehand");
         var effect = Effects.STONE_HAND;
-        var title = "Stonehand Stun Chance";
+        var title = "Stonehand";
         var description = "";
         var spell = activeSpellBase();
         spell.school = SpellSchools.ARCANE;
@@ -172,6 +174,51 @@ public class ForcemasterSpells {
 
         spell.impacts = List.of(custom);
         configureCooldown(spell, 20, 0.3F);
+        return new Entry(id, spell, title, description, null);
+    }
+    public static Entry belial_smashing = add(belial_smashing());
+    private static Entry belial_smashing() {
+        var id = Identifier.of(MOD_ID, "belial_smashing");
+        var effect = Effects.STONE_HAND;
+        var title = "Stonehand";
+        var description = "";
+        var spell = activeSpellBase();
+        spell.school = SpellSchools.ARCANE;
+        spell.tier = 3;
+        spell.range = 8.5F;
+
+        spell.target.type = Spell.Target.Type.AIM;
+        spell.target.aim = new Spell.Target.Aim();
+        spell.target.aim.sticky = true;
+
+        spell.release.animation = "forcemaster_rpg:fist_rush";
+        spell.release.sound = Sound.withVolume(Identifier.of("entity.generic.explode"), 0.35F);
+        spell.release.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.smoke_large.id().toString(),
+                        ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
+                        35, 0.1F, 0.5F).followEntity(true).color(ORANGE.toRGBA())
+        };
+
+        var damage = SpellBuilder.Impacts.damage(0.75F,0.5F);
+        damage.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.smoke_large.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        15, 0.1F, 0.3F).followEntity(true).color(ORANGE.toRGBA())
+        };
+
+        var damagePhysical = SpellBuilder.Impacts.damage(0.5F,0F);
+        damagePhysical.school = ExternalSpellSchools.PHYSICAL_MELEE;
+
+        var custom = new Spell.Impact();
+        stunImmuneDeny(custom);
+        custom.action = new Spell.Impact.Action();
+        custom.action.custom = new Spell.Impact.Action.Custom();
+        custom.action.type = Spell.Impact.Action.Type.CUSTOM;
+        custom.action.custom.intent = SpellTarget.Intent.HARMFUL;
+        custom.action.custom.handler = "more_rpg_classes:rush_forward_to_target";
+
+        spell.impacts = List.of(custom, damage,damagePhysical);
+        configureCooldown(spell, 22, 0.5F);
         return new Entry(id, spell, title, description, null);
     }
 }
