@@ -179,7 +179,7 @@ public class ForcemasterSpells {
     public static Entry belial_smashing = add(belial_smashing());
     private static Entry belial_smashing() {
         var id = Identifier.of(MOD_ID, "belial_smashing");
-        var effect = Effects.STONE_HAND;
+        var effect = Effects.ARCANE_OVERFLOW;
         var title = "Stonehand";
         var description = "";
         var spell = activeSpellBase();
@@ -196,21 +196,24 @@ public class ForcemasterSpells {
         spell.release.particles = new ParticleBatch[]{
                 new ParticleBatch(SpellEngineParticles.smoke_large.id().toString(),
                         ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
-                        35, 0.1F, 0.5F).followEntity(true).color(ORANGE.toRGBA())
+                        35, 0.1F, 0.5F).followEntity(true).color(Color.WHITE.toRGBA())
         };
 
         var damage = SpellBuilder.Impacts.damage(0.75F,0.5F);
         damage.particles = new ParticleBatch[]{
                 new ParticleBatch(SpellEngineParticles.smoke_large.id().toString(),
                         ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        15, 0.1F, 0.3F).followEntity(true).color(ORANGE.toRGBA())
+                        15, 0.1F, 0.3F).color(Color.WHITE.toRGBA())
         };
+        damage.sound = new Sound("forcemaster_rpg:knuckle_attack");
 
         var damagePhysical = SpellBuilder.Impacts.damage(0.5F,0F);
         damagePhysical.school = ExternalSpellSchools.PHYSICAL_MELEE;
 
+        var buff = SpellBuilder.Impacts.effectAdd(effect.id.toString(), 10,1,5);
+        buff.action.status_effect.refresh_duration = true;
+
         var custom = new Spell.Impact();
-        stunImmuneDeny(custom);
         custom.action = new Spell.Impact.Action();
         custom.action.custom = new Spell.Impact.Action.Custom();
         custom.action.type = Spell.Impact.Action.Type.CUSTOM;
