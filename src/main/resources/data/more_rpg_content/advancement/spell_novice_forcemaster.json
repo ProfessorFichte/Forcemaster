@@ -1,0 +1,32 @@
+{
+  "display": {
+    "icon": {
+      "id": "forcemaster_rpg:iron_knuckle"
+    },
+    "title": {
+      "translate": "advancements.more_rpg_content.spell_novice_forcemaster.title"
+    },
+    "description": {
+      "translate": "advancements.more_rpg_content.spell_novice_forcemaster.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "more_rpg_content:path_choose_forcemaster",
+  "criteria": {
+    "bind": {
+      "trigger": "spell_engine:spell_binding",
+      "conditions": {
+        "complete": false,
+        "spell_pool": "forcemaster_rpg:forcemaster"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "bind"
+    ]
+  ]
+}

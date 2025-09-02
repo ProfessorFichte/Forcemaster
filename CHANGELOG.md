@@ -1,5 +1,7 @@
 # 2.4.14 - 1.21.1
 - fix lang file
+- BUG FIX: Fix Crashing when leaving multiplayer server
+- Overhaul Advancements
 
 # 2.4.13 - 1.21.1
 - change sound registry due to possible crash

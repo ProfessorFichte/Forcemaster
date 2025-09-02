@@ -58,12 +58,14 @@
 
   "equipment_set.forcemaster_rpg.billporon": "Billporon's Focus",
 
-  "advancements.more_rpg_content.knuckle.title": "Punch em!",
-  "advancements.more_rpg_content.knuckle.description": "Obtain a Knuckle!",
-  "advancements.more_rpg_content.forcemaster_spells.title": "Path of the Forcemaster",
-  "advancements.more_rpg_content.forcemaster_spells.description": "Obtain all Forcemaster Spells",
-  "advancements.more_rpg_content.phasleb.title": "Fused Power",
-  "advancements.more_rpg_content.phasleb.description": "Obtain all Phasleb Set Parts.",
+  "advancements.more_rpg_content.path_choose_forcemaster.title": "Path of the Force",
+  "advancements.more_rpg_content.path_choose_forcemaster.description": "Create the Force Mastery Book",
+  "advancements.more_rpg_content.spell_novice_forcemaster.title": "Punch em!",
+  "advancements.more_rpg_content.spell_novice_forcemaster.description": "Obtain your first Forcemaster skill",
+  "advancements.more_rpg_content.spell_master_forcemaster.title": "Master of the Force",
+  "advancements.more_rpg_content.spell_master_forcemaster.description": "Complete the Force Mastery Book",
+  "advancements.more_rpg_content.spell_cast_forcemaster_book.title": "Force Training",
+  "advancements.more_rpg_content.spell_cast_forcemaster_book.description": "Use a skill from the Force Mastery Book",
 
   "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Armor",
   "tag.item.forcemaster_rpg.knuckles": "Knuckles",
