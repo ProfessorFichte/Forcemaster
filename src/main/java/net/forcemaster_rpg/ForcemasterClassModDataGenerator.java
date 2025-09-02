@@ -6,8 +6,8 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.forcemaster_rpg.item.armor.Armors;
-import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
+import net.forcemaster_rpg.sounds.ModSounds;
 import net.forcemaster_rpg.spell.ForcemasterSpells;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.item.Item;
@@ -17,6 +17,7 @@ import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
+import net.spell_engine.api.datagen.SimpleSoundGeneratorV2;
 import net.spell_engine.api.datagen.SpellGenerator;
 import net.spell_engine.api.item.armor.Armor;
 import net.spell_engine.rpg_series.datagen.RPGSeriesDataGen;
@@ -27,6 +28,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
+
 public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
@@ -34,6 +37,23 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ItemTagGenerator::new);
 		pack.addProvider(UnsmeltGenerator::new);
 		pack.addProvider(SpellGen::new);
+		pack.addProvider(SoundGen::new);
+	}
+
+	public static class SoundGen extends SimpleSoundGeneratorV2 {
+		public SoundGen(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+			super(dataOutput, registryLookup);
+		}
+
+		@Override
+		public void generateSounds(Builder builder) {
+			builder.entries.add(new Entry(MOD_ID,
+							ModSounds.entries.stream()
+									.map(entry -> SoundEntry.withVariants(entry.id().getPath(), entry.variants()))
+									.toList()
+					)
+			);
+		}
 	}
 
 	public static class SpellGen extends SpellGenerator {
@@ -119,7 +139,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 			generateWeaponTags(WeaponsRegister.entries);
 			armorTags(Armors.entries, RPGSeriesItemTags.ArmorMetaType.MAGIC);
-			armorTags(ArmoryCompat.entries, RPGSeriesItemTags.ArmorMetaType.MAGIC);
 		}
 	}
 

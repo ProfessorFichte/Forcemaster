@@ -15,7 +15,6 @@ import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.client.particle.PunchParticle;
 import net.forcemaster_rpg.effect.Effects;
 import net.forcemaster_rpg.item.armor.Armors;
-import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
 import net.minecraft.util.Identifier;
@@ -51,7 +50,7 @@ public class ForcemasterClient implements ClientModInitializer {
         registerArmorRenderer(Armors.phaslebArmorSet, CustomArmorRenderer::phasleb_armor);
         registerArmorRenderer(Armors.akenArmorSet, CustomArmorRenderer::aken_armor);
         if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
-            registerArmorRenderer(ArmoryCompat.billporonArmorSet.armorSet(), CustomArmorRenderer::billporon_armor);
+            registerArmorRenderer(Armors.billporonArmorSet.armorSet(), CustomArmorRenderer::billporon_armor);
         }
 
         CustomParticleStatusEffect.register(Effects.BARQ_ESNA.effect, new BarqEsnaParticles(1));

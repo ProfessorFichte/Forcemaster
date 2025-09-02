@@ -71,6 +71,17 @@
           "knockback": 0.0
         }
       }
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "forcemaster_rpg:arcane_overflow",
+          "amplifier": 1,
+          "amplifier_cap": 5,
+          "apply_mode": "ADD"
+        }
+      }
     }
   ],
   "cost": {

@@ -1,7 +1,9 @@
 package net.forcemaster_rpg.item.armor;
 
 import net.fabricmc.loader.api.FabricLoader;
+import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.ForcemasterGroup;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.Items;
@@ -12,10 +14,12 @@ import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 import net.spell_engine.api.config.ArmorSetConfig;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.item.Equipment;
 import net.spell_engine.api.item.armor.Armor;
+import net.spell_engine.api.spell.SpellDataComponents;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -36,6 +40,15 @@ public class Armors {
             Items.LEATHER, Items.GOLD_INGOT, Items.AMETHYST_SHARD
     );
 
+    public static Identifier billporon_passive = Identifier.of(MOD_ID, "billporon");
+
+    private static Armor.ItemSettingsTweaker commonSettings(Identifier equipmentSetId) {
+        return Armor.ItemSettingsTweaker.standard(itemSettings -> {
+            itemSettings
+                    .component(SpellDataComponents.EQUIPMENT_SET, equipmentSetId)
+                    .component(DataComponentTypes.RARITY, Rarity.RARE);
+        });
+    }
 
     private static final float orieneRobeSpellPower = 0.1F;
     private static final float orieneAttackSpeed = 0.02F;
@@ -46,6 +59,9 @@ public class Armors {
     private static final float akenRobeSpellPower = 0.2F;
     private static final float akenAttackSpeed = 0.05F;
     private static final float akenArcaneFuse = 0.075F;
+    private static final float billporonRobeSpellPower = 0.25F;
+    private static final float billporonAttackSpeed = 0.05F;
+    private static final float billporonArcaneFuse = 0.075F;
 
     public static RegistryEntry<ArmorMaterial> material(String name,
                                                         int protectionHead, int protectionChest, int protectionLegs, int protectionFeet,
@@ -88,14 +104,15 @@ public class Armors {
 
     public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
     private static Armor.Entry create(RegistryEntry<ArmorMaterial> material, Identifier id, int durability,
-                                      Armor.Set.ItemFactory factory, ArmorSetConfig defaults, int tier) {
+                                      Armor.Set.ItemFactory factory, ArmorSetConfig defaults, int tier, Armor.ItemSettingsTweaker settings) {
         var entry = Armor.Entry.create(
                 material,
                 id,
                 durability,
                 factory,
                 defaults,
-                Equipment.LootProperties.of(tier)
+                Equipment.LootProperties.of(tier),
+                settings
         );
         entries.add(entry);
         return entry;
@@ -132,7 +149,7 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     ))
-                    ),1)
+                    ),1, null)
                     .armorSet();
 
     public static final Armor.Set phaslebArmorSet =
@@ -165,7 +182,7 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     ))
-                    ),2)
+                    ),2, null)
                     .armorSet();
 
     public static final Armor.Set akenArmorSet =
@@ -198,10 +215,48 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     ))
-                    ),3)
+                    ),3, null)
                     .armorSet();
 
+    public static Armor.Entry billporonArmorSet;
+
+
     public static void register(Map<String, ArmorSetConfig> configs) {
+        if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+            billporonArmorSet = create(
+                    material_billporon,
+                    Identifier.of(MOD_ID, "billporon"),
+                    40,
+                    BillporonArmor::new,
+                    ArmorSetConfig.with(
+                            new ArmorSetConfig.Piece(2)
+                                    .addAll(List.of(
+                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                    )),
+                            new ArmorSetConfig.Piece(4)
+                                    .addAll(List.of(
+                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                    )),
+                            new ArmorSetConfig.Piece(4)
+                                    .addAll(List.of(
+                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                    )),
+                            new ArmorSetConfig.Piece(2)
+                                    .addAll(List.of(
+                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                    ))
+                    ),5,
+                    commonSettings(billporon_passive)
+            );
+        }
         Armor.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
     }
 }

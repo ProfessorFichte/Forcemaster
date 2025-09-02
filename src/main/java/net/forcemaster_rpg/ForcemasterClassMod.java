@@ -13,7 +13,6 @@ import net.forcemaster_rpg.config.TweaksConfig;
 import net.forcemaster_rpg.effect.Effects;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.item.ForcemasterItems;
-import net.forcemaster_rpg.item.armor.ArmoryCompat;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.sounds.ModSounds;
@@ -77,7 +76,6 @@ public class ForcemasterClassMod implements ModInitializer {
 		WeaponsRegister.register(itemConfig.value.weapons);
 		Armors.register(itemConfig.value.armor_sets);
 		if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
-			ArmoryCompat.register(itemConfig.value.armor_sets);
 			FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
 				ResourceManagerHelper.registerBuiltinResourcePack(
 						Identifier.of(MOD_ID, "forcemaster_armory_compat"),

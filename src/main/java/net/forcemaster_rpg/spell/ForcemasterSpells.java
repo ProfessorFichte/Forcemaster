@@ -220,7 +220,7 @@ public class ForcemasterSpells {
         custom.action.custom.intent = SpellTarget.Intent.HARMFUL;
         custom.action.custom.handler = "more_rpg_classes:rush_forward_to_target";
 
-        spell.impacts = List.of(custom, damage,damagePhysical);
+        spell.impacts = List.of(custom, damage,damagePhysical, buff);
         configureCooldown(spell, 22, 0.5F);
         return new Entry(id, spell, title, description, null);
     }
