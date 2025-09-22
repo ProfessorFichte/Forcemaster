@@ -53,7 +53,7 @@ public class ForcemasterClassMod implements ModInitializer {
 
 	private void registerItemGroup() {
 		ForcemasterGroup.FORCEMASTER = FabricItemGroup.builder()
-				.icon(() -> new ItemStack(Armors.orieneArmorSet.chest.asItem()))
+				.icon(() -> new ItemStack(Armors.orieneArmorSet.head.asItem()))
 				.displayName(Text.translatable("itemGroup." + MOD_ID + ".general"))
 				.build();
 		Registry.register(Registries.ITEM_GROUP, ForcemasterGroup.FORCEMASTER_KEY, ForcemasterGroup.FORCEMASTER);

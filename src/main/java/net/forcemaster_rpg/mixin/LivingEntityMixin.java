@@ -30,22 +30,24 @@ public class LivingEntityMixin {
         ItemStack stack = entity.getEquippedStack(EquipmentSlot.MAINHAND);
         EntityType<?> type = target.getType();
 
-        if(stack.isIn(ModItemTags.KNUCKLES)
-                && target instanceof LivingEntity
-                && !target.isSpectator()
-                && lastAttack != entity.age
-                && target.isLiving()
-                && !type.isIn(FMEntityTypeTags.KNOCK_UP_IMMUNE)
-                && entity instanceof SpellCasterEntity caster
-                && !caster.isCastingSpell()
+        if(target != null){
+            if(stack.isIn(ModItemTags.KNUCKLES)
+                    && target instanceof LivingEntity
+                    && !target.isSpectator()
+                    && lastAttack != entity.age
+                    && target.isLiving()
+                    && !type.isIn(FMEntityTypeTags.KNOCK_UP_IMMUNE)
+                    && entity instanceof SpellCasterEntity caster
+                    && !caster.isCastingSpell()
 
-        ){
-            float knuckle_chance_knockup = tweaksConfig.value.knuckle_knock_up_chance_on_attack;
-            float randomrange_knockup = new Random().nextFloat(1.0F);
-            if (randomrange_knockup < knuckle_chance_knockup ){
-                Vec3d currentMovement = target.getVelocity();
-                target.setVelocity(currentMovement.x, currentMovement.y + tweaksConfig.value.knuckle_knock_up_height ,currentMovement.z);
-                target.velocityModified = true;
+            ){
+                float knuckle_chance_knockup = tweaksConfig.value.knuckle_knock_up_chance_on_attack;
+                float randomrange_knockup = new Random().nextFloat(1.0F);
+                if (randomrange_knockup < knuckle_chance_knockup ){
+                    Vec3d currentMovement = target.getVelocity();
+                    target.setVelocity(currentMovement.x, currentMovement.y + tweaksConfig.value.knuckle_knock_up_height ,currentMovement.z);
+                    target.velocityModified = true;
+                }
             }
         }
     }

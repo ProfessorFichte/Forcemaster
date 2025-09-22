@@ -1,7 +1,11 @@
+# 2.4.15 - 1.21.1
+- Fix Crash With Companions and Critters
+
 # 2.4.14 - 1.21.1
 - fix lang file
 - BUG FIX: Fix Crashing when leaving multiplayer server
 - Overhaul Advancements
+- Change Creative Tab Phasleb Chestplate to Head
 
 # 2.4.13 - 1.21.1
 - change sound registry due to possible crash
