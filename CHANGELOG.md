@@ -1,3 +1,11 @@
+# 2.4.16 - 1.21.1
+- Update Spell Textures
+- Update Project Icon
+- Change Creative Tab Ivon to Phasleb Armor head
+- Fix Knuckle Model in offhand
+- The passive Knock Up Knuckle Effect is now handled via passive spells
+- Knuckles now also have a passive that gives Arcane Overflow when casting Forcemaster Spells
+
 # 2.4.15 - 1.21.1
 - Fix Crash With Companions and Critters
 

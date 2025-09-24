@@ -55,6 +55,10 @@
   "spell.forcemaster_rpg.arcane_blast.description": "Charging up blasts, piercing thru {pierce} targets, dealing {damage} arcane-damage.",
   "spell.forcemaster_rpg.improved_burstcrack.name": "Improved Burstcrack",
   "spell.forcemaster_rpg.improved_burstcrack.description": "Increases the range of Burstcrack by {range_add}.",
+  "spell.forcemaster_rpg.knuckle_knockup.name": "Knuckle Knock Up",
+  "spell.forcemaster_rpg.knuckle_knockup.description": "Hitting enemies has a {trigger_chance} chance to knock up the target.",
+  "spell.forcemaster_rpg.knuckle_arcane_overflow.name": "Arcane Overflow",
+  "spell.forcemaster_rpg.knuckle_arcane_overflow.description": "Casting Forcemaster Spells stacks Arcane Overflow for {effect_duration} sec.",
 
   "equipment_set.forcemaster_rpg.billporon": "Billporon's Focus",
 

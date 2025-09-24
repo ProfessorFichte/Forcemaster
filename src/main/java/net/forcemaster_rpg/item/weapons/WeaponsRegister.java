@@ -32,13 +32,14 @@ public class WeaponsRegister {
     }
 
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
-    private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Weapon.Factory factory, WeaponConfig defaults, Equipment.WeaponType type) {
-        var entry = new Weapon.Entry(MOD_ID, name, material, factory, defaults, type);
-        entry.castSpell();
-        entries.add(entry);
+
+    private static Weapon.Entry entry(String name, Weapon.CustomMaterial material, Weapon.Factory factory, WeaponConfig defaults, Equipment.WeaponType category) {
+        var entry = new Weapon.Entry(MOD_ID, name, material, factory, defaults, category);
+        if (entry.isRequiredModInstalled()) {
+            entries.add(entry);
+        }
         return entry;
     }
-
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
         var id = Identifier.of(idString);

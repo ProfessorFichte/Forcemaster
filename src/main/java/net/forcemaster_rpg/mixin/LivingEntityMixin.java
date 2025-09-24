@@ -19,6 +19,7 @@ import java.util.Random;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.tweaksConfig;
 
+///UNUSED MIXIN ARCHIVED FOR DOCUMENTATION
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {
     @Unique
@@ -41,11 +42,11 @@ public class LivingEntityMixin {
                     && !caster.isCastingSpell()
 
             ){
-                float knuckle_chance_knockup = tweaksConfig.value.knuckle_knock_up_chance_on_attack;
+                float knuckle_chance_knockup = 0.15F;
                 float randomrange_knockup = new Random().nextFloat(1.0F);
                 if (randomrange_knockup < knuckle_chance_knockup ){
                     Vec3d currentMovement = target.getVelocity();
-                    target.setVelocity(currentMovement.x, currentMovement.y + tweaksConfig.value.knuckle_knock_up_height ,currentMovement.z);
+                    target.setVelocity(currentMovement.x, currentMovement.y + 0.5F ,currentMovement.z);
                     target.velocityModified = true;
                 }
             }

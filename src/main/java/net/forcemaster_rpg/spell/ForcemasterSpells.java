@@ -3,6 +3,7 @@ package net.forcemaster_rpg.spell;
 import net.forcemaster_rpg.effect.Effects;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.more_rpg_classes.effect.MRPGCEffects;
 import net.spell_engine.api.datagen.SpellBuilder;
 import net.spell_engine.api.spell.ExternalSpellSchools;
 import net.spell_engine.api.spell.Spell;
@@ -17,6 +18,7 @@ import net.spell_power.api.SpellSchools;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
@@ -112,7 +114,99 @@ public class ForcemasterSpells {
         impact.target_modifiers = List.of(modifier);
     }
     public static final Color ORANGE = new Color(255.0F, 165.0F, 0.0F);
+    private static void bossDeny(Spell.Impact impact) {
+        var modifier = createImpactModifier("#c:bosses");
+        modifier.execute = TriState.DENY;
+        impact.target_modifiers = List.of(modifier);
+    }
 
+
+    ///PASSIVES
+    public static final Entry knuckle_knockup = add(knuckle_knockup());
+    private static Entry knuckle_knockup() {
+        var id = Identifier.of(MOD_ID, "knuckle_knockup");
+        var title = "Knuckle Knock Up";
+        var description = "Hitting enemies has a {trigger_chance} chance to knock up the target.";
+        var spell = SpellBuilder.createSpellPassive();
+        spell.tooltip = new Spell.Tooltip();
+        spell.tooltip.show_header = true;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(true, false);
+        spell.tooltip.description.color = Formatting.DARK_GREEN.asString();
+        spell.tooltip.description.show_in_compact = false;
+        spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
+        spell.range = 0;
+
+        spell.target.type = Spell.Target.Type.FROM_TRIGGER;
+
+        var trigger = SpellBuilder.Triggers.meleeAttack(false);
+        trigger.chance = 0.15F;
+        spell.passive.triggers = List.of(trigger);
+
+        var custom = new Spell.Impact();
+
+        custom.action = new Spell.Impact.Action();
+        custom.action.custom = new Spell.Impact.Action.Custom();
+        bossDeny(custom);
+        custom.action.type = Spell.Impact.Action.Type.CUSTOM;
+        custom.action.custom.intent = SpellTarget.Intent.HARMFUL;
+        custom.action.custom.handler = "more_rpg_classes:knock_up_fixed";
+        custom.particles = new ParticleBatch[]{
+                new ParticleBatch(
+                        SpellEngineParticles.smoke_medium.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.FEET,
+                        20, 0.1F, 0.3F)
+                        .extent(0.25F)
+                        .color(Color.WHITE.toRGBA()),
+        };
+        spell.impacts = List.of(custom);
+
+        SpellBuilder.Cost.cooldown(spell, 2F);
+
+        return new Entry(id, spell, title, description, null);
+    }
+    public static final Entry knuckle_arcane_overflow = add(knuckle_arcane_overflow());
+    private static Entry knuckle_arcane_overflow() {
+        var id = Identifier.of(MOD_ID, "knuckle_arcane_overflow");
+        var title = "Arcane Overflow";
+        var description = "Casting Forcemaster Spells stacks Arcane Overflow for {effect_duration} sec.";
+        var effect = Effects.ARCANE_OVERFLOW;
+
+        var spell = SpellBuilder.createSpellPassive();
+        spell.tooltip = new Spell.Tooltip();
+        spell.tooltip.show_header = true;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(true, false);
+        spell.tooltip.description.color = Formatting.DARK_GREEN.asString();
+        spell.tooltip.description.show_in_compact = false;
+        spell.school = SpellSchools.ARCANE;
+        spell.range = 0;
+
+        var trigger = SpellBuilder.Triggers.activeSpellCast(SpellSchools.ARCANE);
+        trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
+        spell.passive.triggers = List.of(trigger);
+
+        var impact = SpellBuilder.Impacts.effectAdd(effect.id.toString(), 15, 1, 9);
+        impact.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
+        impact.particles = new ParticleBatch[]{
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                                SpellEngineParticles.MagicParticles.Motion.DECELERATE
+                        ).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        30, 0.5F, 0.5F)
+                        .color(Color.from(SpellSchools.ARCANE.color).toRGBA()),
+                new ParticleBatch(
+                        SpellEngineParticles.aura_effect_642.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        1, 0, 0)
+                        .color(Color.from(SpellSchools.ARCANE.color).toRGBA()),
+        };
+        spell.impacts = List.of(impact);
+        SpellBuilder.Cost.cooldown(spell,3);
+
+        return new Entry(id, spell, title, description, null);
+    }
+    ///ACTIVES
     public static Entry stonehand = add(stonehand());
     private static Entry stonehand() {
         var id = Identifier.of(MOD_ID, "stonehand");

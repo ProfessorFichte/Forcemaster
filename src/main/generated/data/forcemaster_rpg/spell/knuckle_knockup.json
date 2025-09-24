@@ -1,0 +1,66 @@
+{
+  "school": "spell_power:physical_melee",
+  "range": 0.0,
+  "tier": 1,
+  "tooltip": {
+    "show_header": true,
+    "name": {
+      "show_in_compact": true,
+      "show_in_details": false
+    },
+    "description": {
+      "color": "dark_green",
+      "show_in_compact": false
+    }
+  },
+  "type": "PASSIVE",
+  "passive": {
+    "triggers": [
+      {
+        "type": "MELEE_IMPACT",
+        "chance": 0.15
+      }
+    ]
+  },
+  "target": {
+    "type": "FROM_TRIGGER"
+  },
+  "impacts": [
+    {
+      "target_modifiers": [
+        {
+          "conditions": [
+            {
+              "entity_type": "#c:bosses"
+            }
+          ],
+          "execute": "DENY"
+        }
+      ],
+      "action": {
+        "type": "CUSTOM",
+        "custom": {
+          "intent": "HARMFUL",
+          "handler": "more_rpg_classes:knock_up_fixed"
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:smoke_medium",
+          "origin": "FEET",
+          "shape": "SPHERE",
+          "count": 20.0,
+          "min_speed": 0.1,
+          "max_speed": 0.3,
+          "extent": 0.25,
+          "color_rgba": 4294967295
+        }
+      ]
+    }
+  ],
+  "cost": {
+    "cooldown": {
+      "duration": 2.0
+    }
+  }
+}

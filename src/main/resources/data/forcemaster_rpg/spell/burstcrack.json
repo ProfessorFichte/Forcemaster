@@ -92,21 +92,6 @@
     },
     {
       "action": {
-        "type": "STATUS_EFFECT",
-        "status_effect": {
-          "effect_id": "forcemaster_rpg:arcane_overflow",
-          "duration": 10.0,
-          "amplifier": 1,
-          "amplifier_cap": 5,
-          "apply_mode": "ADD",
-          "refresh_duration": true,
-          "show_particles": false
-        },
-        "apply_to_caster": true
-      }
-    },
-    {
-      "action": {
         "school": "PHYSICAL_MELEE",
         "type": "DAMAGE",
         "damage": {
