@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.forcemaster_rpg.item.armor.Armors;
+import net.forcemaster_rpg.item.tag.ModItemTags;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.forcemaster_rpg.sounds.ModSounds;
 import net.forcemaster_rpg.spell.ForcemasterSpells;
@@ -16,12 +17,16 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.datagen.SimpleSoundGeneratorV2;
 import net.spell_engine.api.datagen.SpellGenerator;
 import net.spell_engine.api.item.armor.Armor;
+import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_engine.api.tags.SpellEngineItemTags;
 import net.spell_engine.rpg_series.datagen.RPGSeriesDataGen;
 import net.spell_engine.rpg_series.tags.RPGSeriesItemTags;
+import net.spell_power.api.SpellPowerTags;
 
 import java.util.EnumSet;
 import java.util.Iterator;
@@ -135,10 +140,47 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 
 		}
 
+		public void generateKnuckleTags(List<Weapon.Entry> weapons) {
+			Iterator var2 = weapons.iterator();
+
+			while(var2.hasNext()) {
+				Weapon.Entry weapon = (Weapon.Entry)var2.next();
+				FabricTagProvider<Item>.FabricTagBuilder tag = this.getOrCreateTagBuilder(ModItemTags.KNUCKLES);
+				tag.addOptional(weapon.id());
+				int tier = weapon.lootProperties().tier();
+				if (tier >= 0) {
+					FabricTagProvider<Item>.FabricTagBuilder tierTag = this.getOrCreateTagBuilder(RPGSeriesItemTags.LootTiers.get(tier, RPGSeriesItemTags.LootCategory.WEAPONS));
+					tierTag.addOptional(weapon.id());
+				}
+				String lootTheme = weapon.lootProperties().theme();
+				if (lootTheme != null && !lootTheme.isEmpty()) {
+					FabricTagProvider<Item>.FabricTagBuilder themeTag = this.getOrCreateTagBuilder(RPGSeriesItemTags.LootThemes.get(lootTheme));
+					themeTag.addOptional(weapon.id());
+				}
+			}
+
+		}
+
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-			generateWeaponTags(WeaponsRegister.entries);
+			generateKnuckleTags(WeaponsRegister.entries);
 			armorTags(Armors.entries, RPGSeriesItemTags.ArmorMetaType.MAGIC);
+
+			var spellInfinityTag = getOrCreateTagBuilder(SpellEngineItemTags.ENCHANTABLE_SPELL_INFINITY);
+			spellInfinityTag.addTag(ModItemTags.KNUCKLES);
+			var spellHasteTag = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.HASTE);
+			spellHasteTag.addTag(ModItemTags.KNUCKLES);
+			var criticalDamageTag  = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.CRITICAL_DAMAGE);
+			criticalDamageTag .addTag(ModItemTags.KNUCKLES);
+			var spellPowerTag  = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.SPELL_POWER_GENERIC);
+			spellPowerTag .addTag(ModItemTags.KNUCKLES);
+			var unbreakingTag = getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE);
+			unbreakingTag.addTag(ModItemTags.KNUCKLES);
+			var sharpnessTag = getOrCreateTagBuilder(ItemTags.SHARP_WEAPON_ENCHANTABLE);
+			sharpnessTag.addTag(ModItemTags.KNUCKLES);
+			var meleeTag = getOrCreateTagBuilder(ItemTags.SWORDS);
+			meleeTag.addTag(ModItemTags.KNUCKLES);
+
 		}
 	}
 

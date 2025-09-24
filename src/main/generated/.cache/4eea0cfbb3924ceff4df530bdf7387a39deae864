@@ -1,18 +1,25 @@
-// 1.21.1	2025-08-31T14:42:56.9126336	Forcemaster Class Mod/Tags for minecraft:item
+// 1.21.1	2025-09-24T23:38:56.4970101	Forcemaster Class Mod/Tags for minecraft:item
 ef747470348ff4bf892f0dc210915ba0516e3f6c data\rpg_series\tags\item\loot_tier\tier_3_weapons.json
 f718483f87f973b2f2b70383f795aff77ea131d6 data\rpg_series\tags\item\loot_tier\tier_4_weapons.json
-49c7fb14a9d086d5ccdbef4bf539c66bf3be88d8 data\rpg_series\tags\item\loot_tier\tier_3_armors.json
 aaa72437ef168c454798f69d995e154cf7b90b80 data\rpg_series\tags\item\loot_tier\tier_2_weapons.json
 54e2a0a3dbed7a2071a1479672260d1876132158 data\rpg_series\tags\item\loot_tier\tier_0_weapons.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\spell_power\tags\item\enchantable\haste.json
+599443bc70252377193f8c3f63456cc18874031c data\rpg_series\tags\item\loot_tier\tier_1_weapons.json
+b121b1dd73d0d1c5019c142a5cdc0a7103463972 data\rpg_series\tags\item\loot_theme\aether.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\spell_power\tags\item\enchantable\critical_damage.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\spell_power\tags\item\enchantable\spell_power_generic.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\minecraft\tags\item\enchantable\sharp_weapon.json
+82111e45b9434bf16ec495a25825fb00536a5b35 data\forcemaster_rpg\tags\item\knuckles.json
+49c7fb14a9d086d5ccdbef4bf539c66bf3be88d8 data\rpg_series\tags\item\loot_tier\tier_3_armors.json
 6fca9914362f1986c7f5456b9ebccb4d97210134 data\rpg_series\tags\item\loot_tier\tier_1_armors.json
 62eec17fb3b7e3a9fea66db964d30867fca765d7 data\rpg_series\tags\item\loot_tier\tier_5_armors.json
-599443bc70252377193f8c3f63456cc18874031c data\rpg_series\tags\item\loot_tier\tier_1_weapons.json
 957b343907d38746f910a093672ebf444bf51623 data\minecraft\tags\item\foot_armor.json
-b121b1dd73d0d1c5019c142a5cdc0a7103463972 data\rpg_series\tags\item\loot_theme\aether.json
 b3dfe6d4b022606e864fa6077b4b36233ce29bd8 data\rpg_series\tags\item\loot_theme\golden_weapon.json
 5206b758afce0811ef684fc6eea65dcc9a24beac data\minecraft\tags\item\head_armor.json
 ce1fc5cccb3db2500f235f69746907fc0af3ce50 data\rpg_series\tags\item\loot_tier\tier_2_armors.json
 82f314e8e0fdb65b31bb29e27abbef7407775b2a data\rpg_series\tags\item\armor_type\magic.json
 dd2c2ecf59f444fce207efd4f532cb96a7549214 data\minecraft\tags\item\leg_armor.json
 90ddbe49dbb5e2b6aec868d3e04c6afde5596172 data\minecraft\tags\item\chest_armor.json
-82111e45b9434bf16ec495a25825fb00536a5b35 data\rpg_series\tags\item\weapon_type\sword.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\spell_engine\tags\item\enchantable\spell_infinity.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\minecraft\tags\item\swords.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data\minecraft\tags\item\enchantable\durability.json

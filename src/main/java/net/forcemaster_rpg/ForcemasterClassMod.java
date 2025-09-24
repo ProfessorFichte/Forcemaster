@@ -24,7 +24,7 @@ import net.minecraft.text.Text;
 
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.config.ConfigFile;
-import net.tinyconfig.ConfigManager;
+import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,7 +53,7 @@ public class ForcemasterClassMod implements ModInitializer {
 
 	private void registerItemGroup() {
 		ForcemasterGroup.FORCEMASTER = FabricItemGroup.builder()
-				.icon(() -> new ItemStack(Armors.orieneArmorSet.head.asItem()))
+				.icon(() -> new ItemStack(Armors.phaslebArmorSet.head.asItem()))
 				.displayName(Text.translatable("itemGroup." + MOD_ID + ".general"))
 				.build();
 		Registry.register(Registries.ITEM_GROUP, ForcemasterGroup.FORCEMASTER_KEY, ForcemasterGroup.FORCEMASTER);
