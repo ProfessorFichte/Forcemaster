@@ -129,8 +129,8 @@ public class ForcemasterSpells {
         var description = "Hitting enemies has a {trigger_chance} chance to knock up the target.";
         var spell = SpellBuilder.createSpellPassive();
         spell.tooltip = new Spell.Tooltip();
-        spell.tooltip.show_header = true;
-        spell.tooltip.name = new Spell.Tooltip.LineOptions(true, false);
+        spell.tooltip.show_header = false;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(false, false);
         spell.tooltip.description.color = Formatting.DARK_GREEN.asString();
         spell.tooltip.description.show_in_compact = false;
         spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
@@ -160,7 +160,7 @@ public class ForcemasterSpells {
         };
         spell.impacts = List.of(custom);
 
-        SpellBuilder.Cost.cooldown(spell, 2F);
+        SpellBuilder.Cost.cooldown(spell, 4F);
 
         return new Entry(id, spell, title, description, null);
     }
@@ -173,8 +173,8 @@ public class ForcemasterSpells {
 
         var spell = SpellBuilder.createSpellPassive();
         spell.tooltip = new Spell.Tooltip();
-        spell.tooltip.show_header = true;
-        spell.tooltip.name = new Spell.Tooltip.LineOptions(true, false);
+        spell.tooltip.show_header = false;
+        spell.tooltip.name = new Spell.Tooltip.LineOptions(false, false);
         spell.tooltip.description.color = Formatting.DARK_GREEN.asString();
         spell.tooltip.description.show_in_compact = false;
         spell.school = SpellSchools.ARCANE;

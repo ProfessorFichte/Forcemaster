@@ -3,9 +3,9 @@
   "range": 0.0,
   "tier": 1,
   "tooltip": {
-    "show_header": true,
+    "show_header": false,
     "name": {
-      "show_in_compact": true,
+      "show_in_compact": false,
       "show_in_details": false
     },
     "description": {
@@ -60,7 +60,7 @@
   ],
   "cost": {
     "cooldown": {
-      "duration": 2.0
+      "duration": 4.0
     }
   }
 }
