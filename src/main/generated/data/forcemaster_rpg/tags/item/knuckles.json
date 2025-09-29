@@ -35,6 +35,22 @@
     {
       "id": "forcemaster_rpg:aether_knuckle",
       "required": false
+    },
+    {
+      "id": "forcemaster_rpg:ender_dragon_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:elder_guardian_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:wither_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:glacial_knuckle",
+      "required": false
     }
   ]
 }

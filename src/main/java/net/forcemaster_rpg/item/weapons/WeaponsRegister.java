@@ -11,6 +11,8 @@ import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
+import net.more_rpg_classes.custom.MoreSpellSchools;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
 import net.spell_engine.api.item.Equipment;
@@ -96,6 +98,8 @@ public class WeaponsRegister {
     private static final String BETTER_END = "betterend";
     private static final String BETTER_NETHER = "betternether";
     private static final String AETHER = "aether";
+    private static final String LNE = "loot_n_explore";
+    private static final float lneWeaponSpellPower = 2.0F;
     //Registration
     public static void register(Map<String,WeaponConfig> configs) {
         if (FabricLoader.getInstance().isModLoaded(BETTER_NETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
@@ -122,6 +126,31 @@ public class WeaponsRegister {
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of("aether"));
 
+        }
+        if(FabricLoader.getInstance().isModLoaded(LNE)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
+            knuckle( "ender_dragon_knuckle",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)),7.0F)
+                    .attribute(armorAddition(3.0F))
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .rarity = Rarity.RARE;
+            knuckle( "elder_guardian_knuckle",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)),7.0F)
+                    .attribute(armorAddition(3.0F))
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, lneWeaponSpellPower))
+                    .rarity = Rarity.RARE;
+            knuckle( "wither_knuckle",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)),7.0F)
+                    .attribute(armorAddition(3.0F))
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, lneWeaponSpellPower))
+                    .rarity = Rarity.RARE;
+            knuckle( "glacial_knuckle",
+                    Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)),7.0F)
+                    .attribute(armorAddition(3.0F))
+                    .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, lneWeaponSpellPower))
+                    .rarity = Rarity.RARE;
         }
         Weapon.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
     }

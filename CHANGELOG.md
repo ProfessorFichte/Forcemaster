@@ -1,7 +1,8 @@
 # 2.4.16 - 1.21.1
 - Update Spell Textures
 - Update Project Icon
-- Change Creative Tab Ivon to Phasleb Armor head
+- Change Creative Tab Icon to Phasleb Armor head
+- Removed Knuckles from RPG Series Weapon Type Tag, uses its own Knuckle Tag "forcemaster_rpg:knuckles"
 - Fix Knuckle Model in offhand
 - The passive Knock Up Knuckle Effect is now handled via passive spells
 - Knuckles now also have a passive that gives Arcane Overflow when casting Forcemaster Spells
