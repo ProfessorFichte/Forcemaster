@@ -3,12 +3,12 @@
   "package": "net.forcemaster_rpg.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
-    "ExampleMixin"
+    "LivingEntityMixin"
   ],
   "client": [
-    "ItemRendererAccessor",
-    "ItemRendererMixin",
-    "ModelLoaderMixin"
+    "client.ItemRendererAccessor",
+    "client.ItemRendererMixin",
+    "client.ModelLoaderMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -1,0 +1,40 @@
+{
+  "values": [
+    "#forcemaster_rpg:knuckles",
+    {
+      "id": "gauntlets:iron_gauntlet",
+      "required": false
+    },
+    {
+      "id": "gauntlets:gold_gauntlet",
+      "required": false
+    },
+    {
+      "id": "gauntlets:diamond_gauntlet",
+      "required": false
+    },
+    {
+      "id": "gauntlets:netherite_gauntlet",
+      "required": false
+    },
+    {
+      "id": "mcdw:gauntlet_maulers",
+      "required": false
+    },    {
+      "id": "mcdw:gauntlet_gauntlet",
+      "required": false
+    },
+    {
+      "id": "mcdw:gauntlet_soul_fists",
+      "required": false
+    },
+    {
+      "id": "archon:fist_of_fury",
+      "required": false
+    },
+    {
+      "id": "prominent:fury_of_a_thousand_fists",
+      "required": false
+    }
+  ]
+}

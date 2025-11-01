@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "forcemaster_rpg:item/aether_knuckle_inventory"
+  }
+}

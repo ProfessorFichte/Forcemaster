@@ -1,13 +1,68 @@
 {
   "values": [
-    "forcemaster_rpg:wooden_knuckle",
-    "forcemaster_rpg:stone_knuckle",
-    "forcemaster_rpg:iron_knuckle",
-    "forcemaster_rpg:golden_knuckle",
-    "forcemaster_rpg:diamond_knuckle",
-    "forcemaster_rpg:netherite_knuckle",
-    "forcemaster_rpg:guardian_knuckle",
-    "forcemaster_rpg:legendary_golden_knuckle",
-    "forcemaster_rpg:bloody_knuckle"
+    {
+      "id": "forcemaster_rpg:guardian_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:legendary_golden_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:bloody_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:wooden_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:stone_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:iron_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:golden_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:diamond_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:netherite_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:ruby_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aeternium_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:aether_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:ender_dragon_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:elder_guardian_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:wither_knuckle",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:glacial_knuckle",
+      "required": false
+    }
   ]
 }

@@ -3,10 +3,11 @@ package net.forcemaster_rpg;
 import net.fabricmc.api.ModInitializer;
 
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
+import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.client.particle.Particles;
-import net.forcemaster_rpg.compat.CompatDatapackLoader;
 import net.forcemaster_rpg.config.Default;
 import net.forcemaster_rpg.config.EffectsConfig;
+import net.forcemaster_rpg.config.TweaksConfig;
 import net.forcemaster_rpg.custom.custom_spells.CustomSpells;
 import net.forcemaster_rpg.effect.Effects;
 import net.forcemaster_rpg.item.ForcemasterGroup;
@@ -19,6 +20,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 
+import net.minecraft.util.Identifier;
 import net.spell_engine.api.item.ItemConfig;
 import net.tinyconfig.ConfigManager;
 import org.slf4j.Logger;
@@ -41,6 +43,12 @@ public class ForcemasterClassMod implements ModInitializer {
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
+	public static ConfigManager<TweaksConfig> tweaksConfig = new ConfigManager<>
+			("tweaks", new TweaksConfig())
+			.builder()
+			.setDirectory(MOD_ID)
+			.sanitize(true)
+			.build();
 
 	private void registerItemGroup() {
 		ForcemasterGroup.FORCEMASTER = FabricItemGroup.builder()
@@ -54,6 +62,10 @@ public class ForcemasterClassMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		itemConfig.refresh();
+		tweaksConfig.refresh();
+		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+			tweaksConfig.value.ignore_items_required_mods = true;
+		}
 		Effects.register();
 		effectsConfig.refresh();
 		Particles.register();
@@ -65,6 +77,9 @@ public class ForcemasterClassMod implements ModInitializer {
 		itemConfig.save();
 		registerItemGroup();
 		ModSounds.register();
-		CompatDatapackLoader.register();
+		tweaksConfig.save();
+	}
+	public static Identifier id(String path) {
+		return Identifier.of(MOD_ID, path);
 	}
 }

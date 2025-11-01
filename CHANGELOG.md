@@ -1,3 +1,15 @@
+1.2.3 - 1.20.1
+- Changed Spell Book Texture to be more in line with the RPG-Series Books (by SirGhaith, Thanks!)
+- Add LNE Knuckle Variants "Fist of Tides","Wyrm's Claw","Glacial Fist","Wither's Bash"
+- LNE-Knuckle Models are created by Pedravila
+- tweak some inventory knuckle textures (Will become a complete overhaul in the future)
+- clean up project, remove unused stuff
+- archive legendary golden, guardian & bloody knuckle from any loot pools (can be enabled with tweaks config)
+- archive some spells and change the spell pool, that it matches the 1.21.1 version
+- Add Tweaks Config to enable Weapons without required Mod (Better End, Better Nether, LNE Weapons)
+- Stonehand Stun chance now also works with other mod's fist weapons using the tag #forcemaster_rpg:fist_weapons
+- refactored some knuckle passives to mixin
+
 1.2.2 - 1.20.1
 - Update Armor Textures and Inventory Item Assets
 - Nerf Arcane Overflow Effect
