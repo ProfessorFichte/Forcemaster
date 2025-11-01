@@ -1,3 +1,12 @@
+# 2.4.17 - 1.21.1
+- Move to Architectury Enviroment for Multiloader
+- NeoForge Beta!
+- Changed Spell Book Texture to be more in line with the RPG-Series Books (by SirGhaith, Thanks!)
+- Add LNE Knuckle Variants "Fist of Tides","Wyrm's Claw","Glacial Fist","Wither's Bash"
+- LNE-Knuckle Models are created by Pedravila
+- Tweak Knuckle Passives a bit
+- tweak some inventory knuckle textures (Will become a complete overhaul in the future)
+
 # 2.4.16 - 1.21.1
 - Update Spell Textures
 - Update Project Icon
