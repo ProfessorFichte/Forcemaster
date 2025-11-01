@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "forcemaster_rpg:ender_dragon_knuckle",
+      "required": false
+    }
+  ]
+}
