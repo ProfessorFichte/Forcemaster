@@ -1,7 +1,7 @@
 package net.forcemaster_rpg.client;
 
-import mod.azure.azurelibarmor.rewrite.render.armor.AzArmorRenderer;
-import mod.azure.azurelibarmor.rewrite.render.armor.AzArmorRendererRegistry;
+import mod.azure.azurelibarmor.common.render.armor.AzArmorRenderer;
+import mod.azure.azurelibarmor.common.render.armor.AzArmorRendererRegistry;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
