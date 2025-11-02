@@ -1,10 +1,13 @@
 package net.forcemaster_rpg.custom.custom_spells;
 
 import net.forcemaster_rpg.effect.Effects;
+import net.forcemaster_rpg.util.ForcemasterTags;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Vec3d;
 import net.more_rpg_classes.effect.MRPGCEffects;
@@ -61,7 +64,8 @@ public class CustomSpells {
                     Vec3d currentMovement = entity.getVelocity();
                     entity.setVelocity(currentMovement.x, currentMovement.y + knockup_burstcrack, currentMovement.z);
                     entity.velocityModified = true;
-                    if (data1.caster().hasStatusEffect(Effects.STONE_HAND)) {
+                    ItemStack stack = data1.caster().getEquippedStack(EquipmentSlot.MAINHAND);
+                    if (data1.caster().hasStatusEffect(Effects.STONE_HAND) &&stack.isIn(ForcemasterTags.FIST_WEAPON)) {
                         SpellHelper.performImpacts(entity.getWorld(), data1.caster(), entity, entity, new SpellInfo(getSpell(new Identifier(MOD_ID, "burstcrack")),new Identifier(MOD_ID)), data1.impactContext());
                         SoundHelper.playSound(data1.caster().getWorld(), entity, getSpell(new Identifier(MOD_ID, "burstcrack")).impact[0].sound);
                         Vec3d currentMovement2 = entity.getVelocity();

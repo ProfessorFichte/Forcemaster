@@ -1,6 +1,6 @@
 {
   "range": 5.5,
-  "school": "PHYSICAL_MELEE",
+  "school": "ARCANE",
   "learn": {
     "tier": 2
   },
@@ -27,14 +27,6 @@
         "count": 15.0,
         "min_speed": 0.2,
         "max_speed": 0.6
-      },
-      {
-        "particle_id": "forcemaster_rpg:ground_punch",
-        "shape": "CIRCLE",
-        "origin": "FEET",
-        "count": 1.0,
-        "min_speed": 0.01,
-        "max_speed": 0.05
       }
     ],
     "sound": {
@@ -47,7 +39,7 @@
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 1.1
+          "spell_power_coefficient": 0.5
         }
       },
       "particles": [
@@ -62,6 +54,15 @@
       ],
       "sound": {
         "id": "forcemaster_rpg:knuckle_attack"
+      }
+    },
+    {
+      "action": {
+        "school": "PHYSICAL_MELEE",
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.5
+        }
       }
     },
     {

@@ -1,5 +1,5 @@
 {
-  "school": "PHYSICAL_MELEE",
+  "school": "ARCANE",
   "range": 0,
   "learn": {
     "tier": 1
@@ -30,14 +30,6 @@
         "shape": "PIPE",
         "origin": "FEET",
         "count": 3.0,
-        "min_speed": 0.01,
-        "max_speed": 0.05
-      },
-      {
-        "particle_id": "forcemaster_rpg:ground_punch",
-        "shape": "CIRCLE",
-        "origin": "FEET",
-        "count": 1.0,
         "min_speed": 0.01,
         "max_speed": 0.05
       }
