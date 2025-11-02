@@ -10,7 +10,7 @@
 	"contact": {
 		"sources": "https://github.com/ProfessorFichte"
 	},
-	"license": "MIT",
+	"license": "ARR",
 	"icon": "assets/forcemaster_rpg/icon.png",
 	"environment": "*",
 	"entrypoints": {

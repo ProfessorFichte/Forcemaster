@@ -9,6 +9,10 @@
 - Add Tweaks Config to enable Weapons without required Mod (Better End, Better Nether, LNE Weapons)
 - Stonehand Stun chance now also works with other mod's fist weapons using the tag #forcemaster_rpg:fist_weapons
 - refactored some knuckle passives to mixin
+- Changed some spell particles
+- Rebalance some spell damage numbers
+- Knuckles now also give Armor (similar to 1.21.1)
+- Reset Item Config -> v8
 
 1.2.2 - 1.20.1
 - Update Armor Textures and Inventory Item Assets
