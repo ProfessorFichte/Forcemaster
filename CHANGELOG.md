@@ -1,4 +1,4 @@
-# 2.4.17 - 1.21.1
+# 2.5.0 - 1.21.1
 - Move to Architectury Enviroment for Multiloader
 - NeoForge Beta!
 - Changed Spell Book Texture to be more in line with the RPG-Series Books (by SirGhaith, Thanks!)

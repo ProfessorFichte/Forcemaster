@@ -1,0 +1,52 @@
+modLoader = "javafml"
+loaderVersion = "[4,)"
+#issueTrackerURL = ""
+license = "ARR"
+
+[[mods]]
+modId = "forcemaster_rpg"
+version = "${version}"
+displayName = "Forcemaster"
+authors = "Fichte"
+description = '''
+Grab a Knuckle, master the force and martial art. Spell Engine Add-On
+'''
+#logoFile = ""
+
+[[dependencies.forcemaster_rpg]]
+modId = "neoforge"
+type = "required"
+versionRange = "[21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.forcemaster_rpg]]
+modId = "minecraft"
+type = "required"
+versionRange = "[1.21.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.forcemaster_rpg]]
+modId = "azurelibarmor"
+type = "required"
+versionRange = "[${azure_lib_version},)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.forcemaster_rpg]]
+modId = "spell_engine"
+type = "required"
+versionRange = "[${spell_engine_version},)"
+ordering = "BEFORE"
+side = "BOTH"
+
+[[dependencies.forcemaster_rpg]]
+modId = "more_rpg_classes"
+type = "required"
+versionRange = "[${more_rpg_library_version},)"
+ordering = "BEFORE"
+side = "BOTH"
+
+[[mixins]]
+config = "forcemaster-class-mod.mixins.json"
