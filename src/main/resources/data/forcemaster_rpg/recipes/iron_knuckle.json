@@ -2,10 +2,13 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "W  ",
-    "RR ",
+    "RE ",
     "RR "
   ],
   "key": {
+    "E": {
+      "item": "minecraft:amethyst_shard"
+    },
     "W": {
       "item": "minecraft:copper_ingot"
     },

@@ -87,33 +87,32 @@ public class WeaponsRegister {
     }
 
     public static final Weapon.Entry wooden_knuckle = knuckles("wooden_knuckle",
-            Weapon.CustomMaterial.matching(ToolMaterials.WOOD, () -> Ingredient.fromTag(ItemTags.PLANKS)), 1.5F, false)
-            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 2.0F))
+            Weapon.CustomMaterial.matching(ToolMaterials.WOOD, () -> Ingredient.fromTag(ItemTags.LOGS)), 2.0F, false)
+            .attribute(armorAddition(1.0F))
             ;
     public static final Weapon.Entry stone_knuckle = knuckles("stone_knuckle",
-            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)), 2.5F, false)
-            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 2.5F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.01F))
+            Weapon.CustomMaterial.matching(ToolMaterials.STONE, () -> Ingredient.fromTag(ItemTags.STONE_TOOL_MATERIALS)), 3.0F, false)
+            .attribute(armorAddition(1.0F))
             ;
     public static final Weapon.Entry iron_knuckle = knuckles("iron_knuckle",
-            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 3.5F, false)
-            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 3.0F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.02F))
+            Weapon.CustomMaterial.matching(ToolMaterials.IRON, () -> Ingredient.ofItems(Items.IRON_INGOT)), 4.0F, false)
+            .attribute(armorAddition(2.0F))
+            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 2.0F))
             ;
     public static final Weapon.Entry golden_knuckle = knuckles("golden_knuckle",
-            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 1.5F, false)
-            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 2.5F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.02F))
+            Weapon.CustomMaterial.matching(ToolMaterials.GOLD, () -> Ingredient.ofItems(Items.GOLD_INGOT)), 2.0F, false)
+            .attribute(armorAddition(1.0F))
+            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 2.0F))
             ;
     public static final Weapon.Entry diamond_knuckle = knuckles("diamond_knuckle",
-            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 4.5F, false)
-            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.0F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.03F))
+            Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.DIAMOND)), 5.0F, false)
+            .attribute(armorAddition(2.0F))
+            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 3.0F))
             ;
     public static final Weapon.Entry netherite_knuckle = knuckles("netherite_knuckle",
             Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)), 5.5F, true)
-            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
-            .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.05F))
+            .attribute(armorAddition(3.0F))
+            .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.0F))
             ;
 
     ///LNE
@@ -165,57 +164,57 @@ public class WeaponsRegister {
             var repair = ingredient("betternether:nether_ruby");
             knuckles("betternether","ruby_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE,repair), 7.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F));
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F));
         }
         if(FabricLoader.getInstance().isModLoaded(BETTER_END)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
             var repair = ingredient("betterend:aeternium_ingot");
             knuckles("betterend","aeternium_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair), 7.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F));
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F));
         }
         if(FabricLoader.getInstance().isModLoaded(LNE)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
             dragonKnuckle("loot_n_explore","ender_dragon_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, dragonRepair), 7.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F));
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F));
             elderGuardianKnuckle("loot_n_explore","elder_guardian_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, elderGuardianRepair), 7.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
                     .attribute(ItemConfig.Attribute.bonus(MoreSpellSchools.WATER.id, lneWeaponSpellPower))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F));
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F));
             glacialKnuckle("loot_n_explore","glacial_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, frostMonarchRepair), 7.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.FROST.id, lneWeaponSpellPower))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F));
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F));
             witherKnuckle("loot_n_explore","wither_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, witherRepair), 7.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
                     .attribute(ItemConfig.Attribute.bonus(SpellSchools.SOUL.id, lneWeaponSpellPower))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F));
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F));
         }
         ///ARCHIVED WEAPONS WITH THE POSIBILITY TO ENABLE THEM FOR MODPACK DEVS
         if(ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
             knuckles("legendary_golden_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.GOLD_INGOT)),4.5F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 5.0F))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F))
                     .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.05F))
                     .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.CRITICAL_CHANCE.id, 0.05F))
                     ;
             knuckles("guardian_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.DIAMOND, () -> Ingredient.ofItems(Items.IRON_INGOT)),5.0F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.0F))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
                     .attribute(armorAddition(4.0F))
                     .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.025F))
                     ;
             knuckles("bloody_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.NETHERITE_INGOT)),6.5F, true)
-                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 6.0F))
-                    .attribute(ItemConfig.Attribute.multiply(SpellPowerMechanics.HASTE.id, 0.07F))
+                    .attribute(ItemConfig.Attribute.bonus(SpellSchools.ARCANE.id, 4.5F))
+                    .attribute(armorAddition(3.0F))
                     .attribute(ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:lifesteal_modifier")),0.10F))
-                    .attribute(ItemConfig.Attribute.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),0.05F))
                     ;
         }
         Weapon.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);

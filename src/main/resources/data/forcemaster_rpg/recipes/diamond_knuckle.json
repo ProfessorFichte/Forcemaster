@@ -1,11 +1,17 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "R  ",
-    "RR ",
+    "W  ",
+    "RE ",
     "RR "
   ],
   "key": {
+    "E": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "W": {
+      "item": "minecraft:gold_ingot"
+    },
     "R": {
       "item": "minecraft:diamond"
     }

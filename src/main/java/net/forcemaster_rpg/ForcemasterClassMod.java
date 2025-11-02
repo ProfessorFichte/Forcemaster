@@ -32,7 +32,7 @@ public class ForcemasterClassMod implements ModInitializer {
 
 
 	public static ConfigManager<ItemConfig> itemConfig = new ConfigManager<ItemConfig>
-			("items_v7", Default.itemConfig)
+			("items_v8", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
