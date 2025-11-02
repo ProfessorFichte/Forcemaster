@@ -1,13 +1,16 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "R  ",
+    "T  ",
     "RW ",
     "RR "
   ],
   "key": {
+    "T": {
+      "item": "minecraft:iron_ingot"
+    },
     "W": {
-      "item": "minecraft:emerald"
+      "item": "minecraft:amethyst_shard"
     },
     "R": {
       "item": "minecraft:gold_ingot"
