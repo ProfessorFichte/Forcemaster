@@ -1,3 +1,7 @@
+1.2.4 - 1.20.1
+- backport new knuckle inventory textures
+- add lamb dynamic lights glow compat for some knuckle textures
+
 1.2.3 - 1.20.1
 - Changed Spell Book Texture to be more in line with the RPG-Series Books (by SirGhaith, Thanks!)
 - Add LNE Knuckle Variants "Fist of Tides","Wyrm's Claw","Glacial Fist","Wither's Bash"
