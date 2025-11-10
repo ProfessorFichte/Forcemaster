@@ -1,20 +1,8 @@
 {
   "values": [
-    {
-      "id": "forcemaster_rpg:oriene_feet",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:phasleb_feet",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:aken_feet",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:billporon_feet",
-      "required": false
-    }
+    "forcemaster_rpg:billporon_feet",
+    "forcemaster_rpg:oriene_feet",
+    "forcemaster_rpg:phasleb_feet",
+    "forcemaster_rpg:aken_feet"
   ]
 }

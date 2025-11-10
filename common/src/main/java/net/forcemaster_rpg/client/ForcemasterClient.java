@@ -29,6 +29,7 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
+import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
 
 public class ForcemasterClient{
 
@@ -43,7 +44,7 @@ public class ForcemasterClient{
         registerArmorRenderer(Armors.orieneArmorSet, CustomArmorRenderer::oriene_armor);
         registerArmorRenderer(Armors.phaslebArmorSet, CustomArmorRenderer::phasleb_armor);
         registerArmorRenderer(Armors.akenArmorSet, CustomArmorRenderer::aken_armor);
-        if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+        if (armoryLoadCheck()) {
             registerArmorRenderer(Armors.billporonArmorSet.armorSet(), CustomArmorRenderer::billporon_armor);
         }
 

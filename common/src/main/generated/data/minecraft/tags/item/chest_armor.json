@@ -1,20 +1,8 @@
 {
   "values": [
-    {
-      "id": "forcemaster_rpg:oriene_chest",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:phasleb_chest",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:aken_chest",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:billporon_chest",
-      "required": false
-    }
+    "forcemaster_rpg:billporon_chest",
+    "forcemaster_rpg:oriene_chest",
+    "forcemaster_rpg:phasleb_chest",
+    "forcemaster_rpg:aken_chest"
   ]
 }

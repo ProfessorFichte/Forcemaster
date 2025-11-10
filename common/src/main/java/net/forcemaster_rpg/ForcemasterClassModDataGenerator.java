@@ -163,9 +163,20 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-			generateKnuckleTags(WeaponsRegister.entries);
-			armorTags(Armors.entries, RPGSeriesItemTags.ArmorMetaType.MAGIC);
+			var armorTagOptions1 = new ArmorOptions(false, true);
+			var armorTagOptions2 = new ArmorOptions(true, true);
+			generateArmorTags(
+					Armors.entries.stream().filter(entry -> entry.name().contains("billporon")).toList(),
+					RPGSeriesItemTags.ArmorMetaType.MAGIC,
+					armorTagOptions1
+			);
+			generateArmorTags(
+					Armors.entries.stream().filter(entry -> !entry.name().contains("billporon")).toList(),
+					RPGSeriesItemTags.ArmorMetaType.MAGIC,
+					armorTagOptions2
+			);
 
+			generateKnuckleTags(WeaponsRegister.entries);
 			var spellInfinityTag = getOrCreateTagBuilder(SpellEngineItemTags.ENCHANTABLE_SPELL_INFINITY);
 			spellInfinityTag.addTag(ModItemTags.KNUCKLES);
 			var spellHasteTag = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.HASTE);

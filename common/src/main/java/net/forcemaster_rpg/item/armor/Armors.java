@@ -29,6 +29,7 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
+import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
 
 public class Armors {
     private static final Supplier<Ingredient> ORIENE_INGREDIENTS = () -> Ingredient.ofItems(
@@ -222,7 +223,7 @@ public class Armors {
 
 
     public static void register(Map<String, ArmorSetConfig> configs) {
-        if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+        if (armoryLoadCheck()) {
             billporonArmorSet = create(
                     material_billporon,
                     Identifier.of(MOD_ID, "billporon"),

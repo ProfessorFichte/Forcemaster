@@ -1,3 +1,9 @@
+# 2.5.1 - 1.21.1
+- Update Knuckle Inventory Textures (created by Emil)
+- Add Smithing Recipes for the Billporon Set with new Upgrade Crystals
+- Add Blue Aura to Wither Knuckle Model
+- remove billporon armor set from rpg-series loot tags
+
 # 2.5.0 - 1.21.1
 - Move to Architectury Enviroment for Multiloader
 - NeoForge Beta!

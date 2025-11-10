@@ -1,20 +1,8 @@
 {
   "values": [
-    {
-      "id": "forcemaster_rpg:oriene_head",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:phasleb_head",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:aken_head",
-      "required": false
-    },
-    {
-      "id": "forcemaster_rpg:billporon_head",
-      "required": false
-    }
+    "forcemaster_rpg:billporon_head",
+    "forcemaster_rpg:oriene_head",
+    "forcemaster_rpg:phasleb_head",
+    "forcemaster_rpg:aken_head"
   ]
 }

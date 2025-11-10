@@ -1,7 +1,5 @@
 package net.forcemaster_rpg;
 
-import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
@@ -27,6 +25,8 @@ import net.spell_engine.api.config.ConfigFile;
 import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
 
 public class ForcemasterClassMod{
 	public static final String MOD_ID = "forcemaster_rpg";
@@ -73,7 +73,7 @@ public class ForcemasterClassMod{
 
 		WeaponsRegister.register(itemConfig.value.weapons);
 		Armors.register(itemConfig.value.armor_sets);
-		if (FabricLoader.getInstance().isModLoaded("armory_rpgs") || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+		if (armoryLoadCheck()) {
 			FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
 				ResourceManagerHelper.registerBuiltinResourcePack(
 						Identifier.of(MOD_ID, "forcemaster_armory_compat"),
