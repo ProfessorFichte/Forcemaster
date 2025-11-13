@@ -33,7 +33,7 @@ public class ForcemasterClassMod{
     public static final Logger LOGGER = LoggerFactory.getLogger("forcemaster_rpg");
 
 	public static ConfigManager<ConfigFile.Equipment> itemConfig = new ConfigManager<>
-			("equipment_v1", Default.itemConfig)
+			("equipment_v2", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

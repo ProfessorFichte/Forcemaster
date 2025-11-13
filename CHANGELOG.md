@@ -1,3 +1,8 @@
+# 2.5.2 - 1.21.1
+- Item Frames now also show the inventory texture of knuckles
+- fix equipment set bonus resourcepack not loading (for billporon armor set)
+- Update Weapon Spell Power
+
 # 2.5.1 - 1.21.1
 - Update Knuckle Inventory Textures (created by Emil)
 - Add Smithing Recipes for the Billporon Set with new Upgrade Crystals
