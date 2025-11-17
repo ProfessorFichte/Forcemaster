@@ -78,16 +78,15 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		public ItemTagGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
 			super(dataOutput, registryLookup);
 		}
-
-		public void armorTags(List<Armor.Entry> armors) {
-			this.armorTags(armors, EnumSet.noneOf(RPGSeriesItemTags.ArmorMetaType.class));
+		public void armoryTags(List<Armor.Entry> armors) {
+			this.armoryTags(armors, EnumSet.noneOf(RPGSeriesItemTags.ArmorMetaType.class));
 		}
 
-		public void armorTags(List<Armor.Entry> armors, RPGSeriesItemTags.ArmorMetaType metaType) {
-			this.armorTags(armors, EnumSet.of(metaType));
+		public void armoryTags(List<Armor.Entry> armors, RPGSeriesItemTags.ArmorMetaType metaType) {
+			this.armoryTags(armors, EnumSet.of(metaType));
 		}
 
-		public void armorTags(List<Armor.Entry> armors, EnumSet<RPGSeriesItemTags.ArmorMetaType> metaTypes) {
+		public void armoryTags(List<Armor.Entry> armors, EnumSet<RPGSeriesItemTags.ArmorMetaType> metaTypes) {
 			Iterator var3 = armors.iterator();
 
 			while(var3.hasNext()) {
@@ -101,17 +100,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 				legsTag.addOptional(set.idOf(set.legs));
 				FabricTagProvider<Item>.FabricTagBuilder feetTag = this.getOrCreateTagBuilder(ItemTags.FOOT_ARMOR);
 				feetTag.addOptional(set.idOf(set.feet));
-				int tier = armor.lootProperties().tier();
 				Iterator var12;
-				if (tier >= 0) {
-					FabricTagProvider<Item>.FabricTagBuilder tierTag = this.getOrCreateTagBuilder(RPGSeriesItemTags.LootTiers.get(tier, RPGSeriesItemTags.LootCategory.ARMORS));
-					var12 = armor.armorSet().pieceIds().iterator();
-
-					while(var12.hasNext()) {
-						Object id = var12.next();
-						tierTag.addOptional((Identifier)id);
-					}
-				}
 
 				String lootTheme = armor.lootProperties().theme();
 				if (lootTheme != null && !lootTheme.isEmpty()) {
@@ -161,17 +150,17 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 
 		}
 
+		List<String> armoryKeywords = List.of("billporon");
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
 			var armorTagOptions1 = new ArmorOptions(false, true);
 			var armorTagOptions2 = new ArmorOptions(true, true);
-			generateArmorTags(
-					Armors.entries.stream().filter(entry -> entry.name().contains("billporon")).toList(),
-					RPGSeriesItemTags.ArmorMetaType.MAGIC,
-					armorTagOptions1
+			armoryTags(
+					Armors.entries.stream().filter(entry -> armoryKeywords.stream().anyMatch(entry.name()::contains)).toList(),
+					RPGSeriesItemTags.ArmorMetaType.MAGIC
 			);
 			generateArmorTags(
-					Armors.entries.stream().filter(entry -> !entry.name().contains("billporon")).toList(),
+					Armors.entries.stream().filter(entry -> armoryKeywords.stream().noneMatch(entry.name()::contains)).toList(),
 					RPGSeriesItemTags.ArmorMetaType.MAGIC,
 					armorTagOptions2
 			);

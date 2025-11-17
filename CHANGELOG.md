@@ -1,3 +1,6 @@
+# 2.5.3 - 1.21.1
+- fix minecraft armor tags not loading when armory compat sets are not loading
+
 # 2.5.2 - 1.21.1
 - Item Frames now also show the inventory texture of knuckles
 - fix equipment set bonus resourcepack not loading (for billporon armor set)

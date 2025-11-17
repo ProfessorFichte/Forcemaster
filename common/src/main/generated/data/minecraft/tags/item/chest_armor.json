@@ -1,6 +1,9 @@
 {
   "values": [
-    "forcemaster_rpg:billporon_chest",
+    {
+      "id": "forcemaster_rpg:billporon_chest",
+      "required": false
+    },
     "forcemaster_rpg:oriene_chest",
     "forcemaster_rpg:phasleb_chest",
     "forcemaster_rpg:aken_chest"
