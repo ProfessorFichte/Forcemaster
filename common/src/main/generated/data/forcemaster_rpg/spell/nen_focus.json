@@ -1,0 +1,95 @@
+{
+  "school": "spell_power:arcane",
+  "tier": 1,
+  "type": "PASSIVE",
+  "passive": {
+    "triggers": [
+      {
+        "target_override": "CASTER",
+        "type": "SPELL_IMPACT_SPECIFIC",
+        "equipment_condition": "MAINHAND",
+        "target_conditions": [
+          {
+            "health_percent_below": 0.0
+          }
+        ],
+        "spell": {
+          "school": "spell_power:arcane",
+          "type": "ACTIVE"
+        }
+      },
+      {
+        "target_override": "CASTER",
+        "type": "SPELL_IMPACT_SPECIFIC",
+        "equipment_condition": "MAINHAND",
+        "target_conditions": [
+          {
+            "health_percent_below": 0.0
+          }
+        ],
+        "spell": {
+          "school": "spell_power:physical_melee",
+          "type": "ACTIVE"
+        }
+      }
+    ]
+  },
+  "target": {
+    "type": "FROM_TRIGGER"
+  },
+  "deliver": {
+    "type": "STASH_EFFECT",
+    "stash_effect": {
+      "id": "forcemaster_rpg:nen_focus",
+      "triggers": [
+        {
+          "target_override": "CASTER",
+          "type": "MELEE_IMPACT"
+        },
+        {
+          "target_override": "CASTER",
+          "type": "SPELL_IMPACT_SPECIFIC",
+          "spell": {
+            "school": "spell_power:physical_melee",
+            "type": "ACTIVE"
+          }
+        }
+      ],
+      "consume": 0
+    }
+  },
+  "impacts": [
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "forcemaster_rpg:arcane_overflow",
+          "duration": 8.0,
+          "amplifier": 1,
+          "amplifier_cap": 6,
+          "amplifier_cap_power_multiplier": 0.15,
+          "refresh_duration": false,
+          "apply_mode": "ADD"
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_decelerate",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 10.0,
+          "min_speed": 0.3,
+          "max_speed": 0.35,
+          "color_rgba": 4284940287
+        }
+      ]
+    }
+  ],
+  "cost": {
+    "batching": true,
+    "exhaust": 0.0,
+    "cooldown": {
+      "duration": 20.0
+    }
+  }
+}
