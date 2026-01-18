@@ -148,13 +148,15 @@ if (System.getenv("CURSEFORGE_API_KEY")) {
             changelog = changelog_last_section()
             changelogType = 'markdown'
             releaseType = release_type
-            addGameVersion "${rootProject.minecraft_version}"
+            addGameVersion "${project.minecraft_version}"
+            addGameVersion "${project.minecraft_compat_version}"
             addGameVersion "NeoForge"
 
             relations {
                 // Required dependencies
                 requiredDependency 'spell-engine'
-                requiredDependency 'spell-power'
+                requiredDependency 'more-rpg-library'
+                requiredDependency 'azurelib-armor'
             }
 
             mainArtifact(remapJar)
@@ -182,7 +184,8 @@ if (System.getenv("MODRINTH_API_KEY")) {
         dependencies {
             // Required dependencies
             required.project 'spell-engine'
-            required.project 'spell-power'
+            required.project 'more-rpg-library'
+            required.project 'azurelib-armor'
         }
     }
 }
