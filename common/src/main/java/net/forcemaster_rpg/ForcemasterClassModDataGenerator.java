@@ -98,6 +98,8 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 
 			// Spell Book and Scroll
 			translationBuilder.add("item.forcemaster_rpg.forcemaster_spell_book", "Force Mastery");
+			translationBuilder.add("item.forcemaster_rpg.forcemaster_spell_book.spell_binding.description",
+					"Spell Book of Forcemasters, using martial weapons, the knuckle. Dealing melee and arcane damage with the power of the force.\n- Strengths: Fast attacks dealing physical and magical damage.\n- Weaknesses: Ranged Enemies\n- Equipment: Light Armor");
 			translationBuilder.add("item.forcemaster_rpg.forcemaster.spell_scroll", "Forcemaster Skill Scroll");
 
 			// Weapons
@@ -143,7 +145,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			translationBuilder.add("equipment_set.forcemaster_rpg.billporon", "Billporon's Focus");
 
 			// Tags
-			translationBuilder.add("tag.item.forcemaster_rpg.forcemaster_armor", "Forcemaster Armor");
 			translationBuilder.add("tag.item.forcemaster_rpg.knuckles", "Knuckles");
 			translationBuilder.add("tag.item.forcemaster_rpg.fist_weapons", "Fist Weapons");
 
