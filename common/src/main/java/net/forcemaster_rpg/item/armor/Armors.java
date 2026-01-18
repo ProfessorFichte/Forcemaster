@@ -119,7 +119,7 @@ public class Armors {
         return entry;
     }
 
-    public static final Armor.Set orieneArmorSet =
+    public static final Armor.Entry orieneArmorSet =
             create(
                     material_oriene,
                     Identifier.of(MOD_ID, "oriene"),
@@ -151,9 +151,9 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
                                     ))
                     ),1, null)
-                    .armorSet();
+                    .translatedName("Oriene Band", "Oriene Suit", "Oriene Pants", "Oriene Boots");
 
-    public static final Armor.Set phaslebArmorSet =
+    public static final Armor.Entry phaslebArmorSet =
             create(material_phasleb,
                     Identifier.of(MOD_ID, "phasleb"),
                     25,
@@ -184,9 +184,9 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     ))
                     ),2, null)
-                    .armorSet();
+                    .translatedName("Phasleb Headdress", "Phasleb Suit", "Phasleb Pants", "Phasleb Boots");
 
-    public static final Armor.Set akenArmorSet =
+    public static final Armor.Entry akenArmorSet =
             create(material_aken,
                     Identifier.of(MOD_ID, "aken"),
                     30,
@@ -217,7 +217,7 @@ public class Armors {
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
                                     ))
                     ),3, null)
-                    .armorSet();
+                    .translatedName("Aken Headdress", "Aken Suit", "Aken Pants", "Aken Boots");
 
     public static Armor.Entry billporonArmorSet;
 
@@ -256,7 +256,7 @@ public class Armors {
                                     ))
                     ),5,
                     commonSettings(billporon_passive)
-            );
+            ).translatedName("Billporon Headdress", "Billporon Suit", "Billporon Pants", "Billporon Boots");
         }
         Armor.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
     }

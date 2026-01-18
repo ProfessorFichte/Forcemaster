@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "tag": "minecraft:stone_tool_materials"
+    }
+  },
+  "pattern": [
+    "S  ",
+    "SS ",
+    "SS "
+  ],
+  "result": {
+    "count": 1,
+    "id": "forcemaster_rpg:stone_knuckle"
+  }
+}

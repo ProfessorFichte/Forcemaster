@@ -2,18 +2,13 @@ package net.forcemaster_rpg.client;
 
 import mod.azure.azurelibarmor.common.render.armor.AzArmorRenderer;
 import mod.azure.azurelibarmor.common.render.armor.AzArmorRendererRegistry;
-import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.loader.api.FabricLoader;
-import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.client.armor.CustomArmorRenderer;
 import net.forcemaster_rpg.client.effect.ArcaneOverDriveRenderer;
 import net.forcemaster_rpg.client.effect.BarqEsnaParticles;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.client.particle.PunchParticle;
-import net.forcemaster_rpg.effect.Effects;
+import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
@@ -41,15 +36,15 @@ public class ForcemasterClient{
                 ArcaneOverDriveRenderer.modelId
         ));
 
-        registerArmorRenderer(Armors.orieneArmorSet, CustomArmorRenderer::oriene_armor);
-        registerArmorRenderer(Armors.phaslebArmorSet, CustomArmorRenderer::phasleb_armor);
-        registerArmorRenderer(Armors.akenArmorSet, CustomArmorRenderer::aken_armor);
+        registerArmorRenderer(Armors.orieneArmorSet.armorSet(), CustomArmorRenderer::oriene_armor);
+        registerArmorRenderer(Armors.phaslebArmorSet.armorSet(), CustomArmorRenderer::phasleb_armor);
+        registerArmorRenderer(Armors.akenArmorSet.armorSet(), CustomArmorRenderer::aken_armor);
         if (armoryLoadCheck()) {
             registerArmorRenderer(Armors.billporonArmorSet.armorSet(), CustomArmorRenderer::billporon_armor);
         }
 
-        CustomParticleStatusEffect.register(Effects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
-        CustomModelStatusEffect.register(Effects.ARCANE_OVERFLOW.effect, new ArcaneOverDriveRenderer());
+        CustomParticleStatusEffect.register(ForcemasterEffects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
+        CustomModelStatusEffect.register(ForcemasterEffects.ARCANE_OVERFLOW.effect, new ArcaneOverDriveRenderer());
     }
 
     public static void registerParticleAppearances() {

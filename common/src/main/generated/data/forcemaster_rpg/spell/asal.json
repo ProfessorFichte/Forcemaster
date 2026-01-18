@@ -1,0 +1,98 @@
+{
+  "school": "spell_power:arcane",
+  "range": 7.5,
+  "tier": 4,
+  "learn": {},
+  "active": {
+    "cast": {
+      "duration": 0.75,
+      "animation": "forcemaster_rpg:asal_cast",
+      "movement_speed": 0.1,
+      "sound": {
+        "id": "spell_engine:generic_arcane_casting"
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_ascend",
+          "origin": "FEET",
+          "shape": "WIDE_PIPE",
+          "count": 10.0,
+          "min_speed": 0.2,
+          "max_speed": 0.6,
+          "extent": 0.5,
+          "color_rgba": 4284940287
+        }
+      ]
+    }
+  },
+  "release": {
+    "animation": "forcemaster_rpg:asal_release",
+    "particles": [
+      {
+        "particle_id": "spell_engine:smoke_medium",
+        "origin": "CENTER",
+        "shape": "SPHERE",
+        "rotation": "LOOK",
+        "count": 15.0,
+        "min_speed": 1.0,
+        "max_speed": 10.0,
+        "angle": 360.0,
+        "extent": 2.0,
+        "color_rgba": 4284940287
+      }
+    ],
+    "sound": {
+      "id": "forcemaster_rpg:asal_release",
+      "volume": 0.35
+    }
+  },
+  "target": {
+    "type": "AREA",
+    "area": {
+      "angle_degrees": 50.0
+    }
+  },
+  "impacts": [
+    {
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 3.0,
+          "knockback": 2.0
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:smoke_medium",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 50.0,
+          "min_speed": 0.1,
+          "max_speed": 5.0,
+          "color_rgba": 1093695897855
+        }
+      ],
+      "sound": {
+        "id": "minecraft:entity.dragon_fireball.explode",
+        "volume": 0.5
+      }
+    },
+    {
+      "school": "spell_power:physical_melee",
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 1.5,
+          "knockback": 0.0
+        }
+      }
+    }
+  ],
+  "cost": {
+    "exhaust": 40.0,
+    "effect_id": "forcemaster_rpg:arcane_overflow",
+    "cooldown": {
+      "duration": 30.0
+    }
+  }
+}

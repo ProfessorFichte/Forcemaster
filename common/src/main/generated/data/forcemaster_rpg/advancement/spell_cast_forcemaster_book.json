@@ -1,0 +1,26 @@
+{
+  "parent": "forcemaster_rpg:spell_novice_forcemaster",
+  "criteria": {
+    "cast": {
+      "conditions": {
+        "spell": "#forcemaster_rpg:forcemaster"
+      },
+      "trigger": "spell_engine:spell_cast"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.forcemaster_rpg.spell_cast_forcemaster_book.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "forcemaster_rpg:forcemaster_spell_book"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.forcemaster_rpg.spell_cast_forcemaster_book.title"
+    }
+  }
+}

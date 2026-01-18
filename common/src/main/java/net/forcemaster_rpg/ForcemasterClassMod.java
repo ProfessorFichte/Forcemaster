@@ -6,9 +6,8 @@ import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.config.Default;
-import net.forcemaster_rpg.config.EffectsConfig;
 import net.forcemaster_rpg.config.TweaksConfig;
-import net.forcemaster_rpg.effect.Effects;
+import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.item.ForcemasterItems;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
@@ -22,6 +21,7 @@ import net.minecraft.text.Text;
 
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.config.ConfigFile;
+import net.spell_engine.api.config.ConfigFile.Effects;
 import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,8 +38,8 @@ public class ForcemasterClassMod{
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
-	public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
-			("effects_v4", new EffectsConfig())
+	public static ConfigManager<ConfigFile.Effects> effectsConfig = new ConfigManager<>
+			("effects_v5", new ConfigFile.Effects())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
@@ -64,7 +64,7 @@ public class ForcemasterClassMod{
 
 	public static void registerItems() {
 		ForcemasterGroup.FORCEMASTER = FabricItemGroup.builder()
-				.icon(() -> new ItemStack(Armors.phaslebArmorSet.head.asItem()))
+				.icon(() -> new ItemStack(Armors.phaslebArmorSet.armorSet().head.asItem()))
 				.displayName(Text.translatable("itemGroup." + MOD_ID + ".general"))
 				.build();
 		Registry.register(Registries.ITEM_GROUP, ForcemasterGroup.FORCEMASTER_KEY, ForcemasterGroup.FORCEMASTER);
@@ -88,7 +88,7 @@ public class ForcemasterClassMod{
 		ModSounds.register();
 	}
 	public static void registerEffects() {
-		Effects.register();
+		ForcemasterEffects.register(effectsConfig.value);
 		effectsConfig.save();
 	}
 	public static void registerParticles() {

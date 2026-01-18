@@ -1,0 +1,26 @@
+{
+  "parent": "more_rpg_content:root",
+  "criteria": {
+    "book": {
+      "conditions": {
+        "spell_pool": "forcemaster_rpg:forcemaster"
+      },
+      "trigger": "spell_engine:spell_book_creation"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.forcemaster_rpg.path_choose_forcemaster.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "id": "forcemaster_rpg:forcemaster_spell_book"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.forcemaster_rpg.path_choose_forcemaster.title"
+    }
+  }
+}

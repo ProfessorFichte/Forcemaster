@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": {
+      "item": "minecraft:leather"
+    },
+    "W": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "W W",
+    "R R"
+  ],
+  "result": {
+    "count": 1,
+    "id": "forcemaster_rpg:phasleb_feet"
+  }
+}

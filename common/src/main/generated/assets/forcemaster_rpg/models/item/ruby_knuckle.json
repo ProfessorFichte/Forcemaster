@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "forcemaster_rpg:item/ruby_knuckle_inventory"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": {
+      "item": "minecraft:leather"
+    },
+    "T": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "W": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "pattern": [
+    "RRR",
+    "WTW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "forcemaster_rpg:phasleb_head"
+  }
+}

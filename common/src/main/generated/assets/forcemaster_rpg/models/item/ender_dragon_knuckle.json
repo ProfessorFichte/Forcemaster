@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "forcemaster_rpg:item/ender_dragon_knuckle_inventory"
+  }
+}

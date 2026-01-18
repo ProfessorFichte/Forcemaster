@@ -37,6 +37,14 @@
       "required": false
     },
     {
+      "id": "forcemaster_rpg:unique_knuckle_0",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:unique_knuckle_1",
+      "required": false
+    },
+    {
       "id": "forcemaster_rpg:ender_dragon_knuckle",
       "required": false
     },

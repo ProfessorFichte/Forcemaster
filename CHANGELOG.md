@@ -1,3 +1,13 @@
+# 2.5.4 - 1.21.1
+- Add many Datagen methods, so most stuff gets generated
+## New Content: Tier 5 Knuckles
+- Federhorn Knuckle:
+- Knuckle of Madness:
+- Artwork Done by Slepykat!
+- Knuckle of Madness uses the Carve Passive from MRPGLib (Chacne to reduce Armor and increase incoming damage)
+- New Passive Nen Focus - for the Federhorn Knuckle
+- Nen Focus: When you kill a target with Forcemaster Spells, you get Nen Focus, stacking Arcane Overflow with each Melee Hit
+
 # 2.5.3 - 1.21.1
 - fix minecraft armor tags not loading when armory compat sets are not loading
 

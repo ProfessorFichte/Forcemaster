@@ -3,8 +3,11 @@ package net.forcemaster_rpg;
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
+import net.fabricmc.fabric.api.datagen.v1.provider.FabricLanguageProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
+import net.forcemaster_rpg.datagen.*;
+import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.tag.ModItemTags;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
@@ -17,7 +20,6 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
-import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.datagen.SimpleSoundGeneratorV2;
 import net.spell_engine.api.datagen.SpellGenerator;
@@ -38,11 +40,21 @@ import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint {
 	@Override
 	public void onInitializeDataGenerator(FabricDataGenerator fabricDataGenerator) {
+		ForcemasterVanillaAdvancementProvider.init();
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 		pack.addProvider(ItemTagGenerator::new);
 		pack.addProvider(UnsmeltGenerator::new);
 		pack.addProvider(SpellGen::new);
 		pack.addProvider(SoundGen::new);
+		pack.addProvider(ModModelProvider::new);
+		pack.addProvider(WeaponAttributesGenerator::new);
+		pack.addProvider(ForcemasterAdvancementDataGen::new);
+		pack.addProvider(ForcemasterVanillaAdvancementProvider::new);
+		pack.addProvider(LangGenerator::new);
+		// Recipe providers
+		pack.addProvider(ForcemasterCraftingRecipes::new);
+		pack.addProvider(ForcemasterSmithingRecipes::new);
+		pack.addProvider(ConditionalCraftingRecipes::new);
 	}
 
 	public static class SoundGen extends SimpleSoundGeneratorV2 {
@@ -70,6 +82,79 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		public void generateSpells(Builder builder) {
 			for (var entry: ForcemasterSpells.entries) {
 				builder.add(entry.id(), entry.spell());
+			}
+		}
+	}
+
+	public static class LangGenerator extends FabricLanguageProvider {
+		protected LangGenerator(FabricDataOutput dataOutput, CompletableFuture<RegistryWrapper.WrapperLookup> registryLookup) {
+			super(dataOutput, "en_us", registryLookup);
+		}
+
+		@Override
+		public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
+			// Item Group
+			translationBuilder.add("itemGroup.forcemaster_rpg.general", "Forcemaster");
+
+			// Spell Book and Scroll
+			translationBuilder.add("item.forcemaster_rpg.forcemaster_spell_book", "Force Mastery");
+			translationBuilder.add("item.forcemaster_rpg.forcemaster.spell_scroll", "Forcemaster Skill Scroll");
+
+			// Weapons
+			WeaponsRegister.entries.forEach(entry -> {
+				if (entry.item() != null && entry.translatedName() != null && !entry.translatedName().isEmpty()) {
+					translationBuilder.add(entry.item(), entry.translatedName());
+				}
+			});
+
+			// Armors
+			Armors.entries.forEach(entry -> {
+				var set = entry.armorSet();
+				if (set.headTranslation != null && !set.headTranslation.isEmpty()) {
+					translationBuilder.add(((Item) set.head).getTranslationKey(), set.headTranslation);
+				}
+				if (set.chestTranslation != null && !set.chestTranslation.isEmpty()) {
+					translationBuilder.add(((Item) set.chest).getTranslationKey(), set.chestTranslation);
+				}
+				if (set.legsTranslation != null && !set.legsTranslation.isEmpty()) {
+					translationBuilder.add(((Item) set.legs).getTranslationKey(), set.legsTranslation);
+				}
+				if (set.feetTranslation != null && !set.feetTranslation.isEmpty()) {
+					translationBuilder.add(((Item) set.feet).getTranslationKey(), set.feetTranslation);
+				}
+			});
+
+			// Effects
+			ForcemasterEffects.entries.forEach(entry -> {
+				translationBuilder.add(entry.effect.getTranslationKey(), entry.title);
+				if (!entry.description.isEmpty()) {
+					translationBuilder.add(entry.effect.getTranslationKey() + ".description", entry.description);
+				}
+			});
+
+			// Spells
+			ForcemasterSpells.entries.forEach(entry -> {
+				var id = entry.id();
+				translationBuilder.add("spell." + id.getNamespace() + "." + id.getPath() + ".name", entry.title());
+				translationBuilder.add("spell." + id.getNamespace() + "." + id.getPath() + ".description", entry.description());
+			});
+
+			// Equipment Sets
+			translationBuilder.add("equipment_set.forcemaster_rpg.billporon", "Billporon's Focus");
+
+			// Tags
+			translationBuilder.add("tag.item.forcemaster_rpg.forcemaster_armor", "Forcemaster Armor");
+			translationBuilder.add("tag.item.forcemaster_rpg.knuckles", "Knuckles");
+			translationBuilder.add("tag.item.forcemaster_rpg.fist_weapons", "Fist Weapons");
+
+			// Advancements
+			for (var entry : ForcemasterAdvancementDataGen.getEntries()) {
+				translationBuilder.add(entry.titleKey(), entry.title());
+				translationBuilder.add(entry.descriptionKey(), entry.description());
+			}
+			for (var entry : ForcemasterVanillaAdvancementProvider.getEntries()) {
+				translationBuilder.add(entry.titleKey(), entry.title());
+				translationBuilder.add(entry.descriptionKey(), entry.description());
 			}
 		}
 	}
@@ -147,7 +232,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					themeTag.addOptional(weapon.id());
 				}
 			}
-
 		}
 
 		List<String> armoryKeywords = List.of("billporon");
@@ -172,6 +256,8 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			spellHasteTag.addTag(ModItemTags.KNUCKLES);
 			var criticalDamageTag  = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.CRITICAL_DAMAGE);
 			criticalDamageTag .addTag(ModItemTags.KNUCKLES);
+			var criticalChanceTag  = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.CRITICAL_CHANCE);
+			criticalChanceTag .addTag(ModItemTags.KNUCKLES);
 			var spellPowerTag  = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.SPELL_POWER_GENERIC);
 			spellPowerTag .addTag(ModItemTags.KNUCKLES);
 			var unbreakingTag = getOrCreateTagBuilder(ItemTags.DURABILITY_ENCHANTABLE);
@@ -214,9 +300,9 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					Items.NETHERITE_SCRAP);
 		}
 
-		private static void disassembleArmor(RecipeExporter exporter, Armor.Set armorSet, Item output) {
+		private static void disassembleArmor(RecipeExporter exporter, Armor.Entry armorEntry, Item output) {
 			FabricRecipeProvider.offerSmelting(exporter,
-					armorSet.pieces(),
+					armorEntry.armorSet().pieces(),
 					RecipeCategory.MISC,
 					output,
 					0.1f,
@@ -224,7 +310,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					"disassemble"
 			);
 			FabricRecipeProvider.offerBlasting(exporter,
-					armorSet.pieces(),
+					armorEntry.armorSet().pieces(),
 					RecipeCategory.MISC,
 					output,
 					0.1f,
