@@ -3,9 +3,11 @@ package net.forcemaster_rpg.datagen;
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
+import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.minecraft.data.client.BlockStateModelGenerator;
 import net.minecraft.data.client.ItemModelGenerator;
+import net.minecraft.data.client.Models;
 import net.minecraft.item.Item;
 import net.minecraft.registry.Registries;
 import net.minecraft.util.Identifier;
@@ -24,6 +26,11 @@ public class ModModelProvider extends FabricModelProvider {
 
     @Override
     public void generateItemModels(ItemModelGenerator itemModelGenerator) {
+        Armors.entries.forEach(entry -> {
+            for (var piece: entry.armorSet().pieces()) {
+                itemModelGenerator.register((Item) piece, Models.GENERATED);
+            }
+        });
         // Generate dual models for all knuckle weapons
         for (var entry : WeaponsRegister.entries) {
             Item item = entry.item();
@@ -32,7 +39,10 @@ public class ModModelProvider extends FabricModelProvider {
             Identifier itemId = Registries.ITEM.getId(item);
             String name = itemId.getPath();
             generateInventoryModel(itemModelGenerator, itemId, name);
-            generateOverworldModel(itemModelGenerator, itemId, name);
+            if (name.contains("wooden") || name.contains("stone") || name.contains("golden") || name.contains("iron")
+                    || name.contains("diamond") || name.contains("netherite")) {
+                generateOverworldModel(itemModelGenerator, itemId, name);
+            }
         }
     }
 

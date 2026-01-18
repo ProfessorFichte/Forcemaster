@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "forcemaster_rpg:item/unique_knuckle_1_inventory"
-  }
-}

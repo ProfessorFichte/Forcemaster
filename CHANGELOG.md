@@ -1,3 +1,7 @@
+# 2.5.5 - 1.21.1
+- fix broken item models
+- add Spell Binding description for Forcemaster Spell Book
+
 # 2.5.4 - 1.21.1
 - Add many Datagen methods, so most stuff gets generated
 ## New Content: Tier 5 Knuckles

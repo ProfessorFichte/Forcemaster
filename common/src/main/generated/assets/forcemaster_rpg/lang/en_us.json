@@ -30,6 +30,7 @@
   "item.forcemaster_rpg.ender_dragon_knuckle": "Wyrm's Claw",
   "item.forcemaster_rpg.forcemaster.spell_scroll": "Forcemaster Skill Scroll",
   "item.forcemaster_rpg.forcemaster_spell_book": "Force Mastery",
+  "item.forcemaster_rpg.forcemaster_spell_book.spell_binding.description": "Spell Book of Forcemasters, using martial weapons, the knuckle. Dealing melee and arcane damage with the power of the force.\n- Strengths: Fast attacks dealing physical and magical damage.\n- Weaknesses: Ranged Enemies\n- Equipment: Light Armor",
   "item.forcemaster_rpg.glacial_knuckle": "Glacial Fist",
   "item.forcemaster_rpg.golden_knuckle": "Gold Knuckle",
   "item.forcemaster_rpg.iron_knuckle": "Iron Knuckle",
@@ -66,6 +67,5 @@
   "spell.forcemaster_rpg.stonehand.description": "{trigger_chance_1} chance for {stash_duration} seconds to stun targets on damage, only with fist weapons.",
   "spell.forcemaster_rpg.stonehand.name": "Stonehand",
   "tag.item.forcemaster_rpg.fist_weapons": "Fist Weapons",
-  "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Armor",
   "tag.item.forcemaster_rpg.knuckles": "Knuckles"
 }
