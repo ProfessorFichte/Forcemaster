@@ -1,6 +1,6 @@
 {
   "advancements.forcemaster_rpg.equipment.phasleb_armor_set.description": "Obtain the full Phasleb Armor Set",
-  "advancements.forcemaster_rpg.equipment.phasleb_armor_set.title": "Phasleb Mastery",
+  "advancements.forcemaster_rpg.equipment.phasleb_armor_set.title": "Master of the Force!",
   "advancements.forcemaster_rpg.path_choose_forcemaster.description": "Create the Force Mastery Book",
   "advancements.forcemaster_rpg.path_choose_forcemaster.title": "Path of the Force",
   "advancements.forcemaster_rpg.spell_cast_forcemaster_book.description": "Use a skill from the Force Mastery Book",
@@ -49,7 +49,7 @@
   "item.forcemaster_rpg.wither_knuckle": "Wither's Bash",
   "item.forcemaster_rpg.wooden_knuckle": "Wooden Knuckle",
   "itemGroup.forcemaster_rpg.general": "Forcemaster",
-  "spell.forcemaster_rpg.asal.description": "A devastating charged strike that deals massive {damage} arcane and physical damage with {knockback} knockback. Consumes Arcane Overflow.",
+  "spell.forcemaster_rpg.asal.description": "A devastating charged strike that deals massive {damage_1} arcane & {damage_2} physical-damage. Consumes Arcane Overflow and exhausts the caster.",
   "spell.forcemaster_rpg.asal.name": "Asalraalaikum",
   "spell.forcemaster_rpg.belial_smashing.description": "Charges to the targets direction, and dealing arcane {damage_1} & {damage_2} physical-damage.",
   "spell.forcemaster_rpg.belial_smashing.name": "Belial Smashing",

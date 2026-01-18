@@ -62,7 +62,7 @@ public class ForcemasterVanillaAdvancementProvider extends FabricAdvancementProv
         var phasleb = Armors.phaslebArmorSet.armorSet();
         addEntry(new Entry(
                 id("equipment/phasleb_armor_set"),
-                "Phasleb Mastery",
+                "Master of the Force!",
                 "Obtain the full Phasleb Armor Set",
                 Identifier.of("more_rpg_content", "root"),
                 (Item) phasleb.chest,
