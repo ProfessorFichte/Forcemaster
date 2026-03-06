@@ -68,47 +68,44 @@ public class ForcemasterAdvancementDataGen implements DataProvider {
                 "Path of the Force",
                 "Create the Force Mastery Book",
                 Identifier.of("more_rpg_content", "root"),
-                MOD_ID + ":forcemaster_spell_book",
+                MOD_ID + ":item/spell_scroll/forcemaster",
                 AdvancementFrame.TASK,
                 true, true, false, null,
                 SpellEngineCriteriaType.SPELL_BOOK_CREATION,
-                MOD_ID + ":forcemaster"
+                MOD_ID + ":spell_book/forcemaster"
         ));
-
-        addEntry(new Entry(
-                id("spell_novice_forcemaster"),
-                "Punch em!",
-                "Obtain your first Forcemaster skill",
-                id("path_choose_forcemaster"),
-                MOD_ID + ":forcemaster_spell_book",
-                AdvancementFrame.TASK,
-                true, true, false, null,
-                SpellEngineCriteriaType.ONE_SPELL_BOUND,
-                MOD_ID + ":forcemaster"
-        ));
-
-        addEntry(new Entry(
-                id("spell_master_forcemaster"),
-                "Master of the Force",
-                "Complete the Force Mastery Book",
-                id("spell_novice_forcemaster"),
-                MOD_ID + ":forcemaster_spell_book",
-                AdvancementFrame.GOAL,
-                true, true, false, null,
-                SpellEngineCriteriaType.ALL_SPELLS_BOUND,
-                MOD_ID + ":forcemaster"
-        ));
-
         addEntry(new Entry(
                 id("spell_cast_forcemaster_book"),
                 "Force Training",
                 "Use a skill from the Force Mastery Book",
                 id("spell_novice_forcemaster"),
-                MOD_ID + ":forcemaster_spell_book",
+                MOD_ID + ":item/spell_book/forcemaster",
                 AdvancementFrame.TASK,
                 true, true, false, null,
                 SpellEngineCriteriaType.SPELL_CAST,
-                "#" + MOD_ID + ":forcemaster"
+                "#" + MOD_ID + ":spell_book/forcemaster"
+        ));
+        addEntry(new Entry(
+                id("spell_novice_forcemaster"),
+                "Punch em!",
+                "Obtain your first Forcemaster skill",
+                id("path_choose_forcemaster"),
+                MOD_ID + ":iron_knuckle",
+                AdvancementFrame.TASK,
+                true, true, false, null,
+                SpellEngineCriteriaType.ONE_SPELL_BOUND,
+                MOD_ID + ":spell_book/forcemaster"
+        ));
+        addEntry(new Entry(
+                id("spell_master_forcemaster"),
+                "Master of the Force",
+                "Complete the Force Mastery Book",
+                id("spell_novice_forcemaster"),
+                MOD_ID + ":netherite_knuckle",
+                AdvancementFrame.GOAL,
+                true, true, false, null,
+                SpellEngineCriteriaType.ALL_SPELLS_BOUND,
+                MOD_ID + ":spell_book/forcemaster"
         ));
     }
 
@@ -135,7 +132,22 @@ public class ForcemasterAdvancementDataGen implements DataProvider {
         // Display
         JsonObject display = new JsonObject();
         JsonObject icon = new JsonObject();
-        icon.addProperty("id", entry.iconItemName().contains(":") ? entry.iconItemName() : MOD_ID + ":" + entry.iconItemName());
+        String iconName = entry.iconItemName().contains(":") ? entry.iconItemName() : MOD_ID + ":" + entry.iconItemName();
+        if (iconName.contains("item/spell_book/")) {
+            icon.addProperty("id", "spell_engine:spell_book");
+            JsonObject components = new JsonObject();
+            components.addProperty("spell_engine:item_model", iconName);
+            icon.add("components", components);
+        }
+        else if (iconName.contains("item/spell_scroll/")) {
+            icon.addProperty("id", "spell_engine:spell_scroll");
+            JsonObject components = new JsonObject();
+            components.addProperty("spell_engine:item_model", iconName);
+            icon.add("components", components);
+        }
+        else {
+            icon.addProperty("id", iconName);
+        }
         display.add("icon", icon);
         display.add("title", createTranslatable(entry.titleKey()));
         display.add("description", createTranslatable(entry.descriptionKey()));

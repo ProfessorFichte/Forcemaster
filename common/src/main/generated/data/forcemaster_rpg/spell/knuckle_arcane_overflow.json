@@ -5,12 +5,10 @@
   "tooltip": {
     "show_header": false,
     "name": {
-      "show_in_compact": false,
       "show_in_details": false
     },
     "description": {
-      "color": "dark_green",
-      "show_in_compact": false
+      "color": "dark_green"
     }
   },
   "type": "PASSIVE",
@@ -61,6 +59,7 @@
     }
   ],
   "cost": {
+    "durability": 0,
     "cooldown": {
       "duration": 3.0
     }

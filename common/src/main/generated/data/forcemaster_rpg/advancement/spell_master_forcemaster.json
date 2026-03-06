@@ -4,7 +4,7 @@
     "bind": {
       "conditions": {
         "complete": true,
-        "spell_pool": "forcemaster_rpg:forcemaster"
+        "spell_pool": "forcemaster_rpg:spell_book/forcemaster"
       },
       "trigger": "spell_engine:spell_binding"
     }
@@ -17,7 +17,7 @@
     "frame": "goal",
     "hidden": false,
     "icon": {
-      "id": "forcemaster_rpg:forcemaster_spell_book"
+      "id": "forcemaster_rpg:netherite_knuckle"
     },
     "show_toast": true,
     "title": {

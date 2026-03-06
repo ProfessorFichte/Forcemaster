@@ -23,14 +23,18 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.datagen.SimpleSoundGeneratorV2;
 import net.spell_engine.api.datagen.SpellGenerator;
-import net.spell_engine.api.item.armor.Armor;
-import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_engine.api.spell.Spell;
+import net.spell_engine.api.spell.registry.SpellRegistry;
 import net.spell_engine.api.tags.SpellEngineItemTags;
+import net.spell_engine.api.tags.SpellTags;
+import net.spell_engine.rpg_series.item.Armor;
+import net.spell_engine.rpg_series.item.Weapon;
 import net.spell_engine.rpg_series.datagen.RPGSeriesDataGen;
 import net.spell_engine.rpg_series.tags.RPGSeriesItemTags;
 import net.spell_power.api.SpellPowerTags;
 
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
@@ -51,6 +55,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ForcemasterAdvancementDataGen::new);
 		pack.addProvider(ForcemasterVanillaAdvancementProvider::new);
 		pack.addProvider(LangGenerator::new);
+		pack.addProvider(SpellTagGenerator::new);
 		// Recipe providers
 		pack.addProvider(ForcemasterCraftingRecipes::new);
 		pack.addProvider(ForcemasterSmithingRecipes::new);
@@ -97,10 +102,10 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			translationBuilder.add("itemGroup.forcemaster_rpg.general", "Forcemaster");
 
 			// Spell Book and Scroll
-			translationBuilder.add("item.forcemaster_rpg.forcemaster_spell_book", "Force Mastery");
-			translationBuilder.add("item.forcemaster_rpg.forcemaster_spell_book.spell_binding.description",
+			translationBuilder.add("item.forcemaster_rpg.spell_book/forcemaster", "Force Mastery");
+			translationBuilder.add("item.forcemaster_rpg.spell_book/forcemaster.spell_binding.description",
 					"Spell Book of Forcemasters, using martial weapons, the knuckle. Dealing melee and arcane damage with the power of the force.\n- Strengths: Fast attacks dealing physical and magical damage.\n- Weaknesses: Ranged Enemies\n- Equipment: Light Armor");
-			translationBuilder.add("item.forcemaster_rpg.forcemaster.spell_scroll", "Forcemaster Skill Scroll");
+			translationBuilder.add("item.forcemaster_rpg.spell_scroll/forcemaster", "Forcemaster Skill Scroll");
 
 			// Weapons
 			WeaponsRegister.entries.forEach(entry -> {
@@ -268,6 +273,37 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			var meleeTag = getOrCreateTagBuilder(ItemTags.SWORDS);
 			meleeTag.addTag(ModItemTags.KNUCKLES);
 
+			var rpgSeriesMeleeWeaponTag = getOrCreateTagBuilder(RPGSeriesItemTags.Archetype.tag(RPGSeriesItemTags.RoleArchetype.MELEE_DAMAGE));
+			rpgSeriesMeleeWeaponTag.addTag(ModItemTags.KNUCKLES);
+			var rpgSeriesMagicWeaponTag = getOrCreateTagBuilder(RPGSeriesItemTags.Archetype.tag(RPGSeriesItemTags.RoleArchetype.MAGIC_DAMAGE));
+			rpgSeriesMagicWeaponTag.addTag(ModItemTags.KNUCKLES);
+
+		}
+	}
+
+	public static class SpellTagGenerator extends FabricTagProvider<Spell> {
+		public SpellTagGenerator(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
+			super(output, SpellRegistry.KEY, registriesFuture);
+		}
+
+		@Override
+		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+			var namespace = MOD_ID;
+			var treasureTagBuilder = getOrCreateTagBuilder(SpellTags.TREASURE);
+			var processedBooks = new HashSet<ForcemasterSpells.Book>();
+			ForcemasterSpells.entries.forEach(entry -> {
+				if (entry.book() != null) {
+					var bookTagKey = SpellTags.spellBook(namespace, entry.book().toString().toLowerCase());
+					var bookTag = getOrCreateTagBuilder(bookTagKey);
+					bookTag.addOptional(entry.id());
+					var scrollTagKey = SpellTags.spellScroll(namespace, entry.book().toString().toLowerCase());
+					var scrollTag = getOrCreateTagBuilder(scrollTagKey);
+					scrollTag.addOptional(entry.id());
+					if (processedBooks.add(entry.book())) {
+						treasureTagBuilder.addOptionalTag(scrollTagKey);
+					}
+				}
+			});
 		}
 	}
 

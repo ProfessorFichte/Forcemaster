@@ -3,10 +3,10 @@
   "category": "equipment",
   "key": {
     "R": {
-      "item": "minecraft:leather"
+      "item": "minecraft:cobblestone"
     },
     "W": {
-      "tag": "minecraft:wool"
+      "item": "minecraft:leather"
     }
   },
   "pattern": [

@@ -1,0 +1,16 @@
+{
+  "values": [
+    {
+      "id": "forcemaster_rpg:stonehand",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:belial_smashing",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:asal",
+      "required": false
+    }
+  ]
+}

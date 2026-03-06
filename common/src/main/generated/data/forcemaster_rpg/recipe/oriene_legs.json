@@ -2,6 +2,9 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
     "R": {
       "item": "minecraft:leather"
     },
@@ -10,7 +13,7 @@
     }
   },
   "pattern": [
-    "WRW",
+    "CRC",
     "R R",
     "W W"
   ],

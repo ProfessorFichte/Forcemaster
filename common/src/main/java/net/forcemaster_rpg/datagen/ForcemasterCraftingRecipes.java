@@ -85,7 +85,7 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
         // Aeternium Knuckle (BetterEnd)
         createConditionalShapedRecipe(exporter, "aeternium_knuckle",
                 RecipeCategory.COMBAT,
-                "betterend:aeternium_knuckle",
+                "forcemaster_rpg:aeternium_knuckle",
                 new String[]{"B  ", "BB ", "BB "},
                 'B', "betterend:aeternium_ingot",
                 "betterend");
@@ -93,34 +93,36 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
         // ====================
         // ARMOR - Oriene Set
         // ====================
-        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.orieneArmorSet.armorSet().legs)
-                .pattern("WWW")
+        ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.orieneArmorSet.armorSet().head)
+                .pattern("RCR")
                 .pattern("R R")
-                .input('W', ItemTags.WOOL)
                 .input('R', Items.LEATHER)
+                .input('C', Items.COBBLESTONE)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "oriene_head"));
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.orieneArmorSet.armorSet().chest)
-                .pattern("R R")
-                .pattern("WRW")
+                .pattern("C C")
+                .pattern("RRR")
                 .pattern("WWW")
                 .input('W', ItemTags.WOOL)
                 .input('R', Items.LEATHER)
+                .input('C', Items.COBBLESTONE)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "oriene_chest"));
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.orieneArmorSet.armorSet().legs)
-                .pattern("WRW")
+                .pattern("CRC")
                 .pattern("R R")
                 .pattern("W W")
                 .input('W', ItemTags.WOOL)
                 .input('R', Items.LEATHER)
+                .input('C', Items.COBBLESTONE)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "oriene_legs"));
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.orieneArmorSet.armorSet().feet)
                 .pattern("W W")
                 .pattern("R R")
-                .input('W', ItemTags.WOOL)
-                .input('R', Items.LEATHER)
+                .input('W', Items.LEATHER)
+                .input('R', Items.COBBLESTONE)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "oriene_feet"));
 

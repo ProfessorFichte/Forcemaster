@@ -12,29 +12,18 @@ import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
-import net.minecraft.util.Identifier;
 import net.more_rpg_classes.client.particle.CustomSpellExplosionParticle;
 import net.more_rpg_classes.client.particle.GroundParticle;
 import net.spell_engine.api.effect.CustomModelStatusEffect;
 import net.spell_engine.api.effect.CustomParticleStatusEffect;
-import net.spell_engine.api.item.armor.Armor;
-import net.spell_engine.api.render.CustomModels;
-
-import java.util.List;
+import net.spell_engine.rpg_series.item.Armor;
 import java.util.function.Supplier;
 
-import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
 
 public class ForcemasterClient{
 
     public static void init() {
-
-        CustomModels.registerModelIds(List.of(
-                Identifier.of(MOD_ID, "projectile/barqesna_projectile"),
-                Identifier.of(MOD_ID, "projectile/fist_projectile"),
-                ArcaneOverDriveRenderer.modelId
-        ));
 
         registerArmorRenderer(Armors.orieneArmorSet.armorSet(), CustomArmorRenderer::oriene_armor);
         registerArmorRenderer(Armors.phaslebArmorSet.armorSet(), CustomArmorRenderer::phasleb_armor);

@@ -6,9 +6,6 @@ import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
-import net.minecraft.util.Identifier;
-import net.spell_engine.api.item.SpellBooks;
-
 import java.util.HashMap;
 
 public class ForcemasterItems {
@@ -30,8 +27,6 @@ public class ForcemasterItems {
 
 
     public static void registerModItems(){
-
-        SpellBooks.createAndRegister(Identifier.of(ForcemasterClassMod.MOD_ID,"forcemaster"), ForcemasterGroup.FORCEMASTER_KEY);
         ItemGroupEvents.modifyEntriesEvent(ForcemasterGroup.FORCEMASTER_KEY).register((content) -> {
         });
 

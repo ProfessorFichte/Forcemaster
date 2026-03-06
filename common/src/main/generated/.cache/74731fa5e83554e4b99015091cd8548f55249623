@@ -1,9 +1,8 @@
-// 1.21.1	2026-01-18T13:40:04.1401866	Forcemaster Class Mod/Spell Generator
-3bd6940592747b964edd4adf650de76187c14d54 data\forcemaster_rpg\spell\stonehand.json
-f7c7a9de4200f011ffcd8374792449e54e1e4867 data\forcemaster_rpg\spell\asal.json
-5775310621351c5f4c77ed0cac43157ff051f2ac data\forcemaster_rpg\spell\belial_smashing.json
-f052aabf50613cb28479847046443dcb58417b53 data\forcemaster_rpg\spell\knuckle_knockup.json
-cf92f6a68fdeb6dbf28e5577a8ebdbaadb1dba1e data\forcemaster_rpg\spell\improved_burstcrack.json
-ce5f2aef766a9b378d1c563439efb87f87ba2a65 data\forcemaster_rpg\spell\nen_focus.json
-027aff230d2b57001962f4e60be87518cbcbc1e2 data\forcemaster_rpg\spell\burstcrack.json
-488fad6f200e9a2b3875522620136afca0007974 data\forcemaster_rpg\spell\knuckle_arcane_overflow.json
+// 1.21.1	2026-03-06T23:31:37.4609224	Forcemaster Class Mod/Spell Generator
+02d588c2f28ee25d54b85c9f4287f2bf6b4cbb0b data\forcemaster_rpg\spell\stonehand.json
+b014df565d01ac6d4c5715b6966dcb808b95e4c9 data\forcemaster_rpg\spell\asal.json
+5ffe5eefff30937fad287e4a7482636dbafa57f3 data\forcemaster_rpg\spell\belial_smashing.json
+adf7a40598cff9c57e8726e986f8a8c8eb31c5bc data\forcemaster_rpg\spell\improved_belial_smashing.json
+caaa23ea213589a5da768414072ac2da16472347 data\forcemaster_rpg\spell\nen_focus.json
+85256358747630317337c82cc028e8a0507c4639 data\forcemaster_rpg\spell\burstcrack.json
+1856edacd09b3fe1b765bc7919c5cccc39d45a1f data\forcemaster_rpg\spell\knuckle_arcane_overflow.json

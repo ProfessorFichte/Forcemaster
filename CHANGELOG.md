@@ -1,3 +1,14 @@
+# 2.6.0 - 1.21.1
+**Update to use Spell Engine 1.9.0**
+- DISCLAIMER: All spell books and spell scrolls will be reset, due to major API changes.
+- The Forcemaster Spell Book now offers 3 spells only, to match other classes
+-  **Burstcrack** is now the Weapon Skill for Knuckles.
+- Slightly Nerfed Burstcrack damage numbers
+- Stonehand is now the Tier 2 spell
+- The Billporon Armor Set now reduces the cooldown of Belial Smashing
+- Technically changed Belial Smashing & Asal to deliver melee hits
+- Changed the Oriene Armor Recipes
+
 # 2.5.5 - 1.21.1
 - fix broken item models
 - add Spell Binding description for Forcemaster Spell Book

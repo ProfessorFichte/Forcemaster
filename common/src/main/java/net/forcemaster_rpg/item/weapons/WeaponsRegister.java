@@ -3,6 +3,7 @@ package net.forcemaster_rpg.item.weapons;
 import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.ForcemasterGroup;
+import net.forcemaster_rpg.spell.ForcemasterSpells;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -13,13 +14,17 @@ import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.more_rpg_classes.custom.MoreSpellSchools;
+import net.more_rpg_classes.custom.MrpgLibSpells;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
-import net.spell_engine.api.item.Equipment;
-import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_engine.api.spell.container.SpellContainers;
+import net.spell_engine.rpg_series.datagen.WeaponSkills;
+import net.spell_engine.rpg_series.item.Equipment;
+import net.spell_engine.rpg_series.item.Weapon;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -66,7 +71,9 @@ public class WeaponsRegister {
 
     //KNUCKLES
     private static Weapon.Entry knuckle(String name, Weapon.CustomMaterial material, float damage) {
-        return entry(name, material, KnuckleItem::new, new WeaponConfig(damage, knuckle_attackSpeed), Equipment.WeaponType.SWORD);
+        return entry(name, material, KnuckleItem::new, new WeaponConfig(damage, knuckle_attackSpeed), Equipment.WeaponType.SWORD)
+                .spellContainer(SpellContainers.forMeleeWeapon().withSpellId(ForcemasterSpells.burstcrack.id())
+                        .withAdditionalSpell(List.of(ForcemasterSpells.knuckle_arcane_overflow.id().toString())));
     }
 
     public static final Weapon.Entry wooden_knuckle = knuckle("wooden_knuckle",
@@ -145,12 +152,14 @@ public class WeaponsRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.GOLD_BLOCK)),7.0F)
                     .translatedName("Federhorn Knuckle")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
+                    .withAdditionalSpell(ForcemasterSpells.nen_focus.id().toString())
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of(5, "divine"));
             knuckle("unique_knuckle_1",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_BLOCK)),7.0F)
                     .translatedName("Knuckle of Madness")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
+                    .withAdditionalSpell(MrpgLibSpells.carve_melee.id().toString())
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of(5, "crystal"));
         }
@@ -159,12 +168,14 @@ public class WeaponsRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)),7.0F)
                     .translatedName("Wyrm's Claw")
                     .attribute(armorAddition(3.0F))
+                    .withAdditionalSpell("loot_n_explore:dragonclaw")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .rarity = Rarity.RARE;
             knuckle( "elder_guardian_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)),7.0F)
                     .translatedName("Fist of Tides")
                     .attribute(armorAddition(3.0F))
+                    .withAdditionalSpell("loot_n_explore:waterbomb")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;
@@ -172,6 +183,7 @@ public class WeaponsRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)),7.0F)
                     .translatedName("Wither's Bash")
                     .attribute(armorAddition(3.0F))
+                    .withAdditionalSpell("loot_n_explore:wither_pulse")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;
@@ -179,6 +191,7 @@ public class WeaponsRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)),7.0F)
                     .translatedName("Glacial Fist")
                     .attribute(armorAddition(3.0F))
+                    .withAdditionalSpell("loot_n_explore:avalanche")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;

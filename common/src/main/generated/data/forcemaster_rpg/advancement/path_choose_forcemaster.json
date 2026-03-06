@@ -3,7 +3,7 @@
   "criteria": {
     "book": {
       "conditions": {
-        "spell_pool": "forcemaster_rpg:forcemaster"
+        "spell_pool": "forcemaster_rpg:spell_book/forcemaster"
       },
       "trigger": "spell_engine:spell_book_creation"
     }
@@ -16,7 +16,10 @@
     "frame": "task",
     "hidden": false,
     "icon": {
-      "id": "forcemaster_rpg:forcemaster_spell_book"
+      "components": {
+        "spell_engine:item_model": "forcemaster_rpg:item/spell_scroll/forcemaster"
+      },
+      "id": "spell_engine:spell_scroll"
     },
     "show_toast": true,
     "title": {

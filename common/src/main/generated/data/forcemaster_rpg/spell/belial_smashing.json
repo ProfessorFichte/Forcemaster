@@ -1,11 +1,9 @@
 {
   "school": "spell_power:arcane",
-  "range": 8.5,
   "tier": 3,
   "learn": {},
   "active": {},
   "release": {
-    "animation": "forcemaster_rpg:fist_rush",
     "particles": [
       {
         "particle_id": "spell_engine:smoke_large",
@@ -17,77 +15,57 @@
         "color_rgba": 4294967295,
         "follow_entity": true
       }
-    ],
-    "sound": {
-      "id": "minecraft:entity.generic.explode",
-      "volume": 0.35
-    }
+    ]
   },
   "target": {
-    "type": "AIM",
-    "aim": {
-      "sticky": true
+    "type": "NONE"
+  },
+  "deliver": {
+    "type": "MELEE",
+    "melee": {
+      "allow_airborne": false,
+      "attacks": [
+        {
+          "attack_speed_multiplier": 1.2,
+          "delay": 0.1,
+          "additional_strikes": 8,
+          "additional_strike_delay": 0.15,
+          "additional_hits_on_same_target": false,
+          "forward_momentum": 3.0,
+          "movement_slipperiness": 0.2,
+          "hitbox": {
+            "width": 0.5,
+            "height": 0.5,
+            "arc": 160.0
+          },
+          "animation": {
+            "id": "forcemaster_rpg:fist_rush"
+          },
+          "swing_sound": {
+            "id": "spell_engine:weapon_hammer_swing"
+          },
+          "impact_sound": {
+            "id": "forcemaster_rpg:knuckle_attack"
+          }
+        }
+      ]
     }
   },
   "impacts": [
     {
-      "action": {
-        "type": "CUSTOM",
-        "custom": {
-          "intent": "HARMFUL",
-          "handler": "more_rpg_classes:rush_forward_to_target"
-        }
-      }
-    },
-    {
+      "school": "spell_power:arcane",
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.75,
-          "knockback": 0.5
-        }
-      },
-      "particles": [
-        {
-          "particle_id": "spell_engine:smoke_large",
-          "origin": "CENTER",
-          "shape": "SPHERE",
-          "count": 15.0,
-          "min_speed": 0.1,
-          "max_speed": 0.3,
-          "color_rgba": 4294967295
-        }
-      ],
-      "sound": {
-        "id": "forcemaster_rpg:knuckle_attack"
-      }
-    },
-    {
-      "school": "spell_power:physical_melee",
-      "action": {
-        "type": "DAMAGE",
-        "damage": {
-          "spell_power_coefficient": 0.5,
+          "spell_power_coefficient": 0.3,
           "knockback": 0.0
-        }
-      }
-    },
-    {
-      "action": {
-        "type": "STATUS_EFFECT",
-        "status_effect": {
-          "effect_id": "forcemaster_rpg:arcane_overflow",
-          "amplifier": 1,
-          "amplifier_cap": 5,
-          "apply_mode": "ADD"
         }
       }
     }
   ],
   "cost": {
-    "exhaust": 0.5,
     "cooldown": {
-      "duration": 22.0
+      "duration": 23.0
     }
   }
 }

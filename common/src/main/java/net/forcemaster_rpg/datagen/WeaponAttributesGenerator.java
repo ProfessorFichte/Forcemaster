@@ -7,7 +7,7 @@ import net.minecraft.data.DataOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.DataWriter;
 import net.minecraft.registry.RegistryWrapper;
-import net.spell_engine.api.item.weapon.Weapon;
+import net.spell_engine.rpg_series.item.Weapon;
 
 import java.nio.file.Path;
 import java.util.ArrayList;

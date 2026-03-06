@@ -1,17 +1,21 @@
 {
-  "school": "spell_power:arcane",
+  "school": "spell_power:physical_melee",
   "range": 5.5,
-  "tier": 2,
+  "tier": 1,
   "learn": {},
   "active": {
     "cast": {
-      "duration": 1.0,
-      "animation": "forcemaster_rpg:burstcrack_cast",
-      "movement_speed": 0.5
+      "duration": 0.5,
+      "animation": {
+        "id": "forcemaster_rpg:burstcrack_cast"
+      },
+      "movement_speed": 0.25
     }
   },
   "release": {
-    "animation": "forcemaster_rpg:burstcrack_release",
+    "animation": {
+      "id": "forcemaster_rpg:burstcrack_release"
+    },
     "particles": [
       {
         "particle_id": "spell_engine:smoke_medium",
@@ -46,25 +50,6 @@
   },
   "impacts": [
     {
-      "target_modifiers": [
-        {
-          "conditions": [
-            {
-              "entity_type": "#c:bosses"
-            }
-          ],
-          "execute": "DENY"
-        }
-      ],
-      "action": {
-        "type": "CUSTOM",
-        "custom": {
-          "intent": "HARMFUL",
-          "handler": "more_rpg_classes:knock_up"
-        }
-      }
-    },
-    {
       "action": {
         "type": "DAMAGE",
         "damage": {
@@ -87,21 +72,40 @@
       }
     },
     {
-      "school": "spell_power:physical_melee",
+      "school": "spell_power:arcane",
       "action": {
         "type": "DAMAGE",
         "damage": {
-          "spell_power_coefficient": 0.5,
+          "spell_power_coefficient": 0.2,
           "knockback": 0.0
+        }
+      }
+    },
+    {
+      "target_modifiers": [
+        {
+          "conditions": [
+            {
+              "entity_type": "#c:bosses"
+            }
+          ],
+          "execute": "DENY"
+        }
+      ],
+      "action": {
+        "type": "CUSTOM",
+        "custom": {
+          "intent": "HARMFUL",
+          "handler": "more_rpg_classes:knock_up"
         }
       }
     }
   ],
   "cost": {
-    "exhaust": 0.3,
     "cooldown": {
-      "duration": 15.0,
-      "haste_affected": false
+      "group": "weapon",
+      "attempt_duration": 1.5,
+      "duration": 15.0
     }
   }
 }

@@ -2,19 +2,19 @@
   "type": "minecraft:crafting_shaped",
   "category": "equipment",
   "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
     "R": {
       "item": "minecraft:leather"
-    },
-    "W": {
-      "tag": "minecraft:wool"
     }
   },
   "pattern": [
-    "WWW",
+    "RCR",
     "R R"
   ],
   "result": {
     "count": 1,
-    "id": "forcemaster_rpg:oriene_legs"
+    "id": "forcemaster_rpg:oriene_head"
   }
 }
