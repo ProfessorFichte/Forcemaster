@@ -66,6 +66,7 @@ public class ForcemasterClassMod implements ModInitializer {
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
 			tweaksConfig.value.ignore_items_required_mods = true;
 		}
+
 		Effects.register();
 		effectsConfig.refresh();
 		Particles.register();
@@ -78,6 +79,7 @@ public class ForcemasterClassMod implements ModInitializer {
 		registerItemGroup();
 		ModSounds.register();
 		tweaksConfig.save();
+		effectsConfig.save();
 	}
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);

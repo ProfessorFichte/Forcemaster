@@ -1,3 +1,6 @@
+1.2.5 - 1.20.1
+- If values in the effect config got changed, it did not work, this was fixed
+
 1.2.4 - 1.20.1
 - backport new knuckle inventory textures
 - add lamb dynamic lights glow compat for some knuckle textures
