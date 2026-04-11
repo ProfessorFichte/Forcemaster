@@ -1,3 +1,7 @@
+1.2.6 - 1.20.1
+- again fix Effects Config and some other values
+- new Effects config version -> effects_v4
+
 1.2.5 - 1.20.1
 - If values in the effect config got changed, it did not work, this was fixed
 

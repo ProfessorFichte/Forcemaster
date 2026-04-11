@@ -38,7 +38,7 @@ public class ForcemasterClassMod implements ModInitializer {
 			.sanitize(true)
 			.build();
 	public static ConfigManager<EffectsConfig> effectsConfig = new ConfigManager<EffectsConfig>
-			("effects_v3", new EffectsConfig())
+			("effects_v4", new EffectsConfig())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
@@ -63,12 +63,11 @@ public class ForcemasterClassMod implements ModInitializer {
 	public void onInitialize() {
 		itemConfig.refresh();
 		tweaksConfig.refresh();
+		effectsConfig.refresh();
 		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
 			tweaksConfig.value.ignore_items_required_mods = true;
 		}
-
 		Effects.register();
-		effectsConfig.refresh();
 		Particles.register();
 		ForcemasterItems.registerModItems();
 		ForcemasterGroup.registerItemGroups();
