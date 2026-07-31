@@ -1,6 +1,9 @@
-// 1.21.1	2026-03-06T23:31:37.4609224	Forcemaster Class Mod/Spell Generator
+// 1.21.1	2026-07-30T16:37:17.4182529	Forcemaster Class Mod/Spell Generator
+86e1c0fdfb26f2e039e9c18238ebda69d7421532 data\forcemaster_rpg\spell\nen_sphere.json
 02d588c2f28ee25d54b85c9f4287f2bf6b4cbb0b data\forcemaster_rpg\spell\stonehand.json
 b014df565d01ac6d4c5715b6966dcb808b95e4c9 data\forcemaster_rpg\spell\asal.json
+e73c0f0a8c19273cd1bcd0fe88277aa071626279 data\forcemaster_rpg\spell\sonic_hand.json
+c8ec6cac59ac2959c444cac5c9fdabb8aba3f6fa data\forcemaster_rpg\spell\baraqijal_esna.json
 5ffe5eefff30937fad287e4a7482636dbafa57f3 data\forcemaster_rpg\spell\belial_smashing.json
 adf7a40598cff9c57e8726e986f8a8c8eb31c5bc data\forcemaster_rpg\spell\improved_belial_smashing.json
 caaa23ea213589a5da768414072ac2da16472347 data\forcemaster_rpg\spell\nen_focus.json

@@ -17,8 +17,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Random;
 
-import static net.forcemaster_rpg.ForcemasterClassMod.tweaksConfig;
-
 ///UNUSED MIXIN ARCHIVED FOR DOCUMENTATION
 @Mixin(LivingEntity.class)
 public class LivingEntityMixin {

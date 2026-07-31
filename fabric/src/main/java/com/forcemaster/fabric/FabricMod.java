@@ -11,5 +11,6 @@ public final class FabricMod implements ModInitializer {
         ForcemasterClassMod.registerSounds();
         ForcemasterClassMod.registerEffects();
         ForcemasterClassMod.registerParticles();
+        ForcemasterClassMod.registerEntities();
     }
 }

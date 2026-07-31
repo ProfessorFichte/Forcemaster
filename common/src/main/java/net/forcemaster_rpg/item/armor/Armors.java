@@ -1,7 +1,5 @@
 package net.forcemaster_rpg.item.armor;
 
-import net.fabricmc.loader.api.FabricLoader;
-import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ArmorItem;

@@ -10,9 +10,6 @@ import net.more_rpg_classes.datagen.SmithingRecipeGenerator;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
-/**
- * Generates all smithing transform recipes for Forcemaster RPG
- */
 public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
 
     public ForcemasterSmithingRecipes(FabricDataOutput output) {
@@ -26,9 +23,6 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
 
     @Override
     public void generate() {
-        // ====================
-        // KNUCKLE UPGRADES - NETHERITE
-        // ====================
         createSimpleSmithingRecipe(
                 "netherite_knuckle",
                 WeaponsRegister.diamond_knuckle.item(),
@@ -37,9 +31,6 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                 WeaponsRegister.netherite_knuckle.item()
         );
 
-        // ====================
-        // KNUCKLE UPGRADES - BETTERNETHER (Ruby)
-        // ====================
         var rubyKnuckle = WeaponsRegister.entries.stream()
                 .filter(e -> e.id().getPath().equals("ruby_knuckle"))
                 .findFirst().map(e -> e.item()).orElse(null);
@@ -55,9 +46,6 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
             );
         }
 
-        // ====================
-        // KNUCKLE UPGRADES - LOOT N EXPLORE
-        // ====================
         var glacialKnuckle = WeaponsRegister.entries.stream()
                 .filter(e -> e.id().getPath().equals("glacial_knuckle"))
                 .findFirst().map(e -> e.item()).orElse(null);
@@ -118,9 +106,6 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
             );
         }
 
-        // ====================
-        // ARMOR UPGRADES - PHASLEB TO AKEN (Netherite)
-        // ====================
         createSimpleArmorSetUpgrade(
                 "smithing",
                 Armors.phaslebArmorSet.armorSet(),
@@ -129,11 +114,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                 Armors.akenArmorSet.armorSet()
         );
 
-        // ====================
-        // ARMOR UPGRADES - AKEN TO BILLPORON
-        // ====================
         if (Armors.billporonArmorSet != null) {
-            // From Aken to Billporon
             createSmithingTransformRecipe(
                     "smithing_billporon_head_aken_head",
                     (Item) Armors.akenArmorSet.armorSet().head,
@@ -167,9 +148,6 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "armory_rpgs"
             );
 
-            // ====================
-            // ARMOR UPGRADES - PHASLEB TO BILLPORON
-            // ====================
             createSmithingTransformRecipe(
                     "smithing_billporon_head_phasleb_head",
                     (Item) Armors.phaslebArmorSet.armorSet().head,

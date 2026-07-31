@@ -1,0 +1,104 @@
+{
+  "school": "spell_power:arcane",
+  "range": 20.0,
+  "tier": 3,
+  "learn": {},
+  "active": {
+    "cast": {
+      "duration": 0.4,
+      "animation": {
+        "id": "forcemaster_rpg:barq_esna_cast"
+      },
+      "sound": {
+        "id": "spell_engine:generic_arcane_casting"
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_ascend",
+          "origin": "FEET",
+          "shape": "WIDE_PIPE",
+          "count": 8.0,
+          "min_speed": 0.15,
+          "max_speed": 0.4,
+          "color_rgba": 4284940287
+        }
+      ]
+    }
+  },
+  "target": {
+    "type": "AIM",
+    "aim": {}
+  },
+  "deliver": {
+    "type": "PROJECTILE",
+    "projectile": {
+      "launch_properties": {
+        "velocity": 1.5,
+        "sound": {
+          "id": "spell_engine:generic_arcane_release"
+        }
+      },
+      "projectile": {
+        "homing_angle": 0.0,
+        "client_data": {
+          "light_level": 8,
+          "travel_particles": [
+            {
+              "particle_id": "forcemaster_rpg:barq_esna_flame",
+              "origin": "CENTER",
+              "shape": "LINE",
+              "count": 1.0,
+              "max_speed": 0.0
+            }
+          ],
+          "composite_model": {
+            "models": [
+              {
+                "fx": {
+                  "model_id": "forcemaster_rpg:spell_projectile/barqesna_projectile"
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  },
+  "impacts": [
+    {
+      "school": "spell_power:arcane",
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.25
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "forcemaster_rpg:barq_esna_flame",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 12.0,
+          "min_speed": 0.15,
+          "max_speed": 0.3
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "status_effect": {
+          "effect_id": "forcemaster_rpg:barq_esna",
+          "duration": 8.0,
+          "amplifier_power_multiplier": 0.2
+        }
+      }
+    }
+  ],
+  "cost": {
+    "exhaust": 12.0,
+    "cooldown": {
+      "duration": 18.0
+    }
+  }
+}

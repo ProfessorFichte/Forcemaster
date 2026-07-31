@@ -11,6 +11,18 @@
     {
       "id": "forcemaster_rpg:asal",
       "required": false
+    },
+    {
+      "id": "forcemaster_rpg:baraqijal_esna",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:sonic_hand",
+      "required": false
+    },
+    {
+      "id": "forcemaster_rpg:nen_sphere",
+      "required": false
     }
   ]
 }

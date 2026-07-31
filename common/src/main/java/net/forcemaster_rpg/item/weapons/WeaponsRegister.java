@@ -18,7 +18,6 @@ import net.more_rpg_classes.custom.MrpgLibSpells;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
 import net.spell_engine.api.spell.container.SpellContainers;
-import net.spell_engine.rpg_series.datagen.WeaponSkills;
 import net.spell_engine.rpg_series.item.Equipment;
 import net.spell_engine.rpg_series.item.Weapon;
 import net.spell_power.api.SpellSchools;
@@ -69,10 +68,9 @@ public class WeaponsRegister {
     private static final float T3_KNUCKLE_POWER = 5F;
     private static final float T4_KNUCKLE_POWER = 5.5F;
 
-    //KNUCKLES
     private static Weapon.Entry knuckle(String name, Weapon.CustomMaterial material, float damage) {
         return entry(name, material, KnuckleItem::new, new WeaponConfig(damage, knuckle_attackSpeed), Equipment.WeaponType.SWORD)
-                .spellContainer(SpellContainers.forMeleeWeapon().withSpellId(ForcemasterSpells.burstcrack.id())
+                .spellContainer(SpellContainers.forMeleeWeapon().withSpellId(MrpgLibSpells.burstcrack.id())
                         .withAdditionalSpell(List.of(ForcemasterSpells.knuckle_arcane_overflow.id().toString())));
     }
 
@@ -118,7 +116,6 @@ public class WeaponsRegister {
     private static final String ARSENAL = "arsenal";
     private static final String LNE = "loot_n_explore";
     private static final float lneWeaponSpellPower = 4.0F;
-    //Registration
     public static void register(Map<String,WeaponConfig> configs) {
         if (FabricLoader.getInstance().isModLoaded(BETTER_NETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
             var repair = ingredient("betternether:nether_ruby", FabricLoader.getInstance().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);

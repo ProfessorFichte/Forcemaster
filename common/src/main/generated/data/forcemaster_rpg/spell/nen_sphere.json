@@ -1,0 +1,111 @@
+{
+  "school": "spell_power:arcane",
+  "range": 14.0,
+  "tier": 3,
+  "learn": {},
+  "active": {
+    "cast": {
+      "duration": 2.5,
+      "type": "CHARGE",
+      "charge": {
+        "min_release_ratio": 0.25,
+        "bonus": {
+          "range_add": 10.0,
+          "power_modifier": {
+            "power_multiplier": 1.0
+          },
+          "effect_amplifier_add": 3
+        }
+      },
+      "animation": {
+        "id": "forcemaster_rpg:nen_sphere_cast"
+      },
+      "movement_speed": 0.15,
+      "sound": {
+        "id": "spell_engine:generic_arcane_casting"
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_ascend",
+          "origin": "LAUNCH_POINT",
+          "shape": "SPHERE",
+          "count": 6.0,
+          "min_speed": 0.1,
+          "max_speed": 0.25,
+          "color_rgba": 4284940287
+        }
+      ]
+    }
+  },
+  "release": {
+    "animation": {
+      "id": "forcemaster_rpg:nen_sphere_release"
+    },
+    "sound": {
+      "id": "spell_engine:generic_arcane_release"
+    }
+  },
+  "target": {
+    "type": "NONE"
+  },
+  "deliver": {
+    "type": "CUSTOM",
+    "custom": {
+      "handler": "forcemaster_rpg:nen_sphere"
+    }
+  },
+  "impacts": [
+    {
+      "school": "spell_power:arcane",
+      "action": {
+        "type": "DAMAGE",
+        "damage": {
+          "spell_power_coefficient": 0.7
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_burst",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 10.0,
+          "min_speed": 0.2,
+          "max_speed": 0.4,
+          "color_rgba": 4284940287
+        }
+      ]
+    },
+    {
+      "action": {
+        "type": "STATUS_EFFECT",
+        "apply_to_caster": true,
+        "status_effect": {
+          "effect_id": "forcemaster_rpg:arcane_overflow",
+          "duration": 8.0,
+          "amplifier": 1,
+          "amplifier_cap": 6,
+          "amplifier_cap_power_multiplier": 0.15,
+          "refresh_duration": false,
+          "apply_mode": "ADD"
+        }
+      },
+      "particles": [
+        {
+          "particle_id": "spell_engine:magic_arcane_decelerate",
+          "origin": "CENTER",
+          "shape": "SPHERE",
+          "count": 10.0,
+          "min_speed": 0.3,
+          "max_speed": 0.35,
+          "color_rgba": 4284940287
+        }
+      ]
+    }
+  ],
+  "cost": {
+    "exhaust": 14.0,
+    "cooldown": {
+      "duration": 22.0
+    }
+  }
+}

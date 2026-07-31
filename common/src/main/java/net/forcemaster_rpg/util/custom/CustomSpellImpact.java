@@ -12,4 +12,8 @@ public class CustomSpellImpact {
                 new FistWeaponOnlyStunImpact()
         );
     }
+
+    public static void registerCustomDeliveries() {
+        NenSphereDelivery.register();
+    }
 }

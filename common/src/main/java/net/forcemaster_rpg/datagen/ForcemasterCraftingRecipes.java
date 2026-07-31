@@ -19,9 +19,6 @@ import java.util.concurrent.CompletableFuture;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
-/**
- * Generates all crafting recipes (shaped and shapeless) for Forcemaster RPG
- */
 public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
 
     public ForcemasterCraftingRecipes(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
@@ -40,9 +37,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
 
     @Override
     public void generate(RecipeExporter exporter) {
-        // ====================
-        // KNUCKLES - Crafting
-        // ====================
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, WeaponsRegister.wooden_knuckle.item())
                 .pattern("W  ")
                 .pattern("WW ")
@@ -82,7 +76,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
                 .criterion(hasItem(Items.DIAMOND), conditionsFromItem(Items.DIAMOND))
                 .offerTo(exporter, Identifier.of(MOD_ID, "diamond_knuckle"));
 
-        // Aeternium Knuckle (BetterEnd)
         createConditionalShapedRecipe(exporter, "aeternium_knuckle",
                 RecipeCategory.COMBAT,
                 "forcemaster_rpg:aeternium_knuckle",
@@ -90,9 +83,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
                 'B', "betterend:aeternium_ingot",
                 "betterend");
 
-        // ====================
-        // ARMOR - Oriene Set
-        // ====================
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.orieneArmorSet.armorSet().head)
                 .pattern("RCR")
                 .pattern("R R")
@@ -126,9 +116,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "oriene_feet"));
 
-        // ====================
-        // ARMOR - Phasleb Set
-        // ====================
         ShapedRecipeJsonBuilder.create(RecipeCategory.COMBAT, (Item) Armors.phaslebArmorSet.armorSet().head)
                 .pattern("RRR")
                 .pattern("WTW")
@@ -164,10 +151,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
                 .input('R', Items.LEATHER)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "phasleb_feet"));
-
-        // ====================
-        // SPELL BOOK
-        // ====================
 
         var forcemasterBook = getOrFallback(Identifier.of(MOD_ID, "forcemaster_spell_book"), Items.WRITTEN_BOOK);
         ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, forcemasterBook)

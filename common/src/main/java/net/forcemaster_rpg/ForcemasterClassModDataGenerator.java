@@ -56,7 +56,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ForcemasterVanillaAdvancementProvider::new);
 		pack.addProvider(LangGenerator::new);
 		pack.addProvider(SpellTagGenerator::new);
-		// Recipe providers
 		pack.addProvider(ForcemasterCraftingRecipes::new);
 		pack.addProvider(ForcemasterSmithingRecipes::new);
 		pack.addProvider(ConditionalCraftingRecipes::new);
@@ -98,23 +97,19 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 
 		@Override
 		public void generateTranslations(RegistryWrapper.WrapperLookup wrapperLookup, TranslationBuilder translationBuilder) {
-			// Item Group
 			translationBuilder.add("itemGroup.forcemaster_rpg.general", "Forcemaster");
 
-			// Spell Book and Scroll
 			translationBuilder.add("item.forcemaster_rpg.spell_book/forcemaster", "Force Mastery");
 			translationBuilder.add("item.forcemaster_rpg.spell_book/forcemaster.spell_binding.description",
 					"Spell Book of Forcemasters, using martial weapons, the knuckle. Dealing melee and arcane damage with the power of the force.\n- Strengths: Fast attacks dealing physical and magical damage.\n- Weaknesses: Ranged Enemies\n- Equipment: Light Armor");
 			translationBuilder.add("item.forcemaster_rpg.spell_scroll/forcemaster", "Forcemaster Skill Scroll");
 
-			// Weapons
 			WeaponsRegister.entries.forEach(entry -> {
 				if (entry.item() != null && entry.translatedName() != null && !entry.translatedName().isEmpty()) {
 					translationBuilder.add(entry.item(), entry.translatedName());
 				}
 			});
 
-			// Armors
 			Armors.entries.forEach(entry -> {
 				var set = entry.armorSet();
 				if (set.headTranslation != null && !set.headTranslation.isEmpty()) {
@@ -131,7 +126,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 				}
 			});
 
-			// Effects
 			ForcemasterEffects.entries.forEach(entry -> {
 				translationBuilder.add(entry.effect.getTranslationKey(), entry.title);
 				if (!entry.description.isEmpty()) {
@@ -139,21 +133,17 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 				}
 			});
 
-			// Spells
 			ForcemasterSpells.entries.forEach(entry -> {
 				var id = entry.id();
 				translationBuilder.add("spell." + id.getNamespace() + "." + id.getPath() + ".name", entry.title());
 				translationBuilder.add("spell." + id.getNamespace() + "." + id.getPath() + ".description", entry.description());
 			});
 
-			// Equipment Sets
 			translationBuilder.add("equipment_set.forcemaster_rpg.billporon", "Billporon's Focus");
 
-			// Tags
 			translationBuilder.add("tag.item.forcemaster_rpg.knuckles", "Knuckles");
 			translationBuilder.add("tag.item.forcemaster_rpg.fist_weapons", "Fist Weapons");
 
-			// Advancements
 			for (var entry : ForcemasterAdvancementDataGen.getEntries()) {
 				translationBuilder.add(entry.titleKey(), entry.title());
 				translationBuilder.add(entry.descriptionKey(), entry.description());

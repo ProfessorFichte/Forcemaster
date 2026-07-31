@@ -8,6 +8,7 @@ import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.config.Default;
 import net.forcemaster_rpg.config.TweaksConfig;
 import net.forcemaster_rpg.effect.ForcemasterEffects;
+import net.forcemaster_rpg.entity.ForcemasterEntities;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.item.ForcemasterItems;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
@@ -60,6 +61,7 @@ public class ForcemasterClassMod{
 		}
 		effectsConfig.refresh();
 		CustomSpellImpact.registerCustomImpacts();
+		CustomSpellImpact.registerCustomDeliveries();
 	}
 
 	public static void registerItems() {
@@ -93,6 +95,9 @@ public class ForcemasterClassMod{
 	}
 	public static void registerParticles() {
 		Particles.register();
+	}
+	public static void registerEntities() {
+		ForcemasterEntities.registerEntities();
 	}
 	public static Identifier id(String path) {
 		return Identifier.of(MOD_ID, path);

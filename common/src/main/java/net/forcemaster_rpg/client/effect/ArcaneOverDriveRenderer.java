@@ -18,7 +18,7 @@ public class ArcaneOverDriveRenderer implements CustomModelStatusEffect.Renderer
     public static final Identifier modelId = Identifier.of(MOD_ID, "spell_effect/arcane_fuse");
 
     @Override
-    public void renderEffect(int amplifier, LivingEntity livingEntity, float delta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
+    public void renderEffect(long appliedAtWorldTime, int amplifier, LivingEntity livingEntity, float delta, MatrixStack matrixStack, VertexConsumerProvider vertexConsumers, int light) {
         matrixStack.push();
         matrixStack.translate(0, 0.51, 0);
         CustomModels.render(RENDER_LAYER, MinecraftClient.getInstance().getItemRenderer(), modelId, matrixStack, vertexConsumers, light, livingEntity.getId());

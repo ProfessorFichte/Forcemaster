@@ -1,9 +1,7 @@
 package net.forcemaster_rpg.client.armor;
 
-import mod.azure.azurelibarmor.common.render.AzRendererConfig;
 import mod.azure.azurelibarmor.common.render.armor.AzArmorRenderer;
 import mod.azure.azurelibarmor.common.render.armor.AzArmorRendererConfig;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;

@@ -129,7 +129,6 @@ public class ForcemasterAdvancementDataGen implements DataProvider {
     private JsonObject createAdvancementJson(Entry entry) {
         JsonObject advancement = new JsonObject();
 
-        // Display
         JsonObject display = new JsonObject();
         JsonObject icon = new JsonObject();
         String iconName = entry.iconItemName().contains(":") ? entry.iconItemName() : MOD_ID + ":" + entry.iconItemName();
@@ -160,12 +159,10 @@ public class ForcemasterAdvancementDataGen implements DataProvider {
         }
         advancement.add("display", display);
 
-        // Parent
         if (entry.parent() != null) {
             advancement.addProperty("parent", entry.parent().toString());
         }
 
-        // Criteria
         JsonObject criteria = getCriteriaForType(entry.criteriaType(), entry.criteriaValue());
         advancement.add("criteria", criteria);
 

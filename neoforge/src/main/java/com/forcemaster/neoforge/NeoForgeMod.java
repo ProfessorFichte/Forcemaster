@@ -27,5 +27,8 @@ public final class NeoForgeMod {
         event.register(RegistryKeys.PARTICLE_TYPE, reg -> {
             Particles.register();
         });
+        event.register(RegistryKeys.ENTITY_TYPE, reg -> {
+            ForcemasterClassMod.registerEntities();
+        });
     }
 }

@@ -2,10 +2,8 @@ package net.forcemaster_rpg.spell;
 
 import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.sounds.ModSounds;
-import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.more_rpg_classes.effect.MRPGCEffects;
 import net.spell_engine.api.datagen.SpellBuilder;
 import net.spell_engine.api.spell.ExternalSpellSchools;
 import net.spell_engine.api.spell.Spell;
@@ -22,7 +20,6 @@ import net.spell_power.api.SpellSchools;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.ArrayList;
-import java.util.EnumSet;
 import java.util.Iterator;
 import java.util.List;
 
@@ -117,65 +114,6 @@ public class ForcemasterSpells {
         return triggers;
     }
 
-    /// WEAPON SKILL
-    public static final Entry burstcrack = add(burstcrack());
-    private static Entry burstcrack() {
-        var id = Identifier.of(MOD_ID, "burstcrack");
-        var title = "Burstcrack";
-        var description = "Unleashes a shockwave around you, knocking up enemies and dealing physical {damage_1} & {damage_2} arcane-damage.";
-        var spell = SpellBuilder.createWeaponSpell();
-        spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
-        spell.range = 5.5F;
-
-        spell.active.cast.movement_speed = 0.25F;
-        spell.active.cast.duration = 0.5F;
-        spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:burstcrack_cast");
-
-        spell.release.animation = PlayerAnimation.of("forcemaster_rpg:burstcrack_release");
-        spell.release.sound = Sound.withVolume(Identifier.of("entity.generic.explode"), 0.4F);
-        spell.release.particles = new ParticleBatch[]{
-                new ParticleBatch(SpellEngineParticles.smoke_medium.id().toString(),
-                        ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.CENTER,
-                        50, 0.2F, 0.3F)
-        };
-        spell.release.particles_scaled_with_ranged = new ParticleBatch[]{
-                new ParticleBatch(SpellEngineParticles.area_effect_658.id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.GROUND,
-                        1, 0, 0)
-                        .scale(0.5F)
-                        .color(ORANGE.toRGBA())
-        };
-
-        spell.target.type = Spell.Target.Type.AREA;
-        spell.target.area = new Spell.Target.Area();
-        spell.target.area.angle_degrees = 360;
-
-        var damage = SpellBuilder.Impacts.damage(0.5F, 0F);
-        damage.particles = new ParticleBatch[]{
-                new ParticleBatch(SpellEngineParticles.smoke_medium.id().toString(),
-                        ParticleBatch.Shape.PIPE, ParticleBatch.Origin.CENTER,
-                        20, 0.1F, 3.0F)
-        };
-        damage.sound = new Sound("forcemaster_rpg:knuckle_attack");
-
-        var damageArcane = SpellBuilder.Impacts.damage(0.2F, 0F);
-        damageArcane.school = SpellSchools.ARCANE;
-
-        var custom = new Spell.Impact();
-        bossDeny(custom);
-        custom.action = new Spell.Impact.Action();
-        custom.action.custom = new Spell.Impact.Action.Custom();
-        custom.action.type = Spell.Impact.Action.Type.CUSTOM;
-        custom.action.custom.intent = SpellTarget.Intent.HARMFUL;
-        custom.action.custom.handler = "more_rpg_classes:knock_up";
-
-        spell.impacts = List.of(damage, damageArcane, custom);
-        SpellBuilder.Cost.cooldown(spell, 15);
-        spell.cost.cooldown.attempt_duration = 1.5F;
-
-        return new Entry(id, spell, title, description, null);
-    }
-    ///PASSIVES
     public static final Entry knuckle_arcane_overflow = add(knuckle_arcane_overflow());
     private static Entry knuckle_arcane_overflow() {
         var id = Identifier.of(MOD_ID, "knuckle_arcane_overflow");
@@ -270,7 +208,6 @@ public class ForcemasterSpells {
 
         return new Entry(id, spell, title, description, null);
     }
-    ///ACTIVES
     public static Entry stonehand = add(stonehand());
     private static Entry stonehand() {
         var id = Identifier.of(MOD_ID, "stonehand");
@@ -442,7 +379,177 @@ public class ForcemasterSpells {
 
         return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
     }
-    /// MODIFIER
+    public static final Entry baraqijal_esna = add(baraqijal_esna());
+    private static Entry baraqijal_esna() {
+        var id = Identifier.of(MOD_ID, "baraqijal_esna");
+        var effect = ForcemasterEffects.BARQ_ESNA;
+        var title = "Baraqijal Esna";
+        var description = "Launches a bolt of Baraqijal's light, dealing {damage} arcane damage and afflicting the target with " + effect.title + " for {effect_duration} sec, gnawing at their health over time and lowering their resistance to arcane magic.";
+        var spell = activeSpellBase();
+        spell.school = SpellSchools.ARCANE;
+        spell.tier = 3;
+        spell.range = 20;
+
+        spell.active.cast.duration = 0.4F;
+        spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:barq_esna_cast");
+        spell.active.cast.sound = new Sound("spell_engine:generic_arcane_casting");
+        spell.active.cast.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.MagicParticles.get(
+                        SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                        SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
+                        ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
+                        8, 0.15F, 0.4F).color(Color.ARCANE.toRGBA())
+        };
+
+        SpellBuilder.Target.aim(spell);
+
+        spell.deliver.type = Spell.Delivery.Type.PROJECTILE;
+        spell.deliver.projectile = new Spell.Delivery.ShootProjectile();
+        spell.deliver.projectile.launch_properties.velocity = 1.5F;
+        spell.deliver.projectile.launch_properties.sound = Sound.of(SpellEngineSounds.GENERIC_ARCANE_RELEASE.id());
+        var projectile = new Spell.ProjectileData();
+        projectile.homing_angle = 0F;
+        projectile.client_data = new Spell.ProjectileData.Client();
+        projectile.client_data.light_level = 8;
+        projectile.client_data.composite_model = SpellBuilder.ProjectileModels.single("forcemaster_rpg:spell_projectile/barqesna_projectile");
+        projectile.client_data.travel_particles = new ParticleBatch[]{
+                new ParticleBatch(Identifier.of(MOD_ID, "barq_esna_flame").toString(),
+                        ParticleBatch.Shape.LINE, ParticleBatch.Origin.CENTER,
+                        1, 0, 0)
+        };
+        spell.deliver.projectile.projectile = projectile;
+
+        var damage = SpellBuilder.Impacts.damage(0.25F);
+        damage.school = SpellSchools.ARCANE;
+        damage.particles = new ParticleBatch[]{
+                new ParticleBatch(Identifier.of(MOD_ID, "barq_esna_flame").toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        12, 0.15F, 0.3F)
+        };
+
+        var debuff = SpellBuilder.Impacts.effectSet(effect.id.toString(), 8, 0);
+        debuff.action.status_effect.amplifier_power_multiplier = 0.2F;
+
+        spell.impacts = List.of(damage, debuff);
+        configureCooldown(spell, 18, 12F);
+
+        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+    }
+    public static final Entry sonic_hand = add(sonic_hand());
+    private static Entry sonic_hand() {
+        var id = Identifier.of(MOD_ID, "sonic_hand");
+        var title = "Sonic Hand";
+        var description = "Unleashes 5 blindingly fast fist strikes, each dealing {damage_1} physical & {damage_2} arcane damage.";
+        var spell = SpellBuilder.createSpellActive();
+        spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
+        spell.tier = 4;
+
+        SpellBuilder.Casting.instant(spell);
+        SpellBuilder.Target.none(spell);
+
+        spell.release.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        spell.release.sound = Sound.of(ModSounds.SONIC_HAND.id());
+        spell.release.particles = new ParticleBatch[]{
+                new ParticleBatch(Identifier.of(MOD_ID, "sonichand_vacuum").toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        1, 0, 0).scale(1.2F)
+        };
+
+        var attack = new Spell.Delivery.Melee.Attack();
+        attack.attack_speed_multiplier = 1.8F;
+        attack.delay = 0.05F;
+        attack.hitbox = new Spell.Delivery.Melee.HitBox();
+        attack.hitbox.arc = 100;
+        attack.hitbox.height = 1.5F;
+        attack.hitbox.width = 1.5F;
+        attack.hitbox.length = 2.0F;
+
+        attack.additional_strikes = 4;
+        attack.additional_strike_delay = 0.08F;
+        attack.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        attack.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
+        attack.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
+        attack.particles = new ParticleBatch[]{
+                new ParticleBatch(Identifier.of(MOD_ID, "sonic_punch").toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        1, 0, 0)
+        };
+
+        var damagePhysical = SpellBuilder.Impacts.damage(0.6F, 0F);
+        var damageArcane = SpellBuilder.Impacts.damage(0.08F, 0F);
+        damageArcane.school = SpellSchools.ARCANE;
+
+        spell.impacts = List.of(damagePhysical, damageArcane);
+        SpellBuilder.Deliver.melee(spell, List.of(attack));
+        spell.deliver.melee.allow_airborne = false;
+
+        configureCooldown(spell, 22, 20F);
+        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+    }
+    public static final Entry nen_sphere = add(nen_sphere());
+    private static Entry nen_sphere() {
+        var id = Identifier.of(MOD_ID, "nen_sphere");
+        var effect = ForcemasterEffects.ARCANE_OVERFLOW;
+        var title = "Nen Sphere";
+        var description = "Charge a sphere of raw magic, then unleash it as a piercing beam. The longer you charge, the further and harder it strikes, dealing {damage} arcane damage and overloading you with " + effect.title + ", scaling with your charge.";
+        var spell = activeSpellBase();
+        spell.school = SpellSchools.ARCANE;
+        spell.tier = 3;
+        spell.range = 14;
+
+        var charge = SpellBuilder.Casting.charge(spell, 2.5F);
+        charge.min_release_ratio = 0.25F;
+        charge.bonus.range_add = 10F;
+        charge.bonus.effect_amplifier_add = 3;
+        charge.bonus.power_modifier = new Spell.Impact.Modifier();
+        charge.bonus.power_modifier.power_multiplier = 1.0F;
+
+        spell.active.cast.movement_speed = 0.15F;
+        spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:nen_sphere_cast");
+        spell.active.cast.sound = new Sound("spell_engine:generic_arcane_casting");
+        spell.active.cast.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.MagicParticles.get(
+                        SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                        SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.LAUNCH_POINT,
+                        6, 0.1F, 0.25F).color(Color.ARCANE.toRGBA())
+        };
+
+        // Deliberately NONE: an aiming beam shown during the whole charge looked like it fired early, so targeting/beam are handled at release by the nen_sphere custom delivery instead
+        spell.target.type = Spell.Target.Type.NONE;
+
+        spell.deliver.type = Spell.Delivery.Type.CUSTOM;
+        spell.deliver.custom = new Spell.Delivery.Custom();
+        spell.deliver.custom.handler = "forcemaster_rpg:nen_sphere";
+
+        spell.release.animation = PlayerAnimation.of("forcemaster_rpg:nen_sphere_release");
+        spell.release.sound = Sound.of(SpellEngineSounds.GENERIC_ARCANE_RELEASE.id());
+
+        var damage = SpellBuilder.Impacts.damage(0.7F);
+        damage.school = SpellSchools.ARCANE;
+        damage.particles = new ParticleBatch[]{
+                new ParticleBatch(SpellEngineParticles.MagicParticles.get(
+                        SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                        SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        10, 0.2F, 0.4F).color(Color.ARCANE.toRGBA())
+        };
+
+        var overflow = SpellBuilder.Impacts.effectAdd(effect.id.toString(), 8, 1, 6);
+        overflow.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
+        overflow.action.status_effect.refresh_duration = false;
+        overflow.action.apply_to_caster = true;
+        overflow.particles = new ParticleBatch[]{
+                new ParticleBatch("spell_engine:magic_arcane_decelerate",
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        10, 0.3F, 0.35F).color(Color.ARCANE.toRGBA())
+        };
+
+        spell.impacts = List.of(damage, overflow);
+        configureCooldown(spell, 22, 14F);
+
+        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+    }
     public static final Entry improved_belial_smashing = add(improved_belial_smashing());
     private static Entry improved_belial_smashing() {
         var id = Identifier.of(MOD_ID, "improved_belial_smashing");

@@ -31,7 +31,6 @@ public class ModModelProvider extends FabricModelProvider {
                 itemModelGenerator.register((Item) piece, Models.GENERATED);
             }
         });
-        // Generate dual models for all knuckle weapons
         for (var entry : WeaponsRegister.entries) {
             Item item = entry.item();
             if (item == null) continue;

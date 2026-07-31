@@ -1,3 +1,11 @@
+# 2.6.1 - 1.21.1
+- Adapt to Spell Engine 1.9.10+ API Changes
+  **Balancing & Internal Changes:**
+- Prepared the Spell Expansion Spells technically, they'll be available once they're fully ready
+- Models, Textures, Sound Effects & Animations are still missing
+- Added uk_ua localization- #8 - thx Ch1sho
+- Clean up
+
 # 2.6.0 - 1.21.1
 **Update to use Spell Engine 1.9.0**
 - DISCLAIMER: All spell books and spell scrolls will be reset, due to major API changes.

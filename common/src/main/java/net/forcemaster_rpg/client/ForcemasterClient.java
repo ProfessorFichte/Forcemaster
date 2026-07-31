@@ -3,12 +3,15 @@ package net.forcemaster_rpg.client;
 import mod.azure.azurelibarmor.common.render.armor.AzArmorRenderer;
 import mod.azure.azurelibarmor.common.render.armor.AzArmorRendererRegistry;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.forcemaster_rpg.client.armor.CustomArmorRenderer;
 import net.forcemaster_rpg.client.effect.ArcaneOverDriveRenderer;
 import net.forcemaster_rpg.client.effect.BarqEsnaParticles;
+import net.forcemaster_rpg.client.entity.NenSphereBeamRenderer;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.client.particle.PunchParticle;
 import net.forcemaster_rpg.effect.ForcemasterEffects;
+import net.forcemaster_rpg.entity.NenSphereBeamEntity;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.minecraft.client.particle.ExplosionLargeParticle;
 import net.minecraft.client.particle.FlameParticle;
@@ -34,6 +37,8 @@ public class ForcemasterClient{
 
         CustomParticleStatusEffect.register(ForcemasterEffects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
         CustomModelStatusEffect.register(ForcemasterEffects.ARCANE_OVERFLOW.effect, new ArcaneOverDriveRenderer());
+
+        EntityRendererRegistry.register(NenSphereBeamEntity.ENTITY_TYPE, NenSphereBeamRenderer::new);
     }
 
     public static void registerParticleAppearances() {

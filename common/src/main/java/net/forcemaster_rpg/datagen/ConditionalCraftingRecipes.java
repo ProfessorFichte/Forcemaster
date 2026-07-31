@@ -27,9 +27,6 @@ public class ConditionalCraftingRecipes implements DataProvider {
     }
 
     public void generate() {
-        // ====================
-        // AETERNIUM KNUCKLE (BetterEnd)
-        // ====================
         createShapedRecipe(
                 "aeternium_knuckle",
                 Identifier.of(MOD_ID, "aeternium_knuckle"),
@@ -60,7 +57,7 @@ public class ConditionalCraftingRecipes implements DataProvider {
 
     @Override
     public CompletableFuture<?> run(DataWriter writer) {
-        generate(); // Call generate to populate recipes
+        generate();
 
         return CompletableFuture.allOf(recipes.stream().map(recipeData -> {
             JsonObject recipe = buildRecipeJson(recipeData);
@@ -74,7 +71,6 @@ public class ConditionalCraftingRecipes implements DataProvider {
     private JsonObject buildRecipeJson(ConditionalRecipeData data) {
         JsonObject recipe = new JsonObject();
         if (data.requiredMod != null && !data.requiredMod.isEmpty()) {
-            // Fabric Load Conditions
             JsonArray fabricLoadConditions = new JsonArray();
             JsonObject fabricCondition = new JsonObject();
             fabricCondition.addProperty("condition", "fabric:all_mods_loaded");
@@ -84,7 +80,6 @@ public class ConditionalCraftingRecipes implements DataProvider {
             fabricLoadConditions.add(fabricCondition);
             recipe.add("fabric:load_conditions", fabricLoadConditions);
 
-            // NeoForge Conditions
             JsonArray neoforgeConditions = new JsonArray();
             JsonObject neoforgeCondition = new JsonObject();
             neoforgeCondition.addProperty("type", "neoforge:mod_loaded");
