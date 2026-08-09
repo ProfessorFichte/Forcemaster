@@ -1,3 +1,6 @@
+1.2.7 - 1.20.1
+- Incompatibility with Alex's Mobs: GH issue #9
+
 1.2.6 - 1.20.1
 - again fix Effects Config and some other values
 - new Effects config version -> effects_v4

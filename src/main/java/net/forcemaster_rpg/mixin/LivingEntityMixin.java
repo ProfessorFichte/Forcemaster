@@ -27,11 +27,11 @@ public class LivingEntityMixin {
 
     @Inject(method = "onAttacking", at = @At("HEAD"))
     private void onAttacking_knuckle(Entity target, CallbackInfo ci) {
-        var entity = (LivingEntity) (Object) this;
-        ItemStack stack = entity.getEquippedStack(EquipmentSlot.MAINHAND);
-        EntityType<?> type = target.getType();
-
         if (target != null) {
+            var entity = (LivingEntity) (Object) this;
+            ItemStack stack = entity.getEquippedStack(EquipmentSlot.MAINHAND);
+            EntityType<?> type = target.getType();
+
             if (stack.isIn(ForcemasterTags.KNUCKLES)
                     && target instanceof LivingEntity
                     && !target.isSpectator()
