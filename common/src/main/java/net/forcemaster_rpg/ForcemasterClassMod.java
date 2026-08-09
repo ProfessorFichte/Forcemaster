@@ -40,13 +40,13 @@ public class ForcemasterClassMod{
 			.sanitize(true)
 			.build();
 	public static ConfigManager<ConfigFile.Effects> effectsConfig = new ConfigManager<>
-			("effects_v5", new ConfigFile.Effects())
+			("effects_v6", new ConfigFile.Effects())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
 	public static ConfigManager<TweaksConfig> tweaksConfig = new ConfigManager<TweaksConfig>
-			("tweaks", new TweaksConfig())
+			("tweaks_v1", new TweaksConfig())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

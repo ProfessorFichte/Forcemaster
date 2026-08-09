@@ -1,18 +1,22 @@
 package net.forcemaster_rpg.item.armor;
 
 import net.forcemaster_rpg.item.ForcemasterGroup;
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
+import net.more_rpg_classes.item.MRPGCItemGroups;
 import net.spell_engine.api.config.ArmorSetConfig;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.rpg_series.item.Equipment;
@@ -21,6 +25,7 @@ import net.spell_engine.api.spell.SpellDataComponents;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -114,6 +119,13 @@ public class Armors {
                 settings
         );
         entries.add(entry);
+        return entry;
+    }
+
+    private static final Map<Armor.Entry, RegistryKey<ItemGroup>> groupOverrides = new IdentityHashMap<>();
+
+    private static Armor.Entry groupKey(Armor.Entry entry, RegistryKey<ItemGroup> key) {
+        groupOverrides.put(entry, key);
         return entry;
     }
 
@@ -222,7 +234,7 @@ public class Armors {
 
     public static void register(Map<String, ArmorSetConfig> configs) {
         if (armoryLoadCheck()) {
-            billporonArmorSet = create(
+            billporonArmorSet = groupKey(create(
                     material_billporon,
                     Identifier.of(MOD_ID, "billporon"),
                     40,
@@ -254,8 +266,22 @@ public class Armors {
                                     ))
                     ),5,
                     commonSettings(billporon_passive)
-            ).translatedName("Billporon Headdress", "Billporon Suit", "Billporon Pants", "Billporon Boots");
+            ).translatedName("Billporon Headdress", "Billporon Suit", "Billporon Pants", "Billporon Boots"), MRPGCItemGroups.ARMORY_KEY);
         }
         Armor.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
+        for (var override : groupOverrides.entrySet()) {
+            var entry = override.getKey();
+            var key = override.getValue();
+            var pieces = entry.armorSet().pieces();
+            ItemGroupEvents.modifyEntriesEvent(ForcemasterGroup.FORCEMASTER_KEY).register(content -> {
+                content.getDisplayStacks().removeIf(stack -> pieces.stream().anyMatch(p -> stack.isOf((ArmorItem) p)));
+                content.getSearchTabStacks().removeIf(stack -> pieces.stream().anyMatch(p -> stack.isOf((ArmorItem) p)));
+            });
+            ItemGroupEvents.modifyEntriesEvent(key).register(content -> {
+                for (var piece : pieces) {
+                    content.add((ArmorItem) piece);
+                }
+            });
+        }
     }
 }

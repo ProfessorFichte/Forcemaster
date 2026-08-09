@@ -1,6 +1,7 @@
 {
   "school": "spell_power:arcane",
   "tier": 3,
+  "group": "brawl",
   "learn": {},
   "active": {},
   "release": {
@@ -51,21 +52,9 @@
       ]
     }
   },
-  "impacts": [
-    {
-      "school": "spell_power:arcane",
-      "action": {
-        "type": "DAMAGE",
-        "damage": {
-          "spell_power_coefficient": 0.3,
-          "knockback": 0.0
-        }
-      }
-    }
-  ],
   "cost": {
     "cooldown": {
-      "duration": 23.0
+      "duration": 20.0
     }
   }
 }

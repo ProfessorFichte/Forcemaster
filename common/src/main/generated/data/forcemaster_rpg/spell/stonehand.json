@@ -2,6 +2,7 @@
   "school": "spell_power:arcane",
   "range": 2.0,
   "tier": 2,
+  "group": "brawl",
   "learn": {},
   "active": {},
   "release": {

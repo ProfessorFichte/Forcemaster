@@ -19,6 +19,11 @@
       "forcemaster_rpg:knuckle_spell_impact"
     ]
   },
+  "nen_sphere_shot": {
+    "sounds": [
+      "forcemaster_rpg:nen_sphere_shot"
+    ]
+  },
   "sonic_hand": {
     "sounds": [
       "forcemaster_rpg:sonic_hand"

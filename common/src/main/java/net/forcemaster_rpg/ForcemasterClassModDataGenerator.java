@@ -20,6 +20,7 @@ import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
+import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.datagen.SimpleSoundGeneratorV2;
 import net.spell_engine.api.datagen.SpellGenerator;
@@ -294,6 +295,11 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					}
 				}
 			});
+
+			var knuckleArcaneOverflowKey = TagKey.of(SpellRegistry.KEY, Identifier.of(MOD_ID, "arcane_overflow_triggers"));
+			var knuckleArcaneOverflowTag = getOrCreateTagBuilder(knuckleArcaneOverflowKey);
+			knuckleArcaneOverflowTag.addOptionalTag(Identifier.of(MOD_ID, "spell_book/forcemaster"));
+			knuckleArcaneOverflowTag.addOptional(Identifier.of("more_rpg_classes", "burstcrack"));
 		}
 	}
 

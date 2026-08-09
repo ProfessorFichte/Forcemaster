@@ -2,6 +2,7 @@
   "school": "spell_power:arcane",
   "range": 7.5,
   "tier": 4,
+  "group": "might",
   "learn": {},
   "active": {
     "cast": {
@@ -22,7 +23,7 @@
           "min_speed": 0.2,
           "max_speed": 0.6,
           "extent": 0.5,
-          "color_rgba": 4284940287
+          "color_rgba": 1405943807
         }
       ]
     }
@@ -39,7 +40,7 @@
         "max_speed": 10.0,
         "angle": 360.0,
         "extent": 2.0,
-        "color_rgba": 4284940287
+        "color_rgba": 1405943807
       }
     ],
     "sound": {

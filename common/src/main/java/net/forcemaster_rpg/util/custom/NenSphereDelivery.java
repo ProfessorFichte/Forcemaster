@@ -21,8 +21,8 @@ public class NenSphereDelivery {
     // The engagement cone widens a bit with charge - a bigger sphere sweeps a wider arc when unleashed.
     private static final float MIN_CONE_ANGLE_DEGREES = 6F;
     private static final float MAX_CONE_ANGLE_DEGREES = 18F;
-    private static final float MIN_BEAM_WIDTH = 0.5F;
-    private static final float MAX_BEAM_WIDTH = 1.6F;
+    private static final float MIN_BEAM_WIDTH = 0.05F;
+    private static final float MAX_BEAM_WIDTH = 3.0F;
 
     public static void register() {
         SpellHandlers.registerCustomDelivery(

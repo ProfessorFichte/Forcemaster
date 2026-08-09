@@ -2,15 +2,6 @@
   "school": "spell_power:arcane",
   "range": 0.0,
   "tier": 1,
-  "tooltip": {
-    "show_header": false,
-    "name": {
-      "show_in_details": false
-    },
-    "description": {
-      "color": "dark_green"
-    }
-  },
   "type": "PASSIVE",
   "passive": {
     "triggers": [
@@ -18,8 +9,7 @@
         "target_override": "CASTER",
         "type": "SPELL_CAST",
         "spell": {
-          "school": "spell_power:arcane",
-          "type": "ACTIVE"
+          "id": "#forcemaster_rpg:arcane_overflow_triggers"
         }
       }
     ]
@@ -45,7 +35,7 @@
           "count": 30.0,
           "min_speed": 0.5,
           "max_speed": 0.5,
-          "color_rgba": 4284940287
+          "color_rgba": 1405943807
         },
         {
           "particle_id": "spell_engine:aura_effect_642",
@@ -53,7 +43,7 @@
           "shape": "SPHERE",
           "count": 1.0,
           "max_speed": 0.0,
-          "color_rgba": 4284940287
+          "color_rgba": 1405943807
         }
       ]
     }

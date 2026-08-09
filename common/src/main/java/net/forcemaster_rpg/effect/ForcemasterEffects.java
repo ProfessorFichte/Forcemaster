@@ -1,5 +1,6 @@
 package net.forcemaster_rpg.effect;
 
+import net.forcemaster_rpg.spell.ForcemasterSpells;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.effect.StatusEffectCategory;
@@ -28,7 +29,7 @@ public class ForcemasterEffects {
     public static final Effects.Entry STONE_HAND = add(new Effects.Entry(
             Identifier.of(MOD_ID, "stone_hand"),
             "Stonehand",
-            "",
+            "Increases Attack Damage, attacks with fist weapons have a chance to stun the target.",
             new StoneHandEffect(StatusEffectCategory.BENEFICIAL, 0xbce5fe),
             new EffectConfig(List.of(
                     new AttributeModifier(
@@ -42,7 +43,7 @@ public class ForcemasterEffects {
     public static final Effects.Entry ARCANE_OVERFLOW = add(new Effects.Entry(
             Identifier.of(MOD_ID, "arcane_overflow"),
             "Arcane Overflow",
-            "",
+            "Increases Arcane Spell Power and Arcane Fuse, enhancing Melee Hits with Arcane Magic.",
             new ArcaneOverflowEffect(StatusEffectCategory.BENEFICIAL, 0xff8bef),
             new EffectConfig(List.of(
                     new AttributeModifier(
@@ -51,7 +52,7 @@ public class ForcemasterEffects {
                             EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
                     ),
                     new AttributeModifier(
-                            SpellSchools.ARCANE.attributeEntry.getIdAsString(),
+                            SpellSchools.ARCANE.id.toString(),
                             0.02F,
                             EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
                     )
@@ -61,12 +62,22 @@ public class ForcemasterEffects {
     public static final Effects.Entry BARQ_ESNA = add(new Effects.Entry(
             Identifier.of(MOD_ID, "barq_esna"),
             "Light of Baraqijal",
-            "",
+            "Reduces Offensive Attributes.",
             new BarqEsnaEffect(StatusEffectCategory.HARMFUL, 0x8db4fe),
             new EffectConfig(List.of(
                     new AttributeModifier(
                             EntityAttributes.GENERIC_ATTACK_DAMAGE.getIdAsString(),
-                            -0.1F,
+                            -0.05F,
+                            EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ),
+                    new AttributeModifier(
+                            SpellSchools.GENERIC.id.toString(),
+                            -0.05F,
+                            EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
+                    ),
+                    new AttributeModifier(
+                            "ranged_weapon:damage",
+                            -0.05F,
                             EntityAttributeModifier.Operation.ADD_MULTIPLIED_BASE
                     )
             ))
@@ -76,7 +87,7 @@ public class ForcemasterEffects {
             Identifier.of(MOD_ID, "nen_focus"),
             "Nen Focus",
             "You can now stack Arcane Overflow with melee attacks.",
-            new BarqEsnaEffect(StatusEffectCategory.BENEFICIAL, 0xff8bef),
+            new CustomStatusEffect(StatusEffectCategory.BENEFICIAL, 0xff8bef),
             new EffectConfig(List.of(
             ))
     ));
@@ -85,10 +96,12 @@ public class ForcemasterEffects {
         ((BarqEsnaEffect) BARQ_ESNA.effect).setVulnerability(
                 SpellSchools.ARCANE,
                 new SpellPower.Vulnerability(
-                        tweaksConfig.value.barq_esna_arcane_damage_vulnerability, 0.1F, 0.2F
+                        tweaksConfig.value.barq_esna_arcane_damage_vulnerability, 0.025F, 0.05F
                 )
         );
 
+        GlowingItemStatusEffect.register(ARCANE_OVERFLOW.effect, ForcemasterSpells.FORCEMASTER_BLUE_COLOR, 0.1F);
+        GlowingItemStatusEffect.register(NEN_FOCUS.effect, ForcemasterSpells.FORCEMASTER_BLUE_COLOR, 0.2F);
         for (var entry : entries) {
             Synchronized.configure(entry.effect, true);
         }

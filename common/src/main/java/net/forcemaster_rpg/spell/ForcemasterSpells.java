@@ -114,100 +114,10 @@ public class ForcemasterSpells {
         return triggers;
     }
 
-    public static final Entry knuckle_arcane_overflow = add(knuckle_arcane_overflow());
-    private static Entry knuckle_arcane_overflow() {
-        var id = Identifier.of(MOD_ID, "knuckle_arcane_overflow");
-        var title = "Arcane Overflow";
-        var description = "Casting Forcemaster Spells stacks Arcane Overflow for {effect_duration} sec.";
-        var effect = ForcemasterEffects.ARCANE_OVERFLOW;
+    public static final String BRAWL =  "brawl";
+    public static final String MIGHT = "might";
+    public static final Color FORCEMASTER_BLUE_COLOR = Color.from(0x53ccff);
 
-        var spell = SpellBuilder.createSpellPassive();
-        spell.tooltip = new Spell.Tooltip();
-        spell.tooltip.show_header = false;
-        spell.tooltip.name = new Spell.Tooltip.LineOptions(true, false);
-        spell.tooltip.description.color = Formatting.DARK_GREEN.asString();
-        spell.tooltip.description.show_in_compact = true;
-        spell.school = SpellSchools.ARCANE;
-        spell.range = 0;
-
-        var trigger = SpellBuilder.Triggers.activeSpellCast(SpellSchools.ARCANE);
-        trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
-        spell.passive.triggers = List.of(trigger);
-
-        var impact = SpellBuilder.Impacts.effectAdd(effect.id.toString(), 15, 1, 9);
-        impact.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
-        impact.particles = new ParticleBatch[]{
-                new ParticleBatch(
-                        SpellEngineParticles.MagicParticles.get(
-                                SpellEngineParticles.MagicParticles.Shape.ARCANE,
-                                SpellEngineParticles.MagicParticles.Motion.DECELERATE
-                        ).id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        30, 0.5F, 0.5F)
-                        .color(Color.from(SpellSchools.ARCANE.color).toRGBA()),
-                new ParticleBatch(
-                        SpellEngineParticles.aura_effect_642.id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        1, 0, 0)
-                        .color(Color.from(SpellSchools.ARCANE.color).toRGBA()),
-        };
-        spell.impacts = List.of(impact);
-        SpellBuilder.Cost.cooldown(spell,3);
-
-        return new Entry(id, spell, title, description, null);
-    }
-    public static Entry nen_focus = add(nen_focus());
-    private static Entry nen_focus() {
-        var id = Identifier.of(MOD_ID, "nen_focus");
-        var title = "Nen Focus";
-        var impactEffect = ForcemasterEffects.ARCANE_OVERFLOW;
-        var stashEffect = ForcemasterEffects.NEN_FOCUS;
-        var description = "Defeating enemies with Forcemaster Spells grants " + stashEffect.title + " effect, stacking " + impactEffect.title + " with melee attacks up to {effect_amplifier_cap} times, lasting {effect_duration} seconds.";
-        var spell = SpellBuilder.createSpellPassive();
-        spell.school = SpellSchools.ARCANE;
-
-        var triggers = SpellBuilder.Triggers.withConditionMustWield(
-                forcemasterSpellsKills()
-        );
-        for (var trigger : triggers) {
-            trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
-        }
-        spell.passive.triggers = triggers;
-
-        var triggersStash = SpellBuilder.Triggers.meleeImpact();
-        for (var trigger : triggersStash) {
-            trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
-        }
-
-        spell.deliver.type = Spell.Delivery.Type.STASH_EFFECT;
-        spell.deliver.stash_effect = new Spell.Delivery.StashEffect();
-        spell.deliver.stash_effect.id = stashEffect.id.toString();
-        spell.deliver.stash_effect.consume = 0;
-        spell.deliver.stash_effect.triggers = triggersStash;
-
-        spell.target.type = Spell.Target.Type.FROM_TRIGGER;
-
-        var buff = SpellBuilder.Impacts.effectAdd(impactEffect.id.toString(), 8,1,6);
-        buff.particles = new ParticleBatch[]{
-                new ParticleBatch(
-                        SpellEngineParticles.MagicParticles.get(
-                        SpellEngineParticles.MagicParticles.Shape.ARCANE,
-                        SpellEngineParticles.MagicParticles.Motion.DECELERATE).id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        10, 0.3F, 0.35F)
-                        .color(Color.ARCANE.toRGBA())
-        };
-        buff.action.status_effect.apply_mode = Spell.Impact.Action.StatusEffect.ApplyMode.ADD;
-        buff.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
-        buff.action.status_effect.refresh_duration = false;
-
-        spell.impacts = List.of(buff);
-
-        configureCooldown(spell, 20,0);
-        spell.cost.batching = true;
-
-        return new Entry(id, spell, title, description, null);
-    }
     public static Entry stonehand = add(stonehand());
     private static Entry stonehand() {
         var id = Identifier.of(MOD_ID, "stonehand");
@@ -218,6 +128,7 @@ public class ForcemasterSpells {
         spell.school = SpellSchools.ARCANE;
         spell.tier = 2;
         spell.range = 2;
+        spell.group = BRAWL;
 
         spell.release.animation = PlayerAnimation.of("forcemaster_rpg:stonehand_cast");
         spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:stonehand_cast"), 0.35F);
@@ -279,6 +190,7 @@ public class ForcemasterSpells {
         var spell = SpellBuilder.createSpellActive();
         spell.school = SpellSchools.ARCANE;
         spell.tier = 3;
+        spell.group = BRAWL;
 
         SpellBuilder.Casting.instant(spell);
         SpellBuilder.Target.none(spell);
@@ -307,14 +219,10 @@ public class ForcemasterSpells {
         attack.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
         attack.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
 
-        var damageArcane = SpellBuilder.Impacts.damage(0.3F,0F);
-        damageArcane.school  = SpellSchools.ARCANE;
-
-        spell.impacts = List.of(damageArcane);
         SpellBuilder.Deliver.melee(spell, List.of(attack));
         spell.deliver.melee.allow_airborne = false;
 
-        SpellBuilder.Cost.cooldown(spell, 23);
+        SpellBuilder.Cost.cooldown(spell, 20);
         return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
     }
     public static final Entry asal = add(asal());
@@ -326,6 +234,7 @@ public class ForcemasterSpells {
         spell.school = SpellSchools.ARCANE;
         spell.tier = 4;
         spell.range = 7.5F;
+        spell.group = MIGHT;
 
         spell.active.cast.movement_speed = 0.1F;
         spell.active.cast.duration = 0.75F;
@@ -336,7 +245,7 @@ public class ForcemasterSpells {
                         SpellEngineParticles.MagicParticles.Shape.ARCANE,
                         SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
                         ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
-                        10, 0.2F, 0.6F).extent(0.5F).color(Color.ARCANE.toRGBA())
+                        10, 0.2F, 0.6F).extent(0.5F).color(FORCEMASTER_BLUE_COLOR.toRGBA())
         };
 
         spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:asal_release"), 0.35F);
@@ -344,7 +253,7 @@ public class ForcemasterSpells {
                 new ParticleBatch(SpellEngineParticles.smoke_medium.id().toString(),
                         ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                         ParticleBatch.Rotation.LOOK,
-                        15, 1.0F, 10.0F, 360, 2).color(Color.ARCANE.toRGBA())
+                        15, 1.0F, 10.0F, 360, 2).color(FORCEMASTER_BLUE_COLOR.toRGBA())
         };
 
         SpellBuilder.Target.none(spell);
@@ -384,11 +293,12 @@ public class ForcemasterSpells {
         var id = Identifier.of(MOD_ID, "baraqijal_esna");
         var effect = ForcemasterEffects.BARQ_ESNA;
         var title = "Baraqijal Esna";
-        var description = "Launches a bolt of Baraqijal's light, dealing {damage} arcane damage and afflicting the target with " + effect.title + " for {effect_duration} sec, gnawing at their health over time and lowering their resistance to arcane magic.";
+        var description = "Launches a bolt of Baraqijal's light, dealing {damage} arcane damage and stacking the target with " + effect.title + " for {effect_duration} sec, lowering their resistance to arcane magic and damaging them over time.";
         var spell = activeSpellBase();
         spell.school = SpellSchools.ARCANE;
-        spell.tier = 3;
-        spell.range = 20;
+        spell.tier = 2;
+        spell.range = 26;
+        spell.group = MIGHT;
 
         spell.active.cast.duration = 0.4F;
         spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:barq_esna_cast");
@@ -398,7 +308,7 @@ public class ForcemasterSpells {
                         SpellEngineParticles.MagicParticles.Shape.ARCANE,
                         SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
                         ParticleBatch.Shape.WIDE_PIPE, ParticleBatch.Origin.FEET,
-                        8, 0.15F, 0.4F).color(Color.ARCANE.toRGBA())
+                        8, 0.15F, 0.4F).color(FORCEMASTER_BLUE_COLOR.toRGBA())
         };
 
         SpellBuilder.Target.aim(spell);
@@ -419,19 +329,20 @@ public class ForcemasterSpells {
         };
         spell.deliver.projectile.projectile = projectile;
 
-        var damage = SpellBuilder.Impacts.damage(0.25F);
-        damage.school = SpellSchools.ARCANE;
+        var damage = SpellBuilder.Impacts.damage(0.35F);
+        damage.power_blend = List.of(SpellBuilder.Impacts.powerBlend(
+                ExternalSpellSchools.PHYSICAL_MELEE, 1F / 3F, true, true, true));
         damage.particles = new ParticleBatch[]{
                 new ParticleBatch(Identifier.of(MOD_ID, "barq_esna_flame").toString(),
                         ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
                         12, 0.15F, 0.3F)
         };
 
-        var debuff = SpellBuilder.Impacts.effectSet(effect.id.toString(), 8, 0);
-        debuff.action.status_effect.amplifier_power_multiplier = 0.2F;
+        var debuff = SpellBuilder.Impacts.effectAdd_ScaledAmplifier(effect.id.toString(), 9, 1,0.1F);
+        debuff.action.status_effect.amplifier_power_multiplier = 0.15F;
 
         spell.impacts = List.of(damage, debuff);
-        configureCooldown(spell, 18, 12F);
+        configureCooldown(spell, 5, 0.2F);
 
         return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
     }
@@ -439,10 +350,11 @@ public class ForcemasterSpells {
     private static Entry sonic_hand() {
         var id = Identifier.of(MOD_ID, "sonic_hand");
         var title = "Sonic Hand";
-        var description = "Unleashes 5 blindingly fast fist strikes, each dealing {damage_1} physical & {damage_2} arcane damage.";
+        var description = "Unleashes 5 blindingly fast fist strikes, each dealing melee damage. Consumes Arcane Overflow.";
         var spell = SpellBuilder.createSpellActive();
         spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
         spell.tier = 4;
+        spell.group = BRAWL;
 
         SpellBuilder.Casting.instant(spell);
         SpellBuilder.Target.none(spell);
@@ -455,35 +367,67 @@ public class ForcemasterSpells {
                         1, 0, 0).scale(1.2F)
         };
 
-        var attack = new Spell.Delivery.Melee.Attack();
-        attack.attack_speed_multiplier = 1.8F;
-        attack.delay = 0.05F;
-        attack.hitbox = new Spell.Delivery.Melee.HitBox();
-        attack.hitbox.arc = 100;
-        attack.hitbox.height = 1.5F;
-        attack.hitbox.width = 1.5F;
-        attack.hitbox.length = 2.0F;
+        var attack1 = new Spell.Delivery.Melee.Attack();
+        attack1.attack_speed_multiplier = 1.8F;
+        attack1.delay = 0.1F;
+        attack1.hitbox = new Spell.Delivery.Melee.HitBox();
+        attack1.hitbox.height = 1.5F;
+        attack1.hitbox.width = 1.5F;
+        attack1.hitbox.length = 2.5F;
+        attack1.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        attack1.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
+        attack1.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
+        attack1.additional_hits_on_same_target = true;
+        var attack2 = new Spell.Delivery.Melee.Attack();
+        attack2.attack_speed_multiplier = 1.8F;
+        attack2.delay = 0.2F;
+        attack2.hitbox = new Spell.Delivery.Melee.HitBox();
+        attack2.hitbox.height = 1.5F;
+        attack2.hitbox.width = 1.5F;
+        attack2.hitbox.length = 2.5F;
+        attack2.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        attack2.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
+        attack2.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
+        attack2.additional_hits_on_same_target = true;
+        var attack3 = new Spell.Delivery.Melee.Attack();
+        attack3.attack_speed_multiplier = 1.8F;
+        attack3.delay = 0.3F;
+        attack3.hitbox = new Spell.Delivery.Melee.HitBox();
+        attack3.hitbox.height = 1.5F;
+        attack3.hitbox.width = 1.5F;
+        attack3.hitbox.length = 2.5F;
+        attack3.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        attack3.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
+        attack3.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
+        attack3.additional_hits_on_same_target = true;
+        var attack4 = new Spell.Delivery.Melee.Attack();
+        attack4.attack_speed_multiplier = 1.8F;
+        attack4.delay = 0.4F;
+        attack4.hitbox = new Spell.Delivery.Melee.HitBox();
+        attack4.hitbox.height = 1.5F;
+        attack4.hitbox.width = 1.5F;
+        attack4.hitbox.length = 2.5F;
+        attack4.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        attack4.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
+        attack4.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
+        attack4.additional_hits_on_same_target = true;
+        var attack5 = new Spell.Delivery.Melee.Attack();
+        attack5.attack_speed_multiplier = 1.8F;
+        attack5.delay = 0.5F;
+        attack5.hitbox = new Spell.Delivery.Melee.HitBox();
+        attack5.hitbox.height = 1.5F;
+        attack5.hitbox.width = 1.5F;
+        attack5.hitbox.length = 2.5F;
+        attack5.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
+        attack5.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
+        attack5.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
+        attack5.additional_hits_on_same_target = true;
 
-        attack.additional_strikes = 4;
-        attack.additional_strike_delay = 0.08F;
-        attack.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
-        attack.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
-        attack.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
-        attack.particles = new ParticleBatch[]{
-                new ParticleBatch(Identifier.of(MOD_ID, "sonic_punch").toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        1, 0, 0)
-        };
-
-        var damagePhysical = SpellBuilder.Impacts.damage(0.6F, 0F);
-        var damageArcane = SpellBuilder.Impacts.damage(0.08F, 0F);
-        damageArcane.school = SpellSchools.ARCANE;
-
-        spell.impacts = List.of(damagePhysical, damageArcane);
-        SpellBuilder.Deliver.melee(spell, List.of(attack));
+        SpellBuilder.Deliver.melee(spell, List.of(attack1,attack2,attack3,attack4,attack5));
         spell.deliver.melee.allow_airborne = false;
 
-        configureCooldown(spell, 22, 20F);
+        configureCooldown(spell, 28, 0.5F);
+        spell.cost.effect_id = ForcemasterEffects.ARCANE_OVERFLOW.id.toString();
         return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
     }
     public static final Entry nen_sphere = add(nen_sphere());
@@ -491,14 +435,15 @@ public class ForcemasterSpells {
         var id = Identifier.of(MOD_ID, "nen_sphere");
         var effect = ForcemasterEffects.ARCANE_OVERFLOW;
         var title = "Nen Sphere";
-        var description = "Charge a sphere of raw magic, then unleash it as a piercing beam. The longer you charge, the further and harder it strikes, dealing {damage} arcane damage and overloading you with " + effect.title + ", scaling with your charge.";
+        var description = "Charge a magic sphere, unleashing it as a piercing beam. The longer you charge, the further and harder it strikes, dealing {damage} damage and overloading you with " + effect.title + ", scaling with your charge.";
         var spell = activeSpellBase();
         spell.school = SpellSchools.ARCANE;
         spell.tier = 3;
         spell.range = 14;
+        spell.group = MIGHT;
 
         var charge = SpellBuilder.Casting.charge(spell, 2.5F);
-        charge.min_release_ratio = 0.25F;
+        charge.min_release_ratio = 0.05F;
         charge.bonus.range_add = 10F;
         charge.bonus.effect_amplifier_add = 3;
         charge.bonus.power_modifier = new Spell.Impact.Modifier();
@@ -506,50 +451,54 @@ public class ForcemasterSpells {
 
         spell.active.cast.movement_speed = 0.15F;
         spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:nen_sphere_cast");
-        spell.active.cast.sound = new Sound("spell_engine:generic_arcane_casting");
+        spell.active.cast.sound = new Sound(SpellEngineSounds.GENERIC_ARCANE_CASTING_2.id());
         spell.active.cast.particles = new ParticleBatch[]{
                 new ParticleBatch(SpellEngineParticles.MagicParticles.get(
-                        SpellEngineParticles.MagicParticles.Shape.ARCANE,
-                        SpellEngineParticles.MagicParticles.Motion.ASCEND).id().toString(),
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.LAUNCH_POINT,
-                        6, 0.1F, 0.25F).color(Color.ARCANE.toRGBA())
+                        SpellEngineParticles.MagicParticles.Shape.SPELL,
+                        SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
+                        ParticleBatch.Shape.CIRCLE, ParticleBatch.Origin.GROUND,
+                        6, 0.1F, 0.5F).color(FORCEMASTER_BLUE_COLOR.toRGBA())
         };
 
-        // Deliberately NONE: an aiming beam shown during the whole charge looked like it fired early, so targeting/beam are handled at release by the nen_sphere custom delivery instead
+        spell.release.particles = new ParticleBatch[] {
+                new ParticleBatch(
+                        SpellEngineParticles.area_effect_637.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        1, 0, 0)
+                        .scale(0.4F)
+                        .color(FORCEMASTER_BLUE_COLOR.toRGBA())
+        };
+
         spell.target.type = Spell.Target.Type.NONE;
 
         spell.deliver.type = Spell.Delivery.Type.CUSTOM;
         spell.deliver.custom = new Spell.Delivery.Custom();
         spell.deliver.custom.handler = "forcemaster_rpg:nen_sphere";
 
-        spell.release.animation = PlayerAnimation.of("forcemaster_rpg:nen_sphere_release");
-        spell.release.sound = Sound.of(SpellEngineSounds.GENERIC_ARCANE_RELEASE.id());
+        spell.release.sound = Sound.of(ModSounds.NEN_SPHERE_SHOT.id());
 
         var damage = SpellBuilder.Impacts.damage(0.7F);
-        damage.school = SpellSchools.ARCANE;
+        damage.power_blend = List.of(SpellBuilder.Impacts.powerBlend(
+                ExternalSpellSchools.PHYSICAL_MELEE, 1F / 3F, true, true, true));
         damage.particles = new ParticleBatch[]{
                 new ParticleBatch(SpellEngineParticles.MagicParticles.get(
                         SpellEngineParticles.MagicParticles.Shape.ARCANE,
                         SpellEngineParticles.MagicParticles.Motion.BURST).id().toString(),
                         ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        10, 0.2F, 0.4F).color(Color.ARCANE.toRGBA())
+                        10, 0.2F, 0.4F).color(FORCEMASTER_BLUE_COLOR.toRGBA())
         };
 
         var overflow = SpellBuilder.Impacts.effectAdd(effect.id.toString(), 8, 1, 6);
         overflow.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
         overflow.action.status_effect.refresh_duration = false;
         overflow.action.apply_to_caster = true;
-        overflow.particles = new ParticleBatch[]{
-                new ParticleBatch("spell_engine:magic_arcane_decelerate",
-                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
-                        10, 0.3F, 0.35F).color(Color.ARCANE.toRGBA())
-        };
 
         spell.impacts = List.of(damage, overflow);
-        configureCooldown(spell, 22, 14F);
+        configureCooldown(spell, 22, 0.3F);
 
         return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
     }
+    /// MODIFIER
     public static final Entry improved_belial_smashing = add(improved_belial_smashing());
     private static Entry improved_belial_smashing() {
         var id = Identifier.of(MOD_ID, "improved_belial_smashing");
@@ -572,6 +521,96 @@ public class ForcemasterSpells {
         modifier.spell_pattern = "forcemaster_rpg:belial_smashing";
         modifier.cooldown_duration_deduct = 3;
         spell.modifiers = List.of(modifier);
+
+        return new Entry(id, spell, title, description, null);
+    }
+    /// PASSIVES
+    public static Entry nen_focus = add(nen_focus());
+    private static Entry nen_focus() {
+        var id = Identifier.of(MOD_ID, "nen_focus");
+        var title = "Nen Focus";
+        var impactEffect = ForcemasterEffects.ARCANE_OVERFLOW;
+        var stashEffect = ForcemasterEffects.NEN_FOCUS;
+        var description = "Defeating enemies with Forcemaster Spells grants " + stashEffect.title + " effect, stacking " + impactEffect.title + " with melee attacks up to {effect_amplifier_cap} times, lasting {effect_duration} seconds.";
+        var spell = SpellBuilder.createSpellPassive();
+        spell.school = SpellSchools.ARCANE;
+
+        var triggers = SpellBuilder.Triggers.withConditionMustWield(
+                forcemasterSpellsKills()
+        );
+        for (var trigger : triggers) {
+            trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
+        }
+        spell.passive.triggers = triggers;
+
+        var triggersStash = SpellBuilder.Triggers.meleeImpact();
+        for (var trigger : triggersStash) {
+            trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
+        }
+
+        spell.deliver.type = Spell.Delivery.Type.STASH_EFFECT;
+        spell.deliver.stash_effect = new Spell.Delivery.StashEffect();
+        spell.deliver.stash_effect.id = stashEffect.id.toString();
+        spell.deliver.stash_effect.consume = 0;
+        spell.deliver.stash_effect.triggers = triggersStash;
+
+        spell.target.type = Spell.Target.Type.FROM_TRIGGER;
+
+        var buff = SpellBuilder.Impacts.effectAdd(impactEffect.id.toString(), 8,1,6);
+        buff.particles = new ParticleBatch[]{
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                                SpellEngineParticles.MagicParticles.Motion.DECELERATE).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        10, 0.3F, 0.35F)
+                        .color(FORCEMASTER_BLUE_COLOR.toRGBA())
+        };
+        buff.action.status_effect.apply_mode = Spell.Impact.Action.StatusEffect.ApplyMode.ADD;
+        buff.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
+        buff.action.status_effect.refresh_duration = false;
+
+        spell.impacts = List.of(buff);
+
+        configureCooldown(spell, 20,0);
+        spell.cost.batching = true;
+
+        return new Entry(id, spell, title, description, null);
+    }
+    public static final Entry knuckle_arcane_overflow = add(knuckle_arcane_overflow());
+    private static Entry knuckle_arcane_overflow() {
+        var id = Identifier.of(MOD_ID, "knuckle_arcane_overflow");
+        var title = "Arcane Overflow";
+        var description = "Casting Forcemaster Spells stacks Arcane Overflow for {effect_duration} sec.";
+        var effect = ForcemasterEffects.ARCANE_OVERFLOW;
+
+        var spell = SpellBuilder.createSpellPassive();
+        spell.school = SpellSchools.ARCANE;
+        spell.range = 0;
+
+        var trigger = SpellBuilder.Triggers.specificSpellCast("#forcemaster_rpg:arcane_overflow_triggers");
+        trigger.target_override = Spell.Trigger.TargetSelector.CASTER;
+        spell.passive.triggers = List.of(trigger);
+
+        var impact = SpellBuilder.Impacts.effectAdd(effect.id.toString(), 15, 1, 9);
+        impact.action.status_effect.amplifier_cap_power_multiplier = 0.15F;
+        impact.particles = new ParticleBatch[]{
+                new ParticleBatch(
+                        SpellEngineParticles.MagicParticles.get(
+                                SpellEngineParticles.MagicParticles.Shape.ARCANE,
+                                SpellEngineParticles.MagicParticles.Motion.DECELERATE
+                        ).id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        30, 0.5F, 0.5F)
+                        .color(FORCEMASTER_BLUE_COLOR.toRGBA()),
+                new ParticleBatch(
+                        SpellEngineParticles.aura_effect_642.id().toString(),
+                        ParticleBatch.Shape.SPHERE, ParticleBatch.Origin.CENTER,
+                        1, 0, 0)
+                        .color(FORCEMASTER_BLUE_COLOR.toRGBA())
+        };
+        spell.impacts = List.of(impact);
+        SpellBuilder.Cost.cooldown(spell,3);
 
         return new Entry(id, spell, title, description, null);
     }

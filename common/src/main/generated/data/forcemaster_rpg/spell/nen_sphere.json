@@ -2,13 +2,14 @@
   "school": "spell_power:arcane",
   "range": 14.0,
   "tier": 3,
+  "group": "might",
   "learn": {},
   "active": {
     "cast": {
       "duration": 2.5,
       "type": "CHARGE",
       "charge": {
-        "min_release_ratio": 0.25,
+        "min_release_ratio": 0.05,
         "bonus": {
           "range_add": 10.0,
           "power_modifier": {
@@ -22,27 +23,35 @@
       },
       "movement_speed": 0.15,
       "sound": {
-        "id": "spell_engine:generic_arcane_casting"
+        "id": "spell_engine:generic_arcane_casting_2"
       },
       "particles": [
         {
-          "particle_id": "spell_engine:magic_arcane_ascend",
-          "origin": "LAUNCH_POINT",
-          "shape": "SPHERE",
+          "particle_id": "spell_engine:magic_spell_burst",
+          "origin": "GROUND",
+          "shape": "CIRCLE",
           "count": 6.0,
           "min_speed": 0.1,
-          "max_speed": 0.25,
-          "color_rgba": 4284940287
+          "max_speed": 0.5,
+          "color_rgba": 1405943807
         }
       ]
     }
   },
   "release": {
-    "animation": {
-      "id": "forcemaster_rpg:nen_sphere_release"
-    },
+    "particles": [
+      {
+        "particle_id": "spell_engine:area_effect_637",
+        "origin": "CENTER",
+        "shape": "SPHERE",
+        "count": 1.0,
+        "max_speed": 0.0,
+        "color_rgba": 1405943807,
+        "scale": 0.4
+      }
+    ],
     "sound": {
-      "id": "spell_engine:generic_arcane_release"
+      "id": "forcemaster_rpg:nen_sphere_shot"
     }
   },
   "target": {
@@ -56,7 +65,15 @@
   },
   "impacts": [
     {
-      "school": "spell_power:arcane",
+      "power_blend": [
+        {
+          "school": "spell_power:physical_melee",
+          "power": true,
+          "critical_chance": true,
+          "critical_damage": true,
+          "weight": 0.33333334
+        }
+      ],
       "action": {
         "type": "DAMAGE",
         "damage": {
@@ -71,7 +88,7 @@
           "count": 10.0,
           "min_speed": 0.2,
           "max_speed": 0.4,
-          "color_rgba": 4284940287
+          "color_rgba": 1405943807
         }
       ]
     },
@@ -88,22 +105,11 @@
           "refresh_duration": false,
           "apply_mode": "ADD"
         }
-      },
-      "particles": [
-        {
-          "particle_id": "spell_engine:magic_arcane_decelerate",
-          "origin": "CENTER",
-          "shape": "SPHERE",
-          "count": 10.0,
-          "min_speed": 0.3,
-          "max_speed": 0.35,
-          "color_rgba": 4284940287
-        }
-      ]
+      }
     }
   ],
   "cost": {
-    "exhaust": 14.0,
+    "exhaust": 0.3,
     "cooldown": {
       "duration": 22.0
     }

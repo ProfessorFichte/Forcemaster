@@ -1,6 +1,8 @@
 package net.forcemaster_rpg.entity;
 
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -23,7 +25,7 @@ public class NenSphereBeamEntity extends Entity {
         super(type, world);
         this.noClip = true;
         this.setNoGravity(true);
-        // Beam mesh extends far past the entity's 0-size hitbox, so origin-only frustum culling would hide it
+        // Beam mesh renders past the entity's own position, so origin-only frustum culling would hide it
         this.ignoreCameraFrustum = true;
     }
 
@@ -31,8 +33,8 @@ public class NenSphereBeamEntity extends Entity {
         this(ENTITY_TYPE, world);
         this.setPosition(origin.x, origin.y, origin.z);
         var horizontalLength = Math.sqrt(direction.x * direction.x + direction.z * direction.z);
-        this.setYaw((float) (MathHelper.atan2(direction.x, direction.z) * 57.2957763671875));
-        this.setPitch((float) (MathHelper.atan2(direction.y, horizontalLength) * 57.2957763671875));
+        this.setYaw((float) (MathHelper.atan2(-direction.x, direction.z) * 57.2957763671875));
+        this.setPitch((float) (MathHelper.atan2(-direction.y, horizontalLength) * 57.2957763671875));
         this.prevYaw = this.getYaw();
         this.prevPitch = this.getPitch();
         this.getDataTracker().set(LENGTH, length);
@@ -43,6 +45,22 @@ public class NenSphereBeamEntity extends Entity {
     protected void initDataTracker(DataTracker.Builder builder) {
         builder.add(WIDTH, 0.5F);
         builder.add(LENGTH, 1.0F);
+    }
+
+    @Override
+    public void onTrackedDataSet(TrackedData<?> data) {
+        super.onTrackedDataSet(data);
+        if (data.equals(WIDTH) || data.equals(LENGTH)) {
+            this.calculateDimensions();
+        }
+    }
+
+    @Override
+    public EntityDimensions getDimensions(EntityPose pose) {
+        // Origin-centered box sized to the beam's reach, since the beam extends outward
+        // from this entity's position rather than being centered on it like a normal entity.
+        var reach = Math.max(getBeamLength(), getBeamWidth());
+        return EntityDimensions.changing(reach, reach);
     }
 
     @Override
@@ -72,5 +90,10 @@ public class NenSphereBeamEntity extends Entity {
     @Override
     public boolean isAttackable() {
         return false;
+    }
+
+    @Override
+    public boolean shouldRender(double distance) {
+        return distance < 128.0 * 128.0;
     }
 }

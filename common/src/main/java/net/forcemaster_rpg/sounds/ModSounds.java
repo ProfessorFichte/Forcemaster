@@ -67,6 +67,7 @@ public class ModSounds {
     public static final Entry KNUCKLE_SPELL_CAST = add(new Entry("knuckle_spell_cast"));
     public static final Entry KNUCKLE_SPELL_IMPACT = add(new Entry("knuckle_spell_impact"));
     public static final Entry SONIC_HAND = add(new Entry("sonic_hand"));
+    public static final Entry NEN_SPHERE_SHOT = add(new Entry("nen_sphere_shot"));
 
     public static void register() {
         for (var entry: entries) {

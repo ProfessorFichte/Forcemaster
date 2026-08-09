@@ -5,7 +5,6 @@ import mod.azure.azurelibarmor.common.render.armor.AzArmorRendererRegistry;
 import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.forcemaster_rpg.client.armor.CustomArmorRenderer;
-import net.forcemaster_rpg.client.effect.ArcaneOverDriveRenderer;
 import net.forcemaster_rpg.client.effect.BarqEsnaParticles;
 import net.forcemaster_rpg.client.entity.NenSphereBeamRenderer;
 import net.forcemaster_rpg.client.particle.Particles;
@@ -36,7 +35,6 @@ public class ForcemasterClient{
         }
 
         CustomParticleStatusEffect.register(ForcemasterEffects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
-        CustomModelStatusEffect.register(ForcemasterEffects.ARCANE_OVERFLOW.effect, new ArcaneOverDriveRenderer());
 
         EntityRendererRegistry.register(NenSphereBeamEntity.ENTITY_TYPE, NenSphereBeamRenderer::new);
     }

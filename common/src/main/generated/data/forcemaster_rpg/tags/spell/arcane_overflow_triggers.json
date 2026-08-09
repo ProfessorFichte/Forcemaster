@@ -1,0 +1,12 @@
+{
+  "values": [
+    {
+      "id": "#forcemaster_rpg:spell_book/forcemaster",
+      "required": false
+    },
+    {
+      "id": "more_rpg_classes:burstcrack",
+      "required": false
+    }
+  ]
+}

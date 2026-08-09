@@ -1,10 +1,20 @@
-# 2.6.1 - 1.21.1
+# 3.0.0 - 1.21.1
 - Adapt to Spell Engine 1.9.10+ API Changes
-  **Balancing & Internal Changes:**
-- Prepared the Spell Expansion Spells technically, they'll be available once they're fully ready
-- Models, Textures, Sound Effects & Animations are still missing
+**Spell Expansion**
+- T2 Baraqijal Esna: Launches a bolt of Baraqijal's light, dealing damage and stacking the target with the Light of Baraqijal Effect. 
+- Lowering their resistance to arcane magic and damaging them over time.
+- T3 Nen Sphere: Charge a magic sphere, unleashing it as a piercing beam. The longer you charge, the further and harder it strikes. 
+- Dealing damage and overloading you with Arcane Overflow, scaling with your charge.
+- T4 Sonic Hand: Unleashes 5 blindingly fast fist strikes, each dealing melee damage. Consumes Arcane Overflow.
+**Balancing & Internal Changes:**
 - Added uk_ua localization- #8 - thx Ch1sho
-- Clean up
+- Clean up Code
+- Changed the Color of Forcemaster Particles, Spell Textures and Effect Textures to bright blue, representing another type of "Arcane" Magic
+- tweaked some Spell Power Coefficient Numbers and for some Spells used the new PowerBlend feature for better hybrid melee/arcane treatment
+- Armory & Arsenal Compat Equipment is now added to a separate Item Group
+- Fixed Burstcrack not triggering Arcane Overflow
+- Forcemaster Spells are now divided in two Groups: Brawl & Might
+- Nen Focus & Arcane Overflow now use Spell Engine's GlowingItemStatusEffect Renderer
 
 # 2.6.0 - 1.21.1
 **Update to use Spell Engine 1.9.0**

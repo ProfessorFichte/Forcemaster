@@ -1,20 +1,24 @@
 package net.forcemaster_rpg.item.weapons;
 
+import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.spell.ForcemasterSpells;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
 import net.more_rpg_classes.custom.MoreSpellSchools;
 import net.more_rpg_classes.custom.MrpgLibSpells;
+import net.more_rpg_classes.item.MRPGCItemGroups;
 import net.spell_engine.api.config.AttributeModifier;
 import net.spell_engine.api.config.WeaponConfig;
 import net.spell_engine.api.spell.container.SpellContainers;
@@ -23,6 +27,7 @@ import net.spell_engine.rpg_series.item.Weapon;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
+import java.util.IdentityHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -30,6 +35,13 @@ import java.util.function.Supplier;
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
 public class WeaponsRegister {
+    private static final Map<Weapon.Entry, RegistryKey<ItemGroup>> groupOverrides = new IdentityHashMap<>();
+
+    private static Weapon.Entry groupKey(Weapon.Entry entry, RegistryKey<ItemGroup> key) {
+        groupOverrides.put(entry, key);
+        return entry;
+    }
+
     private static AttributeModifier armorAddition(float value) {
         return new AttributeModifier(
                 "generic.armor",
@@ -145,20 +157,20 @@ public class WeaponsRegister {
                     .loot(Equipment.LootProperties.of("aether"));
         }
         if(FabricLoader.getInstance().isModLoaded(ARSENAL)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
-            knuckle("unique_knuckle_0",
+            var uniqueKnuckle0 = groupKey(knuckle("unique_knuckle_0",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.GOLD_BLOCK)),7.0F)
                     .translatedName("Federhorn Knuckle")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .withAdditionalSpell(ForcemasterSpells.nen_focus.id().toString())
                     .attribute(armorAddition(3.0F))
-                    .loot(Equipment.LootProperties.of(5, "divine"));
-            knuckle("unique_knuckle_1",
+                    .loot(Equipment.LootProperties.of(5, "divine")), MRPGCItemGroups.ARSENAL_KEY);
+            groupKey(knuckle("unique_knuckle_1",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_BLOCK)),7.0F)
                     .translatedName("Knuckle of Madness")
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .withAdditionalSpell(MrpgLibSpells.carve_melee.id().toString())
                     .attribute(armorAddition(3.0F))
-                    .loot(Equipment.LootProperties.of(5, "crystal"));
+                    .loot(Equipment.LootProperties.of(5, "crystal")), MRPGCItemGroups.ARSENAL_KEY);
         }
         if(FabricLoader.getInstance().isModLoaded(LNE)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
             knuckle( "ender_dragon_knuckle",
@@ -194,6 +206,15 @@ public class WeaponsRegister {
                     .rarity = Rarity.RARE;
         }
         Weapon.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
+        for (var override : groupOverrides.entrySet()) {
+            var entry = override.getKey();
+            var key = override.getValue();
+            ItemGroupEvents.modifyEntriesEvent(ForcemasterGroup.FORCEMASTER_KEY).register(content -> {
+                content.getDisplayStacks().removeIf(stack -> stack.isOf(entry.item()));
+                content.getSearchTabStacks().removeIf(stack -> stack.isOf(entry.item()));
+            });
+            ItemGroupEvents.modifyEntriesEvent(key).register(content -> content.add(entry.item()));
+        }
     }
 
 }

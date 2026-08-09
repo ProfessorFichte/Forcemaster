@@ -1,6 +1,7 @@
 package net.forcemaster_rpg.client.entity;
 
 import net.forcemaster_rpg.entity.NenSphereBeamEntity;
+import net.forcemaster_rpg.spell.ForcemasterSpells;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.entity.EntityRenderer;
 import net.minecraft.client.render.entity.EntityRendererFactory;
@@ -15,7 +16,7 @@ import net.spell_engine.client.util.Color;
 public class NenSphereBeamRenderer extends EntityRenderer<NenSphereBeamEntity> {
     private static final String TEXTURE_ID = "textures/entity/beacon_beam.png";
     private static final float FLOW = 4.0F;
-    private static final long ARCANE_COLOR_RGBA = Color.ARCANE.toRGBA();
+    private static final long BEAM_COLOR_RGBA = ForcemasterSpells.FORCEMASTER_BLUE_COLOR.toRGBA();
 
     public NenSphereBeamRenderer(EntityRendererFactory.Context context) {
         super(context);
@@ -45,7 +46,7 @@ public class NenSphereBeamRenderer extends EntityRenderer<NenSphereBeamEntity> {
 
         var texture = Identifier.of(TEXTURE_ID);
         var renderLayers = BeamRenderer.layerSetFor(texture, Spell.Target.Beam.Luminance.HIGH);
-        var color = Color.IntFormat.fromLongRGBA(ARCANE_COLOR_RGBA);
+        var color = Color.IntFormat.fromLongRGBA(BEAM_COLOR_RGBA);
 
         BeamRenderer.renderBeam(matrices, vertexConsumers,
                 entity.getWorld().getTime(), tickDelta, FLOW, true,
