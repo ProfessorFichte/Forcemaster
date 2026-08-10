@@ -1,5 +1,7 @@
 {
   "school": "spell_power:physical_melee",
+  "range": 1.5,
+  "range_mechanic": "MELEE",
   "tier": 4,
   "group": "brawl",
   "learn": {},
@@ -28,15 +30,14 @@
   "deliver": {
     "type": "MELEE",
     "melee": {
-      "allow_airborne": false,
       "attacks": [
         {
           "attack_speed_multiplier": 1.8,
           "delay": 0.1,
           "hitbox": {
-            "length": 2.5,
-            "width": 1.5,
-            "height": 1.5
+            "length": 0.5,
+            "width": 0.5,
+            "height": 0.5
           },
           "animation": {
             "id": "forcemaster_rpg:sonic_hand_cast"
@@ -52,9 +53,9 @@
           "attack_speed_multiplier": 1.8,
           "delay": 0.2,
           "hitbox": {
-            "length": 2.5,
-            "width": 1.5,
-            "height": 1.5
+            "length": 0.5,
+            "width": 0.5,
+            "height": 0.5
           },
           "animation": {
             "id": "forcemaster_rpg:sonic_hand_cast"
@@ -70,9 +71,9 @@
           "attack_speed_multiplier": 1.8,
           "delay": 0.3,
           "hitbox": {
-            "length": 2.5,
-            "width": 1.5,
-            "height": 1.5
+            "length": 0.5,
+            "width": 0.5,
+            "height": 0.5
           },
           "animation": {
             "id": "forcemaster_rpg:sonic_hand_cast"
@@ -88,9 +89,9 @@
           "attack_speed_multiplier": 1.8,
           "delay": 0.4,
           "hitbox": {
-            "length": 2.5,
-            "width": 1.5,
-            "height": 1.5
+            "length": 0.5,
+            "width": 0.5,
+            "height": 0.5
           },
           "animation": {
             "id": "forcemaster_rpg:sonic_hand_cast"
@@ -106,9 +107,9 @@
           "attack_speed_multiplier": 1.8,
           "delay": 0.5,
           "hitbox": {
-            "length": 2.5,
-            "width": 1.5,
-            "height": 1.5
+            "length": 0.5,
+            "width": 0.5,
+            "height": 0.5
           },
           "animation": {
             "id": "forcemaster_rpg:sonic_hand_cast"

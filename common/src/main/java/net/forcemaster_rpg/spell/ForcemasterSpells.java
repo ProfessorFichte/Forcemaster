@@ -2,7 +2,6 @@ package net.forcemaster_rpg.spell;
 
 import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.sounds.ModSounds;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.datagen.SpellBuilder;
 import net.spell_engine.api.spell.ExternalSpellSchools;
@@ -83,7 +82,6 @@ public class ForcemasterSpells {
         modifier.execute = TriState.DENY;
         impact.target_modifiers = List.of(modifier);
     }
-    public static final Color ORANGE = new Color(255.0F, 165.0F, 0.0F);
     private static void bossDeny(Spell.Impact impact) {
         var modifier = createImpactModifier("#c:bosses");
         modifier.execute = TriState.DENY;
@@ -117,6 +115,7 @@ public class ForcemasterSpells {
     public static final String BRAWL =  "brawl";
     public static final String MIGHT = "might";
     public static final Color FORCEMASTER_BLUE_COLOR = Color.from(0x53ccff);
+    public static final Color ORANGE = new Color(255.0F, 165.0F, 0.0F);
 
     public static Entry stonehand = add(stonehand());
     private static Entry stonehand() {
@@ -233,7 +232,8 @@ public class ForcemasterSpells {
         var spell = activeSpellBase();
         spell.school = SpellSchools.ARCANE;
         spell.tier = 4;
-        spell.range = 7.5F;
+        spell.range = 4.0F;
+        spell.range_mechanic = Spell.RangeMechanic.MELEE;
         spell.group = MIGHT;
 
         spell.active.cast.movement_speed = 0.1F;
@@ -262,12 +262,13 @@ public class ForcemasterSpells {
         punch.attack_speed_multiplier = 2.0F;
         punch.delay = 0.25F;
         punch.hitbox = new Spell.Delivery.Melee.HitBox();
-        punch.hitbox.height = 2.0F;
+        punch.hitbox.height = 1.0F;
         punch.hitbox.length = 6.5F;
-        punch.hitbox.width = 1.5F;
+        punch.hitbox.width = 2.0F;
         punch.animation = PlayerAnimation.of("forcemaster_rpg:asal_release");
 
         SpellBuilder.Deliver.melee(spell, List.of(punch));
+        spell.deliver.melee.allow_airborne = true;
 
         var damage = SpellBuilder.Impacts.damage(3.0F, 2.0F);
         damage.particles = new ParticleBatch[]{
@@ -355,6 +356,8 @@ public class ForcemasterSpells {
         spell.school = ExternalSpellSchools.PHYSICAL_MELEE;
         spell.tier = 4;
         spell.group = BRAWL;
+        spell.range = 1.5F;
+        spell.range_mechanic = Spell.RangeMechanic.MELEE;
 
         SpellBuilder.Casting.instant(spell);
         SpellBuilder.Target.none(spell);
@@ -371,9 +374,9 @@ public class ForcemasterSpells {
         attack1.attack_speed_multiplier = 1.8F;
         attack1.delay = 0.1F;
         attack1.hitbox = new Spell.Delivery.Melee.HitBox();
-        attack1.hitbox.height = 1.5F;
-        attack1.hitbox.width = 1.5F;
-        attack1.hitbox.length = 2.5F;
+        attack1.hitbox.height = 0.5F;
+        attack1.hitbox.width = 0.5F;
+        attack1.hitbox.length = 0.5F;
         attack1.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
         attack1.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
         attack1.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
@@ -382,9 +385,9 @@ public class ForcemasterSpells {
         attack2.attack_speed_multiplier = 1.8F;
         attack2.delay = 0.2F;
         attack2.hitbox = new Spell.Delivery.Melee.HitBox();
-        attack2.hitbox.height = 1.5F;
-        attack2.hitbox.width = 1.5F;
-        attack2.hitbox.length = 2.5F;
+        attack2.hitbox.height = 0.5F;
+        attack2.hitbox.width = 0.5F;
+        attack2.hitbox.length = 0.5F;
         attack2.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
         attack2.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
         attack2.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
@@ -393,9 +396,9 @@ public class ForcemasterSpells {
         attack3.attack_speed_multiplier = 1.8F;
         attack3.delay = 0.3F;
         attack3.hitbox = new Spell.Delivery.Melee.HitBox();
-        attack3.hitbox.height = 1.5F;
-        attack3.hitbox.width = 1.5F;
-        attack3.hitbox.length = 2.5F;
+        attack3.hitbox.height = 0.5F;
+        attack3.hitbox.width = 0.5F;
+        attack3.hitbox.length = 0.5F;
         attack3.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
         attack3.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
         attack3.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
@@ -404,9 +407,9 @@ public class ForcemasterSpells {
         attack4.attack_speed_multiplier = 1.8F;
         attack4.delay = 0.4F;
         attack4.hitbox = new Spell.Delivery.Melee.HitBox();
-        attack4.hitbox.height = 1.5F;
-        attack4.hitbox.width = 1.5F;
-        attack4.hitbox.length = 2.5F;
+        attack4.hitbox.height = 0.5F;
+        attack4.hitbox.width = 0.5F;
+        attack4.hitbox.length = 0.5F;
         attack4.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
         attack4.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
         attack4.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
@@ -415,16 +418,16 @@ public class ForcemasterSpells {
         attack5.attack_speed_multiplier = 1.8F;
         attack5.delay = 0.5F;
         attack5.hitbox = new Spell.Delivery.Melee.HitBox();
-        attack5.hitbox.height = 1.5F;
-        attack5.hitbox.width = 1.5F;
-        attack5.hitbox.length = 2.5F;
+        attack5.hitbox.height = 0.5F;
+        attack5.hitbox.width = 0.5F;
+        attack5.hitbox.length = 0.5F;
         attack5.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
         attack5.swing_sound = Sound.of(SpellEngineSounds.WEAPON_HAMMER_SWING.id());
         attack5.impact_sound = Sound.of(ModSounds.KNUCKLE_ATTACK.id());
         attack5.additional_hits_on_same_target = true;
 
         SpellBuilder.Deliver.melee(spell, List.of(attack1,attack2,attack3,attack4,attack5));
-        spell.deliver.melee.allow_airborne = false;
+        spell.deliver.melee.allow_airborne = true;
 
         configureCooldown(spell, 28, 0.5F);
         spell.cost.effect_id = ForcemasterEffects.ARCANE_OVERFLOW.id.toString();

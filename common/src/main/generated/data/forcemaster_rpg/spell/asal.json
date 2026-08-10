@@ -1,6 +1,7 @@
 {
   "school": "spell_power:arcane",
-  "range": 7.5,
+  "range": 4.0,
+  "range_mechanic": "MELEE",
   "tier": 4,
   "group": "might",
   "learn": {},
@@ -59,8 +60,7 @@
           "attack_speed_multiplier": 2.0,
           "hitbox": {
             "length": 6.5,
-            "width": 1.5,
-            "height": 2.0
+            "width": 2.0
           },
           "animation": {
             "id": "forcemaster_rpg:asal_release"
