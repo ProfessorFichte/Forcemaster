@@ -40,7 +40,10 @@ public class NenSphereDelivery {
                     }
 
                     var chargeRatio = MathHelper.clamp(impactContext.charge(), 0F, 1F);
-                    var effectiveRange = SpellParameters.getRange(caster, spellEntry, chargeRatio);
+                    // ImpactContext.charge is the ALREADY-CURVED ratio, so this is the
+                    // getRangeCurved variant - getRange(..., ratio) would apply the charge
+                    // curve a second time.
+                    var effectiveRange = SpellParameters.getRangeCurved(caster, spellEntry, chargeRatio);
 
                     var origin = LaunchGeometry.launchPoint(caster);
                     var lookVector = caster.getRotationVector().normalize();
