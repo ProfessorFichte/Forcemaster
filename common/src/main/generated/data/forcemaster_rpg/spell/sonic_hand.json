@@ -10,16 +10,19 @@
     "animation": {
       "id": "forcemaster_rpg:sonic_hand_cast"
     },
-    "particles": [
-      {
-        "particle_id": "forcemaster_rpg:sonichand_vacuum",
-        "origin": "CENTER",
-        "shape": "SPHERE",
-        "count": 1.0,
-        "max_speed": 0.0,
-        "scale": 1.2
-      }
-    ],
+    "visuals": {
+      "particles": [
+        {
+          "id": "forcemaster_rpg:sonichand_vacuum",
+          "appearance": {},
+          "batch": {
+            "count": 1.0,
+            "shape": "SPHERE",
+            "anchor": "ENTITY"
+          }
+        }
+      ]
+    },
     "sound": {
       "id": "forcemaster_rpg:sonic_hand"
     }

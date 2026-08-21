@@ -8,16 +8,11 @@ import net.forcemaster_rpg.client.armor.CustomArmorRenderer;
 import net.forcemaster_rpg.client.effect.BarqEsnaParticles;
 import net.forcemaster_rpg.client.entity.NenSphereBeamRenderer;
 import net.forcemaster_rpg.client.particle.Particles;
-import net.forcemaster_rpg.client.particle.PunchParticle;
 import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.entity.NenSphereBeamEntity;
 import net.forcemaster_rpg.item.armor.Armors;
-import net.minecraft.client.particle.ExplosionLargeParticle;
-import net.minecraft.client.particle.FlameParticle;
-import net.more_rpg_classes.client.particle.CustomSpellExplosionParticle;
-import net.more_rpg_classes.client.particle.GroundParticle;
-import net.spell_engine.api.effect.CustomModelStatusEffect;
 import net.spell_engine.api.effect.CustomParticleStatusEffect;
+import net.spell_engine.client.particle.SpellParticle;
 import net.spell_engine.rpg_series.item.Armor;
 import java.util.function.Supplier;
 
@@ -42,12 +37,11 @@ public class ForcemasterClient{
     public static void registerParticleAppearances() {
         ParticleFactoryRegistry registry = ParticleFactoryRegistry.getInstance();
 
-        registry.register(Particles.ASAL_EXPLODE, ExplosionLargeParticle.Factory::new);
-        registry.register(Particles.BARQ_ESNA_FLAME, FlameParticle.Factory::new);
-        registry.register(Particles.SONICHAND_VACUUM, CustomSpellExplosionParticle.Factory::new);
-        registry.register(Particles.PUNCH, PunchParticle.Factory::new);
-        registry.register(Particles.SONIC_PUNCH, PunchParticle.Factory::new);
-        registry.register(Particles.GROUND_PUNCH, GroundParticle.DefaultFactory::new);
+        // One generic factory for every entry this mod owns: SpellParticle resolves the
+        // entry's defaults against the per-spawn ParticleGroup.Appearance payload.
+        for (var entry: Particles.entries()) {
+            registry.register(entry.type(), provider -> new SpellParticle.Factory(provider, entry));
+        }
     }
 
     private static void registerArmorRenderer(Armor.Set set, Supplier<AzArmorRenderer> armorRendererSupplier) {
