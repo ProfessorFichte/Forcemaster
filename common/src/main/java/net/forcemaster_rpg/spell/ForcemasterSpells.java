@@ -14,7 +14,6 @@ import net.spell_engine.api.spell.fx.ParticleGroupBuilder;
 import net.spell_engine.api.spell.fx.PlayerAnimation;
 import net.spell_engine.api.spell.fx.Sound;
 import net.spell_engine.api.util.TriState;
-import net.spell_engine.client.gui.SpellTooltip;
 import net.spell_engine.client.util.Color;
 import net.spell_engine.fx.SpellEngineParticles;
 import net.spell_engine.fx.SpellEngineSounds;
@@ -31,19 +30,12 @@ import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 public class ForcemasterSpells {
     public enum Book { FORCEMASTER }
     public record Entry(Identifier id, Spell spell, String title, String description,
-                        @Nullable SpellTooltip.DescriptionMutator mutator,
                         @Nullable Book book) {
         public Entry(Identifier id, Spell spell, String title, String description) {
-            this(id, spell, title, description, null, null);
-        }
-        public Entry(Identifier id, Spell spell, String title, String description, @Nullable SpellTooltip.DescriptionMutator mutator) {
-            this(id, spell, title, description, mutator, null);
-        }
-        public Entry mutator(SpellTooltip.DescriptionMutator mutator) {
-            return new Entry(id, spell, title, description, mutator, book);
+            this(id, spell, title, description, null);
         }
         public Entry book(Book book) {
-            return new Entry(id, spell, title, description, mutator, book);
+            return new Entry(id, spell, title, description, book);
         }
     }
 
@@ -182,7 +174,7 @@ public class ForcemasterSpells {
 
         spell.impacts = List.of(custom);
         configureCooldown(spell, 20, 0.3F);
-        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+        return new Entry(id, spell, title, description).book(Book.FORCEMASTER);
     }
     public static Entry belial_smashing = add(belial_smashing());
     private static Entry belial_smashing() {
@@ -227,7 +219,7 @@ public class ForcemasterSpells {
         spell.deliver.melee.allow_airborne = false;
 
         SpellBuilder.Cost.cooldown(spell, 20);
-        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+        return new Entry(id, spell, title, description).book(Book.FORCEMASTER);
     }
     public static final Entry asal = add(asal());
     private static Entry asal() {
@@ -293,7 +285,7 @@ public class ForcemasterSpells {
         spell.cost.cooldown.duration = 30;
         spell.cost.cooldown.haste_affected = true;
 
-        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+        return new Entry(id, spell, title, description).book(Book.FORCEMASTER);
     }
     public static final Entry baraqijal_esna = add(baraqijal_esna());
     private static Entry baraqijal_esna() {
@@ -348,7 +340,7 @@ public class ForcemasterSpells {
         spell.impacts = List.of(damage, debuff);
         configureCooldown(spell, 5, 0.2F);
 
-        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+        return new Entry(id, spell, title, description).book(Book.FORCEMASTER);
     }
     public static final Entry sonic_hand = add(sonic_hand());
     private static Entry sonic_hand() {
@@ -436,7 +428,7 @@ public class ForcemasterSpells {
 
         configureCooldown(spell, 28, 0.5F);
         spell.cost.effect_id = ForcemasterEffects.ARCANE_OVERFLOW.id.toString();
-        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+        return new Entry(id, spell, title, description).book(Book.FORCEMASTER);
     }
     public static final Entry nen_sphere = add(nen_sphere());
     private static Entry nen_sphere() {
@@ -497,7 +489,7 @@ public class ForcemasterSpells {
         spell.impacts = List.of(damage, overflow);
         configureCooldown(spell, 22, 0.3F);
 
-        return new Entry(id, spell, title, description, null).book(Book.FORCEMASTER);
+        return new Entry(id, spell, title, description).book(Book.FORCEMASTER);
     }
     /// MODIFIER
     public static final Entry improved_belial_smashing = add(improved_belial_smashing());
@@ -523,7 +515,7 @@ public class ForcemasterSpells {
         modifier.cooldown_duration_deduct = 3;
         spell.modifiers = List.of(modifier);
 
-        return new Entry(id, spell, title, description, null);
+        return new Entry(id, spell, title, description);
     }
     /// PASSIVES
     public static Entry nen_focus = add(nen_focus());
@@ -571,7 +563,7 @@ public class ForcemasterSpells {
         configureCooldown(spell, 20,0);
         spell.cost.batching = true;
 
-        return new Entry(id, spell, title, description, null);
+        return new Entry(id, spell, title, description);
     }
     public static final Entry knuckle_arcane_overflow = add(knuckle_arcane_overflow());
     private static Entry knuckle_arcane_overflow() {
@@ -606,6 +598,6 @@ public class ForcemasterSpells {
         spell.impacts = List.of(impact);
         SpellBuilder.Cost.cooldown(spell,3);
 
-        return new Entry(id, spell, title, description, null);
+        return new Entry(id, spell, title, description);
     }
 }

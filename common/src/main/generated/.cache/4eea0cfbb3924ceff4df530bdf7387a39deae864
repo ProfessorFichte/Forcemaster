@@ -1,4 +1,4 @@
-// 1.21.1	2026-08-21T16:56:41.508075	Forcemaster Class Mod/Tags for minecraft:item
+// 1.21.1	2026-08-21T17:05:09.825341	Forcemaster Class Mod/Tags for minecraft:item
 9c51d34f6756b5c83c14c37985ad1a1d183e6249 data/spell_power/tags/item/enchantable/haste.json
 9c51d34f6756b5c83c14c37985ad1a1d183e6249 data/minecraft/tags/item/enchantable/durability.json
 9c51d34f6756b5c83c14c37985ad1a1d183e6249 data/rpg_series/tags/item/archetype/magic_damage_weapon.json
@@ -6,8 +6,8 @@
 fa106f4883d35199037d93deaee7acbabf47d924 data/rpg_series/tags/item/loot_theme/crystal.json
 aaa72437ef168c454798f69d995e154cf7b90b80 data/rpg_series/tags/item/loot_tier/tier_2_weapons.json
 ef747470348ff4bf892f0dc210915ba0516e3f6c data/rpg_series/tags/item/loot_tier/tier_3_weapons.json
-9c51d34f6756b5c83c14c37985ad1a1d183e6249 data/spell_power/tags/item/enchantable/spell_power_generic.json
 f718483f87f973b2f2b70383f795aff77ea131d6 data/rpg_series/tags/item/loot_tier/tier_4_weapons.json
+9c51d34f6756b5c83c14c37985ad1a1d183e6249 data/spell_power/tags/item/enchantable/spell_power_generic.json
 599443bc70252377193f8c3f63456cc18874031c data/rpg_series/tags/item/loot_tier/tier_1_weapons.json
 9c51d34f6756b5c83c14c37985ad1a1d183e6249 data/spell_power/tags/item/enchantable/critical_chance.json
 8181a99a40123671a7aff5597f3843558ee4b098 data/minecraft/tags/item/foot_armor.json
