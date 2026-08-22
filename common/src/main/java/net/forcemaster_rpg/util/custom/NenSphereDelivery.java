@@ -6,7 +6,10 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.MathHelper;
 import net.spell_engine.api.spell.Spell;
 import net.spell_engine.api.spell.event.SpellHandlers;
-import net.spell_engine.internals.SpellHelper;
+import net.spell_engine.internals.SpellExecution;
+import net.spell_engine.internals.SpellParameters;
+import net.spell_engine.internals.delivery.LaunchGeometry;
+import net.spell_engine.internals.impact.SpellImpacts;
 import net.spell_engine.internals.target.EntityRelations;
 import net.spell_engine.internals.target.SpellTarget;
 import net.spell_engine.utils.TargetHelper;
@@ -37,9 +40,12 @@ public class NenSphereDelivery {
                     }
 
                     var chargeRatio = MathHelper.clamp(impactContext.charge(), 0F, 1F);
-                    var effectiveRange = SpellHelper.getRange(caster, spellEntry, impactContext.chargeModifier());
+                    // ImpactContext.charge is the ALREADY-CURVED ratio, so this is the
+                    // getRangeCurved variant - getRange(..., ratio) would apply the charge
+                    // curve a second time.
+                    var effectiveRange = SpellParameters.getRangeCurved(caster, spellEntry, chargeRatio);
 
-                    var origin = SpellHelper.launchPoint(caster);
+                    var origin = LaunchGeometry.launchPoint(caster);
                     var lookVector = caster.getRotationVector().normalize();
                     var beamPosition = TargetHelper.castBeam(caster, lookVector, effectiveRange);
                     var beamLength = beamPosition.length();
@@ -56,7 +62,7 @@ public class NenSphereDelivery {
                     for (var target : hitTargets) {
                         var position = target.getPos().add(0, target.getHeight() / 2F, 0).lerp(casterPos, 0.01);
                         var targetContext = impactContext.position(position);
-                        SpellHelper.performImpacts(world, caster, target, target, spellEntry, spell.impacts, targetContext);
+                        SpellImpacts.performImpacts(world, caster, target, target, spellEntry, spell.impacts, targetContext);
                     }
 
                     var beamWidth = MathHelper.lerp(chargeRatio, MIN_BEAM_WIDTH, MAX_BEAM_WIDTH);

@@ -15,13 +15,20 @@
       },
       "particles": [
         {
-          "particle_id": "spell_engine:magic_arcane_ascend",
-          "origin": "FEET",
-          "shape": "WIDE_PIPE",
-          "count": 8.0,
-          "min_speed": 0.15,
-          "max_speed": 0.4,
-          "color_rgba": 1405943807
+          "id": "spell_engine:magic_arcane",
+          "appearance": {
+            "color": 1405943807,
+            "motion": "ASCEND"
+          },
+          "batch": {
+            "count": 8.0,
+            "shape": "PIPE",
+            "anchor": "ENTITY",
+            "vertical_origin": 0.1,
+            "min_speed": 0.15,
+            "max_speed": 0.4,
+            "width_factor": 2.0
+          }
         }
       ]
     }
@@ -45,11 +52,13 @@
           "light_level": 8,
           "travel_particles": [
             {
-              "particle_id": "forcemaster_rpg:barq_esna_flame",
-              "origin": "CENTER",
-              "shape": "LINE",
-              "count": 1.0,
-              "max_speed": 0.0
+              "id": "forcemaster_rpg:barq_esna_flame",
+              "appearance": {},
+              "batch": {
+                "count": 1.0,
+                "shape": "LINE",
+                "anchor": "ENTITY"
+              }
             }
           ],
           "composite_model": {
@@ -82,16 +91,21 @@
           "spell_power_coefficient": 0.35
         }
       },
-      "particles": [
-        {
-          "particle_id": "forcemaster_rpg:barq_esna_flame",
-          "origin": "CENTER",
-          "shape": "SPHERE",
-          "count": 12.0,
-          "min_speed": 0.15,
-          "max_speed": 0.3
-        }
-      ]
+      "visuals": {
+        "particles": [
+          {
+            "id": "forcemaster_rpg:barq_esna_flame",
+            "appearance": {},
+            "batch": {
+              "count": 12.0,
+              "shape": "SPHERE",
+              "anchor": "ENTITY",
+              "min_speed": 0.15,
+              "max_speed": 0.3
+            }
+          }
+        ]
+      }
     },
     {
       "action": {

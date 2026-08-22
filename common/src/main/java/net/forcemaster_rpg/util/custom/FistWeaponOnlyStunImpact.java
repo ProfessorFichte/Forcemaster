@@ -10,7 +10,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.spell_engine.api.spell.Spell;
-import net.spell_engine.internals.SpellHelper;
+import net.spell_engine.internals.SpellExecution;
 import net.spell_power.api.SpellPower;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.tweaksConfig;
@@ -23,7 +23,7 @@ public class FistWeaponOnlyStunImpact implements SpellHandlers.CustomImpact {
             SpellPower.Result powerResult,
             LivingEntity caster,
             Entity target,
-            SpellHelper.ImpactContext context
+            SpellExecution.ImpactContext context
     ) {
         ItemStack stack = caster.getEquippedStack(EquipmentSlot.MAINHAND);
         if(stack.isIn(ModItemTags.FIST_WEAPON)&& target instanceof LivingEntity livingEntity && target.isLiving() && !target.isSpectator()){
