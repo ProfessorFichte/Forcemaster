@@ -12,11 +12,6 @@ public class BarqEsnaParticles implements CustomParticleStatusEffect.Spawner {
     private final ParticleGroup particles;
 
     public BarqEsnaParticles(int particleCount) {
-        // V1: ParticleBatch("forcemaster_rpg:barq_esna_flame", SPHERE, CENTER, null,
-        //     particleCount, 0.1F, 0.3F, 0) — CENTER is the V2 default anchor/vertical
-        //     origin, and the trailing angle of 0 is the default too.
-        //     Referencing the Entry rather than the raw id is what lets the entry's
-        //     own appearance defaults apply.
         this.particles = ParticleGroupBuilder.of(Particles.BARQ_ESNA_FLAME)
                 .batch(b -> b.shape(ParticleGroup.Shape.SPHERE).count(particleCount).speed(0.1F, 0.3F));
     }

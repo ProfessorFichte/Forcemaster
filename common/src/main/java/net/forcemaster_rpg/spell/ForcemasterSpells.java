@@ -359,9 +359,6 @@ public class ForcemasterSpells {
 
         spell.release.animation = PlayerAnimation.of("forcemaster_rpg:sonic_hand_cast");
         spell.release.sound = Sound.of(ModSounds.SONIC_HAND.id());
-        // V1 bound this id to a non-template factory, so ParticleHelper.resolveParticleType
-        // discarded the authored scale(1.2F) - it always drew at the factory's 0.8. The entry
-        // now honours appearance, so the dead value is not carried forward.
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.of(Particles.SONICHAND_VACUUM)
                         .batch(b -> b.shape(ParticleGroup.Shape.SPHERE)
@@ -586,10 +583,6 @@ public class ForcemasterSpells {
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_arcane, ParticleGroup.Motion.DECELERATE, FORCEMASTER_BLUE_COLOR)
                         .batch(b -> b.shape(ParticleGroup.Shape.SPHERE)
                                 .count(30).speed(0.5F, 0.5F)),
-                // V1 `aura_effect_642` was `zone/effect_642` registered a second time as
-                // Orientation.VERTICAL - a plain camera billboard. The aura twins are gone
-                // in 1.10; facing(CAMERA) is what that registration meant. NOT aura(), which
-                // would add POSITION_SCALED attachment this site never had.
                 ParticleGroupBuilder.of(SpellEngineParticles.area_effect_642)
                         .facing(ParticleGroup.Facing.CAMERA)
                         .color(FORCEMASTER_BLUE_COLOR)

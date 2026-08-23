@@ -37,8 +37,6 @@ public class ForcemasterClient{
     public static void registerParticleAppearances() {
         ParticleFactoryRegistry registry = ParticleFactoryRegistry.getInstance();
 
-        // One generic factory for every entry this mod owns: SpellParticle resolves the
-        // entry's defaults against the per-spawn ParticleGroup.Appearance payload.
         for (var entry: Particles.entries()) {
             registry.register(entry.type(), provider -> new SpellParticle.Factory(provider, entry));
         }
