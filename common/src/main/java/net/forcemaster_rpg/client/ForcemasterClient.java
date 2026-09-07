@@ -1,19 +1,19 @@
 package net.forcemaster_rpg.client;
 
-import mod.azure.azurelibarmor.common.render.armor.AzArmorRenderer;
-import mod.azure.azurelibarmor.common.render.armor.AzArmorRendererRegistry;
-import net.fabricmc.fabric.api.client.particle.v1.ParticleFactoryRegistry;
-import net.fabricmc.fabric.api.client.rendering.v1.EntityRendererRegistry;
 import net.forcemaster_rpg.client.armor.CustomArmorRenderer;
 import net.forcemaster_rpg.client.effect.BarqEsnaParticles;
-import net.forcemaster_rpg.client.entity.NenSphereBeamRenderer;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.effect.ForcemasterEffects;
-import net.forcemaster_rpg.entity.NenSphereBeamEntity;
 import net.forcemaster_rpg.item.armor.Armors;
+import net.minecraft.client.particle.ParticleFactory;
+import net.minecraft.client.particle.SpriteProvider;
+import net.minecraft.particle.ParticleType;
+import net.rpg_foundation.armor_api.client.ArmorRenderers;
+import net.rpg_foundation.armor_api.client.GeoArmorRenderer;
 import net.spell_engine.api.effect.CustomParticleStatusEffect;
 import net.spell_engine.client.particle.SpellParticle;
 import net.spell_engine.rpg_series.item.Armor;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
@@ -30,19 +30,19 @@ public class ForcemasterClient{
         }
 
         CustomParticleStatusEffect.register(ForcemasterEffects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
-
-        EntityRendererRegistry.register(NenSphereBeamEntity.ENTITY_TYPE, NenSphereBeamRenderer::new);
     }
 
-    public static void registerParticleAppearances() {
-        ParticleFactoryRegistry registry = ParticleFactoryRegistry.getInstance();
+    public interface ParticleFactoryRegistrar {
+        void register(ParticleType type, Function<SpriteProvider, ParticleFactory> factory);
+    }
 
+    public static void registerParticleAppearances(ParticleFactoryRegistrar registrar) {
         for (var entry: Particles.entries()) {
-            registry.register(entry.type(), provider -> new SpellParticle.Factory(provider, entry));
+            registrar.register(entry.type(), provider -> new SpellParticle.Factory(provider, entry));
         }
     }
 
-    private static void registerArmorRenderer(Armor.Set set, Supplier<AzArmorRenderer> armorRendererSupplier) {
-        AzArmorRendererRegistry.register(armorRendererSupplier, set.head, set.chest, set.legs, set.feet);
+    private static void registerArmorRenderer(Armor.Set set, Supplier<GeoArmorRenderer> armorRendererSupplier) {
+        ArmorRenderers.register(armorRendererSupplier.get(), set.head, set.chest, set.legs, set.feet);
     }
 }

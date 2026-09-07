@@ -3,7 +3,6 @@ package net.forcemaster_rpg.item;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import java.util.HashMap;
@@ -27,11 +26,7 @@ public class ForcemasterItems {
 
 
     public static void registerModItems(){
-        ItemGroupEvents.modifyEntriesEvent(ForcemasterGroup.FORCEMASTER_KEY).register((content) -> {
-        });
-
         ForcemasterClassMod.LOGGER.info("Registering Mod Items for " + ForcemasterClassMod.MOD_ID);
-
     }
 }
 

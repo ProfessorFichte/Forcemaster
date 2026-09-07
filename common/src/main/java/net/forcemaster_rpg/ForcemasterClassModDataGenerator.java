@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.forcemaster_rpg.datagen.*;
 import net.forcemaster_rpg.effect.ForcemasterEffects;
+import net.forcemaster_rpg.entity.NenSphereBeamEntity;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.tag.ModItemTags;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
@@ -139,6 +140,8 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 				translationBuilder.add("spell." + id.getNamespace() + "." + id.getPath() + ".name", entry.title());
 				translationBuilder.add("spell." + id.getNamespace() + "." + id.getPath() + ".description", entry.description());
 			});
+
+			translationBuilder.add(NenSphereBeamEntity.ENTITY_TYPE, "Nen Sphere");
 
 			translationBuilder.add("equipment_set.forcemaster_rpg.billporon", "Billporon's Focus");
 

@@ -1,9 +1,6 @@
 package net.forcemaster_rpg;
 
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.fabricmc.fabric.api.resource.ResourcePackActivationType;
-import net.fabricmc.loader.api.FabricLoader;
+import net.spell_engine.Platform;
 import net.forcemaster_rpg.client.particle.Particles;
 import net.forcemaster_rpg.config.Default;
 import net.forcemaster_rpg.config.TweaksConfig;
@@ -15,19 +12,12 @@ import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.sounds.ModSounds;
 import net.forcemaster_rpg.util.custom.CustomSpellImpact;
-import net.minecraft.item.ItemStack;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
-import net.minecraft.text.Text;
-
 import net.minecraft.util.Identifier;
 import net.spell_engine.rpg_series.config.ConfigFile;
 import net.spell_engine.rpg_series.config.ConfigFile.Effects;
 import net.tiny_config.ConfigManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
 
 public class ForcemasterClassMod{
 	public static final String MOD_ID = "forcemaster_rpg";
@@ -56,7 +46,7 @@ public class ForcemasterClassMod{
 	public static void init() {
 		itemConfig.refresh();
 		tweaksConfig.refresh();
-		if (FabricLoader.getInstance().isDevelopmentEnvironment()) {
+		if (Platform.util().isDevelopmentEnvironment()) {
 			tweaksConfig.value.ignore_items_required_mods = true;
 		}
 		effectsConfig.refresh();
@@ -65,25 +55,11 @@ public class ForcemasterClassMod{
 	}
 
 	public static void registerItems() {
-		ForcemasterGroup.FORCEMASTER = FabricItemGroup.builder()
-				.icon(() -> new ItemStack(Armors.phaslebArmorSet.armorSet().head.asItem()))
-				.displayName(Text.translatable("itemGroup." + MOD_ID + ".general"))
-				.build();
-		Registry.register(Registries.ITEM_GROUP, ForcemasterGroup.FORCEMASTER_KEY, ForcemasterGroup.FORCEMASTER);
 		ForcemasterItems.registerModItems();
 		ForcemasterGroup.registerItemGroups();
 
 		WeaponsRegister.register(itemConfig.value.weapons);
 		Armors.register(itemConfig.value.armor_sets);
-		if (armoryLoadCheck()) {
-			FabricLoader.getInstance().getModContainer(MOD_ID).ifPresent(modContainer -> {
-				ResourceManagerHelper.registerBuiltinResourcePack(
-						Identifier.of(MOD_ID, "forcemaster_armory_compat"),
-						modContainer,
-						ResourcePackActivationType.ALWAYS_ENABLED
-				);
-			});
-		}
 		itemConfig.save();
 	}
 	public static void registerSounds() {

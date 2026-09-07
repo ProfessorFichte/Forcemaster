@@ -1,7 +1,6 @@
 package net.forcemaster_rpg.entity;
 
-import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
-import net.minecraft.entity.EntityDimensions;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
@@ -15,11 +14,11 @@ public class ForcemasterEntities {
         NenSphereBeamEntity.ENTITY_TYPE = Registry.register(
                 Registries.ENTITY_TYPE,
                 Identifier.of(MOD_ID, "nen_sphere_beam"),
-                FabricEntityTypeBuilder.<NenSphereBeamEntity>create(SpawnGroup.MISC, NenSphereBeamEntity::new)
-                        .dimensions(EntityDimensions.fixed(0F, 0F))
-                        .trackRangeBlocks(64)
-                        .trackedUpdateRate(20)
-                        .build()
+                EntityType.Builder.<NenSphereBeamEntity>create(NenSphereBeamEntity::new, SpawnGroup.MISC)
+                        .dimensions(0F, 0F)
+                        .maxTrackingRange(64)
+                        .trackingTickInterval(20)
+                        .build("nen_sphere_beam")
         );
     }
 }

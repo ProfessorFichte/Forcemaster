@@ -1,7 +1,5 @@
 package net.forcemaster_rpg.item.weapons;
 
-import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
-import net.fabricmc.loader.api.FabricLoader;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.spell.ForcemasterSpells;
@@ -35,7 +33,7 @@ import java.util.function.Supplier;
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
 public class WeaponsRegister {
-    private static final Map<Weapon.Entry, RegistryKey<ItemGroup>> groupOverrides = new IdentityHashMap<>();
+    public static final Map<Weapon.Entry, RegistryKey<ItemGroup>> groupOverrides = new IdentityHashMap<>();
 
     private static Weapon.Entry groupKey(Weapon.Entry entry, RegistryKey<ItemGroup> key) {
         groupOverrides.put(entry, key);
@@ -129,8 +127,8 @@ public class WeaponsRegister {
     private static final String LNE = "loot_n_explore";
     private static final float lneWeaponSpellPower = 4.0F;
     public static void register(Map<String,WeaponConfig> configs) {
-        if (FabricLoader.getInstance().isModLoaded(BETTER_NETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
-            var repair = ingredient("betternether:nether_ruby", FabricLoader.getInstance().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
+        if (net.spell_engine.Platform.util().isModLoaded(BETTER_NETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+            var repair = ingredient("betternether:nether_ruby", net.spell_engine.Platform.util().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
             knuckle("ruby_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair),7.0F)
                     .translatedName("Ruby Knuckle")
@@ -138,8 +136,8 @@ public class WeaponsRegister {
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of(4));
         }
-        if (FabricLoader.getInstance().isModLoaded(BETTER_END) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
-            var repair = ingredient("betterend:aeternium_ingot", FabricLoader.getInstance().isModLoaded(BETTER_END), Items.NETHERITE_INGOT);
+        if (net.spell_engine.Platform.util().isModLoaded(BETTER_END) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+            var repair = ingredient("betterend:aeternium_ingot", net.spell_engine.Platform.util().isModLoaded(BETTER_END), Items.NETHERITE_INGOT);
             knuckle("aeternium_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair),7.0F)
                     .translatedName("Aeternium Knuckle")
@@ -147,8 +145,8 @@ public class WeaponsRegister {
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of(4));
         }
-        if (FabricLoader.getInstance().isModLoaded(AETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
-            var repair = ingredient("aether:ambrosium_shard", FabricLoader.getInstance().isModLoaded(AETHER), Items.NETHERITE_INGOT);
+        if (net.spell_engine.Platform.util().isModLoaded(AETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
+            var repair = ingredient("aether:ambrosium_shard", net.spell_engine.Platform.util().isModLoaded(AETHER), Items.NETHERITE_INGOT);
             knuckle("aether_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, repair),7.0F)
                     .translatedName("Holy Knuckle")
@@ -156,7 +154,7 @@ public class WeaponsRegister {
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of("aether"));
         }
-        if(FabricLoader.getInstance().isModLoaded(ARSENAL)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
+        if(net.spell_engine.Platform.util().isModLoaded(ARSENAL)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
             var uniqueKnuckle0 = groupKey(knuckle("unique_knuckle_0",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.GOLD_BLOCK)),7.0F)
                     .translatedName("Federhorn Knuckle")
@@ -172,19 +170,19 @@ public class WeaponsRegister {
                     .attribute(armorAddition(3.0F))
                     .loot(Equipment.LootProperties.of(5, "crystal")), MRPGCItemGroups.ARSENAL_KEY);
         }
-        if(FabricLoader.getInstance().isModLoaded(LNE)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
+        if(net.spell_engine.Platform.util().isModLoaded(LNE)|| ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods){
             knuckle( "ender_dragon_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.AMETHYST_SHARD)),7.0F)
                     .translatedName("Wyrm's Claw")
                     .attribute(armorAddition(3.0F))
-                    .withAdditionalSpell("loot_n_explore:dragonclaw")
+                    .withAdditionalSpell(MrpgLibSpells.dragonclaw_melee.id().toString())
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .rarity = Rarity.RARE;
             knuckle( "elder_guardian_knuckle",
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.PRISMARINE_SHARD)),7.0F)
                     .translatedName("Fist of Tides")
                     .attribute(armorAddition(3.0F))
-                    .withAdditionalSpell("loot_n_explore:waterbomb")
+                    .withAdditionalSpell(MrpgLibSpells.waterbomb_melee.id().toString())
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .attribute(AttributeModifier.bonus(MoreSpellSchools.WATER.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;
@@ -192,7 +190,7 @@ public class WeaponsRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.BONE)),7.0F)
                     .translatedName("Wither's Bash")
                     .attribute(armorAddition(3.0F))
-                    .withAdditionalSpell("loot_n_explore:wither_pulse")
+                    .withAdditionalSpell(MrpgLibSpells.wither_pulse_melee.id().toString())
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .attribute(AttributeModifier.bonus(SpellSchools.SOUL.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;
@@ -200,21 +198,12 @@ public class WeaponsRegister {
                     Weapon.CustomMaterial.matching(ToolMaterials.NETHERITE, () -> Ingredient.ofItems(Items.ICE)),7.0F)
                     .translatedName("Glacial Fist")
                     .attribute(armorAddition(3.0F))
-                    .withAdditionalSpell("loot_n_explore:avalanche")
+                    .withAdditionalSpell(MrpgLibSpells.avalanche_melee.id().toString())
                     .attribute(AttributeModifier.bonus(SpellSchools.ARCANE.id, T4_KNUCKLE_POWER))
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;
         }
         Weapon.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
-        for (var override : groupOverrides.entrySet()) {
-            var entry = override.getKey();
-            var key = override.getValue();
-            ItemGroupEvents.modifyEntriesEvent(ForcemasterGroup.FORCEMASTER_KEY).register(content -> {
-                content.getDisplayStacks().removeIf(stack -> stack.isOf(entry.item()));
-                content.getSearchTabStacks().removeIf(stack -> stack.isOf(entry.item()));
-            });
-            ItemGroupEvents.modifyEntriesEvent(key).register(content -> content.add(entry.item()));
-        }
     }
 
 }
