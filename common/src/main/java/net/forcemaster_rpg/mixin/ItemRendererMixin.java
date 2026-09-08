@@ -17,12 +17,13 @@ import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
 @Mixin(ItemRenderer.class)
     public class ItemRendererMixin {
-        @ModifyVariable(method = "renderItem", at = @At(value = "HEAD"), argsOnly = true)
+        // Explicit descriptor: 1.20.1 has three `renderItem` overloads and only this one carries a BakedModel argument.
+        @ModifyVariable(method = "renderItem(Lnet/minecraft/item/ItemStack;Lnet/minecraft/client/render/model/json/ModelTransformationMode;ZLnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/render/VertexConsumerProvider;IILnet/minecraft/client/render/model/BakedModel;)V", at = @At(value = "HEAD"), argsOnly = true)
         public BakedModel useItemModel(BakedModel value, ItemStack stack, ModelTransformationMode renderMode, boolean leftHanded, MatrixStack matrices, VertexConsumerProvider vertexConsumers, int light, int overlay) {
             if(stack.isIn(ModItemTags.KNUCKLES) && renderMode != ModelTransformationMode.GUI && renderMode != ModelTransformationMode.GROUND && renderMode != ModelTransformationMode.FIXED) {
                 String name = stack.getTranslationKey();
                 String name2 = name.toString().replace("item.forcemaster_rpg.","");
-                return ((ItemRendererAccessor)this).forcemaster$getModels().getModelManager().getModel(ModelIdentifier.ofInventoryVariant(Identifier.of(MOD_ID, name2 + "_model")));
+                return ((ItemRendererAccessor)this).forcemaster$getModels().getModelManager().getModel(new ModelIdentifier(new Identifier(MOD_ID, name2 + "_model"), "inventory"));
             }
             return value;
         }

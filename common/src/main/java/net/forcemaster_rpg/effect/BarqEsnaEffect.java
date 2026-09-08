@@ -15,10 +15,10 @@ public class BarqEsnaEffect
     }
 
     @Override
-    public boolean applyUpdateEffect(LivingEntity entity, int amplifier) {
+    public void applyUpdateEffect(LivingEntity entity, int amplifier) {
+        // 1.20.1 `applyUpdateEffect` returns void (the 1.21 `boolean` that could end the effect early does not exist)
         var damage = tweaksConfig.value.barq_esna_dot_damage_per_amplifier * (amplifier + 1);
         entity.damage(entity.getDamageSources().create(SpellSchools.ARCANE.damageType), damage);
-        return true;
     }
 
     @Override

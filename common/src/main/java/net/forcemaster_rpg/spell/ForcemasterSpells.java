@@ -115,7 +115,7 @@ public class ForcemasterSpells {
 
     public static Entry stonehand = add(stonehand());
     private static Entry stonehand() {
-        var id = Identifier.of(MOD_ID, "stonehand");
+        var id = new Identifier(MOD_ID, "stonehand");
         var effect = ForcemasterEffects.STONE_HAND;
         var title = "Stonehand";
         var description = "{trigger_chance_1} chance for {stash_duration} seconds to stun targets on damage, only with fist weapons.";
@@ -126,7 +126,7 @@ public class ForcemasterSpells {
         spell.group = BRAWL;
 
         spell.release.animation = PlayerAnimation.of("forcemaster_rpg:stonehand_cast");
-        spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:stonehand_cast"), 0.35F);
+        spell.release.sound = Sound.withVolume(new Identifier("forcemaster_rpg:stonehand_cast"), 0.35F);
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.of(MoreParticles.STONE_PARTICLE)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)
@@ -178,7 +178,7 @@ public class ForcemasterSpells {
     }
     public static Entry belial_smashing = add(belial_smashing());
     private static Entry belial_smashing() {
-        var id = Identifier.of(MOD_ID, "belial_smashing");
+        var id = new Identifier(MOD_ID, "belial_smashing");
         var title = "Belial Smashing";
         var description = "Charges to the targets direction, punching all enemies in your path.";
         var spell = SpellBuilder.createSpellActive();
@@ -223,7 +223,7 @@ public class ForcemasterSpells {
     }
     public static final Entry asal = add(asal());
     private static Entry asal() {
-        var id = Identifier.of(MOD_ID, "asal");
+        var id = new Identifier(MOD_ID, "asal");
         var title = "Asalraalaikum";
         var description = "A devastating charged punch that deals massive {damage} damage. Consumes Arcane Overflow and exhausts the caster.";
         var spell = activeSpellBase();
@@ -245,7 +245,7 @@ public class ForcemasterSpells {
                                 .verticalOrigin(0.1F).widthFactor(2F)
                                 .extent(0.5F)));
 
-        spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:asal_release"), 0.35F);
+        spell.release.sound = Sound.withVolume(new Identifier("forcemaster_rpg:asal_release"), 0.35F);
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.of(SpellEngineParticles.smoke_medium)
                         .color(FORCEMASTER_BLUE_COLOR)
@@ -274,7 +274,7 @@ public class ForcemasterSpells {
                         .color(ORANGE)
                         .batch(b -> b.shape(ParticleGroup.Shape.SPHERE)
                                 .count(50).speed(0.1F, 5.0F)));
-        damage.sound = Sound.withVolume(Identifier.of("entity.dragon_fireball.explode"), 0.5F);
+        damage.sound = Sound.withVolume(new Identifier("entity.dragon_fireball.explode"), 0.5F);
 
         spell.impacts = List.of(damage);
 
@@ -289,7 +289,7 @@ public class ForcemasterSpells {
     }
     public static final Entry baraqijal_esna = add(baraqijal_esna());
     private static Entry baraqijal_esna() {
-        var id = Identifier.of(MOD_ID, "baraqijal_esna");
+        var id = new Identifier(MOD_ID, "baraqijal_esna");
         var effect = ForcemasterEffects.BARQ_ESNA;
         var title = "Baraqijal Esna";
         var description = "Launches a bolt of Baraqijal's light, dealing {damage} arcane damage and stacking the target with " + effect.title + " for {effect_duration} sec, lowering their resistance to arcane magic and damaging them over time.";
@@ -344,7 +344,7 @@ public class ForcemasterSpells {
     }
     public static final Entry sonic_hand = add(sonic_hand());
     private static Entry sonic_hand() {
-        var id = Identifier.of(MOD_ID, "sonic_hand");
+        var id = new Identifier(MOD_ID, "sonic_hand");
         var title = "Sonic Hand";
         var description = "Unleashes 5 blindingly fast fist strikes, each dealing melee damage. Consumes Arcane Overflow.";
         var spell = SpellBuilder.createSpellActive();
@@ -429,7 +429,7 @@ public class ForcemasterSpells {
     }
     public static final Entry nen_sphere = add(nen_sphere());
     private static Entry nen_sphere() {
-        var id = Identifier.of(MOD_ID, "nen_sphere");
+        var id = new Identifier(MOD_ID, "nen_sphere");
         var effect = ForcemasterEffects.ARCANE_OVERFLOW;
         var title = "Nen Sphere";
         var description = "Charge a magic sphere, unleashing it as a piercing beam. The longer you charge, the further and harder it strikes, dealing {damage} damage and overloading you with " + effect.title + ", scaling with your charge.";
@@ -491,7 +491,7 @@ public class ForcemasterSpells {
     /// MODIFIER
     public static final Entry improved_belial_smashing = add(improved_belial_smashing());
     private static Entry improved_belial_smashing() {
-        var id = Identifier.of(MOD_ID, "improved_belial_smashing");
+        var id = new Identifier(MOD_ID, "improved_belial_smashing");
         var title = "Improved Belial Smashing";
         var description = "Reduces the cooldown of Belial Smashing by {cooldown_duration_deduct} sec.";
         var spell = new Spell();
@@ -517,7 +517,7 @@ public class ForcemasterSpells {
     /// PASSIVES
     public static Entry nen_focus = add(nen_focus());
     private static Entry nen_focus() {
-        var id = Identifier.of(MOD_ID, "nen_focus");
+        var id = new Identifier(MOD_ID, "nen_focus");
         var title = "Nen Focus";
         var impactEffect = ForcemasterEffects.ARCANE_OVERFLOW;
         var stashEffect = ForcemasterEffects.NEN_FOCUS;
@@ -564,7 +564,7 @@ public class ForcemasterSpells {
     }
     public static final Entry knuckle_arcane_overflow = add(knuckle_arcane_overflow());
     private static Entry knuckle_arcane_overflow() {
-        var id = Identifier.of(MOD_ID, "knuckle_arcane_overflow");
+        var id = new Identifier(MOD_ID, "knuckle_arcane_overflow");
         var title = "Arcane Overflow";
         var description = "Casting Forcemaster Spells stacks Arcane Overflow for {effect_duration} sec.";
         var effect = ForcemasterEffects.ARCANE_OVERFLOW;

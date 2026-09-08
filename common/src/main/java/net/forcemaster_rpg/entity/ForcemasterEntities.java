@@ -13,9 +13,9 @@ public class ForcemasterEntities {
     public static void registerEntities() {
         NenSphereBeamEntity.ENTITY_TYPE = Registry.register(
                 Registries.ENTITY_TYPE,
-                Identifier.of(MOD_ID, "nen_sphere_beam"),
+                new Identifier(MOD_ID, "nen_sphere_beam"),
                 EntityType.Builder.<NenSphereBeamEntity>create(NenSphereBeamEntity::new, SpawnGroup.MISC)
-                        .dimensions(0F, 0F)
+                        .setDimensions(0F, 0F)
                         .maxTrackingRange(64)
                         .trackingTickInterval(20)
                         .build("nen_sphere_beam")

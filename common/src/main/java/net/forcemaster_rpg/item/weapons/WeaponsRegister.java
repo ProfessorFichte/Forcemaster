@@ -44,7 +44,7 @@ public class WeaponsRegister {
         return new AttributeModifier(
                 "generic.armor",
                 value,
-                EntityAttributeModifier.Operation.ADD_VALUE);
+                EntityAttributeModifier.Operation.ADDITION);
     }
 
     public static final ArrayList<Weapon.Entry> entries = new ArrayList<>();
@@ -58,7 +58,7 @@ public class WeaponsRegister {
     }
 
     private static Supplier<Ingredient> ingredient(String idString, boolean requirement, Item fallback) {
-        var id = Identifier.of(idString);
+        var id = new Identifier(idString);
         if (requirement) {
             return () -> {
                 return Ingredient.ofItems(fallback);

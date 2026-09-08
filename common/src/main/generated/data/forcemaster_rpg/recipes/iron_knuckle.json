@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "I  ",
+    "IG ",
+    "II "
+  ],
+  "result": {
+    "item": "forcemaster_rpg:iron_knuckle"
+  },
+  "show_notification": true
+}

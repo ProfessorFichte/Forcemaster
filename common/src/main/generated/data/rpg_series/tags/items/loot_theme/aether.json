@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    {
+      "id": "forcemaster_rpg:aether_knuckle",
+      "required": false
+    }
+  ]
+}

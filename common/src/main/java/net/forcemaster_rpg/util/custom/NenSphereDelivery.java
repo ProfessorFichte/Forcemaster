@@ -29,7 +29,7 @@ public class NenSphereDelivery {
 
     public static void register() {
         SpellHandlers.registerCustomDelivery(
-                Identifier.of(MOD_ID, "nen_sphere"),
+                new Identifier(MOD_ID, "nen_sphere"),
                 (world, spellEntry, caster, targets, context, targetLocation) -> {
                     if (world.isClient) return false;
 

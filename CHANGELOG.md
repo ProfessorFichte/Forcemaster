@@ -1,3 +1,8 @@
+# 3.1.1.001 - 1.20.1
+- Backport to Minecraft 1.20.1, targeting Fabric + Forge 47 (no Forgified Fabric API)
+- Knuckles no longer carry `#minecraft:enchantable/durability` / `sharp_weapon` (those tags are 1.21-only); they are `SwordItem`s, so Unbreaking and Sharpness still apply
+- Armor opts into `#minecraft:trimmable_armor` directly, replacing the 1.21-only `#minecraft:{head,chest,leg,foot}_armor` tags, so the sets stay trimmable at a smithing table
+
 # 3.1.1 - 1.21.1
 - Drop Forgified Fabric API (FFAPI) as a required dependency
 - Replace AzurelibArmor with Armor Model API

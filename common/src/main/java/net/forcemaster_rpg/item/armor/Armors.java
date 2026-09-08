@@ -1,16 +1,12 @@
 package net.forcemaster_rpg.item.armor;
 
 import net.forcemaster_rpg.item.ForcemasterGroup;
-import net.minecraft.component.DataComponentTypes;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
-import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
@@ -20,7 +16,7 @@ import net.spell_engine.rpg_series.config.ArmorSetConfig;
 import net.spell_engine.rpg_series.config.AttributeModifier;
 import net.spell_engine.rpg_series.item.Equipment;
 import net.spell_engine.rpg_series.item.Armor;
-import net.spell_engine.api.spell.SpellDataComponents;
+import net.spell_engine.api.item.SpellItemData;
 import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
@@ -43,13 +39,12 @@ public class Armors {
             Items.LEATHER, Items.GOLD_INGOT, Items.AMETHYST_SHARD
     );
 
-    public static Identifier billporon_passive = Identifier.of(MOD_ID, "billporon");
+    public static Identifier billporon_passive = new Identifier(MOD_ID, "billporon");
 
     private static Armor.ItemSettingsTweaker commonSettings(Identifier equipmentSetId) {
         return Armor.ItemSettingsTweaker.standard(itemSettings -> {
-            itemSettings
-                    .component(SpellDataComponents.EQUIPMENT_SET, equipmentSetId)
-                    .component(DataComponentTypes.RARITY, Rarity.RARE);
+            itemSettings.rarity(Rarity.RARE);
+            SpellItemData.defaults(itemSettings).equipmentSet(equipmentSetId);
         });
     }
 
@@ -66,39 +61,40 @@ public class Armors {
     private static final float billporonAttackSpeed = 0.05F;
     private static final float billporonArcaneFuse = 0.075F;
 
-    public static RegistryEntry<ArmorMaterial> material(String name,
-                                                        int protectionHead, int protectionChest, int protectionLegs, int protectionFeet,
-                                                        int enchantability, RegistryEntry<SoundEvent> equipSound, Supplier<Ingredient> repairIngredient) {
-        var material = new ArmorMaterial(
+    /// 1.20.1 armor materials are plain `ArmorMaterial` objects: no registry entry, no layer list.
+    /// `Armor.material`'s `id` doubles as the (single) 1.21 `ArmorMaterial.Layer` id.
+    public static ArmorMaterial material(String name,
+                                         int protectionHead, int protectionChest, int protectionLegs, int protectionFeet,
+                                         int enchantability, SoundEvent equipSound, Supplier<Ingredient> repairIngredient) {
+        return Armor.material(
+                new Identifier(MOD_ID, name),
                 Map.of(
                         ArmorItem.Type.HELMET, protectionHead,
                         ArmorItem.Type.CHESTPLATE, protectionChest,
                         ArmorItem.Type.LEGGINGS, protectionLegs,
                         ArmorItem.Type.BOOTS, protectionFeet),
                 enchantability, equipSound, repairIngredient,
-                List.of(new ArmorMaterial.Layer(Identifier.of(MOD_ID, name))),
-                0,0
+                0, 0
         );
-        return Registry.registerReference(Registries.ARMOR_MATERIAL, Identifier.of(MOD_ID, name), material);
     }
 
-    public static RegistryEntry<ArmorMaterial> material_oriene = material(
+    public static ArmorMaterial material_oriene = material(
             "oriene",
             1, 3, 3, 1,
             9,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, ORIENE_INGREDIENTS);
 
-    public static RegistryEntry<ArmorMaterial> material_phasleb = material(
+    public static ArmorMaterial material_phasleb = material(
             "phasleb",
             2, 4, 4, 2,
             11,
             SoundEvents.ITEM_ARMOR_EQUIP_LEATHER, PHASLEB_INGREDIENTS);
-    public static RegistryEntry<ArmorMaterial> material_aken = material(
+    public static ArmorMaterial material_aken = material(
             "aken",
             2, 4, 4, 2,
             20,
             SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE, () -> { return Ingredient.ofItems(Items.NETHERITE_INGOT); });
-    public static RegistryEntry<ArmorMaterial> material_billporon = material(
+    public static ArmorMaterial material_billporon = material(
             "billporon",
             2, 4, 4, 2,
             20,
@@ -106,7 +102,7 @@ public class Armors {
 
 
     public static final ArrayList<Armor.Entry> entries = new ArrayList<>();
-    private static Armor.Entry create(RegistryEntry<ArmorMaterial> material, Identifier id, int durability,
+    private static Armor.Entry create(ArmorMaterial material, Identifier id, int durability,
                                       Armor.Set.ItemFactory factory, ArmorSetConfig defaults, int tier, Armor.ItemSettingsTweaker settings) {
         var entry = Armor.Entry.create(
                 material,
@@ -131,7 +127,7 @@ public class Armors {
     public static final Armor.Entry orieneArmorSet =
             create(
                     material_oriene,
-                    Identifier.of(MOD_ID, "oriene"),
+                    new Identifier(MOD_ID, "oriene"),
                     15,
                     OrieneArmor::new,
                     ArmorSetConfig.with(
@@ -164,7 +160,7 @@ public class Armors {
 
     public static final Armor.Entry phaslebArmorSet =
             create(material_phasleb,
-                    Identifier.of(MOD_ID, "phasleb"),
+                    new Identifier(MOD_ID, "phasleb"),
                     25,
                     PhaslebArmor::new,
                     ArmorSetConfig.with(
@@ -197,7 +193,7 @@ public class Armors {
 
     public static final Armor.Entry akenArmorSet =
             create(material_aken,
-                    Identifier.of(MOD_ID, "aken"),
+                    new Identifier(MOD_ID, "aken"),
                     30,
                     AkenArmor::new,
                     ArmorSetConfig.with(
@@ -235,7 +231,7 @@ public class Armors {
         if (armoryLoadCheck()) {
             billporonArmorSet = groupKey(create(
                     material_billporon,
-                    Identifier.of(MOD_ID, "billporon"),
+                    new Identifier(MOD_ID, "billporon"),
                     40,
                     BillporonArmor::new,
                     ArmorSetConfig.with(

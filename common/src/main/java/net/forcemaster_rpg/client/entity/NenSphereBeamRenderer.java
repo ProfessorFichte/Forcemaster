@@ -44,7 +44,7 @@ public class NenSphereBeamRenderer extends EntityRenderer<NenSphereBeamEntity> {
         matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees((1.5707964F - horizontalAngle) * 57.295776F));
         matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(pitchFromVertical * 57.295776F));
 
-        var texture = Identifier.of(TEXTURE_ID);
+        var texture = new Identifier(TEXTURE_ID);
         var renderLayers = BeamRenderer.layerSetFor(texture, Spell.Target.Beam.Luminance.HIGH);
         var color = Color.IntFormat.fromLongRGBA(BEAM_COLOR_RGBA);
 

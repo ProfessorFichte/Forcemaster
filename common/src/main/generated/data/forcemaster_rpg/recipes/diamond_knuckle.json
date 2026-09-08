@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": {
+      "item": "minecraft:diamond"
+    },
+    "T": {
+      "item": "minecraft:gold_ingot"
+    },
+    "W": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "pattern": [
+    "T  ",
+    "RW ",
+    "RR "
+  ],
+  "result": {
+    "item": "forcemaster_rpg:diamond_knuckle"
+  },
+  "show_notification": true
+}
