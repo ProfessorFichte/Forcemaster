@@ -4,8 +4,11 @@ import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.ArmorMaterial;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.Ingredient;
+import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -228,6 +231,23 @@ public class Armors {
 
 
     public static void register(Map<String, ArmorSetConfig> configs) {
+        itemsToRegister(configs).forEach((id, item) -> Registry.register(Registries.ITEM, id, item));
+    }
+
+    /// Every armor piece keyed by the id it registers under. Creation only - nothing is written here, so a
+    /// loader that registers items itself (Forge, through the helper `RegisterEvent` hands out) iterates
+    /// this instead of calling {@link #register}. The Armory-gated Billporon set has to be appended
+    /// *before* `Armor.itemsToRegister` sees the list, which is why this wrapper exists.
+    public static Map<Identifier, Item> itemsToRegister(Map<String, ArmorSetConfig> configs) {
+        createOptionalEntries();
+        return Armor.itemsToRegister(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
+    }
+
+    private static boolean optionalEntriesCreated = false;
+
+    private static void createOptionalEntries() {
+        if (optionalEntriesCreated) { return; }
+        optionalEntriesCreated = true;
         if (armoryLoadCheck()) {
             billporonArmorSet = groupKey(create(
                     material_billporon,
@@ -263,6 +283,5 @@ public class Armors {
                     commonSettings(billporon_passive)
             ).translatedName("Billporon Headdress", "Billporon Suit", "Billporon Pants", "Billporon Boots"), MRPGCItemGroups.ARMORY_KEY);
         }
-        Armor.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
     }
 }

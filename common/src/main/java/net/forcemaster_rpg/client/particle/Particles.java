@@ -1,5 +1,6 @@
 package net.forcemaster_rpg.client.particle;
 
+import net.minecraft.particle.ParticleType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
@@ -11,7 +12,9 @@ import net.spell_engine.fx.SpellEngineParticles.Entry;
 import net.spell_engine.fx.SpellEngineParticles.Texture;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
@@ -61,8 +64,18 @@ public class Particles {
             .lifetimeVariance(0.6F));
 
     public static void register() {
+        particlesToRegister().forEach((id, type) -> Registry.register(Registries.PARTICLE_TYPE, id, type));
+    }
+
+    /// Every particle type that still needs registering, keyed by the id it registers under. Creation only -
+    /// nothing is written here, so a loader that registers particle types itself (Forge, through the helper
+    /// `RegisterEvent` hands out) iterates this instead of calling {@link #register}.
+    public static Map<Identifier, ParticleType<?>> particlesToRegister() {
+        var types = new LinkedHashMap<Identifier, ParticleType<?>>();
         for (var entry: entries) {
-            Registry.register(Registries.PARTICLE_TYPE, entry.id(), entry.type());
+            if (Registries.PARTICLE_TYPE.containsId(entry.id())) { continue; }
+            types.put(entry.id(), entry.type());
         }
+        return types;
     }
 }

@@ -3,9 +3,13 @@ package com.forcemaster.forge;
 import com.forcemaster.forge.client.ForgeClient;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.client.particle.Particles;
+import net.forcemaster_rpg.effect.ForcemasterEffects;
+import net.forcemaster_rpg.entity.ForcemasterEntities;
 import net.forcemaster_rpg.item.ForcemasterGroup;
+import net.forcemaster_rpg.item.ForcemasterItems;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
+import net.forcemaster_rpg.sounds.ModSounds;
 import net.minecraft.item.ArmorItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,13 +21,16 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.RegisterEvent;
+import net.spell_engine.api.effect.Effects;
 
 /// Forge 47 entrypoint (1.20.1 port of the NeoForge entrypoint).
 ///
-/// Forge locks every vanilla registry outside its own `RegisterEvent` window, so each `registerX()` call
-/// sits inside the window of the registry it writes to. `ITEM_GROUP` is *not* a Forge-wrapped registry, so
-/// it never gets its own `RegisterEvent` - the group is registered from the `ITEM` window instead (it stays
-/// unfrozen for the whole phase), which is what `ForcemasterClassMod.registerItems()` does.
+/// Forge only clears the *vanilla* registry's own lock from 47.4.0 onwards, so on 47.0-47.3 (and NeoForge
+/// 1.20.1) a plain `Registry.register` throws `Can not register to a locked registry` even inside the right
+/// `RegisterEvent` window. `mods.toml` declares `loaderVersion = "[47,)"`, so those are supported
+/// configurations: Forge therefore registers everything through the `RegisterHelper` the event hands out,
+/// iterating the same content `common` exposes. The loops below duplicate what `common`'s `registerX()`
+/// methods do on Fabric, on purpose - the workaround stays inside `forge/`.
 @Mod(ForcemasterClassMod.MOD_ID)
 public final class ForgeMod {
     // FMLJavaModLoadingContext.get() is flagged for removal by late 47.x builds, but the
@@ -45,14 +52,36 @@ public final class ForgeMod {
     }
 
     public static void register(RegisterEvent event) {
-        event.register(RegistryKeys.SOUND_EVENT, reg -> ForcemasterClassMod.registerSounds());
-        event.register(RegistryKeys.ITEM, reg -> {
-            // Also registers the `forcemaster_rpg:generic` item group, see the class doc.
-            ForcemasterClassMod.registerItems();
+        event.register(RegistryKeys.SOUND_EVENT, helper -> {
+            ModSounds.soundsToRegister().forEach(helper::register);
+            ModSounds.linkEntries();
         });
-        event.register(RegistryKeys.STATUS_EFFECT, reg -> ForcemasterClassMod.registerEffects());
-        event.register(RegistryKeys.PARTICLE_TYPE, reg -> Particles.register());
-        event.register(RegistryKeys.ENTITY_TYPE, reg -> ForcemasterClassMod.registerEntities());
+
+        event.register(RegistryKeys.STATUS_EFFECT, helper -> {
+            ForcemasterEffects.effectsToRegister(ForcemasterClassMod.effectsConfig.value)
+                    .forEach(helper::register);
+            Effects.linkEntries(ForcemasterEffects.entries);
+            ForcemasterClassMod.effectsConfig.save();
+        });
+
+        event.register(RegistryKeys.PARTICLE_TYPE, helper ->
+                Particles.particlesToRegister().forEach(helper::register));
+
+        event.register(RegistryKeys.ITEM, helper -> {
+            ForcemasterItems.registerModItems();
+            WeaponsRegister.itemsToRegister(ForcemasterClassMod.itemConfig.value.weapons)
+                    .forEach(helper::register);
+            Armors.itemsToRegister(ForcemasterClassMod.itemConfig.value.armor_sets)
+                    .forEach(helper::register);
+            ForcemasterClassMod.itemConfig.save();
+        });
+
+        event.register(RegistryKeys.ENTITY_TYPE, helper ->
+                ForcemasterEntities.entityTypesToRegister().forEach(helper::register));
+
+        // NOT in the ITEM block: `creative_mode_tab` is event 65, `item` is event 7.
+        event.register(RegistryKeys.ITEM_GROUP, helper ->
+                helper.register(ForcemasterGroup.ID, ForcemasterGroup.create()));
     }
 
     /// Forge fires this per creative tab, on the logical client only. Unlike NeoForge there is no

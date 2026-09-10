@@ -10,6 +10,7 @@ import net.minecraft.item.Items;
 import net.minecraft.item.ToolMaterials;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
@@ -127,6 +128,23 @@ public class WeaponsRegister {
     private static final String LNE = "loot_n_explore";
     private static final float lneWeaponSpellPower = 4.0F;
     public static void register(Map<String,WeaponConfig> configs) {
+        itemsToRegister(configs).forEach((id, item) -> Registry.register(Registries.ITEM, id, item));
+    }
+
+    /// Every weapon item keyed by the id it registers under. Creation only - nothing is written here, so a
+    /// loader that registers items itself (Forge, through the helper `RegisterEvent` hands out) iterates
+    /// this instead of calling {@link #register}. The optional-mod entries have to be appended *before*
+    /// `Weapon.itemsToRegister` sees the list, which is why this wrapper exists rather than a direct call.
+    public static Map<Identifier, Item> itemsToRegister(Map<String,WeaponConfig> configs) {
+        createOptionalEntries();
+        return Weapon.itemsToRegister(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
+    }
+
+    private static boolean optionalEntriesCreated = false;
+
+    private static void createOptionalEntries() {
+        if (optionalEntriesCreated) { return; }
+        optionalEntriesCreated = true;
         if (net.spell_engine.Platform.util().isModLoaded(BETTER_NETHER) || ForcemasterClassMod.tweaksConfig.value.ignore_items_required_mods) {
             var repair = ingredient("betternether:nether_ruby", net.spell_engine.Platform.util().isModLoaded(BETTER_NETHER), Items.NETHERITE_INGOT);
             knuckle("ruby_knuckle",
@@ -203,7 +221,6 @@ public class WeaponsRegister {
                     .attribute(AttributeModifier.bonus(SpellSchools.FROST.id, lneWeaponSpellPower))
                     .rarity = Rarity.RARE;
         }
-        Weapon.register(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);
     }
 
 }

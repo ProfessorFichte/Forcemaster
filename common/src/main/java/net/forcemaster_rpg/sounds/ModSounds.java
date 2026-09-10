@@ -2,12 +2,16 @@ package net.forcemaster_rpg.sounds;
 
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.entry.RegistryEntry;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.util.Identifier;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
@@ -70,8 +74,31 @@ public class ModSounds {
     public static final Entry NEN_SPHERE_SHOT = add(new Entry("nen_sphere_shot"));
 
     public static void register() {
+        soundsToRegister().forEach((id, soundEvent) -> Registry.register(Registries.SOUND_EVENT, id, soundEvent));
+        linkEntries();
+    }
+
+    /// Every sound event that still needs registering, keyed by the id it registers under. Creation only -
+    /// nothing is written here, so a loader that registers sounds itself (Forge, through the helper
+    /// `RegisterEvent` hands out) iterates this instead of calling {@link #register}. Follow it with
+    /// {@link #linkEntries}.
+    public static Map<Identifier, SoundEvent> soundsToRegister() {
+        var sounds = new LinkedHashMap<Identifier, SoundEvent>();
         for (var entry: entries) {
-            entry.entry = Registry.registerReference(Registries.SOUND_EVENT, entry.id(), entry.soundEvent());
+            if (entry.entry != null || Registries.SOUND_EVENT.containsId(entry.id())) { continue; }
+            sounds.put(entry.id(), entry.soundEvent());
+        }
+        return sounds;
+    }
+
+    /// Fills in every `Entry#entry` from the registry. `RegisterEvent`'s helper returns void where
+    /// `Registry.registerReference` returned the reference, so Forge calls this right after the loop.
+    public static void linkEntries() {
+        for (var entry: entries) {
+            if (entry.entry != null) { continue; }
+            entry.entry = Registries.SOUND_EVENT.getEntry(RegistryKey.of(RegistryKeys.SOUND_EVENT, entry.id()))
+                    .orElseThrow(() -> new IllegalStateException(
+                            "Sound event " + entry.id() + " is not in the registry - register it first"));
         }
     }
 }

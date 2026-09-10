@@ -25,14 +25,20 @@ public class ForcemasterGroup {
 
     /// The group is built here rather than per platform: `ItemGroup.builder()` is a Fabric injection and
     /// `FabricItemGroup` is Fabric-only, but the vanilla `ItemGroup.Builder` constructor works on both
-    /// loaders. `ITEM_GROUP` is a vanilla-only registry (Forge does not wrap it), so it stays writable for
-    /// the whole `RegisterEvent` phase and this may be called from the `ITEM` window on Forge.
+    /// loaders. Creation only - nothing is written into the registry, so Forge builds the group in its own
+    /// `creative_mode_tab` window (event 65, long after `item` at 7) and registers it through the helper.
+    public static ItemGroup create() {
+        if (FORCEMASTER == null) {
+            FORCEMASTER = new ItemGroup.Builder(ItemGroup.Row.TOP, 0)
+                    .icon(ForcemasterGroup::icon)
+                    .displayName(displayName())
+                    .build();
+        }
+        return FORCEMASTER;
+    }
+
     public static void registerItemGroups() {
         ForcemasterClassMod.LOGGER.info("Registering Item Groups for " + ForcemasterClassMod.MOD_ID);
-        FORCEMASTER = new ItemGroup.Builder(ItemGroup.Row.TOP, 0)
-                .icon(ForcemasterGroup::icon)
-                .displayName(displayName())
-                .build();
-        Registry.register(Registries.ITEM_GROUP, FORCEMASTER_KEY, FORCEMASTER);
+        Registry.register(Registries.ITEM_GROUP, FORCEMASTER_KEY, create());
     }
 }

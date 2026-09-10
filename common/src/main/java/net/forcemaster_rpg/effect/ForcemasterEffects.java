@@ -4,7 +4,9 @@ import net.forcemaster_rpg.spell.ForcemasterSpells;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.registry.Registries;
+import net.minecraft.registry.Registry;
 import net.minecraft.entity.effect.StatusEffectCategory;
 import net.minecraft.util.Identifier;
 import net.more_rpg_classes.entity.attribute.MRPGCEntityAttributes;
@@ -17,6 +19,7 @@ import net.spell_power.api.SpellSchools;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 import static net.forcemaster_rpg.ForcemasterClassMod.tweaksConfig;
@@ -100,6 +103,15 @@ public class ForcemasterEffects {
     ));
 
     public static void register(ConfigFile.Effects config) {
+        effectsToRegister(config).forEach((id, effect) -> Registry.register(Registries.STATUS_EFFECT, id, effect));
+        Effects.linkEntries(entries);
+    }
+
+    /// Configures every effect and returns the ones that still need registering, keyed by the id they
+    /// register under. Creation only - nothing is written here, so a loader that registers status effects
+    /// itself (Forge, through the helper `RegisterEvent` hands out) iterates this instead of calling
+    /// {@link #register}. Follow it with `Effects.linkEntries(entries)`.
+    public static Map<Identifier, StatusEffect> effectsToRegister(ConfigFile.Effects config) {
         ((BarqEsnaEffect) BARQ_ESNA.effect).setVulnerability(
                 SpellSchools.ARCANE,
                 new SpellPower.Vulnerability(
@@ -113,6 +125,6 @@ public class ForcemasterEffects {
             Synchronized.configure(entry.effect, true);
         }
 
-        Effects.register(entries, config.effects);
+        return Effects.effectsToRegister(entries, config.effects);
     }
 }
