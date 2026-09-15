@@ -1,7 +1,20 @@
-# 3.1.1.001 - 1.20.1
-- Backport to Minecraft 1.20.1, targeting Fabric + Forge 47 (no Forgified Fabric API)
-- Knuckles no longer carry `#minecraft:enchantable/durability` / `sharp_weapon` (those tags are 1.21-only); they are `SwordItem`s, so Unbreaking and Sharpness still apply
-- Armor opts into `#minecraft:trimmable_armor` directly, replacing the 1.21-only `#minecraft:{head,chest,leg,foot}_armor` tags, so the sets stay trimmable at a smithing table
+# 3.1.1+1.20.1
+
+- Ported to Minecraft 1.20.1 (Fabric + Forge 47, no Forgified Fabric API). NeoForge is replaced by Forge on
+  this line; the same Forge jar also loads on NeoForge 1.20.1.
+- Requires the matching 1.20.1 releases of Spell Engine (1.10.5), Spell Power (1.6.0), More RPG Library
+  (2.7.2) and Armor Model API (1.0.0).
+- Every registry write goes through Forge's `RegisterEvent` window, so the mod also boots on Forge 47.0-47.3
+  and on NeoForge 1.20.1, which never unlock the vanilla registries.
+
+### Accepted 1.20.1 limitations
+
+- Knuckles no longer carry `#minecraft:enchantable/durability` / `#minecraft:enchantable/sharp_weapon`
+  (those tags are 1.21-only); they are sword items, so Unbreaking and Sharpness still apply.
+- Armor opts into `#minecraft:trimmable_armor` directly, replacing the 1.21-only
+  `#minecraft:{head,chest,leg,foot}_armor` tags, so the sets stay trimmable at a smithing table.
+- 1.20.1 has no item data components: equipment-set membership and the custom knuckle models are carried as
+  item NBT instead. Functionally identical, but not readable by 1.21-era component tooling.
 
 # 3.1.1 - 1.21.1
 - Drop Forgified Fabric API (FFAPI) as a required dependency
