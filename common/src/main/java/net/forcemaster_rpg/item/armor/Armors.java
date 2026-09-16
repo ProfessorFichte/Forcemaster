@@ -30,7 +30,6 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
-import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
 
 public class Armors {
     private static final Supplier<Ingredient> ORIENE_INGREDIENTS = () -> Ingredient.ofItems(
@@ -236,7 +235,7 @@ public class Armors {
 
     /// Every armor piece keyed by the id it registers under. Creation only - nothing is written here, so a
     /// loader that registers items itself (Forge, through the helper `RegisterEvent` hands out) iterates
-    /// this instead of calling {@link #register}. The Armory-gated Billporon set has to be appended
+    /// this instead of calling {@link #register}. The Armory-flavoured Billporon set has to be appended
     /// *before* `Armor.itemsToRegister` sees the list, which is why this wrapper exists.
     public static Map<Identifier, Item> itemsToRegister(Map<String, ArmorSetConfig> configs) {
         createOptionalEntries();
@@ -248,40 +247,38 @@ public class Armors {
     private static void createOptionalEntries() {
         if (optionalEntriesCreated) { return; }
         optionalEntriesCreated = true;
-        if (armoryLoadCheck()) {
-            billporonArmorSet = groupKey(create(
-                    material_billporon,
-                    new Identifier(MOD_ID, "billporon"),
-                    40,
-                    BillporonArmor::new,
-                    ArmorSetConfig.with(
-                            new ArmorSetConfig.Piece(2)
-                                    .addAll(List.of(
-                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
-                                    )),
-                            new ArmorSetConfig.Piece(4)
-                                    .addAll(List.of(
-                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
-                                    )),
-                            new ArmorSetConfig.Piece(4)
-                                    .addAll(List.of(
-                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
-                                    )),
-                            new ArmorSetConfig.Piece(2)
-                                    .addAll(List.of(
-                                            AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
-                                    ))
-                    ),5,
-                    commonSettings(billporon_passive)
-            ).translatedName("Billporon Headdress", "Billporon Suit", "Billporon Pants", "Billporon Boots"), MRPGCItemGroups.ARMORY_KEY);
-        }
+        billporonArmorSet = groupKey(create(
+                material_billporon,
+                new Identifier(MOD_ID, "billporon"),
+                40,
+                BillporonArmor::new,
+                ArmorSetConfig.with(
+                        new ArmorSetConfig.Piece(2)
+                                .addAll(List.of(
+                                        AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                )),
+                        new ArmorSetConfig.Piece(4)
+                                .addAll(List.of(
+                                        AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                )),
+                        new ArmorSetConfig.Piece(4)
+                                .addAll(List.of(
+                                        AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                )),
+                        new ArmorSetConfig.Piece(2)
+                                .addAll(List.of(
+                                        AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
+                                        AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                ))
+                ),5,
+                commonSettings(billporon_passive)
+        ).translatedName("Billporon Headdress", "Billporon Suit", "Billporon Pants", "Billporon Boots"), MRPGCItemGroups.ARMORY_KEY);
     }
 }
