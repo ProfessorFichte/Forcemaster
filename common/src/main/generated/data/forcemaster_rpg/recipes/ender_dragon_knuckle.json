@@ -1,0 +1,30 @@
+{
+  "fabric:load_conditions": [
+    {
+      "condition": "fabric:all_mods_loaded",
+      "values": [
+        "loot_n_explore"
+      ]
+    }
+  ],
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "loot_n_explore:ender_dragon_scale"
+  },
+  "base": {
+    "item": "forcemaster_rpg:netherite_knuckle"
+  },
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "loot_n_explore"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "item": "forcemaster_rpg:ender_dragon_knuckle"
+  },
+  "template": {
+    "item": "loot_n_explore:dragonslayer_upgrade_smithing_template"
+  }
+}

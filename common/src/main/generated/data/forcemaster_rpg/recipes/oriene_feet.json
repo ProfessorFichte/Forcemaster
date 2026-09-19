@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "R": {
+      "item": "minecraft:cobblestone"
+    },
+    "W": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "W W",
+    "R R"
+  ],
+  "result": {
+    "item": "forcemaster_rpg:oriene_feet"
+  },
+  "show_notification": true
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "minecraft:cobblestone"
+    },
+    "R": {
+      "item": "minecraft:leather"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "C C",
+    "RRR",
+    "WWW"
+  ],
+  "result": {
+    "item": "forcemaster_rpg:oriene_chest"
+  },
+  "show_notification": true
+}

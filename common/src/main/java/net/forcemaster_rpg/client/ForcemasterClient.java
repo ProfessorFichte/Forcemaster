@@ -16,8 +16,6 @@ import net.spell_engine.rpg_series.item.Armor;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-import static net.forcemaster_rpg.compat.CompatLoadingCheck.armoryLoadCheck;
-
 public class ForcemasterClient{
 
     public static void init() {
@@ -25,9 +23,7 @@ public class ForcemasterClient{
         registerArmorRenderer(Armors.orieneArmorSet.armorSet(), CustomArmorRenderer::oriene_armor);
         registerArmorRenderer(Armors.phaslebArmorSet.armorSet(), CustomArmorRenderer::phasleb_armor);
         registerArmorRenderer(Armors.akenArmorSet.armorSet(), CustomArmorRenderer::aken_armor);
-        if (armoryLoadCheck()) {
-            registerArmorRenderer(Armors.billporonArmorSet.armorSet(), CustomArmorRenderer::billporon_armor);
-        }
+        registerArmorRenderer(Armors.billporonArmorSet.armorSet(), CustomArmorRenderer::billporon_armor);
 
         CustomParticleStatusEffect.register(ForcemasterEffects.BARQ_ESNA.effect, new BarqEsnaParticles(1));
     }

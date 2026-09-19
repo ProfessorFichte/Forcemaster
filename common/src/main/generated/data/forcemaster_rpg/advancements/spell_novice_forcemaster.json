@@ -1,0 +1,27 @@
+{
+  "parent": "forcemaster_rpg:path_choose_forcemaster",
+  "criteria": {
+    "bind": {
+      "conditions": {
+        "complete": false,
+        "spell_pool": "forcemaster_rpg:spell_book/forcemaster"
+      },
+      "trigger": "spell_engine:spell_binding"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.forcemaster_rpg.spell_novice_forcemaster.description"
+    },
+    "frame": "task",
+    "hidden": false,
+    "icon": {
+      "item": "forcemaster_rpg:iron_knuckle"
+    },
+    "show_toast": true,
+    "title": {
+      "translate": "advancements.forcemaster_rpg.spell_novice_forcemaster.title"
+    }
+  }
+}

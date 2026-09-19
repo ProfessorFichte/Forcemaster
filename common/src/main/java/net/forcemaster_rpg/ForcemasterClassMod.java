@@ -76,6 +76,6 @@ public class ForcemasterClassMod{
 		ForcemasterEntities.registerEntities();
 	}
 	public static Identifier id(String path) {
-		return Identifier.of(MOD_ID, path);
+		return new Identifier(MOD_ID, path);
 	}
 }

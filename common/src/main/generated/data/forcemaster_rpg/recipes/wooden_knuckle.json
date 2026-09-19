@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": {
+      "tag": "minecraft:logs"
+    }
+  },
+  "pattern": [
+    "W  ",
+    "WW ",
+    "WW "
+  ],
+  "result": {
+    "item": "forcemaster_rpg:wooden_knuckle"
+  },
+  "show_notification": true
+}

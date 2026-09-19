@@ -42,9 +42,10 @@ public class NenSphereBeamEntity extends Entity {
     }
 
     @Override
-    protected void initDataTracker(DataTracker.Builder builder) {
-        builder.add(WIDTH, 0.5F);
-        builder.add(LENGTH, 1.0F);
+    protected void initDataTracker() {
+        // 1.20.1 has no `DataTracker.Builder`; defaults are declared on the tracker itself.
+        this.dataTracker.startTracking(WIDTH, 0.5F);
+        this.dataTracker.startTracking(LENGTH, 1.0F);
     }
 
     @Override

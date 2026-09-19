@@ -27,7 +27,7 @@ public class FistWeaponOnlyStunImpact implements SpellHandlers.CustomImpact {
     ) {
         ItemStack stack = caster.getEquippedStack(EquipmentSlot.MAINHAND);
         if(stack.isIn(ModItemTags.FIST_WEAPON)&& target instanceof LivingEntity livingEntity && target.isLiving() && !target.isSpectator()){
-            livingEntity.addStatusEffect(new StatusEffectInstance(SpellEngineEffects.STUN.entry,
+            livingEntity.addStatusEffect(new StatusEffectInstance(SpellEngineEffects.STUN.effect,
                     tweaksConfig.value.stonehand_stun_duration_seconds * 20,
                     0,false,false,true));
         }

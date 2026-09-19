@@ -1,35 +1,25 @@
 package com.forcemaster.fabric;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.forcemaster_rpg.ForcemasterClassMod;
 import net.forcemaster_rpg.item.ForcemasterGroup;
 import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.minecraft.item.ArmorItem;
-import net.minecraft.registry.Registries;
-import net.minecraft.registry.Registry;
 
 public final class FabricMod implements ModInitializer {
     @Override
     public void onInitialize() {
         ForcemasterClassMod.init();
-        registerItemGroup();
+        // The `forcemaster_rpg:generic` group is created inside registerItems() (see ForcemasterGroup), so
+        // that both loaders build it the same way and it exists before the weapon/armor registrations fill it.
         ForcemasterClassMod.registerItems();
         ForcemasterClassMod.registerSounds();
         ForcemasterClassMod.registerEffects();
         ForcemasterClassMod.registerParticles();
         ForcemasterClassMod.registerEntities();
         registerItemGroupContent();
-    }
-
-    private void registerItemGroup() {
-        ForcemasterGroup.FORCEMASTER = FabricItemGroup.builder()
-                .icon(ForcemasterGroup::icon)
-                .displayName(ForcemasterGroup.displayName())
-                .build();
-        Registry.register(Registries.ITEM_GROUP, ForcemasterGroup.FORCEMASTER_KEY, ForcemasterGroup.FORCEMASTER);
     }
 
     private void registerItemGroupContent() {

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "item": "minecraft:netherite_ingot"
+  },
+  "base": {
+    "item": "forcemaster_rpg:phasleb_legs"
+  },
+  "result": {
+    "count": 1,
+    "item": "forcemaster_rpg:aken_legs"
+  },
+  "template": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  }
+}
