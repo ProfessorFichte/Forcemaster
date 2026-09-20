@@ -78,10 +78,6 @@ public class ModSounds {
         linkEntries();
     }
 
-    /// Every sound event that still needs registering, keyed by the id it registers under. Creation only -
-    /// nothing is written here, so a loader that registers sounds itself (Forge, through the helper
-    /// `RegisterEvent` hands out) iterates this instead of calling {@link #register}. Follow it with
-    /// {@link #linkEntries}.
     public static Map<Identifier, SoundEvent> soundsToRegister() {
         var sounds = new LinkedHashMap<Identifier, SoundEvent>();
         for (var entry: entries) {
@@ -91,8 +87,6 @@ public class ModSounds {
         return sounds;
     }
 
-    /// Fills in every `Entry#entry` from the registry. `RegisterEvent`'s helper returns void where
-    /// `Registry.registerReference` returned the reference, so Forge calls this right after the loop.
     public static void linkEntries() {
         for (var entry: entries) {
             if (entry.entry != null) { continue; }

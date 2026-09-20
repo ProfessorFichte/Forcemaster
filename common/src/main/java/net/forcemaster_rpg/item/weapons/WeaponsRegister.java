@@ -131,10 +131,6 @@ public class WeaponsRegister {
         itemsToRegister(configs).forEach((id, item) -> Registry.register(Registries.ITEM, id, item));
     }
 
-    /// Every weapon item keyed by the id it registers under. Creation only - nothing is written here, so a
-    /// loader that registers items itself (Forge, through the helper `RegisterEvent` hands out) iterates
-    /// this instead of calling {@link #register}. The optional-mod entries have to be appended *before*
-    /// `Weapon.itemsToRegister` sees the list, which is why this wrapper exists rather than a direct call.
     public static Map<Identifier, Item> itemsToRegister(Map<String,WeaponConfig> configs) {
         createOptionalEntries();
         return Weapon.itemsToRegister(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);

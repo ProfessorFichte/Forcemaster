@@ -23,25 +23,13 @@ import net.minecraftforge.fml.loading.FMLEnvironment;
 import net.minecraftforge.registries.RegisterEvent;
 import net.spell_engine.api.effect.Effects;
 
-/// Forge 47 entrypoint (1.20.1 port of the NeoForge entrypoint).
-///
-/// Forge only clears the *vanilla* registry's own lock from 47.4.0 onwards, so on 47.0-47.3 (and NeoForge
-/// 1.20.1) a plain `Registry.register` throws `Can not register to a locked registry` even inside the right
-/// `RegisterEvent` window. `mods.toml` declares `loaderVersion = "[47,)"`, so those are supported
-/// configurations: Forge therefore registers everything through the `RegisterHelper` the event hands out,
-/// iterating the same content `common` exposes. The loops below duplicate what `common`'s `registerX()`
-/// methods do on Fabric, on purpose - the workaround stays inside `forge/`.
 @Mod(ForcemasterClassMod.MOD_ID)
 public final class ForgeMod {
-    // FMLJavaModLoadingContext.get() is flagged for removal by late 47.x builds, but the
-    // constructor-injected replacement doesn't exist on early 47.x; get() works on all of [47,).
     @SuppressWarnings("removal")
     public ForgeMod() {
         ForcemasterClassMod.init();
 
         var modBus = FMLJavaModLoadingContext.get().getModEventBus();
-        // Explicit event classes: Forge 47's plain addListener(Consumer) infers the event type from the
-        // lambda via TypeTools, which is fragile; the 4-arg overload takes it directly.
         modBus.addListener(EventPriority.NORMAL, false, RegisterEvent.class, ForgeMod::register);
         modBus.addListener(EventPriority.NORMAL, false, BuildCreativeModeTabContentsEvent.class,
                 ForgeMod::buildTabContents);
@@ -51,6 +39,7 @@ public final class ForgeMod {
         }
     }
 
+    // Goes through the helper on purpose, on Forge 47.0-47.3 a plain Registry.register throws "Can not register to a locked registry".
     public static void register(RegisterEvent event) {
         event.register(RegistryKeys.SOUND_EVENT, helper -> {
             ModSounds.soundsToRegister().forEach(helper::register);
@@ -79,15 +68,10 @@ public final class ForgeMod {
         event.register(RegistryKeys.ENTITY_TYPE, helper ->
                 ForcemasterEntities.entityTypesToRegister().forEach(helper::register));
 
-        // NOT in the ITEM block: `creative_mode_tab` is event 65, `item` is event 7.
         event.register(RegistryKeys.ITEM_GROUP, helper ->
                 helper.register(ForcemasterGroup.ID, ForcemasterGroup.create()));
     }
 
-    /// Forge fires this per creative tab, on the logical client only. Unlike NeoForge there is no
-    /// `remove(...)` / `getParentEntries()` / `getSearchEntries()`: the tab is one
-    /// `MutableHashedLinkedMap<ItemStack, StackVisibility>` covering both the parent and the search tab, so
-    /// removing a key removes it from both. `event.accept(Supplier)` adds.
     private static void buildTabContents(BuildCreativeModeTabContentsEvent event) {
         var key = event.getTabKey();
         if (key.equals(ForcemasterGroup.FORCEMASTER_KEY)) {

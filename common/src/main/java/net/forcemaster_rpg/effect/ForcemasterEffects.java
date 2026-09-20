@@ -25,7 +25,6 @@ import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 import static net.forcemaster_rpg.ForcemasterClassMod.tweaksConfig;
 
 public class ForcemasterEffects {
-    /// 1.20.1 `EntityAttribute` has no id accessor (1.21's `getIdAsString()`); look it up in the registry instead.
     public static String attributeId(EntityAttribute attribute) {
         return Registries.ATTRIBUTE.getId(attribute).toString();
     }
@@ -107,10 +106,6 @@ public class ForcemasterEffects {
         Effects.linkEntries(entries);
     }
 
-    /// Configures every effect and returns the ones that still need registering, keyed by the id they
-    /// register under. Creation only - nothing is written here, so a loader that registers status effects
-    /// itself (Forge, through the helper `RegisterEvent` hands out) iterates this instead of calling
-    /// {@link #register}. Follow it with `Effects.linkEntries(entries)`.
     public static Map<Identifier, StatusEffect> effectsToRegister(ConfigFile.Effects config) {
         ((BarqEsnaEffect) BARQ_ESNA.effect).setVulnerability(
                 SpellSchools.ARCANE,

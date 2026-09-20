@@ -132,8 +132,6 @@ public class ForcemasterAdvancementDataGen implements DataProvider {
         JsonObject display = new JsonObject();
         JsonObject icon = new JsonObject();
         String iconName = entry.iconItemName().contains(":") ? entry.iconItemName() : MOD_ID + ":" + entry.iconItemName();
-        // 1.20.1 icons are `{"item": ..., "nbt": "<snbt>"}` -- no data components. SpellEngine's item model
-        // lives in the `spell_engine` NBT sub-compound (`SpellItemData`), which is what the item reads back.
         if (iconName.contains("item/spell_book/")) {
             icon.addProperty("item", "spell_engine:spell_book");
             icon.addProperty("nbt", itemModelNbt(iconName));

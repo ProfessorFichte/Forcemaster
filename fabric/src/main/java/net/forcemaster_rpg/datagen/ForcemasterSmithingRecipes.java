@@ -84,8 +84,8 @@ public class ForcemasterSmithingRecipes extends LocalSmithingRecipeGenerator {
             createSmithingTransformRecipe(
                     "ender_dragon_knuckle",
                     WeaponsRegister.netherite_knuckle.item(),
-                    new Identifier("loot_n_explore", "dragonslayer_upgrade_smithing_template"),
-                    new Identifier("loot_n_explore", "ender_dragon_scale"),
+                    new Identifier("loot_n_explore", "dragon_upgrade_smithing_template"),
+                    new Identifier("loot_n_explore", "ender_dragon_scales"),
                     enderDragonKnuckle,
                     "loot_n_explore"
             );

@@ -63,8 +63,6 @@ public class Armors {
     private static final float billporonAttackSpeed = 0.05F;
     private static final float billporonArcaneFuse = 0.075F;
 
-    /// 1.20.1 armor materials are plain `ArmorMaterial` objects: no registry entry, no layer list.
-    /// `Armor.material`'s `id` doubles as the (single) 1.21 `ArmorMaterial.Layer` id.
     public static ArmorMaterial material(String name,
                                          int protectionHead, int protectionChest, int protectionLegs, int protectionFeet,
                                          int enchantability, SoundEvent equipSound, Supplier<Ingredient> repairIngredient) {
@@ -233,10 +231,6 @@ public class Armors {
         itemsToRegister(configs).forEach((id, item) -> Registry.register(Registries.ITEM, id, item));
     }
 
-    /// Every armor piece keyed by the id it registers under. Creation only - nothing is written here, so a
-    /// loader that registers items itself (Forge, through the helper `RegisterEvent` hands out) iterates
-    /// this instead of calling {@link #register}. The Armory-flavoured Billporon set has to be appended
-    /// *before* `Armor.itemsToRegister` sees the list, which is why this wrapper exists.
     public static Map<Identifier, Item> itemsToRegister(Map<String, ArmorSetConfig> configs) {
         createOptionalEntries();
         return Armor.itemsToRegister(configs, entries, ForcemasterGroup.FORCEMASTER_KEY);

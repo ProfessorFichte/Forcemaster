@@ -9,7 +9,7 @@
   ],
   "type": "minecraft:smithing_transform",
   "addition": {
-    "item": "loot_n_explore:ender_dragon_scale"
+    "item": "loot_n_explore:ender_dragon_scales"
   },
   "base": {
     "item": "forcemaster_rpg:netherite_knuckle"
@@ -25,6 +25,6 @@
     "item": "forcemaster_rpg:ender_dragon_knuckle"
   },
   "template": {
-    "item": "loot_n_explore:dragonslayer_upgrade_smithing_template"
+    "item": "loot_n_explore:dragon_upgrade_smithing_template"
   }
 }

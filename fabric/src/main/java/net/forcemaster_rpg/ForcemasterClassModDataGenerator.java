@@ -65,8 +65,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		pack.addProvider(ConditionalCraftingRecipes::new);
 	}
 
-	/// Fabric's datagen `WrapperLookup` is assembled per entrypoint, so a `FabricTagProvider<Spell>` throws
-	/// `Registry spell_engine:spell not found` unless the entrypoint contributes the registry itself.
 	@Override
 	public void buildRegistry(RegistryBuilder registryBuilder) {
 		RPGSeriesDataGen.buildRegistry(registryBuilder);
@@ -186,10 +184,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			while(var3.hasNext()) {
 				Armor.Entry armor = (Armor.Entry)var3.next();
 				Armor.Set set = armor.armorSet();
-				// 1.20.1 has no `minecraft:{head,chest,leg,foot}_armor` item tags (1.20.5 additions).
-				// On 1.20.5+ those feed `#minecraft:trimmable_armor` implicitly, which is what made RPG armor
-				// trimmable there; here that tag is an explicit list, so the pieces opt into it directly -
-				// the same thing SpellEngine's own `generateArmorTags` does.
 				FabricTagProvider<Item>.FabricTagBuilder trimmableTag = this.getOrCreateTagBuilder(ItemTags.TRIMMABLE_ARMOR);
 				for (var pieceId : armor.armorSet().pieceIds()) {
 					trimmableTag.addOptional((Identifier) pieceId);
@@ -269,9 +263,6 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			criticalChanceTag .addTag(ModItemTags.KNUCKLES);
 			var spellPowerTag  = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.SPELL_POWER_GENERIC);
 			spellPowerTag .addTag(ModItemTags.KNUCKLES);
-			// `#minecraft:durability_enchantable` / `#minecraft:sharp_weapon_enchantable` do not exist before
-			// 1.21 - vanilla enchantability is decided by `Enchantment#isAcceptableItem` there, and the
-			// knuckles are `SwordItem`s, so Unbreaking and Sharpness already apply without a tag.
 			var meleeTag = getOrCreateTagBuilder(ItemTags.SWORDS);
 			meleeTag.addTag(ModItemTags.KNUCKLES);
 

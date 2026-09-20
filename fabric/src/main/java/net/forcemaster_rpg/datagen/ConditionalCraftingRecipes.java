@@ -61,7 +61,6 @@ public class ConditionalCraftingRecipes implements DataProvider {
 
         return CompletableFuture.allOf(recipes.stream().map(recipeData -> {
             JsonObject recipe = buildRecipeJson(recipeData);
-            // 1.20.1 datapack directory is `recipes/` (plural)
             Path path = output.getResolver(net.minecraft.data.DataOutput.OutputType.DATA_PACK, "recipes")
                     .resolveJson(new Identifier(MOD_ID, recipeData.name));
 
@@ -81,8 +80,6 @@ public class ConditionalCraftingRecipes implements DataProvider {
             fabricLoadConditions.add(fabricCondition);
             recipe.add("fabric:load_conditions", fabricLoadConditions);
 
-            // Forge 47 reads a plain top-level `conditions` array; `forge:conditions` / `neoforge:conditions`
-            // are keys it does not know, and the recipe would then parse and fail on the unloaded modded item.
             JsonArray forgeConditions = new JsonArray();
             JsonObject forgeCondition = new JsonObject();
             forgeCondition.addProperty("type", "forge:mod_loaded");
@@ -107,7 +104,6 @@ public class ConditionalCraftingRecipes implements DataProvider {
         keyObj.add(String.valueOf(data.key), ingredientObj);
         recipe.add("key", keyObj);
 
-        // 1.20.1 recipe results are keyed by `item`, not `id`
         JsonObject resultObj = new JsonObject();
         resultObj.addProperty("item", data.result.toString());
         recipe.add("result", resultObj);

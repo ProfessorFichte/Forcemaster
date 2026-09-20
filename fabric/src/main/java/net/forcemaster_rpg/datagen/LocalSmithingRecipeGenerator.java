@@ -17,17 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-/// Generic generator for Smithing Transform recipes.
-///
-/// **Local override of `net.more_rpg_classes.datagen.SmithingRecipeGenerator`.** The library class shipped in
-/// More RPG Library `2.7.2.001+1.20.1` is still written for the 1.21 datapack format - it resolves into
-/// `data/<ns>/recipe/` (singular), emits `"result": {"id": ...}` and tags conditions with
-/// `neoforge:conditions` - and nothing inside the library exercises it, so its port never caught that.
-/// This is a verbatim copy with the 1.20.1 spellings: `recipes/`, `"result": {"item": ...}` and Forge 47's
-/// plain top-level `conditions` array with `forge:mod_loaded` / `forge:and`.
-///
-/// **Delete this class** (and point `ForcemasterSmithingRecipes` back at the library one) as soon as
-/// More RPG Library `2.7.2.002+1.20.1` - which carries exactly this fix - is published to mavenLocal.
 public abstract class LocalSmithingRecipeGenerator implements DataProvider {
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
@@ -35,34 +24,13 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
     protected final String modId;
     private final List<RecipeData> recipes = new ArrayList<>();
 
-    /**
-     * @param output FabricDataOutput
-     * @param modId Mod ID for the recipe paths
-     */
     public LocalSmithingRecipeGenerator(FabricDataOutput output, String modId) {
         this.output = output;
         this.modId = modId;
     }
 
-    /**
-     * Implement this method to generate your recipes
-     */
     public abstract void generate();
 
-    // ==========================================
-    // RECIPES WITH MOD LOAD CONDITIONS
-    // ==========================================
-
-    /**
-     * Creates a Smithing Transform recipe WITH Fabric and NeoForge load conditions
-     *
-     * @param name Recipe name (without namespace)
-     * @param base Base item
-     * @param template Template item or Identifier (for items from unloaded mods)
-     * @param addition Addition item or Identifier (for items from unloaded mods)
-     * @param result Result item
-     * @param requiredMod Required mod (e.g., "armory_rpgs")
-     */
     public void createSmithingTransformRecipe(
             String name,
             Item base,
@@ -74,9 +42,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         createSmithingTransformRecipe(name, base, template, addition, result, new String[]{requiredMod});
     }
 
-    /**
-     * Creates a Smithing Transform recipe with multiple required mods
-     */
     public void createSmithingTransformRecipe(
             String name,
             Item base,
@@ -88,16 +53,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         recipes.add(new RecipeData(name, base, template, addition, result, requiredMods, true));
     }
 
-    /**
-     * Automatically creates Smithing recipes for ALL 4 armor pieces WITH load conditions
-     *
-     * @param recipeBaseName Base name for the recipes (e.g., "bounty_hunter_from_deadeye")
-     * @param baseSet Base armor set
-     * @param template Template item (can also be Identifier if item is not loaded)
-     * @param addition Addition item (can also be Identifier if item is not loaded)
-     * @param resultSet Result armor set
-     * @param requiredMod Required mod
-     */
     public void createArmorSetUpgrade(
             String recipeBaseName,
             Armor.Set baseSet,
@@ -106,7 +61,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
             Armor.Set resultSet,
             String requiredMod
     ) {
-        // Extract result set name for better recipe naming
         String resultSetName = extractArmorSetName(resultSet);
 
         createSmithingTransformRecipe(
@@ -146,22 +100,15 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         );
     }
 
-    /**
-     * Helper method to extract armor set name from result set
-     */
     private String extractArmorSetName(Armor.Set armorSet) {
         Identifier id = Registries.ITEM.getId((Item) armorSet.head);
         String path = id.getPath();
-        // Remove "_head" suffix if present
         if (path.endsWith("_head")) {
             return path.substring(0, path.length() - 5);
         }
         return path;
     }
 
-    /**
-     * Overloaded version with multiple required mods
-     */
     public void createArmorSetUpgrade(
             String recipeBaseName,
             Armor.Set baseSet,
@@ -209,20 +156,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         );
     }
 
-    // ==========================================
-    // RECIPES WITHOUT MOD LOAD CONDITIONS
-    // ==========================================
-
-    /**
-     * Creates a Smithing Transform recipe WITHOUT load conditions
-     * For items from your own mod that are always available
-     *
-     * @param name Recipe name
-     * @param base Base item
-     * @param template Template item or Identifier
-     * @param addition Addition item or Identifier
-     * @param result Result item
-     */
     public void createSimpleSmithingRecipe(
             String name,
             Item base,
@@ -233,15 +166,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         recipes.add(new RecipeData(name, base, template, addition, result, null, false));
     }
 
-    /**
-     * Automatically creates Smithing recipes for ALL 4 armor pieces WITHOUT load conditions
-     *
-     * @param recipeBaseName Base name for the recipes
-     * @param baseSet Base armor set
-     * @param template Template item or Identifier
-     * @param addition Addition item or Identifier
-     * @param resultSet Result armor set
-     */
     public void createSimpleArmorSetUpgrade(
             String recipeBaseName,
             Armor.Set baseSet,
@@ -284,10 +208,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         );
     }
 
-    // ==========================================
-    // INTERNAL LOGIC
-    // ==========================================
-
     @Override
     public CompletableFuture<?> run(DataWriter writer) {
         generate(); // Call generate to populate recipes
@@ -305,9 +225,7 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
     private JsonObject buildRecipeJson(RecipeData data) {
         JsonObject recipe = new JsonObject();
 
-        // Add Load Conditions if requested
         if (data.withLoadConditions && data.requiredMods != null && data.requiredMods.length > 0) {
-            // Fabric Load Conditions
             JsonArray fabricLoadConditions = new JsonArray();
             JsonObject fabricCondition = new JsonObject();
             fabricCondition.addProperty("condition", "fabric:all_mods_loaded");
@@ -319,7 +237,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
             fabricLoadConditions.add(fabricCondition);
             recipe.add("fabric:load_conditions", fabricLoadConditions);
 
-            // NeoForge Conditions
             JsonArray neoforgeConditions = new JsonArray();
             if (data.requiredMods.length == 1) {
                 JsonObject neoforgeCondition = new JsonObject();
@@ -327,7 +244,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
                 neoforgeCondition.addProperty("modid", data.requiredMods[0]);
                 neoforgeConditions.add(neoforgeCondition);
             } else {
-                // Multiple mods: use "and" condition
                 JsonObject andCondition = new JsonObject();
                 andCondition.addProperty("type", "forge:and");
                 JsonArray innerConditions = new JsonArray();
@@ -340,31 +256,24 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
                 andCondition.add("conditions", innerConditions);
                 neoforgeConditions.add(andCondition);
             }
-            // Forge 47 reads a top-level "conditions" array; "neoforge:conditions" is 1.21/NeoForge-only
             recipe.add("conditions", neoforgeConditions);
         }
 
-        // Recipe Type
         recipe.addProperty("type", "minecraft:smithing_transform");
 
-        // Template
         JsonObject templateObj = new JsonObject();
         templateObj.addProperty("item", getItemId(data.template));
         recipe.add("template", templateObj);
 
-        // Base
         JsonObject baseObj = new JsonObject();
         baseObj.addProperty("item", Registries.ITEM.getId(data.base).toString());
         recipe.add("base", baseObj);
 
-        // Addition
         JsonObject additionObj = new JsonObject();
         additionObj.addProperty("item", getItemId(data.addition));
         recipe.add("addition", additionObj);
 
-        // Result
         JsonObject resultObj = new JsonObject();
-        // 1.20.1 names the result item with "item", not "id"
         resultObj.addProperty("item", Registries.ITEM.getId(data.result).toString());
         resultObj.addProperty("count", 1);
         recipe.add("result", resultObj);
@@ -372,10 +281,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
         return recipe;
     }
 
-    /**
-     * Helper method to get item ID from either Item or Identifier
-     * Prevents minecraft:air when mod is not loaded
-     */
     private String getItemId(Object itemOrId) {
         if (itemOrId instanceof Identifier id) {
             return id.toString();
@@ -383,7 +288,6 @@ public abstract class LocalSmithingRecipeGenerator implements DataProvider {
             return str;
         } else if (itemOrId instanceof Item item) {
             Identifier id = Registries.ITEM.getId(item);
-            // Check if it resolved to AIR (means item doesn't exist)
             if (id.equals(Registries.ITEM.getId(net.minecraft.item.Items.AIR))) {
                 throw new IllegalStateException("Item resolved to minecraft:air - use Identifier instead of Item for cross-mod items!");
             }

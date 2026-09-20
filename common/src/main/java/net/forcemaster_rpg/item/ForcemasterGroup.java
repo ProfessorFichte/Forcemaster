@@ -23,10 +23,6 @@ public class ForcemasterGroup {
         return Text.translatable("itemGroup." + ForcemasterClassMod.MOD_ID + ".general");
     }
 
-    /// The group is built here rather than per platform: `ItemGroup.builder()` is a Fabric injection and
-    /// `FabricItemGroup` is Fabric-only, but the vanilla `ItemGroup.Builder` constructor works on both
-    /// loaders. Creation only - nothing is written into the registry, so Forge builds the group in its own
-    /// `creative_mode_tab` window (event 65, long after `item` at 7) and registers it through the helper.
     public static ItemGroup create() {
         if (FORCEMASTER == null) {
             FORCEMASTER = new ItemGroup.Builder(ItemGroup.Row.TOP, 0)

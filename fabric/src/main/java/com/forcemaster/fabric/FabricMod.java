@@ -12,8 +12,6 @@ public final class FabricMod implements ModInitializer {
     @Override
     public void onInitialize() {
         ForcemasterClassMod.init();
-        // The `forcemaster_rpg:generic` group is created inside registerItems() (see ForcemasterGroup), so
-        // that both loaders build it the same way and it exists before the weapon/armor registrations fill it.
         ForcemasterClassMod.registerItems();
         ForcemasterClassMod.registerSounds();
         ForcemasterClassMod.registerEffects();

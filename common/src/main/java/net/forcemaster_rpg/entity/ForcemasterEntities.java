@@ -18,11 +18,6 @@ public class ForcemasterEntities {
         entityTypesToRegister().forEach((id, type) -> Registry.register(Registries.ENTITY_TYPE, id, type));
     }
 
-    /// Every entity type that still needs registering, keyed by the id it registers under. Creation only -
-    /// nothing is written here, so a loader that registers entity types itself (Forge, through the helper
-    /// `RegisterEvent` hands out) iterates this instead of calling {@link #registerEntities}. The type is
-    /// built here rather than at registration time so `NenSphereBeamEntity.ENTITY_TYPE` is populated on
-    /// both paths - `RegisterEvent`'s helper returns void where `Registry.register` returned the value.
     public static Map<Identifier, EntityType<?>> entityTypesToRegister() {
         if (NenSphereBeamEntity.ENTITY_TYPE == null) {
             NenSphereBeamEntity.ENTITY_TYPE = EntityType.Builder
