@@ -1,7 +1,6 @@
 {
 	"format_version": "1.9.0",
 	"credit": "Slepykat",
-	"parent": "player",
 	"texture_size": [64, 64],
 	"textures": {
 		"2": "forcemaster_rpg:item/unique_knuckle_0"
