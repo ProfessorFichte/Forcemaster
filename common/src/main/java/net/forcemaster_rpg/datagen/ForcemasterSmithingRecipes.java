@@ -6,7 +6,7 @@ import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
-import net.more_rpg_classes.datagen.SmithingRecipeGenerator;
+import com.mrpg_lib.datagen.SmithingRecipeGenerator;
 
 import static net.forcemaster_rpg.ForcemasterClassMod.MOD_ID;
 
@@ -119,7 +119,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_head_aken_head",
                     (Item) Armors.akenArmorSet.armorSet().head,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().head,
                     "armory_rpgs"
             );
@@ -127,7 +127,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_chest_aken_chest",
                     (Item) Armors.akenArmorSet.armorSet().chest,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().chest,
                     "armory_rpgs"
             );
@@ -135,7 +135,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_legs_aken_legs",
                     (Item) Armors.akenArmorSet.armorSet().legs,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().legs,
                     "armory_rpgs"
             );
@@ -143,7 +143,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_feet_aken_feet",
                     (Item) Armors.akenArmorSet.armorSet().feet,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().feet,
                     "armory_rpgs"
             );
@@ -152,7 +152,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_head_phasleb_head",
                     (Item) Armors.phaslebArmorSet.armorSet().head,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().head,
                     "armory_rpgs"
             );
@@ -160,7 +160,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_chest_phasleb_chest",
                     (Item) Armors.phaslebArmorSet.armorSet().chest,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().chest,
                     "armory_rpgs"
             );
@@ -168,7 +168,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_legs_phasleb_legs",
                     (Item) Armors.phaslebArmorSet.armorSet().legs,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().legs,
                     "armory_rpgs"
             );
@@ -176,7 +176,7 @@ public class ForcemasterSmithingRecipes extends SmithingRecipeGenerator {
                     "smithing_billporon_feet_phasleb_feet",
                     (Item) Armors.phaslebArmorSet.armorSet().feet,
                     Identifier.of("armory_rpgs", "epic_armor_upgrade"),
-                    Identifier.of("more_rpg_classes", "ascetic_upgrade_crystal"),
+                    Identifier.of("mrpg_lib", "ascetic_upgrade_crystal"),
                     (Item) Armors.billporonArmorSet.armorSet().feet,
                     "armory_rpgs"
             );

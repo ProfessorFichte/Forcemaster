@@ -64,7 +64,7 @@ public class ForcemasterVanillaAdvancementProvider extends FabricAdvancementProv
                 id("equipment/phasleb_armor_set"),
                 "Master of the Force!",
                 "Obtain the full Phasleb Armor Set",
-                Identifier.of("more_rpg_content", "root"),
+                Identifier.of("mrpg_lib", "root"),
                 (Item) phasleb.chest,
                 AdvancementFrame.GOAL,
                 true, true, false, null,

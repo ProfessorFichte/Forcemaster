@@ -15,7 +15,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rarity;
-import net.more_rpg_classes.item.MRPGCItemGroups;
+import com.mrpg_lib.item.MRPGCItemGroups;
 import net.spell_engine.rpg_series.config.ArmorSetConfig;
 import net.spell_engine.rpg_series.config.AttributeModifier;
 import net.spell_engine.rpg_series.item.Equipment;
@@ -139,25 +139,25 @@ public class Armors {
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),orieneArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(3)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),orieneArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(3)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),orieneArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(1)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, orieneRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),orieneAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),orieneArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),orieneArcaneFuse)
                                     ))
                     ),1, null)
                     .translatedName("Oriene Band", "Oriene Suit", "Oriene Pants", "Oriene Boots");
@@ -172,25 +172,25 @@ public class Armors {
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(4)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(4)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(2)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, phaslebRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),phaslebAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),phaslebArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),phaslebArcaneFuse)
                                     ))
                     ),2, null)
                     .translatedName("Phasleb Headdress", "Phasleb Suit", "Phasleb Pants", "Phasleb Boots");
@@ -205,25 +205,25 @@ public class Armors {
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),akenArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(4)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),akenArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(4)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),akenArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(2)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, akenRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),akenAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),akenArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),akenArcaneFuse)
                                     ))
                     ),3, null)
                     .translatedName("Aken Headdress", "Aken Suit", "Aken Pants", "Aken Boots");
@@ -243,25 +243,25 @@ public class Armors {
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),billporonArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(4)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),billporonArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(4)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),billporonArcaneFuse)
                                     )),
                             new ArmorSetConfig.Piece(2)
                                     .addAll(List.of(
                                             AttributeModifier.multiply(SpellSchools.ARCANE.id, billporonRobeSpellPower),
                                             AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("minecraft:generic.attack_speed")),billporonAttackSpeed),
-                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("more_rpg_classes:arcane_fuse_modifier")),billporonArcaneFuse)
+                                            AttributeModifier.multiply(Objects.requireNonNull(Identifier.tryParse("mrpg_lib:arcane_fuse_modifier")),billporonArcaneFuse)
                                     ))
                     ),5,
                     commonSettings(billporon_passive)

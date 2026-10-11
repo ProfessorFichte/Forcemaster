@@ -8,7 +8,7 @@ import net.minecraft.data.DataProvider;
 import net.minecraft.data.DataWriter;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.util.Identifier;
-import net.more_rpg_classes.datagen.SpellEngineAdvancementHelper;
+import com.mrpg_lib.datagen.SpellEngineAdvancementHelper;
 import org.jetbrains.annotations.Nullable;
 
 import java.nio.file.Path;
@@ -67,7 +67,7 @@ public class ForcemasterAdvancementDataGen implements DataProvider {
                 id("path_choose_forcemaster"),
                 "Path of the Force",
                 "Create the Force Mastery Book",
-                Identifier.of("more_rpg_content", "root"),
+                Identifier.of("mrpg_lib", "root"),
                 MOD_ID + ":item/spell_scroll/forcemaster",
                 AdvancementFrame.TASK,
                 true, true, false, null,

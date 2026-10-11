@@ -24,13 +24,13 @@ public class ForcemasterClassMod{
     public static final Logger LOGGER = LoggerFactory.getLogger("forcemaster_rpg");
 
 	public static ConfigManager<ConfigFile.Equipment> itemConfig = new ConfigManager<>
-			("equipment_v2", Default.itemConfig)
+			("equipment_v3", Default.itemConfig)
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)
 			.build();
 	public static ConfigManager<ConfigFile.Effects> effectsConfig = new ConfigManager<>
-			("effects_v6", new ConfigFile.Effects())
+			("effects_v7", new ConfigFile.Effects())
 			.builder()
 			.setDirectory(MOD_ID)
 			.sanitize(true)

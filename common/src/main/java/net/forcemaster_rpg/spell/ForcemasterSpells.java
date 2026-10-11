@@ -7,7 +7,7 @@ import net.spell_engine.api.datagen.SpellBuilder;
 import net.spell_engine.api.spell.ExternalSpellSchools;
 import net.spell_engine.api.spell.Spell;
 import net.forcemaster_rpg.client.particle.Particles;
-import net.more_rpg_classes.client.particle.MoreParticles;
+import com.mrpg_lib.compat.spell_engine.particle.MoreSpellParticles;
 import net.spell_engine.api.spell.fx.Fx;
 import net.spell_engine.api.spell.fx.ParticleGroup;
 import net.spell_engine.api.spell.fx.ParticleGroupBuilder;
@@ -74,7 +74,7 @@ public class ForcemasterSpells {
     }
 
     private static void stunImmuneDeny(Spell.Impact impact) {
-        var modifier = createImpactModifier("#more_rpg_classes:stun_immune");
+        var modifier = createImpactModifier("#mrpg_lib:stun_immune");
         modifier.execute = TriState.DENY;
         impact.target_modifiers = List.of(modifier);
     }
@@ -128,7 +128,7 @@ public class ForcemasterSpells {
         spell.release.animation = PlayerAnimation.of("forcemaster_rpg:stonehand_cast");
         spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:stonehand_cast"), 0.35F);
         spell.release.visuals = Fx.Visuals.of(
-                ParticleGroupBuilder.of(MoreParticles.STONE_PARTICLE)
+                ParticleGroupBuilder.of(MoreSpellParticles.STONE_PARTICLE)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)
                                 .count(15).speed(0.1F, 0.25F)
                                 .verticalOrigin(0.1F).widthFactor(2F)

@@ -43,10 +43,10 @@
   "spell.forcemaster_rpg.arcane_blast.name": "Мистический Взрыв",
   "spell.forcemaster_rpg.arcane_blast.description": "Заряжающие взрывы, пронзающий насквозь {pierce} целей, нанося {damage} мистический урон.",
 
-  "advancements.more_rpg_content.knuckle.title": "Врежь им!",
-  "advancements.more_rpg_content.knuckle.description": "Получите Железный Кулак!",
-  "advancements.more_rpg_content.forcemaster_spells.title": "Путь Монаха.",
-  "advancements.more_rpg_content.forcemaster_spells.description": "Получите все Тайны Монахов.",
+  "advancements.forcemaster_rpg.knuckle.title": "Врежь им!",
+  "advancements.forcemaster_rpg.knuckle.description": "Получите Железный Кулак!",
+  "advancements.forcemaster_rpg.forcemaster_spells.title": "Путь Монаха.",
+  "advancements.forcemaster_rpg.forcemaster_spells.description": "Получите все Тайны Монахов.",
   "advancements.rpg_classes.phasleb.title": "Сплавленная Сила",
   "advancements.rpg_classes.phasleb.description": "Получите все детали набора Фазлеб."
 }

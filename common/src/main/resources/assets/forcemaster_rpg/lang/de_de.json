@@ -50,12 +50,12 @@
   "spell.forcemaster_rpg.arcane_blast.name": "Arkaner Stoß",
   "spell.forcemaster_rpg.arcane_blast.description": "Lädt arkane Stöße auf, durchdringt {pierce} Ziele und verursacht {damage} arkanen Schaden.",
 
-  "advancements.more_rpg_content.knuckle.title": "Hau drauf!",
-  "advancements.more_rpg_content.knuckle.description": "Erhalte eine Faust!",
-  "advancements.more_rpg_content.forcemaster_spells.title": "Weg des Forcemaster",
-  "advancements.more_rpg_content.forcemaster_spells.description": "Erhalte alle Forcemaster Zaubersprüche",
-  "advancements.more_rpg_content.phasleb.title": "Gebündelte Energie",
-  "advancements.more_rpg_content.phasleb.description": "Erhalte alle Phasleb Rüstungsteile.",
+  "advancements.forcemaster_rpg.knuckle.title": "Hau drauf!",
+  "advancements.forcemaster_rpg.knuckle.description": "Erhalte eine Faust!",
+  "advancements.forcemaster_rpg.forcemaster_spells.title": "Weg des Forcemaster",
+  "advancements.forcemaster_rpg.forcemaster_spells.description": "Erhalte alle Forcemaster Zaubersprüche",
+  "advancements.forcemaster_rpg.phasleb.title": "Gebündelte Energie",
+  "advancements.forcemaster_rpg.phasleb.description": "Erhalte alle Phasleb Rüstungsteile.",
 
   "tag.item.forcemaster_rpg.forcemaster_armor": "Forcemaster Rüstung",
   "tag.item.forcemaster_rpg.knuckles": "Fäuste",
