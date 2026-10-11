@@ -19,6 +19,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.registry.tag.TagKey;
@@ -214,6 +215,16 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 
 		}
 
+		public void generateLootAffiliation(String book, TagKey<Item> weaponTag, List<Armor.Entry> armors) {
+			FabricTagProvider<Item>.FabricTagBuilder tag = this.getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of(MOD_ID, "loot_affiliation/" + book)));
+			tag.addTag(weaponTag);
+			for (Armor.Entry armor : armors) {
+				for (Object id : armor.armorSet().pieceIds()) {
+					tag.addOptional((Identifier) id);
+				}
+			}
+		}
+
 		public void generateKnuckleTags(List<Weapon.Entry> weapons) {
 			Iterator var2 = weapons.iterator();
 
@@ -250,6 +261,8 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			);
 
 			generateKnuckleTags(WeaponsRegister.entries);
+			generateLootAffiliation("forcemaster", ModItemTags.KNUCKLES,
+					Armors.entries.stream().filter(entry -> armoryKeywords.stream().noneMatch(entry.name()::contains)).toList());
 			var spellInfinityTag = getOrCreateTagBuilder(SpellEngineItemTags.ENCHANTABLE_SPELL_INFINITY);
 			spellInfinityTag.addTag(ModItemTags.KNUCKLES);
 			var spellHasteTag = getOrCreateTagBuilder(SpellPowerTags.Items.Enchantable.HASTE);
@@ -302,7 +315,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 			var knuckleArcaneOverflowKey = TagKey.of(SpellRegistry.KEY, Identifier.of(MOD_ID, "arcane_overflow_triggers"));
 			var knuckleArcaneOverflowTag = getOrCreateTagBuilder(knuckleArcaneOverflowKey);
 			knuckleArcaneOverflowTag.addOptionalTag(Identifier.of(MOD_ID, "spell_book/forcemaster"));
-			knuckleArcaneOverflowTag.addOptional(Identifier.of("more_rpg_classes", "burstcrack"));
+			knuckleArcaneOverflowTag.addOptional(Identifier.of("mrpg_lib", "burstcrack"));
 		}
 	}
 
