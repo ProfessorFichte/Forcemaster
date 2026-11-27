@@ -2,7 +2,7 @@
 	"schemaVersion": 1,
 	"id": "forcemaster_rpg",
 	"version": "${version}",
-	"name": "Forcemaster Class Mod",
+	"name": "Forcemaster",
 	"description": "Grab a Knuckle, master the force and martial art. Spell Engine Add-On",
 	"authors": [
 		"Fichte"
@@ -12,10 +12,12 @@
 		"HaxTheCharizard (Artist)"
 	],
 	"contact": {
-		"sources": "https://github.com/ProfessorFichte",
-		"artist1_contact":"https://slepykat.carrd.co/"
+		"homepage": "https://modrinth.com/mod/forcemaster-rpg-class",
+		"sources": "https://github.com/ProfessorFichte/Forcemaster",
+		"issues": "https://github.com/ProfessorFichte/Forcemaster/issues",
+		"artist1_contact": "https://slepykat.carrd.co/"
 	},
-	"license": "All Rights Reserved",
+	"license": "ARR",
 	"icon": "assets/forcemaster_rpg/icon.png",
 	"environment": "*",
 	"entrypoints": {
@@ -43,12 +45,18 @@
 		"mrpg_lib": ">=${more_rpg_library_version}"
 	},
 	"suggests": {
-		"better_combat": "*"
+		"bettercombat": "*",
+		"armory_rpgs": "*",
+		"arsenal": "*",
+		"mrpgc_skill_tree": "*"
 	},
 	"custom": {
 		"modmenu": {
 			"links": {
-				"modmenu.discord": "https://discord.gg/AShKd5XrTu"
+				"modmenu.discord": "https://discord.gg/AShKd5XrTu",
+				"modmenu.kofi": "https://ko-fi.com/fichteee",
+				"modmenu.modrinth": "https://modrinth.com/mod/forcemaster-rpg-class",
+				"modmenu.curseforge": "https://www.curseforge.com/minecraft/mc-mods/forcemaster-rpg-class"
 			}
 		}
 	}

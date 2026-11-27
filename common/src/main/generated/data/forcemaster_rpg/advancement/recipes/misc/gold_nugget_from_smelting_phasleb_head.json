@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:gold_nugget_from_smelting_phasleb_head"
+        "recipe": "forcemaster_rpg:gold_nugget_from_smelting_phasleb_head"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:gold_nugget_from_smelting_phasleb_head"
+      "forcemaster_rpg:gold_nugget_from_smelting_phasleb_head"
     ]
   }
 }

@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:gold_nugget_from_blasting_phasleb_feet"
+        "recipe": "forcemaster_rpg:gold_nugget_from_blasting_phasleb_feet"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:gold_nugget_from_blasting_phasleb_feet"
+      "forcemaster_rpg:gold_nugget_from_blasting_phasleb_feet"
     ]
   }
 }

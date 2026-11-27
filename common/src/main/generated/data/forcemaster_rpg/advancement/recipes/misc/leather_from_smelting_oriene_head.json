@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "minecraft:leather_from_smelting_oriene_head"
+        "recipe": "forcemaster_rpg:leather_from_smelting_oriene_head"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "minecraft:leather_from_smelting_oriene_head"
+      "forcemaster_rpg:leather_from_smelting_oriene_head"
     ]
   }
 }

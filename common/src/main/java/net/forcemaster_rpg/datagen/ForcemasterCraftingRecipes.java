@@ -6,11 +6,9 @@ import net.forcemaster_rpg.item.armor.Armors;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.minecraft.data.server.recipe.RecipeExporter;
 import net.minecraft.data.server.recipe.ShapedRecipeJsonBuilder;
-import net.minecraft.data.server.recipe.ShapelessRecipeJsonBuilder;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.recipe.book.RecipeCategory;
-import net.minecraft.registry.Registries;
 import net.minecraft.registry.RegistryWrapper;
 import net.minecraft.registry.tag.ItemTags;
 import net.minecraft.util.Identifier;
@@ -23,11 +21,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
 
     public ForcemasterCraftingRecipes(FabricDataOutput output, CompletableFuture<RegistryWrapper.WrapperLookup> registriesFuture) {
         super(output, registriesFuture);
-    }
-
-    private static Item getOrFallback(Identifier id, Item fallback) {
-        var item = Registries.ITEM.get(id);
-        return item != null && item != Items.AIR ? item : fallback;
     }
 
     @Override
@@ -151,15 +144,6 @@ public class ForcemasterCraftingRecipes extends FabricRecipeProvider {
                 .input('R', Items.LEATHER)
                 .criterion(hasItem(Items.LEATHER), conditionsFromItem(Items.LEATHER))
                 .offerTo(exporter, Identifier.of(MOD_ID, "phasleb_feet"));
-
-        var forcemasterBook = getOrFallback(Identifier.of(MOD_ID, "forcemaster_spell_book"), Items.WRITTEN_BOOK);
-        ShapelessRecipeJsonBuilder.create(RecipeCategory.MISC, forcemasterBook)
-                .input(Items.LEATHER)
-                .input(Items.AMETHYST_SHARD)
-                .input(Items.BOOK)
-                .input(Items.LAPIS_LAZULI)
-                .criterion(hasItem(Items.BOOK), conditionsFromItem(Items.BOOK))
-                .offerTo(exporter);
     }
 
     private void createConditionalShapedRecipe(RecipeExporter exporter, String name, RecipeCategory category,

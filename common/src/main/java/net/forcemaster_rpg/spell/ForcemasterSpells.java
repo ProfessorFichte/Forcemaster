@@ -2,6 +2,7 @@ package net.forcemaster_rpg.spell;
 
 import net.forcemaster_rpg.effect.ForcemasterEffects;
 import net.forcemaster_rpg.sounds.ModSounds;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.spell_engine.api.datagen.SpellBuilder;
 import net.spell_engine.api.spell.ExternalSpellSchools;
@@ -126,7 +127,7 @@ public class ForcemasterSpells {
         spell.group = BRAWL;
 
         spell.release.animation = PlayerAnimation.of("forcemaster_rpg:stonehand_cast");
-        spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:stonehand_cast"), 0.35F);
+        spell.release.sound = Sound.withVolume(ModSounds.STONEHAND_CAST.id(), 0.35F);
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.of(MoreSpellParticles.STONE_PARTICLE)
                         .batch(b -> b.shape(ParticleGroup.Shape.PIPE)
@@ -236,7 +237,7 @@ public class ForcemasterSpells {
         spell.active.cast.movement_speed = 0.1F;
         spell.active.cast.duration = 0.75F;
         spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:asal_cast");
-        spell.active.cast.sound = new Sound("spell_engine:generic_arcane_casting");
+        spell.active.cast.sound = new Sound(SpellEngineSounds.GENERIC_ARCANE_CASTING.id());
         spell.active.cast.particles = List.of(
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_arcane,
                                 ParticleGroup.Motion.ASCEND, FORCEMASTER_BLUE_COLOR)
@@ -245,7 +246,7 @@ public class ForcemasterSpells {
                                 .verticalOrigin(0.1F).widthFactor(2F)
                                 .extent(0.5F)));
 
-        spell.release.sound = Sound.withVolume(Identifier.of("forcemaster_rpg:asal_release"), 0.35F);
+        spell.release.sound = Sound.withVolume(ModSounds.ASAL_RELEASE.id(), 0.35F);
         spell.release.visuals = Fx.Visuals.of(
                 ParticleGroupBuilder.of(SpellEngineParticles.smoke_medium)
                         .color(FORCEMASTER_BLUE_COLOR)
@@ -274,7 +275,7 @@ public class ForcemasterSpells {
                         .color(ORANGE)
                         .batch(b -> b.shape(ParticleGroup.Shape.SPHERE)
                                 .count(50).speed(0.1F, 5.0F)));
-        damage.sound = Sound.withVolume(Identifier.of("entity.dragon_fireball.explode"), 0.5F);
+        damage.sound = Sound.withVolume(SoundEvents.ENTITY_DRAGON_FIREBALL_EXPLODE.getId(), 0.5F);
 
         spell.impacts = List.of(damage);
 
@@ -301,7 +302,7 @@ public class ForcemasterSpells {
 
         spell.active.cast.duration = 0.4F;
         spell.active.cast.animation = PlayerAnimation.of("forcemaster_rpg:barq_esna_cast");
-        spell.active.cast.sound = new Sound("spell_engine:generic_arcane_casting");
+        spell.active.cast.sound = new Sound(SpellEngineSounds.GENERIC_ARCANE_CASTING.id());
         spell.active.cast.particles = List.of(
                 ParticleGroupBuilder.magic(SpellEngineParticles.magic_arcane,
                                 ParticleGroup.Motion.ASCEND, FORCEMASTER_BLUE_COLOR)
