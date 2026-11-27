@@ -14,7 +14,13 @@ import net.forcemaster_rpg.item.tag.ModItemTags;
 import net.forcemaster_rpg.item.weapons.WeaponsRegister;
 import net.forcemaster_rpg.sounds.ModSounds;
 import net.forcemaster_rpg.spell.ForcemasterSpells;
+import net.minecraft.data.server.recipe.CookingRecipeJsonBuilder;
 import net.minecraft.data.server.recipe.RecipeExporter;
+import net.minecraft.recipe.AbstractCookingRecipe;
+import net.minecraft.recipe.BlastingRecipe;
+import net.minecraft.recipe.Ingredient;
+import net.minecraft.recipe.RecipeSerializer;
+import net.minecraft.recipe.SmeltingRecipe;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -246,8 +252,20 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		}
 
 		List<String> armoryKeywords = List.of("billporon");
+		private void lneWeaponThemeTags() {
+		    var enderDragon = getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/ender_dragon")));
+		    enderDragon.addOptional(Identifier.of("forcemaster_rpg:ender_dragon_knuckle"));
+		    var wither = getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/wither")));
+		    wither.addOptional(Identifier.of("forcemaster_rpg:wither_knuckle"));
+		    var glacial = getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/glacial")));
+		    glacial.addOptional(Identifier.of("forcemaster_rpg:glacial_knuckle"));
+		    var elderGuardian = getOrCreateTagBuilder(TagKey.of(RegistryKeys.ITEM, Identifier.of("loot_n_explore", "weapon_themes/elder_guardian")));
+		    elderGuardian.addOptional(Identifier.of("forcemaster_rpg:elder_guardian_knuckle"));
+		}
+
 		@Override
 		protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
+		    lneWeaponThemeTags();
 			var armorTagOptions1 = new ArmorOptions(false, true);
 			var armorTagOptions2 = new ArmorOptions(true, true);
 			armoryTags(
@@ -349,8 +367,18 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					Items.NETHERITE_SCRAP);
 		}
 
+		private static <T extends AbstractCookingRecipe> void offerCooking(RecipeExporter exporter, String method, RecipeSerializer<T> serializer, AbstractCookingRecipe.RecipeFactory<T> factory,
+				List<ItemConvertible> inputs, RecipeCategory category, ItemConvertible output, float experience, int cookingTime, String group) {
+			for (ItemConvertible input : inputs) {
+				CookingRecipeJsonBuilder.create(Ingredient.ofItems(input), category, output, experience, cookingTime, serializer, factory)
+						.group(group)
+						.criterion(hasItem(input), conditionsFromItem(input))
+						.offerTo(exporter, Identifier.of(MOD_ID, getItemPath(output) + "_from_" + method + "_" + getItemPath(input)));
+			}
+		}
+
 		private static void disassembleArmor(RecipeExporter exporter, Armor.Entry armorEntry, Item output) {
-			FabricRecipeProvider.offerSmelting(exporter,
+			offerCooking(exporter, "smelting", RecipeSerializer.SMELTING, SmeltingRecipe::new,
 					armorEntry.armorSet().pieces(),
 					RecipeCategory.MISC,
 					output,
@@ -358,7 +386,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					UNSMELT_TIME,
 					"disassemble"
 			);
-			FabricRecipeProvider.offerBlasting(exporter,
+			offerCooking(exporter, "blasting", RecipeSerializer.BLASTING, BlastingRecipe::new,
 					armorEntry.armorSet().pieces(),
 					RecipeCategory.MISC,
 					output,
@@ -369,7 +397,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 		}
 
 		private static void disassemble(RecipeExporter exporter, List<ItemConvertible> items, Item output) {
-			FabricRecipeProvider.offerSmelting(exporter,
+			offerCooking(exporter, "smelting", RecipeSerializer.SMELTING, SmeltingRecipe::new,
 					items,
 					RecipeCategory.MISC,
 					output,
@@ -377,7 +405,7 @@ public class ForcemasterClassModDataGenerator implements DataGeneratorEntrypoint
 					UNSMELT_TIME,
 					"disassemble"
 			);
-			FabricRecipeProvider.offerBlasting(exporter,
+			offerCooking(exporter, "blasting", RecipeSerializer.BLASTING, BlastingRecipe::new,
 					items,
 					RecipeCategory.MISC,
 					output,
