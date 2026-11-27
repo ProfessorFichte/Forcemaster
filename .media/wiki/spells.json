@@ -1,0 +1,14 @@
+{
+  "namespace": "forcemaster_rpg",
+  "groups": {
+    "force_mastery": { "tag": "spell_book/forcemaster", "label": "Skill" }
+  },
+  "descriptions": {
+    "forcemaster_rpg:stonehand": "Increases attack damage, and fist attacks can stun the target.",
+    "forcemaster_rpg:belial_smashing": "Charges toward the target's direction, punching all enemies in your path.",
+    "forcemaster_rpg:asal": "A devastating charged punch that consumes Arcane Overflow and exhausts the caster.",
+    "forcemaster_rpg:baraqijal_esna": "Launches a bolt of Baraqijal's light, stacking the target with Light of Baraqijal, lowering its arcane resistance and damaging it over time.",
+    "forcemaster_rpg:sonic_hand": "Unleashes a rapid series of blindingly fast fist strikes. Consumes Arcane Overflow.",
+    "forcemaster_rpg:nen_sphere": "Charge a magic sphere and release it as a piercing beam. The longer you charge, the harder it strikes, but you get overloaded with Arcane Overflow."
+  }
+}
