@@ -59,10 +59,6 @@ Spell Binding Tables can also be found in villages with the [Gazebos](https://ww
 <img src="https://raw.githubusercontent.com/ProfessorFichte/Forcemaster/1.21.1/.media/images/forcemaster_spellbinding.png" alt="Forcemaster Spells">
 </div>
 
-<div align="center" style="text-align:center">
-<img src="https://raw.githubusercontent.com/ProfessorFichte/Forcemaster/1.21.1/.media/images/forcemaster_spell_pool.png" alt="Forcemaster Spell Pool">
-</div>
-
 **Force Mastery**
 
 The spell book of the Forcemaster: martial art with the knuckle, dealing melee and arcane damage. Stonehand, Belial Smashing, Asalraalaikum, Baraqijal Esna, Sonic Hand and Nen Sphere are all part of it. The full list is in the wiki.
